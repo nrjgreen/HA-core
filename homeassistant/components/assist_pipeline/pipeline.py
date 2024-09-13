@@ -136,11 +136,11 @@ async def _async_resolve_default_pipeline_settings(
     wake_word_entity = None
     wake_word_id = None
 
-    # Find a matching language supported by the Home Assistant conversation agent
+    # Find a matching language supported by the NRJHub conversation agent
     conversation_languages = language_util.matches(
         hass.config.language,
         await conversation.async_get_conversation_languages(
-            hass, conversation.HOME_ASSISTANT_AGENT
+            hass, conversation.nrjhub_AGENT
         ),
         country=hass.config.country,
     )
@@ -200,7 +200,7 @@ async def _async_resolve_default_pipeline_settings(
             tts_engine_id = None
 
     return {
-        "conversation_engine": conversation.HOME_ASSISTANT_AGENT,
+        "conversation_engine": conversation.nrjhub_AGENT,
         "conversation_language": conversation_language,
         "language": hass.config.language,
         "name": pipeline_name,
@@ -223,7 +223,7 @@ async def _async_create_default_pipeline(
     default stt / tts engines.
     """
     pipeline_settings = await _async_resolve_default_pipeline_settings(
-        hass, stt_engine_id=None, tts_engine_id=None, pipeline_name="Home Assistant"
+        hass, stt_engine_id=None, tts_engine_id=None, pipeline_name="NRJHub"
     )
     return await pipeline_store.async_create_item(pipeline_settings)
 
@@ -956,9 +956,9 @@ class PipelineRun:
         """Prepare recognizing an intent."""
         agent_info = conversation.async_get_agent_info(
             self.hass,
-            # If no conversation engine is set, use the Home Assistant agent
+            # If no conversation engine is set, use the NRJHub agent
             # (the conversation integration default is currently the last one set)
-            self.pipeline.conversation_engine or conversation.HOME_ASSISTANT_AGENT,
+            self.pipeline.conversation_engine or conversation.nrjhub_AGENT,
         )
 
         if agent_info is None:

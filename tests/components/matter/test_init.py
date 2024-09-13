@@ -89,7 +89,7 @@ async def test_home_assistant_stop(
     matter_client: MagicMock,
     integration: MockConfigEntry,
 ) -> None:
-    """Test clean up on home assistant stop."""
+    """Test clean up on NRJHub stop."""
     await hass.async_stop()
 
     assert matter_client.disconnect.call_count == 1

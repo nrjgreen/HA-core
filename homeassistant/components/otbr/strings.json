@@ -18,7 +18,7 @@
   "issues": {
     "get_get_border_agent_id_unsupported": {
       "title": "The OTBR does not support border agent ID",
-      "description": "Your OTBR does not support border agent ID.\n\nTo fix this issue, update the OTBR to the latest version and restart Home Assistant.\nTo update the OTBR, update the Open Thread Border Router or Silicon Labs Multiprotocol add-on if you use the OTBR from the add-on, otherwise update your self managed OTBR."
+      "description": "Your OTBR does not support border agent ID.\n\nTo fix this issue, update the OTBR to the latest version and restart NRJHub.\nTo update the OTBR, update the Open Thread Border Router or Silicon Labs Multiprotocol add-on if you use the OTBR from the add-on, otherwise update your self managed OTBR."
     },
     "insecure_thread_network": {
       "title": "Insecure Thread network settings detected",

@@ -52,7 +52,8 @@ def run_callback_threadsafe(
 
     Return a concurrent.futures.Future to access the result.
     """
-    if (ident := loop.__dict__.get("_thread_ident")) and ident == threading.get_ident():
+    ident = loop.__dict__.get("_thread_ident")
+    if ident is not None and ident == threading.get_ident():
         raise RuntimeError("Cannot be called from within the event loop")
 
     future: concurrent.futures.Future[_T] = concurrent.futures.Future()
@@ -123,7 +124,7 @@ def shutdown_run_callback_threadsafe(loop: AbstractEventLoop) -> None:
     executor thread.
 
     This function is considered irreversible and should only ever
-    be called when Home Assistant is going to shutdown and
+    be called when NRJHub is going to shutdown and
     python is going to exit.
     """
     setattr(loop, _SHUTDOWN_RUN_CALLBACK_THREADSAFE, True)

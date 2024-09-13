@@ -46,7 +46,6 @@ PLATFORMS = [
     Platform.BINARY_SENSOR,
     Platform.CLIMATE,
     Platform.HUMIDIFIER,
-    Platform.NOTIFY,
     Platform.NUMBER,
     Platform.SENSOR,
     Platform.WEATHER,
@@ -54,7 +53,7 @@ PLATFORMS = [
 
 MANUFACTURER = "ecobee"
 
-# Translates ecobee API weatherSymbol to Home Assistant usable names
+# Translates ecobee API weatherSymbol to NRJHub usable names
 # https://www.ecobee.com/home/developer/api/documentation/v1/objects/WeatherForecast.shtml
 ECOBEE_WEATHER_SYMBOL_TO_HASS = {
     0: ATTR_CONDITION_SUNNY,

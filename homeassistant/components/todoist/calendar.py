@@ -211,7 +211,7 @@ def async_register_services(
     session = async_get_clientsession(hass)
 
     async def handle_new_task(call: ServiceCall) -> None:
-        """Call when a user creates a new Todoist Task from Home Assistant."""
+        """Call when a user creates a new Todoist Task from NRJHub."""
         project_name = call.data[PROJECT_NAME].lower()
         projects = await coordinator.async_get_projects()
         project_id: str | None = None

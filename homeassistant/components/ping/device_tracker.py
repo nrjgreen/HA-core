@@ -62,7 +62,7 @@ async def async_setup_scanner(
     async def _run_import(_: Event) -> None:
         """Delete devices from known_device.yaml and import them via config flow."""
         _LOGGER.debug(
-            "Home Assistant successfully started, importing ping device tracker config entries now"
+            "NRJHub successfully started, importing ping device tracker config entries now"
         )
 
         devices: dict[str, dict[str, Any]] = {}
@@ -116,7 +116,7 @@ async def async_setup_scanner(
                 },
             )
 
-    # delay the import until after Home Assistant has started and everything has been initialized,
+    # delay the import until after NRJHub has started and everything has been initialized,
     # as the legacy device tracker entities will be restored after the legacy device tracker platforms
     # have been set up, so we can only remove the entities from the state machine then
     hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STARTED, _run_import)

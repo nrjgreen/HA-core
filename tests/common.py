@@ -22,7 +22,6 @@ from unittest.mock import AsyncMock, Mock, patch
 
 from aiohttp.test_utils import unused_port as get_test_instance_port  # noqa: F401
 import pytest
-from syrupy import SnapshotAssertion
 import voluptuous as vol
 
 from homeassistant import auth, bootstrap, config_entries, loader
@@ -162,7 +161,7 @@ def get_test_config_dir(*add_path):
 
 @contextmanager
 def get_test_home_assistant() -> Generator[HomeAssistant, None, None]:
-    """Return a Home Assistant object pointing at test config directory."""
+    """Return a NRJHub object pointing at test config directory."""
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     context_manager = async_test_home_assistant(loop)
@@ -225,7 +224,7 @@ async def async_test_home_assistant(
     load_registries: bool = True,
     config_dir: str | None = None,
 ) -> AsyncGenerator[HomeAssistant, None]:
-    """Return a Home Assistant object pointing at test config dir."""
+    """Return a NRJHub object pointing at test config dir."""
     hass = HomeAssistant(config_dir or get_test_config_dir())
     store = auth_store.AuthStore(hass)
     hass.auth = auth.AuthManager(hass, store, {}, {})
@@ -452,7 +451,7 @@ def async_fire_mqtt_message(
 
     mqtt_data: MqttData = hass.data["mqtt"]
     assert mqtt_data.client
-    mqtt_data.client._async_mqtt_on_message(Mock(), None, msg)
+    mqtt_data.client._mqtt_handle_message(msg)
 
 
 fire_mqtt_message = threadsafe_callback_factory(async_fire_mqtt_message)
@@ -685,7 +684,7 @@ def mock_device_registry(
 
 
 class MockGroup(auth_models.Group):
-    """Mock a group in Home Assistant."""
+    """Mock a group in NRJHub."""
 
     def __init__(self, id=None, name="Mock Group", policy=system_policies.ADMIN_POLICY):
         """Mock a group."""
@@ -707,7 +706,7 @@ class MockGroup(auth_models.Group):
 
 
 class MockUser(auth_models.User):
-    """Mock a user in Home Assistant."""
+    """Mock a user in NRJHub."""
 
     def __init__(
         self,
@@ -1734,22 +1733,3 @@ def setup_test_component_platform(
 
     mock_platform(hass, f"test.{domain}", platform, built_in=built_in)
     return platform
-
-
-async def snapshot_platform(
-    hass: HomeAssistant,
-    entity_registry: er.EntityRegistry,
-    snapshot: SnapshotAssertion,
-    config_entry_id: str,
-) -> None:
-    """Snapshot a platform."""
-    entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry_id)
-    assert entity_entries
-    assert (
-        len({entity_entry.domain for entity_entry in entity_entries}) == 1
-    ), "Please limit the loaded platforms to 1 platform."
-    for entity_entry in entity_entries:
-        assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
-        assert entity_entry.disabled_by is None, "Please enable all entities."
-        assert (state := hass.states.get(entity_entry.entity_id))
-        assert state == snapshot(name=f"{entity_entry.entity_id}-state")

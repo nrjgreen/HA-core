@@ -11,7 +11,7 @@ from tests.common import mock_restore_cache
 
 async def test_state_set_and_restore(hass: HomeAssistant) -> None:
     """Test we set and restore state in the integration."""
-    entity_id = "conversation.home_assistant"
+    entity_id = "conversation.nrjhub"
     timestamp = "2023-01-01T23:59:59+00:00"
     mock_restore_cache(hass, (State(entity_id, timestamp),))
 

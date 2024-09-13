@@ -1,4 +1,4 @@
-"""Tests the Home Assistant workday binary sensor."""
+"""Tests the NRJHub workday binary sensor."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ async def init_integration(
     entry_id: str = "1",
     source: str = SOURCE_USER,
 ) -> MockConfigEntry:
-    """Set up the Scrape integration in Home Assistant."""
+    """Set up the Scrape integration in NRJHub."""
 
     config_entry = MockConfigEntry(
         domain=DOMAIN,

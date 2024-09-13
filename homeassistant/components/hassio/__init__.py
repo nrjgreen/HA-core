@@ -455,7 +455,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
     update_info_task = hass.async_create_task(update_info_data(), eager_start=True)
 
     async def _async_stop(hass: HomeAssistant, restart: bool) -> None:
-        """Stop or restart home assistant."""
+        """Stop or restart NRJHub."""
         if restart:
             await hassio.restart_homeassistant()
         else:

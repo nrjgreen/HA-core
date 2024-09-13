@@ -359,7 +359,7 @@ class PullPointManager:
                 )
             else:
                 LOGGER.debug(
-                    "%s: PullPoint skipped because Home Assistant is not running yet",
+                    "%s: PullPoint skipped because NRJHub is not running yet",
                     self._name,
                 )
         except RemoteProtocolError as err:

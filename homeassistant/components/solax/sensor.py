@@ -143,7 +143,7 @@ class RealTimeDataEndpoint:
     async def async_refresh(self, now=None):
         """Fetch new state data for the sensor.
 
-        This is the only method that should fetch new data for Home Assistant.
+        This is the only method that should fetch new data for NRJHub.
         """
         try:
             api_response = await self.api.get_data()

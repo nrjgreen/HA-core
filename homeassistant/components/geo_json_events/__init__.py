@@ -36,7 +36,7 @@ async def remove_orphaned_entities(hass: HomeAssistant, entry_id: str) -> None:
 
     This is needed because when fetching data from the external feed this integration is
     determining which entities need to be added, updated or removed by comparing the
-    current with the previous data. After a restart of Home Assistant the integration
+    current with the previous data. After a restart of NRJHub the integration
     has no previous data to compare against, and thus all entities managed by this
     integration are removed after startup.
     """

@@ -52,7 +52,7 @@ async def async_setup_entry(
 
 
 class MinutPointAlarmControl(AlarmControlPanelEntity):
-    """The platform class required by Home Assistant."""
+    """The platform class required by NRJHub."""
 
     _attr_supported_features = AlarmControlPanelEntityFeature.ARM_AWAY
 
@@ -72,7 +72,7 @@ class MinutPointAlarmControl(AlarmControlPanelEntity):
         )
 
     async def async_added_to_hass(self) -> None:
-        """Call when entity is added to HOme Assistant."""
+        """Call when entity is added to NRJHub."""
         await super().async_added_to_hass()
         self._async_unsub_hook_dispatcher_connect = async_dispatcher_connect(
             self.hass, SIGNAL_WEBHOOK, self._webhook_event

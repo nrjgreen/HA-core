@@ -58,7 +58,7 @@ def installation_type_mock() -> Generator[Any, Any, None]:
     """Mock the async_get_system_info."""
     with patch(
         "homeassistant.components.analytics.analytics.async_get_system_info",
-        return_value={"installation_type": "Home Assistant Tests"},
+        return_value={"installation_type": "NRJHub Tests"},
     ):
         yield
 
@@ -255,7 +255,7 @@ async def test_send_usage(
         await analytics.send_analytics()
 
     assert (
-        "Submitted analytics to Home Assistant servers. Information submitted includes"
+        "Submitted analytics to NRJHub servers. Information submitted includes"
         in caplog.text
     )
 

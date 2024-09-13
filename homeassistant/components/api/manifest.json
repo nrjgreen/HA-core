@@ -1,6 +1,6 @@
 {
   "domain": "api",
-  "name": "Home Assistant API",
+  "name": "NRJHub API",
   "codeowners": ["@home-assistant/core"],
   "dependencies": ["http"],
   "documentation": "https://www.home-assistant.io/integrations/api",

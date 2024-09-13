@@ -41,7 +41,7 @@ class ExtraStoredData(ABC):
     def as_dict(self) -> dict[str, Any]:
         """Return a dict representation of the extra data.
 
-        Must be serializable by Home Assistant's JSONEncoder.
+        Must be serializable by NRJHub's JSONEncoder.
         """
 
 
@@ -234,7 +234,7 @@ class RestoreStateData:
             await self.async_dump_states()
 
         # Dump the initial states now. This helps minimize the risk of having
-        # old states loaded by overwriting the last states once Home Assistant
+        # old states loaded by overwriting the last states once NRJHub
         # has started and the old states have been read.
         self.hass.async_create_task(_async_dump_states(), "RestoreStateData dump")
 

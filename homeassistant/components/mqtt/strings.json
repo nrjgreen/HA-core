@@ -2,19 +2,19 @@
   "issues": {
     "deprecation_mqtt_schema_vacuum_yaml": {
       "title": "MQTT vacuum entities with deprecated `schema` config settings found in your configuration.yaml",
-      "description": "The `schema` setting for MQTT vacuum entities is deprecated and should be removed. Please adjust your configuration.yaml and restart Home Assistant to fix this issue."
+      "description": "The `schema` setting for MQTT vacuum entities is deprecated and should be removed. Please adjust your configuration.yaml and restart NRJHub to fix this issue."
     },
     "deprecated_color_handling": {
       "title": "Deprecated color handling used for MQTT light",
-      "description": "An MQTT light config (with `json` schema) found in `configuration.yaml` uses deprecated color handling flags.\n\nConfiguration found:\n```yaml\n{config}\n```\nDeprecated flags: **{deprecated_flags}**.\n\nUse the `supported_color_modes` option instead and [reload](/developer-tools/yaml) the manually configured MQTT items or restart Home Assistant to fix this issue."
+      "description": "An MQTT light config (with `json` schema) found in `configuration.yaml` uses deprecated color handling flags.\n\nConfiguration found:\n```yaml\n{config}\n```\nDeprecated flags: **{deprecated_flags}**.\n\nUse the `supported_color_modes` option instead and [reload](/developer-tools/yaml) the manually configured MQTT items or restart NRJHub to fix this issue."
     },
     "deprecated_color_mode_flag": {
       "title": "Deprecated color_mode option flag used for MQTT light",
-      "description": "An MQTT light config (with `json` schema) found in `configuration.yaml` uses a deprecated `color_mode` flag.\n\nConfiguration found:\n```yaml\n{config}\n```\n\nRemove the option from your config and [reload](/developer-tools/yaml) the manually configured MQTT items or restart Home Assistant to fix this issue."
+      "description": "An MQTT light config (with `json` schema) found in `configuration.yaml` uses a deprecated `color_mode` flag.\n\nConfiguration found:\n```yaml\n{config}\n```\n\nRemove the option from your config and [reload](/developer-tools/yaml) the manually configured MQTT items or restart NRJHub to fix this issue."
     },
     "invalid_platform_config": {
       "title": "Invalid config found for mqtt {domain} item",
-      "description": "Home Assistant detected an invalid config for a manually configured item.\n\nPlatform domain: **{domain}**\nConfiguration file: **{config_file}**\nNear line: **{line}**\nConfiguration found:\n```yaml\n{config}\n```\nError: **{error}**.\n\nMake sure the configuration is valid and [reload](/developer-tools/yaml) the manually configured MQTT items or restart Home Assistant to fix this issue."
+      "description": "NRJHub detected an invalid config for a manually configured item.\n\nPlatform domain: **{domain}**\nConfiguration file: **{config_file}**\nNear line: **{line}**\nConfiguration found:\n```yaml\n{config}\n```\nError: **{error}**.\n\nMake sure the configuration is valid and [reload](/developer-tools/yaml) the manually configured MQTT items or restart NRJHub to fix this issue."
     }
   },
   "config": {
@@ -47,7 +47,7 @@
           "password": "The password to login to your MQTT broker.",
           "advanced_options": "Enable and click `next` to set advanced options.",
           "certificate": "The custom CA certificate file to validate your MQTT brokers certificate.",
-          "client_id": "The unique ID to identify the Home Assistant MQTT API as MQTT client. It is recommended to leave this option blank.",
+          "client_id": "The unique ID to identify the NRJHub MQTT API as MQTT client. It is recommended to leave this option blank.",
           "client_cert": "The client certificate to authenticate against your MQTT broker.",
           "client_key": "The private key file that belongs to your client certificate.",
           "tls_insecure": "Option to ignore validation of your MQTT broker's certificate.",
@@ -60,31 +60,18 @@
         }
       },
       "hassio_confirm": {
-        "title": "MQTT Broker via Home Assistant add-on",
-        "description": "Do you want to configure Home Assistant to connect to the MQTT broker provided by the add-on {addon}?",
+        "title": "MQTT Broker via NRJHub add-on",
+        "description": "Do you want to configure NRJHub to connect to the MQTT broker provided by the add-on {addon}?",
         "data": {
           "discovery": "Enable discovery"
         },
         "data_description": {
           "discovery": "Option to enable MQTT automatic discovery."
         }
-      },
-      "reauth_confirm": {
-        "title": "Re-authentication required with the MQTT broker",
-        "description": "The MQTT broker reported an authentication error. Please confirm the brokers correct usernname and password.",
-        "data": {
-          "username": "[%key:common::config_flow::data::username%]",
-          "password": "[%key:common::config_flow::data::password%]"
-        },
-        "data_description": {
-          "username": "[%key:component::mqtt::config::step::broker::data_description::username%]",
-          "password": "[%key:component::mqtt::config::step::broker::data_description::password%]"
-        }
       }
     },
     "abort": {
       "already_configured": "[%key:common::config_flow::abort::already_configured_service%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
       "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]"
     },
     "error": {
@@ -97,7 +84,6 @@
       "bad_client_cert_key": "Client certificate and private key are not a valid pair",
       "bad_ws_headers": "Supply valid HTTP headers as a JSON object",
       "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
-      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
       "invalid_inclusion": "The client certificate and private key must be configurered together"
     }
   },
@@ -168,7 +154,7 @@
       },
       "options": {
         "title": "MQTT options",
-        "description": "Discovery - If discovery is enabled (recommended), Home Assistant will automatically discover devices and entities which publish their configuration on the MQTT broker. If discovery is disabled, all configuration must be done manually.\nDiscovery prefix - The prefix a configuration topic for automatic discovery must start with.\nBirth message - The birth message will be sent each time Home Assistant (re)connects to the MQTT broker.\nWill message - The will message will be sent each time Home Assistant loses its connection to the broker, both in case of a clean (e.g. Home Assistant shutting down) and in case of an unclean (e.g. Home Assistant crashing or losing its network connection) disconnect.",
+        "description": "Discovery - If discovery is enabled (recommended), NRJHub will automatically discover devices and entities which publish their configuration on the MQTT broker. If discovery is disabled, all configuration must be done manually.\nDiscovery prefix - The prefix a configuration topic for automatic discovery must start with.\nBirth message - The birth message will be sent each time NRJHub (re)connects to the MQTT broker.\nWill message - The will message will be sent each time NRJHub loses its connection to the broker, both in case of a clean (e.g. NRJHub shutting down) and in case of an unclean (e.g. NRJHub crashing or losing its network connection) disconnect.",
         "data": {
           "discovery": "[%key:component::mqtt::config::step::hassio_confirm::data::discovery%]",
           "discovery_prefix": "Discovery prefix",
@@ -186,12 +172,12 @@
         "data_description": {
           "discovery": "Option to enable MQTT automatic discovery.",
           "discovery_prefix": "The prefix of configuration topics the MQTT integration will subscribe to.",
-          "birth_enable": "When set, Home Assistant will publish an online message to your MQTT broker when MQTT is ready.",
-          "birth_topic": "The MQTT topic where Home Assistant will publish a `birth` message.",
+          "birth_enable": "When set, NRJHub will publish an online message to your MQTT broker when MQTT is ready.",
+          "birth_topic": "The MQTT topic where NRJHub will publish a `birth` message.",
           "birth_payload": "The `birth` message that is published when MQTT is ready and connected.",
           "birth_qos": "The quality of service of the `birth` message that is published when MQTT is ready and connected",
-          "birth_retain": "When set, Home Assistant will retain the `birth` message published to your MQTT broker.",
-          "will_enable": "When set, Home Assistant will ask your broker to publish a `will` message when MQTT is stopped or when it looses the connection to your broker.",
+          "birth_retain": "When set, NRJHub will retain the `birth` message published to your MQTT broker.",
+          "will_enable": "When set, NRJHub will ask your broker to publish a `will` message when MQTT is stopped or when it looses the connection to your broker.",
           "will_topic": "The MQTT topic your MQTT broker will publish a `will` message to.",
           "will_payload": "The message your MQTT broker `will` publish when the MQTT integration is stopped or when the connection is lost.",
           "will_qos": "The quality of service of the `will` message that is published by your MQTT broker.",

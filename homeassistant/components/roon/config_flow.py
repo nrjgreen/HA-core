@@ -94,14 +94,14 @@ class RoonHub:
 
 
 async def discover(hass):
-    """Connect and authenticate home assistant."""
+    """Connect and authenticate NRJHub."""
 
     hub = RoonHub(hass)
     return await hub.discover()
 
 
 async def authenticate(hass: HomeAssistant, host, port, servers):
-    """Connect and authenticate home assistant."""
+    """Connect and authenticate NRJHub."""
 
     hub = RoonHub(hass)
     (token, core_id, core_name) = await hub.authenticate(host, port, servers)

@@ -173,12 +173,12 @@ class SupervisorAddonUpdateEntity(HassioAddonEntity, UpdateEntity):
 
 
 class SupervisorOSUpdateEntity(HassioOSEntity, UpdateEntity):
-    """Update entity to handle updates for the Home Assistant Operating System."""
+    """Update entity to handle updates for the NRJHub Operating System."""
 
     _attr_supported_features = (
         UpdateEntityFeature.INSTALL | UpdateEntityFeature.SPECIFIC_VERSION
     )
-    _attr_title = "Home Assistant Operating System"
+    _attr_title = "NRJHub Operating System"
 
     @property
     def latest_version(self) -> str:
@@ -213,15 +213,15 @@ class SupervisorOSUpdateEntity(HassioOSEntity, UpdateEntity):
             await async_update_os(self.hass, version)
         except HassioAPIError as err:
             raise HomeAssistantError(
-                f"Error updating Home Assistant Operating System: {err}"
+                f"Error updating NRJHub Operating System: {err}"
             ) from err
 
 
 class SupervisorSupervisorUpdateEntity(HassioSupervisorEntity, UpdateEntity):
-    """Update entity to handle updates for the Home Assistant Supervisor."""
+    """Update entity to handle updates for the NRJHub Supervisor."""
 
     _attr_supported_features = UpdateEntityFeature.INSTALL
-    _attr_title = "Home Assistant Supervisor"
+    _attr_title = "NRJHub Supervisor"
 
     @property
     def latest_version(self) -> str:
@@ -259,19 +259,19 @@ class SupervisorSupervisorUpdateEntity(HassioSupervisorEntity, UpdateEntity):
             await async_update_supervisor(self.hass)
         except HassioAPIError as err:
             raise HomeAssistantError(
-                f"Error updating Home Assistant Supervisor: {err}"
+                f"Error updating NRJHub Supervisor: {err}"
             ) from err
 
 
 class SupervisorCoreUpdateEntity(HassioCoreEntity, UpdateEntity):
-    """Update entity to handle updates for Home Assistant Core."""
+    """Update entity to handle updates for NRJHub Core."""
 
     _attr_supported_features = (
         UpdateEntityFeature.INSTALL
         | UpdateEntityFeature.SPECIFIC_VERSION
         | UpdateEntityFeature.BACKUP
     )
-    _attr_title = "Home Assistant Core"
+    _attr_title = "NRJHub Core"
 
     @property
     def latest_version(self) -> str:
@@ -304,5 +304,5 @@ class SupervisorCoreUpdateEntity(HassioCoreEntity, UpdateEntity):
             await async_update_core(self.hass, version=version, backup=backup)
         except HassioAPIError as err:
             raise HomeAssistantError(
-                f"Error updating Home Assistant Core {err}"
+                f"Error updating NRJHub Core {err}"
             ) from err

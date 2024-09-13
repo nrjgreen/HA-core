@@ -18,7 +18,7 @@ from tests.typing import WebSocketGenerator
 
 @pytest.fixture(name="operating_system")
 def mock_operating_system():
-    """Mock running Home Assistant Operating system."""
+    """Mock running NRJHub Operating system."""
     with patch(
         "homeassistant.components.usb.system_info.async_get_system_info",
         return_value={
@@ -31,7 +31,7 @@ def mock_operating_system():
 
 @pytest.fixture(name="docker")
 def mock_docker():
-    """Mock running Home Assistant in docker container."""
+    """Mock running NRJHub in docker container."""
     with patch(
         "homeassistant.components.usb.system_info.async_get_system_info",
         return_value={
@@ -44,7 +44,7 @@ def mock_docker():
 
 @pytest.fixture(name="venv")
 def mock_venv():
-    """Mock running Home Assistant in a venv container."""
+    """Mock running NRJHub in a venv container."""
     with patch(
         "homeassistant.components.usb.system_info.async_get_system_info",
         return_value={

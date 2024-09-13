@@ -349,7 +349,7 @@ class ZhaGroupEntity(BaseZhaEntity):
         self._change_listener_debouncer.async_schedule_call()
 
     async def async_will_remove_from_hass(self) -> None:
-        """Handle removal from Home Assistant."""
+        """Handle removal from NRJHub."""
         await super().async_will_remove_from_hass()
         if self._async_unsub_state_changed is not None:
             self._async_unsub_state_changed()

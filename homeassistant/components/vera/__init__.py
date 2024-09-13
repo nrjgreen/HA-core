@@ -178,7 +178,7 @@ async def _async_update_listener(hass: HomeAssistant, entry: ConfigEntry) -> Non
 def map_vera_device(
     vera_device: veraApi.VeraDevice, remap: list[int]
 ) -> Platform | None:
-    """Map vera classes to Home Assistant types."""
+    """Map vera classes to NRJHub types."""
 
     type_map = {
         veraApi.VeraDimmer: Platform.LIGHT,

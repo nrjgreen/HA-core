@@ -56,7 +56,7 @@ def mock_connection(aioclient_mock: AiohttpClientMocker) -> None:
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Create Netgear LTE entry in Home Assistant."""
+    """Create Netgear LTE entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN, data=CONF_DATA, unique_id="FFFFFFFFFFFFF", title="Netgear LM1200"
     )
@@ -68,7 +68,7 @@ async def mock_setup_integration(
     config_entry: MockConfigEntry,
     connection: None,
 ) -> None:
-    """Set up the Netgear LTE integration in Home Assistant."""
+    """Set up the Netgear LTE integration in NRJHub."""
     config_entry.add_to_hass(hass)
     assert await async_setup_component(hass, DOMAIN, {})
     await hass.async_block_till_done()
@@ -80,7 +80,7 @@ async def setup_cannot_connect(
     config_entry: MockConfigEntry,
     cannot_connect: None,
 ) -> None:
-    """Set up the Netgear LTE integration in Home Assistant."""
+    """Set up the Netgear LTE integration in NRJHub."""
     config_entry.add_to_hass(hass)
     assert await async_setup_component(hass, DOMAIN, {})
     await hass.async_block_till_done()

@@ -16,7 +16,7 @@ STATIONS = [
 async def init_integration(
     hass, incomplete_data=False, invalid_indexes=False
 ) -> MockConfigEntry:
-    """Set up the GIOS integration in Home Assistant."""
+    """Set up the GIOS integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Home",

@@ -29,7 +29,7 @@ def _get_cookie_name(is_secure: bool) -> str:
 
 
 class HomeAssistantCookieStorage(EncryptedCookieStorage):
-    """Home Assistant cookie storage.
+    """NRJHub cookie storage.
 
     Own class is required:
         - to set the secure flag based on the connection type

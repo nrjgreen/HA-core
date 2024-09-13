@@ -261,7 +261,7 @@ class MyBatterySensor(mysensors.device.MySensorNodeEntity, SensorEntity):
 
     @property
     def unique_id(self) -> str:
-        """Return a unique ID for use in home assistant."""
+        """Return a unique ID for use in NRJHub."""
         return f"{self.gateway_id}-{self.node_id}-battery"
 
     @property

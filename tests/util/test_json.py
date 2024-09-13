@@ -1,4 +1,4 @@
-"""Test Home Assistant json utility functions."""
+"""Test NRJHub json utility functions."""
 
 from pathlib import Path
 import re

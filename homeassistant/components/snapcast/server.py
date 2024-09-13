@@ -18,7 +18,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class HomeAssistantSnapcast:
-    """Snapcast server and data stored in the Home Assistant data object."""
+    """Snapcast server and data stored in the NRJHub data object."""
 
     hass: HomeAssistant
 

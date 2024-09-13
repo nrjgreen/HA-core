@@ -22,7 +22,7 @@ BASE_URL = "https://engage.efergy.com/mobile_proxy/"
 
 
 def create_entry(hass: HomeAssistant, token: str = TOKEN) -> MockConfigEntry:
-    """Create Efergy entry in Home Assistant."""
+    """Create Efergy entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         unique_id=HID,
@@ -38,7 +38,7 @@ async def init_integration(
     token: str = TOKEN,
     error: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Efergy integration in Home Assistant."""
+    """Set up the Efergy integration in NRJHub."""
     entry = create_entry(hass, token=token)
     await mock_responses(hass, aioclient_mock, token=token, error=error)
     await hass.config_entries.async_setup(entry.entry_id)

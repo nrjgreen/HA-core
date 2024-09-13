@@ -2296,7 +2296,7 @@ async def test_cast_platform_play_media_local_media(
 
 
 async def test_ha_cast(hass: HomeAssistant, ha_controller_mock) -> None:
-    """Test Home Assistant cast."""
+    """Test NRJHub cast."""
     entity_id = "media_player.speaker"
 
     info = get_fake_chromecast_info()

@@ -82,7 +82,7 @@ class SirenSwitch(BaseRingSwitch):
 
     @exception_wrap
     def _set_switch(self, new_state: int) -> None:
-        """Update switch state, and causes Home Assistant to correctly update."""
+        """Update switch state, and causes NRJHub to correctly update."""
         self._device.siren = new_state
 
         self._attr_is_on = new_state > 0

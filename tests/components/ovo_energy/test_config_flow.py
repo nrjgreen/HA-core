@@ -5,7 +5,7 @@ from unittest.mock import patch
 import aiohttp
 
 from homeassistant import config_entries
-from homeassistant.components.ovo_energy.const import CONF_ACCOUNT, DOMAIN
+from homeassistant.components.ovo_energy.const import DOMAIN
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
@@ -13,11 +13,7 @@ from homeassistant.data_entry_flow import FlowResultType
 from tests.common import MockConfigEntry
 
 FIXTURE_REAUTH_INPUT = {CONF_PASSWORD: "something1"}
-FIXTURE_USER_INPUT = {
-    CONF_USERNAME: "example@example.com",
-    CONF_PASSWORD: "something",
-    CONF_ACCOUNT: "123456",
-}
+FIXTURE_USER_INPUT = {CONF_USERNAME: "example@example.com", CONF_PASSWORD: "something"}
 
 UNIQUE_ID = "example@example.com"
 
@@ -41,14 +37,9 @@ async def test_authorization_error(hass: HomeAssistant) -> None:
     assert result["type"] is FlowResultType.FORM
     assert result["step_id"] == "user"
 
-    with (
-        patch(
-            "homeassistant.components.ovo_energy.config_flow.OVOEnergy.authenticate",
-            return_value=False,
-        ),
-        patch(
-            "homeassistant.components.ovo_energy.config_flow.OVOEnergy.bootstrap_accounts",
-        ),
+    with patch(
+        "homeassistant.components.ovo_energy.config_flow.OVOEnergy.authenticate",
+        return_value=False,
     ):
         result2 = await hass.config_entries.flow.async_configure(
             result["flow_id"],
@@ -96,9 +87,6 @@ async def test_full_flow_implementation(hass: HomeAssistant) -> None:
         patch(
             "homeassistant.components.ovo_energy.config_flow.OVOEnergy.authenticate",
             return_value=True,
-        ),
-        patch(
-            "homeassistant.components.ovo_energy.config_flow.OVOEnergy.bootstrap_accounts",
         ),
         patch(
             "homeassistant.components.ovo_energy.config_flow.OVOEnergy.username",

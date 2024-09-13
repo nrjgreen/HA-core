@@ -52,7 +52,7 @@ DEFAULT_CONFIG = {
         "13": 0,  # Allow immediate action on single button press
         "17": 1,  # Show Color string as hex or comma-separated
         "20": 0,  # Update of Dimmer/Color/CT without turning power on
-        "30": 0,  # Enforce Home Assistant auto-discovery as light
+        "30": 0,  # Enforce NRJHub auto-discovery as light
         "68": 0,  # Multi-channel PWM instead of a single light
         "73": 0,  # Enable Buttons decoupling and send multi-press and hold MQTT messages
         "82": 0,  # Reduce the CT range from 153..500 to 200.380
@@ -87,7 +87,7 @@ DEFAULT_CONFIG_9_0_0_3 = {
         "13": 0,  # Allow immediate action on single button press
         "17": 1,  # Show Color string as hex or comma-separated
         "20": 0,  # Update of Dimmer/Color/CT without turning power on
-        "30": 0,  # Enforce Home Assistant auto-discovery as light
+        "30": 0,  # Enforce NRJHub auto-discovery as light
         "68": 0,  # Multi-channel PWM instead of a single light
         "73": 0,  # Enable Buttons decoupling and send multi-press and hold MQTT messages
         "80": 0,  # Blinds and shutters support
@@ -163,7 +163,7 @@ async def help_test_availability_when_connection_lost(
 
     # Disconnected from MQTT server -> state changed to unavailable
     mqtt_mock.connected = False
-    mqtt_client_mock.on_disconnect(None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_disconnect, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()
@@ -172,7 +172,7 @@ async def help_test_availability_when_connection_lost(
 
     # Reconnected to MQTT server -> state still unavailable
     mqtt_mock.connected = True
-    mqtt_client_mock.on_connect(None, None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_connect, None, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()
@@ -224,7 +224,7 @@ async def help_test_deep_sleep_availability_when_connection_lost(
 
     # Disconnected from MQTT server -> state changed to unavailable
     mqtt_mock.connected = False
-    mqtt_client_mock.on_disconnect(None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_disconnect, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()
@@ -233,7 +233,7 @@ async def help_test_deep_sleep_availability_when_connection_lost(
 
     # Reconnected to MQTT server -> state no longer unavailable
     mqtt_mock.connected = True
-    mqtt_client_mock.on_connect(None, None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_connect, None, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()
@@ -476,7 +476,7 @@ async def help_test_availability_poll_state(
 
     # Disconnected from MQTT server
     mqtt_mock.connected = False
-    mqtt_client_mock.on_disconnect(None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_disconnect, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()
@@ -484,7 +484,7 @@ async def help_test_availability_poll_state(
 
     # Reconnected to MQTT server
     mqtt_mock.connected = True
-    mqtt_client_mock.on_connect(None, None, None, 0)
+    await hass.async_add_executor_job(mqtt_client_mock.on_connect, None, None, None, 0)
     await hass.async_block_till_done()
     await hass.async_block_till_done()
     await hass.async_block_till_done()

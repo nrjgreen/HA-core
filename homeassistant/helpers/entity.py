@@ -52,7 +52,6 @@ from homeassistant.core import (
     Event,
     HassJobType,
     HomeAssistant,
-    ReleaseChannel,
     callback,
     get_hassjob_callable_job_type,
     get_release_channel,
@@ -240,7 +239,7 @@ _SENTINEL = object()
 
 
 class EntityDescription(metaclass=FrozenOrThawed, frozen_or_thawed=True):
-    """A class that describes Home Assistant entities."""
+    """A class that describes NRJHub entities."""
 
     # This is the key identifier for this entity
     key: str
@@ -438,7 +437,7 @@ CACHED_PROPERTIES_WITH_ATTR_ = {
 class Entity(
     metaclass=ABCCachedProperties, cached_properties=CACHED_PROPERTIES_WITH_ATTR_
 ):
-    """An abstract class for Home Assistant entities."""
+    """An abstract class for NRJHub entities."""
 
     # SAFE TO OVERWRITE
     # The properties and methods here are safe to overwrite when inheriting
@@ -521,7 +520,6 @@ class Entity(
     # While not purely typed, it makes typehinting more useful for us
     # and removes the need for constant None checks or asserts.
     _state_info: StateInfo = None  # type: ignore[assignment]
-    _is_custom_component: bool = False
 
     __capabilities_updated_at: deque[float]
     __capabilities_updated_at_reported: bool = False
@@ -659,7 +657,7 @@ class Entity(
             return name.format(**self.translation_placeholders)
         except KeyError as err:
             if not self._name_translation_placeholders_reported:
-                if get_release_channel() is not ReleaseChannel.STABLE:
+                if get_release_channel() != "stable":
                     raise HomeAssistantError("Missing placeholder %s" % err) from err
                 report_issue = self._suggest_report_issue()
                 _LOGGER.warning(
@@ -910,7 +908,7 @@ class Entity(
         return {}
 
     # DO NOT OVERWRITE
-    # These properties and methods are either managed by Home Assistant or they
+    # These properties and methods are either managed by NRJHub or they
     # are used to perform a very specific function. Overwriting these may
     # produce undesirable effects in the entity's operation.
 
@@ -930,7 +928,7 @@ class Entity(
         self._context_set = self.hass.loop.time()
 
     async def async_update_ha_state(self, force_refresh: bool = False) -> None:
-        """Update Home Assistant with current state of entity.
+        """Update NRJHub with current state of entity.
 
         If force_refresh == True will update entity before setting state.
 
@@ -968,8 +966,8 @@ class Entity(
         self._async_write_ha_state()
 
     @callback
-    def _async_verify_state_writable(self) -> None:
-        """Verify the entity is in a writable state."""
+    def async_write_ha_state(self) -> None:
+        """Write the state to the state machine."""
         if self.hass is None:
             raise RuntimeError(f"Attribute hass is None for {self}")
 
@@ -994,18 +992,6 @@ class Entity(
                 f"No entity id specified for entity {self.name}"
             )
 
-    @callback
-    def _async_write_ha_state_from_call_soon_threadsafe(self) -> None:
-        """Write the state to the state machine from the event loop thread."""
-        self._async_verify_state_writable()
-        self._async_write_ha_state()
-
-    @callback
-    def async_write_ha_state(self) -> None:
-        """Write the state to the state machine."""
-        self._async_verify_state_writable()
-        if self._is_custom_component or self.hass.config.debug:
-            self.hass.verify_event_loop_thread("async_write_ha_state")
         self._async_write_ha_state()
 
     def _stringify_state(self, available: bool) -> str:
@@ -1232,9 +1218,7 @@ class Entity(
                 f"Entity {self.entity_id} schedule update ha state",
             )
         else:
-            self.hass.loop.call_soon_threadsafe(
-                self._async_write_ha_state_from_call_soon_threadsafe
-            )
+            self.hass.loop.call_soon_threadsafe(self.async_write_ha_state)
 
     @callback
     def async_schedule_update_ha_state(self, force_refresh: bool = False) -> None:
@@ -1360,7 +1344,7 @@ class Entity(
 
     @final
     async def async_remove(self, *, force_remove: bool = False) -> None:
-        """Remove entity from Home Assistant.
+        """Remove entity from NRJHub.
 
         If the entity has a non disabled entry in the entity registry,
         the entity's state will be set to unavailable, in the same way
@@ -1384,7 +1368,7 @@ class Entity(
 
     @final
     async def __async_remove_impl(self, force_remove: bool) -> None:
-        """Remove entity from Home Assistant."""
+        """Remove entity from NRJHub."""
 
         self._platform_state = EntityPlatformState.REMOVED
 
@@ -1439,12 +1423,10 @@ class Entity(
 
         Not to be extended by integrations.
         """
-        is_custom_component = "custom_components" in type(self).__module__
         entity_info: EntityInfo = {
             "domain": self.platform.platform_name,
-            "custom_component": is_custom_component,
+            "custom_component": "custom_components" in type(self).__module__,
         }
-        self._is_custom_component = is_custom_component
 
         if self.platform.config_entry:
             entity_info["config_entry"] = self.platform.config_entry.entry_id
@@ -1691,7 +1673,7 @@ class ToggleEntity(
     def toggle(self, **kwargs: Any) -> None:
         """Toggle the entity.
 
-        This method will never be called by Home Assistant and should not be implemented
+        This method will never be called by NRJHub and should not be implemented
         by integrations.
         """
 

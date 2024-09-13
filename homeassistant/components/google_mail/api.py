@@ -1,4 +1,4 @@
-"""API for Google Mail bound to Home Assistant OAuth."""
+"""API for Google Mail bound to NRJHub OAuth."""
 
 from aiohttp.client_exceptions import ClientError, ClientResponseError
 from google.auth.exceptions import RefreshError

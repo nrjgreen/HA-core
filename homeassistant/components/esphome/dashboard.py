@@ -36,7 +36,7 @@ async def async_setup(hass: HomeAssistant) -> None:
     """Set up the ESPHome dashboard."""
     # Try to restore the dashboard manager from storage
     # to avoid reloading every ESPHome config entry after
-    # Home Assistant starts and the dashboard is discovered.
+    # NRJHub starts and the dashboard is discovered.
     await async_get_or_create_dashboard_manager(hass)
 
 

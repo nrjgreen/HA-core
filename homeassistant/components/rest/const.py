@@ -33,5 +33,3 @@ XML_MIME_TYPES = (
     "application/xml",
     "text/xml",
 )
-
-CONF_PAYLOAD_TEMPLATE = "payload_template"

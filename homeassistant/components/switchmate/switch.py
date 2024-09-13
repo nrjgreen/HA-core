@@ -54,7 +54,7 @@ class SwitchmateEntity(SwitchEntity):
 
     @property
     def unique_id(self) -> str:
-        """Return a unique, Home Assistant friendly identifier for this entity."""
+        """Return a unique, NRJHub friendly identifier for this entity."""
         return self._mac.replace(":", "")
 
     @property

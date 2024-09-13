@@ -1,4 +1,4 @@
-"""Home Assistant auth provider."""
+"""NRJHub auth provider."""
 
 from __future__ import annotations
 
@@ -94,7 +94,7 @@ class Data:
 
                 logging.getLogger(__name__).warning(
                     (
-                        "Home Assistant auth provider is running in legacy mode "
+                        "NRJHub auth provider is running in legacy mode "
                         "because we detected usernames that are case-insensitive"
                         "equivalent. Please change the username: '%s'."
                     ),
@@ -111,7 +111,7 @@ class Data:
 
                 logging.getLogger(__name__).warning(
                     (
-                        "Home Assistant auth provider is running in legacy mode "
+                        "NRJHub auth provider is running in legacy mode "
                         "because we detected usernames that start or end in a "
                         "space. Please change the username: '%s'."
                     ),
@@ -215,12 +215,12 @@ class Data:
 
 @AUTH_PROVIDERS.register("homeassistant")
 class HassAuthProvider(AuthProvider):
-    """Auth provider based on a local storage of users in Home Assistant config dir."""
+    """Auth provider based on a local storage of users in NRJHub config dir."""
 
-    DEFAULT_TITLE = "Home Assistant Local"
+    DEFAULT_TITLE = "NRJHub Local"
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        """Initialize an Home Assistant auth provider."""
+        """Initialize an NRJHub auth provider."""
         super().__init__(*args, **kwargs)
         self.data: Data | None = None
         self._init_lock = asyncio.Lock()

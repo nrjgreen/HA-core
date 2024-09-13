@@ -37,10 +37,10 @@ from tests.typing import ClientSessionGenerator, WebSocketGenerator
 
 AGENT_ID_OPTIONS = [
     None,
-    # Old value of conversation.HOME_ASSISTANT_AGENT,
+    # Old value of conversation.nrjhub_AGENT,
     "homeassistant",
-    # Current value of conversation.HOME_ASSISTANT_AGENT,
-    "conversation.home_assistant",
+    # Current value of conversation.nrjhub_AGENT,
+    "conversation.nrjhub",
 ]
 
 
@@ -1068,8 +1068,8 @@ async def test_agent_id_validator_invalid_agent(
     with pytest.raises(vol.Invalid):
         conversation.agent_id_validator("invalid_agent")
 
-    conversation.agent_id_validator(conversation.HOME_ASSISTANT_AGENT)
-    conversation.agent_id_validator("conversation.home_assistant")
+    conversation.agent_id_validator(conversation.nrjhub_AGENT)
+    conversation.agent_id_validator("conversation.nrjhub")
 
 
 async def test_get_agent_list(

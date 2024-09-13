@@ -6,11 +6,20 @@ from unittest.mock import AsyncMock, patch
 import pytest
 
 from homeassistant.components.tankerkoenig import DOMAIN
-from homeassistant.const import CONF_SHOW_ON_MAP
+from homeassistant.components.tankerkoenig.const import CONF_FUEL_TYPES, CONF_STATIONS
+from homeassistant.const import (
+    CONF_API_KEY,
+    CONF_LATITUDE,
+    CONF_LOCATION,
+    CONF_LONGITUDE,
+    CONF_NAME,
+    CONF_RADIUS,
+    CONF_SHOW_ON_MAP,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
 
-from .const import CONFIG_DATA, NEARBY_STATIONS, PRICES, STATION
+from .const import NEARBY_STATIONS, PRICES, STATION
 
 from tests.common import MockConfigEntry
 
@@ -46,7 +55,16 @@ async def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
         options={
             CONF_SHOW_ON_MAP: True,
         },
-        data=CONFIG_DATA,
+        data={
+            CONF_NAME: "Home",
+            CONF_API_KEY: "269534f6-xxxx-xxxx-xxxx-yyyyzzzzxxxx",
+            CONF_FUEL_TYPES: ["e5"],
+            CONF_LOCATION: {CONF_LATITUDE: 51.0, CONF_LONGITUDE: 13.0},
+            CONF_RADIUS: 2.0,
+            CONF_STATIONS: [
+                "3bcd61da-xxxx-xxxx-xxxx-19d5523a7ae8",
+            ],
+        },
     )
 
 

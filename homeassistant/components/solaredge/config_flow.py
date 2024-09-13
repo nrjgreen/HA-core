@@ -2,17 +2,15 @@
 
 from __future__ import annotations
 
-import socket
 from typing import Any
 
-from aiohttp import ClientError
-import aiosolaredge
+from requests.exceptions import ConnectTimeout, HTTPError
+import solaredge
 import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_API_KEY, CONF_NAME
 from homeassistant.core import callback
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.util import slugify
 
 from .const import CONF_SITE_ID, DEFAULT_NAME, DOMAIN
@@ -40,16 +38,15 @@ class SolarEdgeConfigFlow(ConfigFlow, domain=DOMAIN):
         """Return True if site_id exists in configuration."""
         return site_id in self._async_current_site_ids()
 
-    async def _async_check_site(self, site_id: str, api_key: str) -> bool:
+    def _check_site(self, site_id: str, api_key: str) -> bool:
         """Check if we can connect to the soleredge api service."""
-        session = async_get_clientsession(self.hass)
-        api = aiosolaredge.SolarEdge(api_key, session)
+        api = solaredge.Solaredge(api_key)
         try:
-            response = await api.get_details(site_id)
+            response = api.get_details(site_id)
             if response["details"]["status"].lower() != "active":
                 self._errors[CONF_SITE_ID] = "site_not_active"
                 return False
-        except (TimeoutError, ClientError, socket.gaierror):
+        except (ConnectTimeout, HTTPError):
             self._errors[CONF_SITE_ID] = "could_not_connect"
             return False
         except KeyError:
@@ -69,7 +66,9 @@ class SolarEdgeConfigFlow(ConfigFlow, domain=DOMAIN):
             else:
                 site = user_input[CONF_SITE_ID]
                 api = user_input[CONF_API_KEY]
-                can_connect = await self._async_check_site(site, api)
+                can_connect = await self.hass.async_add_executor_job(
+                    self._check_site, site, api
+                )
                 if can_connect:
                     return self.async_create_entry(
                         title=name, data={CONF_SITE_ID: site, CONF_API_KEY: api}

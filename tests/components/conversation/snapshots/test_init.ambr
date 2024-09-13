@@ -101,8 +101,8 @@
 # ---
 # name: test_get_agent_info
   dict({
-    'id': 'conversation.home_assistant',
-    'name': 'Home Assistant',
+    'id': 'conversation.nrjhub',
+    'name': 'NRJHub',
   })
 # ---
 # name: test_get_agent_info.1
@@ -113,8 +113,8 @@
 # ---
 # name: test_get_agent_info.2
   dict({
-    'id': 'conversation.home_assistant',
-    'name': 'Home Assistant',
+    'id': 'conversation.nrjhub',
+    'name': 'NRJHub',
   })
 # ---
 # name: test_get_agent_info.3
@@ -127,8 +127,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
           'af',
           'ar',
@@ -207,8 +207,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
         ]),
       }),
@@ -231,8 +231,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
           'en',
         ]),
@@ -255,8 +255,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
           'en',
         ]),
@@ -279,8 +279,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
           'de',
           'de-CH',
@@ -304,8 +304,8 @@
   dict({
     'agents': list([
       dict({
-        'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'id': 'conversation.nrjhub',
+        'name': 'NRJHub',
         'supported_languages': list([
           'de-CH',
           'de',
@@ -415,7 +415,7 @@
     }),
   })
 # ---
-# name: test_http_processing_intent[conversation.home_assistant]
+# name: test_http_processing_intent[conversation.nrjhub]
   dict({
     'conversation_id': None,
     'response': dict({
@@ -1065,7 +1065,7 @@
     }),
   })
 # ---
-# name: test_turn_on_intent[None-turn kitchen on-conversation.home_assistant]
+# name: test_turn_on_intent[None-turn kitchen on-conversation.nrjhub]
   dict({
     'conversation_id': None,
     'response': dict({
@@ -1155,7 +1155,7 @@
     }),
   })
 # ---
-# name: test_turn_on_intent[None-turn on kitchen-conversation.home_assistant]
+# name: test_turn_on_intent[None-turn on kitchen-conversation.nrjhub]
   dict({
     'conversation_id': None,
     'response': dict({
@@ -1245,7 +1245,7 @@
     }),
   })
 # ---
-# name: test_turn_on_intent[my_new_conversation-turn kitchen on-conversation.home_assistant]
+# name: test_turn_on_intent[my_new_conversation-turn kitchen on-conversation.nrjhub]
   dict({
     'conversation_id': None,
     'response': dict({
@@ -1335,7 +1335,7 @@
     }),
   })
 # ---
-# name: test_turn_on_intent[my_new_conversation-turn on kitchen-conversation.home_assistant]
+# name: test_turn_on_intent[my_new_conversation-turn on kitchen-conversation.nrjhub]
   dict({
     'conversation_id': None,
     'response': dict({

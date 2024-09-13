@@ -17,7 +17,7 @@ CONF_DATA = {CONF_HOST: HOST}
 
 
 def create_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Create fixture for adding config entry in Home Assistant."""
+    """Create fixture for adding config entry in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=CONF_DATA, unique_id="123456789")
     entry.add_to_hass(hass)
     return entry
@@ -25,7 +25,7 @@ def create_entry(hass: HomeAssistant) -> MockConfigEntry:
 
 @pytest.fixture
 def config_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     return create_entry(hass)
 
 

@@ -328,23 +328,23 @@ async def test_websocket_get_action_capabilities(
     assert msg["success"]
     actions = msg["result"]
 
-    msg_id = 2
+    id = 2
     assert len(actions) == 3
     for action in actions:
         await client.send_json(
             {
-                "id": msg_id,
+                "id": id,
                 "type": "device_automation/action/capabilities",
                 "action": action,
             }
         )
         msg = await client.receive_json()
-        assert msg["id"] == msg_id
+        assert msg["id"] == id
         assert msg["type"] == TYPE_RESULT
         assert msg["success"]
         capabilities = msg["result"]
         assert capabilities == expected_capabilities[action["type"]]
-        msg_id = msg_id + 1
+        id = id + 1
 
 
 async def test_websocket_get_action_capabilities_unknown_domain(
@@ -487,23 +487,23 @@ async def test_websocket_get_condition_capabilities(
     assert msg["success"]
     conditions = msg["result"]
 
-    msg_id = 2
+    id = 2
     assert len(conditions) == 2
     for condition in conditions:
         await client.send_json(
             {
-                "id": msg_id,
+                "id": id,
                 "type": "device_automation/condition/capabilities",
                 "condition": condition,
             }
         )
         msg = await client.receive_json()
-        assert msg["id"] == msg_id
+        assert msg["id"] == id
         assert msg["type"] == TYPE_RESULT
         assert msg["success"]
         capabilities = msg["result"]
         assert capabilities == expected_capabilities
-        msg_id = msg_id + 1
+        id = id + 1
 
 
 async def test_websocket_get_condition_capabilities_unknown_domain(
@@ -775,23 +775,23 @@ async def test_websocket_get_trigger_capabilities(
     assert msg["success"]
     triggers = msg["result"]
 
-    msg_id = 2
+    id = 2
     assert len(triggers) == 3  # toggled, turned_on, turned_off
     for trigger in triggers:
         await client.send_json(
             {
-                "id": msg_id,
+                "id": id,
                 "type": "device_automation/trigger/capabilities",
                 "trigger": trigger,
             }
         )
         msg = await client.receive_json()
-        assert msg["id"] == msg_id
+        assert msg["id"] == id
         assert msg["type"] == TYPE_RESULT
         assert msg["success"]
         capabilities = msg["result"]
         assert capabilities == expected_capabilities
-        msg_id = msg_id + 1
+        id = id + 1
 
 
 async def test_websocket_get_trigger_capabilities_unknown_domain(

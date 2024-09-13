@@ -36,7 +36,7 @@ from .core.helpers import get_zha_data, validate_device_class
 from .core.registries import ZHA_ENTITIES
 from .entity import ZhaEntity
 
-# Zigbee Cluster Library Zone Type to Home Assistant device class
+# Zigbee Cluster Library Zone Type to NRJHub device class
 IAS_ZONE_CLASS_MAPPING = {
     IasZone.ZoneType.Motion_Sensor: BinarySensorDeviceClass.MOTION,
     IasZone.ZoneType.Contact_Switch: BinarySensorDeviceClass.OPENING,

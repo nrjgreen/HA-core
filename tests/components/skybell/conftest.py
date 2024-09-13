@@ -47,7 +47,7 @@ def skybell_mock():
 
 
 def create_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Create fixture for adding config entry in Home Assistant."""
+    """Create fixture for adding config entry in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, unique_id=USER_ID, data=CONF_DATA)
     entry.add_to_hass(hass)
     return entry
@@ -121,7 +121,7 @@ def mock_skybell(hass: HomeAssistant):
 
 
 async def async_init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Skybell integration in Home Assistant."""
+    """Set up the Skybell integration in NRJHub."""
     config_entry = create_entry(hass)
 
     with mock_skybell(hass), patch("aioskybell.utils.async_save_cache"):

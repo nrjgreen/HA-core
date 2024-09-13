@@ -34,7 +34,7 @@
   },
   {
     "id": "hassio",
-    "title": "Supervisor November beta issue impacting users on Home Assistant beta/dev channels",
+    "title": "Supervisor November beta issue impacting users on NRJHub beta/dev channels",
     "created": "2022-11-16T06:00:00.000Z",
     "integrations": [
       {

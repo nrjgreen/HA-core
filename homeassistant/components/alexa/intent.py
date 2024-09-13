@@ -1,6 +1,5 @@
 """Support for Alexa skill service end point."""
 
-from collections.abc import Callable, Coroutine
 import enum
 import logging
 from typing import Any
@@ -17,9 +16,7 @@ from .const import DOMAIN, SYN_RESOLUTION_MATCH
 
 _LOGGER = logging.getLogger(__name__)
 
-HANDLERS: Registry[
-    str, Callable[[HomeAssistant, dict[str, Any]], Coroutine[Any, Any, dict[str, Any]]]
-] = Registry()
+HANDLERS = Registry()  # type: ignore[var-annotated]
 
 INTENTS_API_ENDPOINT = "/api/alexa"
 
@@ -85,7 +82,7 @@ class AlexaIntentsView(http.HomeAssistantView):
                 intent_error_response(
                     hass,
                     message,
-                    "This intent is not yet configured within Home Assistant.",
+                    "This intent is not yet configured within NRJHub.",
                 )
             )
 
@@ -132,7 +129,8 @@ async def async_handle_message(
     if not (handler := HANDLERS.get(req_type)):
         raise UnknownRequest(f"Received unknown request {req_type}")
 
-    return await handler(hass, message)
+    response: dict[str, Any] = await handler(hass, message)
+    return response
 
 
 @HANDLERS.register("SessionEndedRequest")

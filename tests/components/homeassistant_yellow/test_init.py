@@ -1,4 +1,4 @@
-"""Test the Home Assistant Yellow integration."""
+"""Test the NRJHub Yellow integration."""
 
 from unittest.mock import patch
 
@@ -30,7 +30,7 @@ async def test_setup_entry(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (
@@ -77,7 +77,7 @@ async def test_setup_zha(hass: HomeAssistant, addon_store_info) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (
@@ -131,7 +131,7 @@ async def test_setup_zha_multipan(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (
@@ -185,7 +185,7 @@ async def test_setup_zha_multipan_other_device(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (
@@ -232,7 +232,7 @@ async def test_setup_entry_no_hassio(hass: HomeAssistant) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     assert len(hass.config_entries.async_entries()) == 1
@@ -257,7 +257,7 @@ async def test_setup_entry_wrong_board(hass: HomeAssistant) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     assert len(hass.config_entries.async_entries()) == 1
@@ -283,7 +283,7 @@ async def test_setup_entry_wait_hassio(hass: HomeAssistant) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with patch(
@@ -310,7 +310,7 @@ async def test_setup_entry_addon_info_fails(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (
@@ -340,7 +340,7 @@ async def test_setup_entry_addon_not_running(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with (

@@ -1,6 +1,6 @@
 {
   "domain": "homeassistant",
-  "name": "Home Assistant Core Integration",
+  "name": "NRJHub Core Integration",
   "codeowners": ["@home-assistant/core"],
   "documentation": "https://www.home-assistant.io/integrations/homeassistant",
   "integration_type": "system",

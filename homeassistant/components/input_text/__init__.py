@@ -264,7 +264,7 @@ class InputText(collection.CollectionEntity, RestoreEntity):
             return
 
         state = await self.async_get_last_state()
-        value = state.state if state else None
+        value: str | None = state and state.state  # type: ignore[assignment]
 
         # Check against None because value can be 0
         if value is not None and self._minimum <= len(value) <= self._maximum:

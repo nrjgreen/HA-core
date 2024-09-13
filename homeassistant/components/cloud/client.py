@@ -39,7 +39,7 @@ VALID_REPAIR_TRANSLATION_KEYS = {
 
 
 class CloudClient(Interface):
-    """Interface class for Home Assistant Cloud."""
+    """Interface class for NRJHub Cloud."""
 
     def __init__(
         self,
@@ -250,7 +250,6 @@ class CloudClient(Interface):
                 "enabled": self._prefs.remote_enabled,
                 "instance_domain": self.cloud.remote.instance_domain,
                 "alias": self.cloud.remote.alias,
-                "strict_connection": self._prefs.strict_connection,
             },
             "version": HA_VERSION,
             "instance_id": self.prefs.instance_id,

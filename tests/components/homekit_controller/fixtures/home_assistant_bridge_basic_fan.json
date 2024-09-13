@@ -17,7 +17,7 @@
             "iid": 3,
             "perms": ["pr"],
             "type": "00000020-0000-1000-8000-0026BB765291",
-            "value": "Home Assistant"
+            "value": "NRJHub"
           },
           {
             "description": "Model",
@@ -33,7 +33,7 @@
             "iid": 5,
             "perms": ["pr"],
             "type": "00000023-0000-1000-8000-0026BB765291",
-            "value": "Home Assistant Bridge"
+            "value": "NRJHub Bridge"
           },
           {
             "description": "SerialNumber",
@@ -76,7 +76,7 @@
             "iid": 3,
             "perms": ["pr"],
             "type": "00000020-0000-1000-8000-0026BB765291",
-            "value": "Home Assistant"
+            "value": "NRJHub"
           },
           {
             "description": "Model",
@@ -172,7 +172,7 @@
             "iid": 3,
             "perms": ["pr"],
             "type": "00000020-0000-1000-8000-0026BB765291",
-            "value": "Home Assistant"
+            "value": "NRJHub"
           },
           {
             "description": "Model",

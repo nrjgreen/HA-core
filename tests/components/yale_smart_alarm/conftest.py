@@ -28,7 +28,7 @@ OPTIONS_CONFIG = {"lock_code_digits": 6}
 async def load_config_entry(
     hass: HomeAssistant, load_json: dict[str, Any]
 ) -> tuple[MockConfigEntry, Mock]:
-    """Set up the Yale Smart Living integration in Home Assistant."""
+    """Set up the Yale Smart Living integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         source=SOURCE_USER,

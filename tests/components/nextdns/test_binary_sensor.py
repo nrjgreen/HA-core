@@ -4,26 +4,42 @@ from datetime import timedelta
 from unittest.mock import patch
 
 from nextdns import ApiError
-from syrupy import SnapshotAssertion
 
-from homeassistant.const import STATE_ON, STATE_UNAVAILABLE, Platform
+from homeassistant.const import STATE_OFF, STATE_ON, STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util.dt import utcnow
 
 from . import init_integration, mock_nextdns
 
-from tests.common import async_fire_time_changed, snapshot_platform
+from tests.common import async_fire_time_changed
 
 
-async def test_binary_sensor(
-    hass: HomeAssistant, entity_registry: er.EntityRegistry, snapshot: SnapshotAssertion
-) -> None:
+async def test_binary_Sensor(hass: HomeAssistant) -> None:
     """Test states of the binary sensors."""
-    with patch("homeassistant.components.nextdns.PLATFORMS", [Platform.BINARY_SENSOR]):
-        entry = await init_integration(hass)
+    registry = er.async_get(hass)
 
-    await snapshot_platform(hass, entity_registry, snapshot, entry.entry_id)
+    await init_integration(hass)
+
+    state = hass.states.get("binary_sensor.fake_profile_device_connection_status")
+    assert state
+    assert state.state == STATE_ON
+
+    entry = registry.async_get("binary_sensor.fake_profile_device_connection_status")
+    assert entry
+    assert entry.unique_id == "xyz12_this_device_nextdns_connection_status"
+
+    state = hass.states.get(
+        "binary_sensor.fake_profile_device_profile_connection_status"
+    )
+    assert state
+    assert state.state == STATE_OFF
+
+    entry = registry.async_get(
+        "binary_sensor.fake_profile_device_profile_connection_status"
+    )
+    assert entry
+    assert entry.unique_id == "xyz12_this_device_profile_connection_status"
 
 
 async def test_availability(hass: HomeAssistant) -> None:

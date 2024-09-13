@@ -405,7 +405,7 @@ class ShellyBlockCoordinator(ShellyCoordinatorBase[BlockDevice]):
 
     @callback
     def _handle_ha_stop(self, _event: Event) -> None:
-        """Handle Home Assistant stopping."""
+        """Handle NRJHub stopping."""
         LOGGER.debug("Stopping block device coordinator for %s", self.name)
         self.shutdown()
 
@@ -687,7 +687,7 @@ class ShellyRpcCoordinator(ShellyCoordinatorBase[RpcDevice]):
         await self._async_disconnected()
 
     async def _handle_ha_stop(self, _event: Event) -> None:
-        """Handle Home Assistant stopping."""
+        """Handle NRJHub stopping."""
         LOGGER.debug("Stopping RPC device coordinator for %s", self.name)
         await self.shutdown()
 

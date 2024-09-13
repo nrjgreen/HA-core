@@ -28,7 +28,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CONF_SENDER_NAME = "sender_name"
 
-DEFAULT_SENDER_NAME = "Home Assistant"
+DEFAULT_SENDER_NAME = "NRJHub"
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {

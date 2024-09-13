@@ -268,7 +268,7 @@ async def test_hassio_discovery_flow_yellow(
     }
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert result["title"] == "Home Assistant Yellow (Silicon Labs Multiprotocol)"
+    assert result["title"] == "NRJHub Yellow (Silicon Labs Multiprotocol)"
     assert result["data"] == expected_data
     assert result["options"] == {}
     assert len(mock_setup_entry.mock_calls) == 1
@@ -276,7 +276,7 @@ async def test_hassio_discovery_flow_yellow(
     config_entry = hass.config_entries.async_entries(otbr.DOMAIN)[0]
     assert config_entry.data == expected_data
     assert config_entry.options == {}
-    assert config_entry.title == "Home Assistant Yellow (Silicon Labs Multiprotocol)"
+    assert config_entry.title == "NRJHub Yellow (Silicon Labs Multiprotocol)"
     assert config_entry.unique_id == HASSIO_DATA.uuid
 
 
@@ -285,11 +285,11 @@ async def test_hassio_discovery_flow_yellow(
     [
         (
             "/dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_9e2adbd75b8beb119fe564a0f320645d-if00-port0",
-            "Home Assistant SkyConnect (Silicon Labs Multiprotocol)",
+            "NRJHub SkyConnect (Silicon Labs Multiprotocol)",
         ),
         (
             "/dev/serial/by-id/usb-Nabu_Casa_Home_Assistant_Connect_ZBT-1_9e2adbd75b8beb119fe564a0f320645d-if00-port0",
-            "Home Assistant Connect ZBT-1 (Silicon Labs Multiprotocol)",
+            "NRJHub Connect ZBT-1 (Silicon Labs Multiprotocol)",
         ),
     ],
 )
@@ -398,7 +398,7 @@ async def test_hassio_discovery_flow_2x_addons(
 
     assert results[0]["type"] is FlowResultType.CREATE_ENTRY
     assert (
-        results[0]["title"] == "Home Assistant SkyConnect (Silicon Labs Multiprotocol)"
+        results[0]["title"] == "NRJHub SkyConnect (Silicon Labs Multiprotocol)"
     )
     assert results[0]["data"] == expected_data
     assert results[0]["options"] == {}
@@ -411,7 +411,7 @@ async def test_hassio_discovery_flow_2x_addons(
     assert config_entry.data == expected_data
     assert config_entry.options == {}
     assert (
-        config_entry.title == "Home Assistant SkyConnect (Silicon Labs Multiprotocol)"
+        config_entry.title == "NRJHub SkyConnect (Silicon Labs Multiprotocol)"
     )
     assert config_entry.unique_id == HASSIO_DATA.uuid
 

@@ -38,7 +38,7 @@ async def init_integration(
     printer: dict[str, Any] | UndefinedType | None = UNDEFINED,
     job: dict[str, Any] | None = None,
 ):
-    """Set up the octoprint integration in Home Assistant."""
+    """Set up the octoprint integration in NRJHub."""
     printer_info: OctoprintPrinterInfo | None = None
     if printer is UNDEFINED:
         printer = DEFAULT_PRINTER

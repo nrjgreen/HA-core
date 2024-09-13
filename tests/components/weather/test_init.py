@@ -832,6 +832,6 @@ async def test_issue_deprecated_service_weather_get_forecast(
 
     assert (
         "Detected use of service 'weather.get_forecast'. "
-        "This is deprecated and will stop working in Home Assistant 2024.6. "
+        "This is deprecated and will stop working in NRJHub 2024.6. "
         "Use 'weather.get_forecasts' instead which supports multiple entities"
     ) in caplog.text

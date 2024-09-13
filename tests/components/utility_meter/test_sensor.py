@@ -702,7 +702,7 @@ async def test_restore_state(
     hass: HomeAssistant, yaml_config, config_entry_config
 ) -> None:
     """Test utility sensor restore state."""
-    # Home assistant is not runnit yet
+    # NRJHub is not runnit yet
     hass.set_state(CoreState.not_running)
 
     last_reset_1 = "2020-12-21T00:00:00.013073+00:00"
@@ -924,7 +924,7 @@ async def test_service_reset_no_tariffs(
     hass: HomeAssistant, yaml_config, config_entry_config
 ) -> None:
     """Test utility sensor service reset for sensor with no tariffs."""
-    # Home assistant is not runnit yet
+    # NRJHub is not runnit yet
     hass.state = CoreState.not_running
     last_reset = "2023-10-01T00:00:00+00:00"
 
@@ -1034,7 +1034,7 @@ async def test_service_reset_no_tariffs_correct_with_multi(
     See GitHub issue #114864: Service "utility_meter.reset" affects all meters.
     """
 
-    # Home assistant is not runnit yet
+    # NRJHub is not runnit yet
     hass.state = CoreState.not_running
     last_reset = "2023-10-01T00:00:00+00:00"
 
@@ -1309,7 +1309,7 @@ async def test_delta_values(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     """Test utility meter "delta_values" mode."""
-    # Home assistant is not runnit yet
+    # NRJHub is not runnit yet
     hass.set_state(CoreState.not_running)
 
     now = dt_util.utcnow()
@@ -1418,7 +1418,7 @@ async def test_non_periodically_resetting(
     hass: HomeAssistant, yaml_config, config_entry_config
 ) -> None:
     """Test utility meter "non periodically resetting" mode."""
-    # Home assistant is not runnit yet
+    # NRJHub is not runnit yet
     hass.set_state(CoreState.not_running)
 
     now = dt_util.utcnow()

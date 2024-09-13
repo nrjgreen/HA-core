@@ -24,7 +24,7 @@ def reset_log_level():
 
 @pytest.fixture
 def provider(hass):
-    """Home Assistant auth provider."""
+    """NRJHub auth provider."""
     provider = hass.loop.run_until_complete(
         register_auth_provider(hass, {"type": "homeassistant"})
     )

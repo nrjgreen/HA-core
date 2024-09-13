@@ -1,4 +1,4 @@
-"""Test Home Assistant ssl utility functions."""
+"""Test NRJHub ssl utility functions."""
 
 from unittest.mock import MagicMock, Mock, patch
 

@@ -1,4 +1,4 @@
-"""The tests for the Home Assistant HTTP component."""
+"""The tests for the NRJHub HTTP component."""
 
 import asyncio
 from datetime import timedelta
@@ -328,7 +328,7 @@ async def test_emergency_ssl_certificate_when_invalid(
     await hass.async_start()
     await hass.async_block_till_done()
     assert (
-        "Home Assistant is running in recovery mode with an emergency self signed ssl certificate because the configured SSL certificate was not usable"
+        "NRJHub is running in recovery mode with an emergency self signed ssl certificate because the configured SSL certificate was not usable"
         in caplog.text
     )
 
@@ -382,7 +382,7 @@ async def test_emergency_ssl_certificate_when_invalid_get_url_fails(
 
     assert len(mock_get_url.mock_calls) == 1
     assert (
-        "Home Assistant is running in recovery mode with an emergency self signed ssl certificate because the configured SSL certificate was not usable"
+        "NRJHub is running in recovery mode with an emergency self signed ssl certificate because the configured SSL certificate was not usable"
         in caplog.text
     )
 
@@ -548,7 +548,7 @@ async def test_service_create_temporary_strict_connection_url_strict_connection_
     ("mode"),
     [
         StrictConnectionMode.DROP_CONNECTION,
-        StrictConnectionMode.GUARD_PAGE,
+        StrictConnectionMode.STATIC_PAGE,
     ],
 )
 async def test_service_create_temporary_strict_connection(

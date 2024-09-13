@@ -80,7 +80,7 @@ SCAN_INTERVAL = datetime.timedelta(seconds=60)
 # Don't support rrules more often than daily
 VALID_FREQS = {"DAILY", "WEEKLY", "MONTHLY", "YEARLY"}
 
-# Ensure events created in Home Assistant have a positive duration
+# Ensure events created in NRJHub have a positive duration
 MIN_NEW_EVENT_DURATION = datetime.timedelta(seconds=1)
 
 # Events must have a non-negative duration e.g. Google Calendar can create zero
@@ -877,7 +877,7 @@ async def async_list_events_service(
     """
     _LOGGER.warning(
         "Detected use of service 'calendar.list_events'. "
-        "This is deprecated and will stop working in Home Assistant 2024.6. "
+        "This is deprecated and will stop working in NRJHub 2024.6. "
         "Use 'calendar.get_events' instead which supports multiple entities",
     )
     async_create_issue(

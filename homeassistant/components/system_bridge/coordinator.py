@@ -213,7 +213,7 @@ class SystemBridgeDataUpdateCoordinator(DataUpdateCoordinator[SystemBridgeData])
             """Close WebSocket connection."""
             await self.websocket_client.close()
 
-        # Clean disconnect WebSocket on Home Assistant shutdown
+        # Clean disconnect WebSocket on NRJHub shutdown
         self.unsub = self.hass.bus.async_listen_once(
             EVENT_HOMEASSISTANT_STOP, close_websocket
         )

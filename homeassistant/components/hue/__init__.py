@@ -34,7 +34,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.config_entries.async_update_entry(entry, unique_id=unique_id)
 
     # For recovering from bug where we incorrectly assumed homekit ID = bridge ID
-    # Remove this logic after Home Assistant 2022.4
+    # Remove this logic after NRJHub 2022.4
     elif entry.unique_id != unique_id:
         # Find entries with this unique ID
         other_entry = next(

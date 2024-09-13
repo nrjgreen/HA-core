@@ -627,9 +627,9 @@ def test_template(hass: HomeAssistant) -> None:
         "Hello",
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function added as an extension by Home Assistant
+        # Function added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     )
     for value in options:
@@ -645,7 +645,7 @@ async def test_template_no_hass(hass: HomeAssistant) -> None:
         "{{ partial_print }",
         "{% if True %}Hello",
         ["test"],
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     ):
         with pytest.raises(vol.Invalid):
@@ -656,7 +656,7 @@ async def test_template_no_hass(hass: HomeAssistant) -> None:
         "Hello",
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function added as an extension by Home Assistant
+        # Function added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
     )
     for value in options:
@@ -681,9 +681,9 @@ def test_dynamic_template(hass: HomeAssistant) -> None:
     options = (
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function added as an extension by Home Assistant
+        # Function added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     )
     for value in options:
@@ -701,7 +701,7 @@ async def test_dynamic_template_no_hass(hass: HomeAssistant) -> None:
         "{% if True %}Hello",
         ["test"],
         "just a string",
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     ):
         with pytest.raises(vol.Invalid):
@@ -710,7 +710,7 @@ async def test_dynamic_template_no_hass(hass: HomeAssistant) -> None:
     options = (
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function added as an extension by Home Assistant
+        # Function added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
     )
     for value in options:

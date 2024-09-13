@@ -97,7 +97,7 @@ def create_config_entry_myhome():
 
 @pytest.fixture(name="lcn_connection")
 async def init_integration(hass, entry):
-    """Set up the LCN integration in Home Assistant."""
+    """Set up the LCN integration in NRJHub."""
     lcn_connection = None
 
     def lcn_connection_factory(*args, **kwargs):

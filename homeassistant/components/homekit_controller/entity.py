@@ -22,7 +22,7 @@ from .utils import folded_name
 
 
 class HomeKitEntity(Entity):
-    """Representation of a Home Assistant HomeKit device."""
+    """Representation of a NRJHub HomeKit device."""
 
     _attr_should_poll = False
     pollable_characteristics: list[tuple[int, int]]

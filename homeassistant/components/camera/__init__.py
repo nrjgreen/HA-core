@@ -111,7 +111,7 @@ class CameraEntityFeature(IntFlag):
     STREAM = 2
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Pleease use the CameraEntityFeature enum instead.
 _DEPRECATED_SUPPORT_ON_OFF: Final = DeprecatedConstantEnum(
     CameraEntityFeature.ON_OFF, "2025.1"

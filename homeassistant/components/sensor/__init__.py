@@ -385,11 +385,11 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             if not self._invalid_suggested_unit_of_measurement_reported:
                 self._invalid_suggested_unit_of_measurement_reported = True
                 report_issue = self._suggest_report_issue()
-                # This should raise in Home Assistant Core 2024.5
+                # This should raise in NRJHub Core 2024.5
                 _LOGGER.warning(
                     (
                         "%s sets an invalid suggested_unit_of_measurement. Please %s. "
-                        "This warning will become an error in Home Assistant Core 2024.5"
+                        "This warning will become an error in NRJHub Core 2024.5"
                     ),
                     type(self),
                     report_issue,
@@ -566,7 +566,7 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             self._invalid_state_class_reported = True
             report_issue = self._suggest_report_issue()
 
-            # This should raise in Home Assistant Core 2023.6
+            # This should raise in NRJHub Core 2023.6
             _LOGGER.warning(
                 "Entity %s (%s) is using state class '%s' which "
                 "is impossible considering device class ('%s') it is using; "
@@ -728,7 +728,7 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             self._invalid_unit_of_measurement_reported = True
             report_issue = self._suggest_report_issue()
 
-            # This should raise in Home Assistant Core 2023.6
+            # This should raise in NRJHub Core 2023.6
             _LOGGER.warning(
                 (
                     "Entity %s (%s) is using native unit of measurement '%s' which "
@@ -747,15 +747,13 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
 
         return value
 
-    def _display_precision_or_none(self) -> int | None:
-        """Return display precision, or None if not set."""
+    def _suggested_precision_or_none(self) -> int | None:
+        """Return suggested display precision, or None if not set."""
         assert self.registry_entry
-        if not (sensor_options := self.registry_entry.options.get(DOMAIN)):
-            return None
-
-        for option in ("display_precision", "suggested_display_precision"):
-            if (precision := sensor_options.get(option)) is not None:
-                return cast(int, precision)
+        if (sensor_options := self.registry_entry.options.get(DOMAIN)) and (
+            precision := sensor_options.get("suggested_display_precision")
+        ) is not None:
+            return cast(int, precision)
         return None
 
     def _update_suggested_precision(self) -> None:
@@ -786,6 +784,11 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             ratio_log = floor(ratio_log) if ratio_log > 0 else ceil(ratio_log)
             display_precision = max(0, display_precision + ratio_log)
 
+        if display_precision is None and (
+            DOMAIN not in self.registry_entry.options
+            or "suggested_display_precision" not in self.registry_entry.options
+        ):
+            return
         sensor_options: Mapping[str, Any] = self.registry_entry.options.get(DOMAIN, {})
         if (
             "suggested_display_precision" in sensor_options
@@ -832,7 +835,7 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
         Called when the entity registry entry has been updated and before the sensor is
         added to the state machine.
         """
-        self._sensor_option_display_precision = self._display_precision_or_none()
+        self._sensor_option_display_precision = self._suggested_precision_or_none()
         assert self.registry_entry
         if (
             sensor_options := self.registry_entry.options.get(f"{DOMAIN}.private")

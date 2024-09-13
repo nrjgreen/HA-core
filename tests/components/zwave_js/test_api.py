@@ -3596,7 +3596,7 @@ async def test_data_collection(
     assert len(client.async_send_command.call_args_list) == 1
     args = client.async_send_command.call_args_list[0][0][0]
     assert args["command"] == "driver.enable_statistics"
-    assert args["applicationName"] == "Home Assistant"
+    assert args["applicationName"] == "NRJHub"
 
     client.async_send_command.reset_mock()
 

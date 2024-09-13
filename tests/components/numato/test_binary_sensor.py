@@ -55,7 +55,7 @@ async def test_setup_callbacks(hass: HomeAssistant, numato_fixture) -> None:
 async def test_hass_binary_sensor_notification(
     hass: HomeAssistant, numato_fixture
 ) -> None:
-    """Test regular operations from within Home Assistant."""
+    """Test regular operations from within NRJHub."""
     assert await async_setup_component(hass, "numato", NUMATO_CFG)
     await hass.async_block_till_done()  # wait until services are registered
     assert (

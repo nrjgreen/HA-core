@@ -100,7 +100,7 @@ class LiteJetLight(LightEntity):
                 raise HomeAssistantError from exc
             return
 
-        # If either attribute is specified then Home Assistant must
+        # If either attribute is specified then NRJHub must
         # control both values.
         default_transition = self._config_entry.options.get(CONF_DEFAULT_TRANSITION, 0)
         transition = kwargs.get(ATTR_TRANSITION, default_transition)

@@ -1,7 +1,5 @@
 """Creates the device tracker entity for the mower."""
 
-from typing import TYPE_CHECKING
-
 from homeassistant.components.device_tracker import SourceType, TrackerEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -46,13 +44,9 @@ class AutomowerDeviceTrackerEntity(AutomowerBaseEntity, TrackerEntity):
     @property
     def latitude(self) -> float:
         """Return latitude value of the device."""
-        if TYPE_CHECKING:
-            assert self.mower_attributes.positions is not None
         return self.mower_attributes.positions[0].latitude
 
     @property
     def longitude(self) -> float:
         """Return longitude value of the device."""
-        if TYPE_CHECKING:
-            assert self.mower_attributes.positions is not None
         return self.mower_attributes.positions[0].longitude

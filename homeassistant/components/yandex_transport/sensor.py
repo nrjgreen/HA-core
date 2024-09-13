@@ -24,7 +24,7 @@ import homeassistant.util.dt as dt_util
 _LOGGER = logging.getLogger(__name__)
 
 STOP_NAME = "stop_name"
-USER_AGENT = "Home Assistant"
+USER_AGENT = "NRJHub"
 
 CONF_STOP_ID = "stop_id"
 CONF_ROUTE = "routes"

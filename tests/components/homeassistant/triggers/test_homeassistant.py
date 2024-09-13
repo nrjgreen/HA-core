@@ -30,7 +30,7 @@ from tests.common import async_mock_service
 async def test_if_fires_on_hass_start(
     hass: HomeAssistant, mock_hass_config: None, hass_config: ConfigType
 ) -> None:
-    """Test the firing when Home Assistant starts."""
+    """Test the firing when NRJHub starts."""
     calls = async_mock_service(hass, "test", "automation")
     hass.set_state(CoreState.not_running)
 
@@ -53,7 +53,7 @@ async def test_if_fires_on_hass_start(
 
 
 async def test_if_fires_on_hass_shutdown(hass: HomeAssistant) -> None:
-    """Test the firing when Home Assistant shuts down."""
+    """Test the firing when NRJHub shuts down."""
     calls = async_mock_service(hass, "test", "automation")
     hass.set_state(CoreState.not_running)
 

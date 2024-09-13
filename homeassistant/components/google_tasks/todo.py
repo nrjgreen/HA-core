@@ -155,7 +155,7 @@ def _order_tasks(tasks: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     All tasks have an order amongst their sibblings based on position.
 
-        Home Assistant To-do items do not support the Google Task parent/sibbling
+        NRJHub To-do items do not support the Google Task parent/sibbling
     relationships and the desired behavior is for them to be filtered.
     """
     parents = [task for task in tasks if task.get("parent") is None]

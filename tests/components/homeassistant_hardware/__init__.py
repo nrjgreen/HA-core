@@ -1,1 +1,1 @@
-"""Tests for the Home Assistant Hardware integration."""
+"""Tests for the NRJHub Hardware integration."""

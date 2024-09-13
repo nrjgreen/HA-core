@@ -10,7 +10,7 @@ from tests.common import MockConfigEntry
 async def init_integration(
     hass: HomeAssistant, region: str = "EU", brand: str = "Whirlpool"
 ) -> MockConfigEntry:
-    """Set up the Whirlpool integration in Home Assistant."""
+    """Set up the Whirlpool integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data={
@@ -27,7 +27,7 @@ async def init_integration(
 async def init_integration_with_entry(
     hass: HomeAssistant, entry: MockConfigEntry
 ) -> MockConfigEntry:
-    """Set up the Whirlpool integration in Home Assistant."""
+    """Set up the Whirlpool integration in NRJHub."""
     entry.add_to_hass(hass)
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()

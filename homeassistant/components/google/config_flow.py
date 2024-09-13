@@ -54,9 +54,9 @@ class OAuth2FlowHandler(
     and may be limited/deprecated in the future similar to App/OOB Auth
     https://developers.googleblog.com/2022/02/making-oauth-flows-safer.html
 
-    Web Auth is the preferred method by Home Assistant and Google, and a benefit
+    Web Auth is the preferred method by NRJHub and Google, and a benefit
     is that the same credentials may be used across many Google integrations in
-    Home Assistant. Web Auth is now easier for user to setup using my.home-assistant.io
+    NRJHub. Web Auth is now easier for user to setup using my.home-assistant.io
     redirect urls.
 
     The Application Credentials integration does not currently record which type

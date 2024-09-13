@@ -83,7 +83,9 @@ class EnphaseUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def _async_mark_setup_complete(self) -> None:
         """Mark setup as complete and setup token refresh if needed."""
         self._setup_complete = True
-        self.async_cancel_token_refresh()
+        if self._cancel_token_refresh:
+            self._cancel_token_refresh()
+            self._cancel_token_refresh = None
         if not isinstance(self.envoy.auth, EnvoyTokenAuth):
             return
         self._cancel_token_refresh = async_track_time_interval(
@@ -157,10 +159,3 @@ class EnphaseUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             return envoy_data.raw
 
         raise RuntimeError("Unreachable code in _async_update_data")  # pragma: no cover
-
-    @callback
-    def async_cancel_token_refresh(self) -> None:
-        """Cancel token refresh."""
-        if self._cancel_token_refresh:
-            self._cancel_token_refresh()
-            self._cancel_token_refresh = None

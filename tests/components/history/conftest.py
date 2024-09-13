@@ -9,7 +9,7 @@ from homeassistant.setup import setup_component
 
 @pytest.fixture
 def hass_history(hass_recorder):
-    """Home Assistant fixture with history."""
+    """NRJHub fixture with history."""
     hass = hass_recorder()
 
     config = history.CONFIG_SCHEMA(

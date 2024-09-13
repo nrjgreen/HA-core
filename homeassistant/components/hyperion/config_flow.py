@@ -100,7 +100,7 @@ _LOGGER.setLevel(logging.DEBUG)
 # of the box. This config flow needs two port numbers from the Hyperion instance, the
 # JSON port (for the API) and the UI port (for the user to approve dynamically created
 # auth tokens). With Zeroconf the port numbers for both are in different Zeroconf
-# entries, and as Home Assistant only passes a single entry into the config flow, we can
+# entries, and as NRJHub only passes a single entry into the config flow, we can
 # only conveniently 'see' one port or the other (which means we need to guess one port
 # number). With SSDP, we get the combined block including both port numbers, so SSDP is
 # the favored discovery implementation.

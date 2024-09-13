@@ -31,7 +31,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class SmartTubController:
-    """Interface between Home Assistant and the SmartTub API."""
+    """Interface between NRJHub and the SmartTub API."""
 
     def __init__(self, hass):
         """Initialize an interface to SmartTub."""

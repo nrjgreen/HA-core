@@ -102,7 +102,7 @@ class ConfiguredDoorBird:
         if self.webhook_is_registered(url, favs=favs):
             return True
 
-        self.device.change_favorite("http", f"Home Assistant ({event})", url)
+        self.device.change_favorite("http", f"NRJHub ({event})", url)
         if not self.webhook_is_registered(url):
             _LOGGER.warning(
                 'Unable to set favorite URL "%s". Event "%s" will not fire',

@@ -474,7 +474,7 @@ async def test_light_async_turn_on_fail_async_send_set_effect(
         blocking=True,
     )
     assert client.method_calls[-1] == call.async_send_set_effect(
-        priority=180, effect={"name": "Warm Mood Blobs"}, origin="Home Assistant"
+        priority=180, effect={"name": "Warm Mood Blobs"}, origin="NRJHub"
     )
 
 
@@ -494,7 +494,7 @@ async def test_light_async_turn_on_fail_async_send_set_color(
         blocking=True,
     )
     assert client.method_calls[-1] == call.async_send_set_color(
-        priority=180, color=(0, 0, 255), origin="Home Assistant"
+        priority=180, color=(0, 0, 255), origin="NRJHub"
     )
 
 

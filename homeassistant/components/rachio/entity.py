@@ -1,4 +1,4 @@
-"""Adapter to wrap the rachiopy api for home assistant."""
+"""Adapter to wrap the rachiopy api for NRJHub."""
 
 from abc import abstractmethod
 from typing import Any
@@ -70,7 +70,6 @@ class RachioHoseTimerEntity(CoordinatorEntity[RachioUpdateCoordinator]):
             manufacturer=DEFAULT_NAME,
             configuration_url="https://app.rach.io",
         )
-        self._update_attr()
 
     @property
     def available(self) -> bool:

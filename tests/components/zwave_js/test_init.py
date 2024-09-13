@@ -55,7 +55,7 @@ async def test_entry_setup_unload(hass: HomeAssistant, client, integration) -> N
 
 
 async def test_home_assistant_stop(hass: HomeAssistant, client, integration) -> None:
-    """Test we clean up on home assistant stop."""
+    """Test we clean up on NRJHub stop."""
     await hass.async_stop()
 
     assert client.disconnect.call_count == 1

@@ -46,7 +46,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         host,
         port,
         password,
-        client_info=f"Home Assistant {ha_version}",
+        client_info=f"NRJHub {ha_version}",
         zeroconf_instance=zeroconf_instance,
         noise_psk=noise_psk,
     )

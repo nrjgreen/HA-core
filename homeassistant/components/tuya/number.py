@@ -334,7 +334,7 @@ class TuyaNumberEntity(TuyaEntity, NumberEntity):
             self._attr_native_step = self._number.step_scaled
 
         # Logic to ensure the set device class and API received Unit Of Measurement
-        # match Home Assistants requirements.
+        # match NRJHubs requirements.
         if (
             self.device_class is not None
             and not self.device_class.startswith(DOMAIN)

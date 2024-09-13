@@ -217,7 +217,7 @@ class MailNotificationService(BaseNotificationService):
             msg["From"] = f"{self._sender_name} <{self._sender}>"
         else:
             msg["From"] = self._sender
-        msg["X-Mailer"] = "Home Assistant"
+        msg["X-Mailer"] = "NRJHub"
         msg["Date"] = email.utils.format_datetime(dt_util.now())
         msg["Message-Id"] = email.utils.make_msgid()
 

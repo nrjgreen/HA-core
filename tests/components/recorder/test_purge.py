@@ -9,7 +9,6 @@ from freezegun import freeze_time
 import pytest
 from sqlalchemy.exc import DatabaseError, OperationalError
 from sqlalchemy.orm.session import Session
-from voluptuous.error import MultipleInvalid
 
 from homeassistant.components import recorder
 from homeassistant.components.recorder.const import SupportedDialect
@@ -1447,20 +1446,20 @@ async def test_purge_entities(
 
     _add_purge_records(hass)
 
-    # Confirm calling service without arguments is invalid
+    # Confirm calling service without arguments matches all records (default filter behavior)
     with session_scope(hass=hass) as session:
         states = session.query(States)
         assert states.count() == 190
 
-    with pytest.raises(MultipleInvalid):
-        await _purge_entities(hass, [], [], [])
+    await _purge_entities(hass, [], [], [])
 
     with session_scope(hass=hass, read_only=True) as session:
         states = session.query(States)
-        assert states.count() == 190
+        assert states.count() == 0
 
+        # The states_meta table should be empty
         states_meta_remain = session.query(StatesMeta)
-        assert states_meta_remain.count() == 4
+        assert states_meta_remain.count() == 0
 
 
 async def _add_test_states(hass: HomeAssistant, wait_recording_done: bool = True):

@@ -86,7 +86,7 @@ class VacuumEntityFeature(IntFlag):
     START = 8192
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the VacuumEntityFeature enum instead.
 SUPPORT_TURN_ON = 1
 SUPPORT_TURN_OFF = 2

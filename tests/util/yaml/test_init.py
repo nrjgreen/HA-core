@@ -1,4 +1,4 @@
-"""Test Home Assistant yaml loader."""
+"""Test NRJHub yaml loader."""
 
 from collections.abc import Generator
 import importlib
@@ -568,13 +568,13 @@ def test_no_recursive_secrets(
 
 def test_input_class() -> None:
     """Test input class."""
-    yaml_input = yaml_loader.Input("hello")
-    yaml_input2 = yaml_loader.Input("hello")
+    input = yaml_loader.Input("hello")
+    input2 = yaml_loader.Input("hello")
 
-    assert yaml_input.name == "hello"
-    assert yaml_input == yaml_input2
+    assert input.name == "hello"
+    assert input == input2
 
-    assert len({yaml_input, yaml_input2}) == 1
+    assert len({input, input2}) == 1
 
 
 def test_input(try_both_loaders, try_both_dumpers) -> None:

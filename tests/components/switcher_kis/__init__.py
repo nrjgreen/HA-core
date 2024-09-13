@@ -7,7 +7,7 @@ from tests.common import MockConfigEntry
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Switcher integration in Home Assistant."""
+    """Set up the Switcher integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data={}, unique_id=DOMAIN)
     entry.add_to_hass(hass)
 

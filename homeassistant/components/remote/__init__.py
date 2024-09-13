@@ -76,7 +76,7 @@ class RemoteEntityFeature(IntFlag):
     ACTIVITY = 4
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the RemoteEntityFeature enum instead.
 _DEPRECATED_SUPPORT_LEARN_COMMAND = DeprecatedConstantEnum(
     RemoteEntityFeature.LEARN_COMMAND, "2025.1"

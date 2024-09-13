@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from aiosolaredge import SolarEdge
+from solaredge import Solaredge
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -205,7 +205,7 @@ async def async_setup_entry(
 ) -> None:
     """Add an solarEdge entry."""
     # Add the needed sensors to hass
-    api: SolarEdge = hass.data[DOMAIN][entry.entry_id][DATA_API_CLIENT]
+    api: Solaredge = hass.data[DOMAIN][entry.entry_id][DATA_API_CLIENT]
 
     sensor_factory = SolarEdgeSensorFactory(hass, entry.data[CONF_SITE_ID], api)
     for service in sensor_factory.all_services:
@@ -223,7 +223,7 @@ async def async_setup_entry(
 class SolarEdgeSensorFactory:
     """Factory which creates sensors based on the sensor_key."""
 
-    def __init__(self, hass: HomeAssistant, site_id: str, api: SolarEdge) -> None:
+    def __init__(self, hass: HomeAssistant, site_id: str, api: Solaredge) -> None:
         """Initialize the factory."""
 
         details = SolarEdgeDetailsDataService(hass, api, site_id)

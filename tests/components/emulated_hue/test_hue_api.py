@@ -211,7 +211,7 @@ async def demo_setup(hass, wanted_platforms_only):
 
 @pytest.fixture
 async def hass_hue(hass, base_setup, demo_setup):
-    """Set up a Home Assistant instance for these tests."""
+    """Set up a NRJHub instance for these tests."""
     await _async_setup_emulated_hue(
         hass,
         {

@@ -1,4 +1,4 @@
-"""Map Matter Nodes and Attributes to Home Assistant entities."""
+"""Map Matter Nodes and Attributes to NRJHub entities."""
 
 from __future__ import annotations
 

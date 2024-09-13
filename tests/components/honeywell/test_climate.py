@@ -38,7 +38,7 @@ from homeassistant.const import (
     STATE_UNAVAILABLE,
 )
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util.dt import utcnow
 
@@ -205,16 +205,6 @@ async def test_mode_service_calls(
         )
     device.set_system_mode.assert_called_once_with("auto")
 
-    device.set_system_mode.reset_mock()
-    device.set_system_mode.side_effect = aiosomecomfort.UnexpectedResponse
-    with pytest.raises(HomeAssistantError):
-        await hass.services.async_call(
-            CLIMATE_DOMAIN,
-            SERVICE_SET_HVAC_MODE,
-            {ATTR_ENTITY_ID: entity_id, ATTR_HVAC_MODE: HVACMode.HEAT_COOL},
-            blocking=True,
-        )
-
 
 async def test_auxheat_service_calls(
     hass: HomeAssistant, device: MagicMock, config_entry: MagicMock
@@ -310,15 +300,6 @@ async def test_fan_modes_service_calls(
             blocking=True,
         )
 
-    device.set_fan_mode.side_effect = aiosomecomfort.UnexpectedResponse
-    with pytest.raises(HomeAssistantError):
-        await hass.services.async_call(
-            CLIMATE_DOMAIN,
-            SERVICE_SET_FAN_MODE,
-            {ATTR_ENTITY_ID: entity_id, ATTR_FAN_MODE: FAN_DIFFUSE},
-            blocking=True,
-        )
-
 
 async def test_service_calls_off_mode(
     hass: HomeAssistant,
@@ -363,7 +344,7 @@ async def test_service_calls_off_mode(
     device.set_setpoint_heat.side_effect = aiosomecomfort.SomeComfortError
     caplog.clear()
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -450,12 +431,6 @@ async def test_service_calls_off_mode(
     device.set_hold_heat.assert_called_once_with(False)
     device.set_hold_cool.assert_called_once_with(False)
 
-    device.set_hold_heat.reset_mock()
-    device.set_hold_cool.reset_mock()
-
-    device.set_setpoint_cool.reset_mock()
-    device.set_setpoint_heat.reset_mock()
-
     reset_mock(device)
 
     device.raw_ui_data["StatusHeat"] = 2
@@ -531,7 +506,7 @@ async def test_service_calls_cool_mode(
     device.set_setpoint_cool.reset_mock()
     device.set_setpoint_cool.side_effect = aiosomecomfort.SomeComfortError
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -563,7 +538,7 @@ async def test_service_calls_cool_mode(
     device.set_hold_cool.side_effect = aiosomecomfort.SomeComfortError
     caplog.clear()
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_PRESET_MODE,
@@ -595,7 +570,7 @@ async def test_service_calls_cool_mode(
     device.hold_heat = True
     device.hold_cool = True
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -734,7 +709,7 @@ async def test_service_calls_heat_mode(
     device.set_hold_heat.reset_mock()
 
     device.set_hold_heat.side_effect = aiosomecomfort.SomeComfortError
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -772,7 +747,7 @@ async def test_service_calls_heat_mode(
 
     device.set_setpoint_heat.reset_mock()
     device.set_setpoint_heat.side_effect = aiosomecomfort.SomeComfortError
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -805,7 +780,7 @@ async def test_service_calls_heat_mode(
     device.hold_heat = True
     device.hold_cool = True
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -836,7 +811,7 @@ async def test_service_calls_heat_mode(
 
     reset_mock(device)
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_PRESET_MODE,
@@ -853,7 +828,7 @@ async def test_service_calls_heat_mode(
 
     device.set_hold_heat.side_effect = aiosomecomfort.SomeComfortError
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_PRESET_MODE,
@@ -865,16 +840,6 @@ async def test_service_calls_heat_mode(
     device.set_hold_cool.assert_not_called()
     device.set_setpoint_cool.assert_not_called()
     assert "Temperature out of range" in caplog.text
-
-    device.set_hold_heat.side_effect = aiosomecomfort.UnexpectedResponse
-
-    with pytest.raises(HomeAssistantError):
-        await hass.services.async_call(
-            CLIMATE_DOMAIN,
-            SERVICE_SET_PRESET_MODE,
-            {ATTR_ENTITY_ID: entity_id, ATTR_PRESET_MODE: PRESET_AWAY},
-            blocking=True,
-        )
 
     reset_mock(device)
     caplog.clear()
@@ -986,7 +951,7 @@ async def test_service_calls_auto_mode(
 
     device.set_hold_cool.side_effect = aiosomecomfort.SomeComfortError
     device.set_hold_heat.side_effect = aiosomecomfort.SomeComfortError
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -1001,7 +966,7 @@ async def test_service_calls_auto_mode(
 
     device.set_setpoint_heat.side_effect = aiosomecomfort.SomeComfortError
     device.set_setpoint_cool.side_effect = aiosomecomfort.SomeComfortError
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -1056,7 +1021,7 @@ async def test_service_calls_auto_mode(
     device.set_setpoint_heat.side_effect = None
     device.set_setpoint_cool.side_effect = None
 
-    with pytest.raises(ServiceValidationError):
+    with pytest.raises(ValueError):
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_PRESET_MODE,

@@ -199,7 +199,7 @@ class ISYSensorEntity(ISYNodeEntity, SensorEntity):
         # Handle ISY precision and rounding
         value = convert_isy_value_to_hass(value, uom, self.target.prec)
 
-        # Convert temperatures to Home Assistant's unit
+        # Convert temperatures to NRJHub's unit
         if uom in (UnitOfTemperature.CELSIUS, UnitOfTemperature.FAHRENHEIT):
             value = self.hass.config.units.temperature(value, uom)
 
@@ -211,7 +211,7 @@ class ISYSensorEntity(ISYNodeEntity, SensorEntity):
 
     @property
     def native_unit_of_measurement(self) -> str | None:
-        """Get the Home Assistant unit of measurement for the device."""
+        """Get the NRJHub unit of measurement for the device."""
         raw_units = self.raw_unit_of_measurement
         # Check if this is a known index pair UOM
         if isinstance(raw_units, dict) or raw_units in (UOM_ON_OFF, UOM_INDEX):

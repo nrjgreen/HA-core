@@ -1299,7 +1299,7 @@ async def test_subscribe_unsubscribe_logbook_stream(
             "domain": "homeassistant",
             "icon": "mdi:home-assistant",
             "message": "started",
-            "name": "Home Assistant",
+            "name": "NRJHub",
             "when": ANY,
         },
     ]

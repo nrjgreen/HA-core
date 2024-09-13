@@ -2,7 +2,7 @@
   "student_id": "123",
   "keystore": {
     "Certificate": "certificate",
-    "DeviceModel": "Home Assistant",
+    "DeviceModel": "NRJHub",
     "Fingerprint": "fingerprint",
     "FirebaseToken": "firebase_token",
     "PrivateKey": "private_key"

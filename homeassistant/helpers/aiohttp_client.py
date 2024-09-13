@@ -44,7 +44,7 @@ ENABLE_CLEANUP_CLOSED = not (3, 11, 1) <= sys.version_info < (3, 11, 4)
 # aiohttp interacts poorly with https://github.com/python/cpython/pull/98540
 # The issue was fixed in 3.11.4 via https://github.com/python/cpython/pull/104485
 
-WARN_CLOSE_MSG = "closes the Home Assistant aiohttp session"
+WARN_CLOSE_MSG = "closes the NRJHub aiohttp session"
 
 #
 # The default connection limit of 100 meant that you could only have
@@ -152,7 +152,7 @@ def _async_create_clientsession(
         **kwargs,
     )
     # Prevent packages accidentally overriding our default headers
-    # It's important that we identify as Home Assistant
+    # It's important that we identify as NRJHub
     # If a package requires a different user agent, override it by passing a headers
     # dictionary to the request method.
     # pylint: disable-next=protected-access
@@ -236,7 +236,7 @@ async def async_aiohttp_proxy_stream(
 def _async_register_clientsession_shutdown(
     hass: HomeAssistant, clientsession: aiohttp.ClientSession
 ) -> None:
-    """Register ClientSession close on Home Assistant shutdown or config entry unload.
+    """Register ClientSession close on NRJHub shutdown or config entry unload.
 
     This method must be run in the event loop.
     """
@@ -261,7 +261,7 @@ def _async_register_clientsession_shutdown(
 def _async_register_default_clientsession_shutdown(
     hass: HomeAssistant, clientsession: aiohttp.ClientSession
 ) -> None:
-    """Register default ClientSession close on Home Assistant shutdown.
+    """Register default ClientSession close on NRJHub shutdown.
 
     This method must be run in the event loop.
     """

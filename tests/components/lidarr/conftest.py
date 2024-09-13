@@ -124,7 +124,7 @@ def mock_connection(aioclient_mock: AiohttpClientMocker) -> None:
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Create Lidarr entry in Home Assistant."""
+    """Create Lidarr entry in NRJHub."""
     return MockConfigEntry(domain=DOMAIN, data=CONF_DATA)
 
 
@@ -133,7 +133,7 @@ async def mock_setup_integration(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
 ) -> Generator[ComponentSetup, None, None]:
-    """Set up the lidarr integration in Home Assistant."""
+    """Set up the lidarr integration in NRJHub."""
     config_entry.add_to_hass(hass)
 
     async def func() -> None:

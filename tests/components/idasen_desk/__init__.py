@@ -38,7 +38,7 @@ NOT_IDASEN_DISCOVERY_INFO = BluetoothServiceInfoBleak(
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the IKEA Idasen Desk integration in Home Assistant."""
+    """Set up the IKEA Idasen Desk integration in NRJHub."""
     entry = MockConfigEntry(
         title="Test",
         domain=DOMAIN,

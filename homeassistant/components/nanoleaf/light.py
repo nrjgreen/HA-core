@@ -73,7 +73,7 @@ class NanoleafLight(NanoleafEntity, LightEntity):
     def effect(self) -> str | None:
         """Return the current effect."""
         # The API returns the *Solid* effect if the Nanoleaf is in HS or CT mode.
-        # The effects *Static* and *Dynamic* are not supported by Home Assistant.
+        # The effects *Static* and *Dynamic* are not supported by NRJHub.
         # These reserved effects are implicitly set and are not in the effect_list.
         # https://forum.nanoleaf.me/docs/openapi#_byoot0bams8f
         return (
@@ -102,7 +102,7 @@ class NanoleafLight(NanoleafEntity, LightEntity):
         # https://forum.nanoleaf.me/docs/openapi#_4qgqrz96f44d
         if self._nanoleaf.color_mode == "ct":
             return ColorMode.COLOR_TEMP
-        # Home Assistant does not have an "effect" color mode, just report hs
+        # NRJHub does not have an "effect" color mode, just report hs
         return ColorMode.HS
 
     async def async_turn_on(self, **kwargs: Any) -> None:

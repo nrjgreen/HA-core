@@ -1,4 +1,4 @@
-"""Contains components that can be plugged into Home Assistant.
+"""Contains components that can be plugged into NRJHub.
 
 Component design guidelines:
 - Each component defines a constant DOMAIN that is equal to its filename.
@@ -26,7 +26,7 @@ def is_on(hass: HomeAssistant, entity_id: str | None = None) -> bool:
     report(
         (
             "uses homeassistant.components.is_on."
-            " This is deprecated and will stop working in Home Assistant 2024.9, it"
+            " This is deprecated and will stop working in NRJHub 2024.9, it"
             " should be updated to use the function of the platform directly."
         ),
         error_if_core=True,

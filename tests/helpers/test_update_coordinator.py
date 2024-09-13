@@ -491,7 +491,7 @@ async def test_async_set_updated_data(
 async def test_stop_refresh_on_ha_stop(
     hass: HomeAssistant, crd: update_coordinator.DataUpdateCoordinator[int]
 ) -> None:
-    """Test no update interval refresh when Home Assistant is stopping."""
+    """Test no update interval refresh when NRJHub is stopping."""
     # Add subscriber
     update_callback = Mock()
     crd.async_add_listener(update_callback)
@@ -503,7 +503,7 @@ async def test_stop_refresh_on_ha_stop(
     await hass.async_block_till_done()
     assert crd.data == 1
 
-    # Fire Home Assistant stop event
+    # Fire NRJHub stop event
     hass.bus.async_fire(EVENT_HOMEASSISTANT_STOP)
     hass.set_state(CoreState.stopping)
     await hass.async_block_till_done()

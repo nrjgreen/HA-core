@@ -1,6 +1,6 @@
 {
   "domain": "homeassistant_yellow",
-  "name": "Home Assistant Yellow",
+  "name": "NRJHub Yellow",
   "after_dependencies": ["hassio"],
   "codeowners": ["@home-assistant/core"],
   "config_flow": false,

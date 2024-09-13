@@ -24,7 +24,7 @@ async def load_integration_from_entry(
     get_trains: list[TrainStop],
     get_train_stop: TrainStop,
 ) -> MockConfigEntry:
-    """Set up the Trafikverket Train integration in Home Assistant."""
+    """Set up the Trafikverket Train integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         source=SOURCE_USER,

@@ -63,7 +63,7 @@ async def async_setup_entry(
 ) -> None:
     """Initialize Times of the Day config entry."""
     if hass.config.time_zone is None:
-        _LOGGER.error("Timezone is not set in Home Assistant configuration")  # type: ignore[unreachable]
+        _LOGGER.error("Timezone is not set in NRJHub configuration")  # type: ignore[unreachable]
         return
 
     after = cv.time(config_entry.options[CONF_AFTER_TIME])
@@ -86,7 +86,7 @@ async def async_setup_platform(
 ) -> None:
     """Set up the ToD sensors."""
     if hass.config.time_zone is None:
-        _LOGGER.error("Timezone is not set in Home Assistant configuration")  # type: ignore[unreachable]
+        _LOGGER.error("Timezone is not set in NRJHub configuration")  # type: ignore[unreachable]
         return
 
     after = config[CONF_AFTER]
@@ -272,7 +272,7 @@ class TodSensor(BinarySensorEntity):
             )
 
     async def async_added_to_hass(self) -> None:
-        """Call when entity about to be added to Home Assistant."""
+        """Call when entity about to be added to NRJHub."""
         self._calculate_boundary_time()
         self._calculate_next_update()
 

@@ -64,7 +64,7 @@ class CurrentEnergyUsageSensor(SensorEntity):
 
     @property
     def unique_id(self):
-        """Return a unique, Home Assistant friendly identifier for this entity."""
+        """Return a unique, NRJHub friendly identifier for this entity."""
         return self.meter.meter_id
 
     def update(self) -> None:

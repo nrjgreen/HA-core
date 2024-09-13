@@ -1,4 +1,4 @@
-"""Test Home Assistant unit conversion utility functions."""
+"""Test NRJHub unit conversion utility functions."""
 
 from __future__ import annotations
 

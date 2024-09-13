@@ -1,4 +1,4 @@
-"""Test Home Assistant scaling utils."""
+"""Test NRJHub scaling utils."""
 
 import math
 

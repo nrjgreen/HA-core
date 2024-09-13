@@ -58,7 +58,7 @@ class ConfigEntryAuth(homeconnect.HomeConnectAPI):
         self.devices: list[dict[str, Any]] = []
 
     def refresh_tokens(self) -> dict:
-        """Refresh and return new Home Connect tokens using Home Assistant OAuth2 session."""
+        """Refresh and return new Home Connect tokens using NRJHub OAuth2 session."""
         run_coroutine_threadsafe(
             self.session.async_ensure_token_valid(), self.hass.loop
         ).result()

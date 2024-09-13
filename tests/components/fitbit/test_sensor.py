@@ -329,7 +329,7 @@ async def test_device_battery_level(
         "expected_unit",
     ),
     [
-        # Defaults to home assistant unit system unless UK
+        # Defaults to NRJHub unit system unless UK
         (["body/weight"], "en_US", "default", "kg"),
         (["body/weight"], "en_GB", "default", "st"),
         (["body/weight"], "es_ES", "default", "kg"),

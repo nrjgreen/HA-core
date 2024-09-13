@@ -646,7 +646,7 @@ class Recorder(threading.Thread):
     def _async_setup_periodic_tasks(self) -> None:
         """Prepare periodic tasks."""
         if self.hass.is_stopping or not self._get_session:
-            # Home Assistant is shutting down
+            # NRJHub is shutting down
             return
 
         # If the db is using a socket connection, we need to keep alive
@@ -749,7 +749,7 @@ class Recorder(threading.Thread):
             # since it can be cpu intensive and we do not want it to compete
             # with startup which is also cpu intensive
             if self._wait_startup_or_shutdown() is SHUTDOWN_TASK:
-                # Shutdown happened before Home Assistant finished starting
+                # Shutdown happened before NRJHub finished starting
                 self.migration_in_progress = False
                 # Make sure we cleanly close the run if
                 # we restart before startup finishes

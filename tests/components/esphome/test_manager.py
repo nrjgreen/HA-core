@@ -81,7 +81,7 @@ async def test_esphome_device_service_calls_not_allowed(
     assert issue is not None
     assert (
         "If you trust this device and want to allow access "
-        "for it to make Home Assistant service calls, you can "
+        "for it to make NRJHub service calls, you can "
         "enable this functionality in the options flow"
     ) in caplog.text
 

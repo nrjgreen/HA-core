@@ -18,7 +18,7 @@ async def async_init_integration(
     skip_setup: bool = False,
     exception: Exception | None = None,
 ) -> MockConfigEntry:
-    """Set up the nexia integration in Home Assistant."""
+    """Set up the nexia integration in NRJHub."""
 
     house_fixture = "nexia/mobile_houses_123456.json"
     session_fixture = "nexia/session_123456.json"

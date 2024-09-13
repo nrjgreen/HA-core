@@ -65,7 +65,7 @@ async def async_setup_entry(
 
 
 class MinutPointBinarySensor(MinutPointEntity, BinarySensorEntity):
-    """The platform class required by Home Assistant."""
+    """The platform class required by NRJHub."""
 
     def __init__(self, point_client, device_id, device_name):
         """Initialize the binary sensor."""
@@ -82,7 +82,7 @@ class MinutPointBinarySensor(MinutPointEntity, BinarySensorEntity):
         self._attr_name = f"{self._name} {device_name.capitalize()}"
 
     async def async_added_to_hass(self) -> None:
-        """Call when entity is added to HOme Assistant."""
+        """Call when entity is added to NRJHub."""
         await super().async_added_to_hass()
         self._async_unsub_hook_dispatcher_connect = async_dispatcher_connect(
             self.hass, SIGNAL_WEBHOOK, self._webhook_event

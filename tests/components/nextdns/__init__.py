@@ -155,7 +155,7 @@ def mock_nextdns():
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the NextDNS integration in Home Assistant."""
+    """Set up the NextDNS integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Fake Profile",

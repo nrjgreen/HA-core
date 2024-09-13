@@ -7,10 +7,12 @@ from py17track.package import Package
 import pytest
 
 from homeassistant.components.seventeentrack.const import (
-    CONF_SHOW_ARCHIVED,
-    CONF_SHOW_DELIVERED,
     DEFAULT_SHOW_ARCHIVED,
     DEFAULT_SHOW_DELIVERED,
+)
+from homeassistant.components.seventeentrack.sensor import (
+    CONF_SHOW_ARCHIVED,
+    CONF_SHOW_DELIVERED,
 )
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 
@@ -25,8 +27,6 @@ DEFAULT_SUMMARY = {
     "Delivered": 0,
     "Returned": 0,
 }
-
-DEFAULT_SUMMARY_LENGTH = len(DEFAULT_SUMMARY)
 
 ACCOUNT_ID = "1234"
 

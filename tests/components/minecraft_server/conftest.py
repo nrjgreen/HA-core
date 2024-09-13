@@ -13,7 +13,7 @@ from tests.common import MockConfigEntry
 
 @pytest.fixture
 def java_mock_config_entry() -> MockConfigEntry:
-    """Create YouTube entry in Home Assistant."""
+    """Create YouTube entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         unique_id=None,
@@ -29,7 +29,7 @@ def java_mock_config_entry() -> MockConfigEntry:
 
 @pytest.fixture
 def bedrock_mock_config_entry() -> MockConfigEntry:
-    """Create YouTube entry in Home Assistant."""
+    """Create YouTube entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         unique_id=None,

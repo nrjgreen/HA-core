@@ -175,7 +175,7 @@ FAKE_OLD_FIRMWARE_DIMMABLE_BULB = BulbType(
 
 
 async def setup_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Mock ConfigEntry in Home Assistant."""
+    """Mock ConfigEntry in NRJHub."""
 
     entry = MockConfigEntry(
         domain=DOMAIN,

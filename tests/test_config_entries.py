@@ -4504,85 +4504,23 @@ def test_raise_trying_to_add_same_config_entry_twice(
     assert f"An entry with the id {entry.entry_id} already exists" in caplog.text
 
 
-@pytest.mark.parametrize(
-    (
-        "title",
-        "unique_id",
-        "data_vendor",
-        "options_vendor",
-        "kwargs",
-        "calls_entry_load_unload",
-    ),
-    [
-        (
-            ("Test", "Updated title"),
-            ("1234", "5678"),
-            ("data", "data2"),
-            ("options", "options2"),
-            {},
-            (2, 1),
-        ),
-        (
-            ("Test", "Test"),
-            ("1234", "1234"),
-            ("data", "data"),
-            ("options", "options"),
-            {},
-            (2, 1),
-        ),
-        (
-            ("Test", "Updated title"),
-            ("1234", "5678"),
-            ("data", "data2"),
-            ("options", "options2"),
-            {"reload_even_if_entry_is_unchanged": True},
-            (2, 1),
-        ),
-        (
-            ("Test", "Test"),
-            ("1234", "1234"),
-            ("data", "data"),
-            ("options", "options"),
-            {"reload_even_if_entry_is_unchanged": False},
-            (1, 0),
-        ),
-    ],
-    ids=[
-        "changed_entry_default",
-        "unchanged_entry_default",
-        "changed_entry_explicit_reload",
-        "changed_entry_no_reload",
-    ],
-)
 async def test_update_entry_and_reload(
-    hass: HomeAssistant,
-    manager: config_entries.ConfigEntries,
-    title: tuple[str, str],
-    unique_id: tuple[str, str],
-    data_vendor: tuple[str, str],
-    options_vendor: tuple[str, str],
-    kwargs: dict[str, Any],
-    calls_entry_load_unload: tuple[int, int],
+    hass: HomeAssistant, manager: config_entries.ConfigEntries
 ) -> None:
     """Test updating an entry and reloading."""
     entry = MockConfigEntry(
         domain="comp",
-        unique_id=unique_id[0],
-        title=title[0],
-        data={"vendor": data_vendor[0]},
-        options={"vendor": options_vendor[0]},
+        unique_id="1234",
+        title="Test",
+        data={"vendor": "data"},
+        options={"vendor": "options"},
     )
     entry.add_to_hass(hass)
 
-    comp = MockModule(
-        "comp",
-        async_setup_entry=AsyncMock(return_value=True),
-        async_unload_entry=AsyncMock(return_value=True),
+    mock_integration(
+        hass, MockModule("comp", async_setup_entry=AsyncMock(return_value=True))
     )
-    mock_integration(hass, comp)
     mock_platform(hass, "comp.config_flow", None)
-
-    await hass.config_entries.async_setup(entry.entry_id)
 
     class MockFlowHandler(config_entries.ConfigFlow):
         """Define a mock flow handler."""
@@ -4593,27 +4531,23 @@ async def test_update_entry_and_reload(
             """Mock Reauth."""
             return self.async_update_reload_and_abort(
                 entry=entry,
-                unique_id=unique_id[1],
-                title=title[1],
-                data={"vendor": data_vendor[1]},
-                options={"vendor": options_vendor[1]},
-                **kwargs,
+                unique_id="5678",
+                title="Updated Title",
+                data={"vendor": "data2"},
+                options={"vendor": "options2"},
             )
 
     with patch.dict(config_entries.HANDLERS, {"comp": MockFlowHandler}):
         task = await manager.flow.async_init("comp", context={"source": "reauth"})
         await hass.async_block_till_done()
 
-        assert entry.title == title[1]
-        assert entry.unique_id == unique_id[1]
-        assert entry.data == {"vendor": data_vendor[1]}
-        assert entry.options == {"vendor": options_vendor[1]}
+        assert entry.title == "Updated Title"
+        assert entry.unique_id == "5678"
+        assert entry.data == {"vendor": "data2"}
+        assert entry.options == {"vendor": "options2"}
         assert entry.state == config_entries.ConfigEntryState.LOADED
         assert task["type"] == FlowResultType.ABORT
         assert task["reason"] == "reauth_successful"
-        # Assert entry was reloaded
-        assert len(comp.async_setup_entry.mock_calls) == calls_entry_load_unload[0]
-        assert len(comp.async_unload_entry.mock_calls) == calls_entry_load_unload[1]
 
 
 @pytest.mark.parametrize("unique_id", [["blah", "bleh"], {"key": "value"}])
@@ -5005,7 +4939,7 @@ async def test_report_direct_mutation_of_config_entry(
 
     assert (
         f'Detected code that sets "{field}" directly to update a config entry. '
-        "This is deprecated and will stop working in Home Assistant 2024.9, "
+        "This is deprecated and will stop working in NRJHub 2024.9, "
         "it should be updated to use async_update_entry instead. Please report this issue."
     ) in caplog.text
 

@@ -188,7 +188,7 @@ class MobileAppNotificationService(BaseNotificationService):
             if "message" in result:
                 if message[-1] not in [".", "?", "!"]:
                     message += "."
-                message += " This message is generated externally to Home Assistant."
+                message += " This message is generated externally to NRJHub."
 
             if response.status == HTTPStatus.TOO_MANY_REQUESTS:
                 _LOGGER.warning(message)

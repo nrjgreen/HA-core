@@ -165,7 +165,7 @@ def register_new_device_callback(hass):
 
     async def async_create_new_entities(address):
         _LOGGER.debug(
-            "Adding new INSTEON device to Home Assistant with address %s", address
+            "Adding new INSTEON device to NRJHub with address %s", address
         )
         await devices.async_save(workdir=hass.config.config_dir)
         device = devices[address]

@@ -123,7 +123,7 @@ def get_config() -> Config:
         not parsed.integration_path
         and not pathlib.Path("requirements_all.txt").is_file()
     ):
-        raise RuntimeError("Run from Home Assistant root")
+        raise RuntimeError("Run from NRJHub root")
 
     return Config(
         root=pathlib.Path(".").absolute(),

@@ -41,7 +41,7 @@ def db_schema_30():
 
 @pytest.fixture
 def legacy_hass_history(hass_history):
-    """Home Assistant fixture to use legacy history recording."""
+    """NRJHub fixture to use legacy history recording."""
     instance = recorder.get_instance(hass_history)
     with patch.object(instance.states_meta_manager, "active", False):
         yield hass_history

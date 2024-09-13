@@ -98,7 +98,7 @@ async def test_record_lookback(hass: HomeAssistant, filename, h264_video) -> Non
 
 
 async def test_record_path_not_allowed(hass: HomeAssistant, h264_video) -> None:
-    """Test where the output path is not allowed by home assistant configuration."""
+    """Test where the output path is not allowed by NRJHub configuration."""
 
     stream = create_stream(hass, h264_video, {}, dynamic_stream_settings())
     with (

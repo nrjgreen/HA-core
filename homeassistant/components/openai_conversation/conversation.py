@@ -58,7 +58,7 @@ class OpenAIConversationEntity(
         return MATCH_ALL
 
     async def async_added_to_hass(self) -> None:
-        """When entity is added to Home Assistant."""
+        """When entity is added to NRJHub."""
         await super().async_added_to_hass()
         assist_pipeline.async_migrate_engine(
             self.hass, "conversation", self.entry.entry_id, self.entity_id
@@ -66,7 +66,7 @@ class OpenAIConversationEntity(
         conversation.async_set_agent(self.hass, self.entry, self)
 
     async def async_will_remove_from_hass(self) -> None:
-        """When entity will be removed from Home Assistant."""
+        """When entity will be removed from NRJHub."""
         conversation.async_unset_agent(self.hass, self.entry)
         await super().async_will_remove_from_hass()
 

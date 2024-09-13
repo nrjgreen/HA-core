@@ -21,7 +21,7 @@ _LOGGER = logging.getLogger(__name__)
 
 @cache
 def is_official_image() -> bool:
-    """Return True if Home Assistant is running in an official container."""
+    """Return True if NRJHub is running in an official container."""
     return os.path.isfile("/OFFICIAL_IMAGE")
 
 
@@ -72,17 +72,17 @@ async def async_get_system_info(hass: HomeAssistant) -> dict[str, Any]:
     # Determine installation type on current data
     if info_object["docker"]:
         if info_object["user"] == "root" and is_official_image():
-            info_object["installation_type"] = "Home Assistant Container"
+            info_object["installation_type"] = "NRJHub Container"
         else:
             info_object["installation_type"] = "Unsupported Third Party Container"
 
     elif is_virtual_env():
-        info_object["installation_type"] = "Home Assistant Core"
+        info_object["installation_type"] = "NRJHub Core"
 
     # Enrich with Supervisor information
     if is_hassio:
         if not (info := hassio.get_info(hass)):
-            _LOGGER.warning("No Home Assistant Supervisor info available")
+            _LOGGER.warning("No NRJHub Supervisor info available")
             info = {}
 
         host = hassio.get_host_info(hass) or {}
@@ -92,8 +92,8 @@ async def async_get_system_info(hass: HomeAssistant) -> dict[str, Any]:
         info_object["chassis"] = host.get("chassis")
 
         if info.get("hassos") is not None:
-            info_object["installation_type"] = "Home Assistant OS"
+            info_object["installation_type"] = "NRJHub OS"
         else:
-            info_object["installation_type"] = "Home Assistant Supervised"
+            info_object["installation_type"] = "NRJHub Supervised"
 
     return info_object

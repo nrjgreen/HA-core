@@ -77,7 +77,7 @@ class MediaClass(StrEnum):
     VIDEO = "video"
 
 
-# These MEDIA_CLASS_* constants are deprecated as of Home Assistant 2022.10.
+# These MEDIA_CLASS_* constants are deprecated as of NRJHub 2022.10.
 # Please use the MediaClass enum instead.
 MEDIA_CLASS_ALBUM = "album"
 MEDIA_CLASS_APP = "app"
@@ -127,7 +127,7 @@ class MediaType(StrEnum):
     VIDEO = "video"
 
 
-# These MEDIA_TYPE_* constants are deprecated as of Home Assistant 2022.10.
+# These MEDIA_TYPE_* constants are deprecated as of NRJHub 2022.10.
 # Please use the MediaType enum instead.
 MEDIA_TYPE_ALBUM = "album"
 MEDIA_TYPE_APP = "app"
@@ -167,7 +167,7 @@ class RepeatMode(StrEnum):
     ONE = "one"
 
 
-# These REPEAT_MODE_* constants are deprecated as of Home Assistant 2022.10.
+# These REPEAT_MODE_* constants are deprecated as of NRJHub 2022.10.
 # Please use the RepeatMode enum instead.
 REPEAT_MODE_ALL = "all"
 REPEAT_MODE_OFF = "off"
@@ -202,7 +202,7 @@ class MediaPlayerEntityFeature(IntFlag):
     MEDIA_ENQUEUE = 2097152
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the MediaPlayerEntityFeature enum instead.
 SUPPORT_PAUSE = 1
 SUPPORT_SEEK = 2

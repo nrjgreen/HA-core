@@ -25,7 +25,7 @@ def generate_unique_id(*args: str | int | None) -> str:
 
 
 def get_ha_unit(sl_unit) -> str:
-    """Return equivalent Home Assistant unit of measurement if exists."""
+    """Return equivalent NRJHub unit of measurement if exists."""
     if (ha_unit := SL_UNIT_TO_HA_UNIT.get(sl_unit)) is not None:
         return ha_unit
     return sl_unit

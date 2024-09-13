@@ -12,7 +12,7 @@ from .error import ExitApp, JSONDecodeErrorWithPath
 
 def get_base_arg_parser() -> argparse.ArgumentParser:
     """Get a base argument parser."""
-    parser = argparse.ArgumentParser(description="Home Assistant Translations")
+    parser = argparse.ArgumentParser(description="NRJHub Translations")
     parser.add_argument(
         "action",
         type=str,

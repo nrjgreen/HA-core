@@ -165,7 +165,7 @@ HTML5_SHOWNOTIFICATION_PARAMETERS = (
 )
 
 
-async def async_get_service(
+def get_service(
     hass: HomeAssistant,
     config: ConfigType,
     discovery_info: DiscoveryInfoType | None = None,
@@ -173,7 +173,7 @@ async def async_get_service(
     """Get the HTML5 push notification service."""
     json_path = hass.config.path(REGISTRATIONS_FILE)
 
-    registrations = await hass.async_add_executor_job(_load_config, json_path)
+    registrations = _load_config(json_path)
 
     vapid_pub_key = config[ATTR_VAPID_PUB_KEY]
     vapid_prv_key = config[ATTR_VAPID_PRV_KEY]

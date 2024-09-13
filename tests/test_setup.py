@@ -662,7 +662,7 @@ async def test_integration_disabled(
     hass: HomeAssistant, caplog: pytest.LogCaptureFixture
 ) -> None:
     """Test we can disable an integration."""
-    disabled_reason = "Dependency contains code that breaks Home Assistant"
+    disabled_reason = "Dependency contains code that breaks NRJHub"
     mock_integration(
         hass,
         MockModule("test_component1", partial_manifest={"disabled": disabled_reason}),

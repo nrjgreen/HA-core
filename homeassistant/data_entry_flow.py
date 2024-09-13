@@ -442,7 +442,7 @@ class FlowManager(abc.ABC, Generic[_FlowResultT, _HandlerT]):
                 )
             ):
                 # Tell frontend to reload the flow state.
-                self.hass.bus.async_fire_internal(
+                self.hass.bus.async_fire(
                     EVENT_DATA_ENTRY_FLOW_PROGRESSED,
                     {"handler": flow.handler, "flow_id": flow_id, "refresh": True},
                 )
@@ -522,7 +522,7 @@ class FlowManager(abc.ABC, Generic[_FlowResultT, _HandlerT]):
             report(
                 (
                     "does not use FlowResultType enum for data entry flow result type. "
-                    "This is deprecated and will stop working in Home Assistant 2022.9"
+                    "This is deprecated and will stop working in NRJHub 2022.9"
                 ),
                 error_if_core=False,
             )
@@ -805,7 +805,7 @@ class FlowHandler(Generic[_FlowResultT, _HandlerT]):
             _LOGGER.warning(
                 (
                     "%s::%s calls async_show_progress without passing a progress task, "
-                    "this is not valid and will break in Home Assistant Core 2024.8. "
+                    "this is not valid and will break in NRJHub Core 2024.8. "
                     "Please %s"
                 ),
                 cls.__module__,

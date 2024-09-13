@@ -599,6 +599,6 @@ async def test_issue_deprecated_service_calendar_list_events(
 
     assert (
         "Detected use of service 'calendar.list_events'. "
-        "This is deprecated and will stop working in Home Assistant 2024.6. "
+        "This is deprecated and will stop working in NRJHub 2024.6. "
         "Use 'calendar.get_events' instead which supports multiple entities"
     ) in caplog.text

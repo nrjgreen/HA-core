@@ -111,7 +111,7 @@ More info @ https://developers.home-assistant.io/docs/creating_integration_manif
         fields.update(
             {
                 "authentication": {
-                    "prompt": "Does Home Assistant need the user to authenticate to control the device/service? (yes/no)",
+                    "prompt": "Does NRJHub need the user to authenticate to control the device/service? (yes/no)",
                     "default": "yes",
                     **YES_NO,
                 },

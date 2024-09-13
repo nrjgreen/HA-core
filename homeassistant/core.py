@@ -1,6 +1,6 @@
-"""Core components of Home Assistant.
+"""Core components of NRJHub.
 
-Home Assistant is a Home Automation framework for observing the state
+NRJHub is a Home Automation framework for observing the state
 of entities and react to changes.
 """
 
@@ -36,6 +36,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Generic,
+    Literal,
     NotRequired,
     ParamSpec,
     Self,
@@ -85,7 +86,6 @@ from .exceptions import (
     InvalidStateError,
     MaxLengthExceeded,
     ServiceNotFound,
-    ServiceValidationError,
     Unauthorized,
 )
 from .helpers.deprecation import (
@@ -171,7 +171,7 @@ class EventStateChangedData(TypedDict):
     new_state: State | None
 
 
-# SOURCE_* are deprecated as of Home Assistant 2022.2, use ConfigSource instead
+# SOURCE_* are deprecated as of NRJHub 2022.2, use ConfigSource instead
 _DEPRECATED_SOURCE_DISCOVERED = DeprecatedConstantEnum(
     ConfigSource.DISCOVERED, "2025.1"
 )
@@ -278,24 +278,17 @@ def async_get_hass() -> HomeAssistant:
     return _hass.hass
 
 
-class ReleaseChannel(enum.StrEnum):
-    BETA = "beta"
-    DEV = "dev"
-    NIGHTLY = "nightly"
-    STABLE = "stable"
-
-
 @callback
-def get_release_channel() -> ReleaseChannel:
+def get_release_channel() -> Literal["beta", "dev", "nightly", "stable"]:
     """Find release channel based on version number."""
     version = __version__
     if "dev0" in version:
-        return ReleaseChannel.DEV
+        return "dev"
     if "dev" in version:
-        return ReleaseChannel.NIGHTLY
+        return "nightly"
     if "b" in version:
-        return ReleaseChannel.BETA
-    return ReleaseChannel.STABLE
+        return "beta"
+    return "stable"
 
 
 @enum.unique
@@ -369,7 +362,7 @@ def get_hassjob_callable_job_type(target: Callable[..., Any]) -> HassJobType:
 
 
 class CoreState(enum.Enum):
-    """Represent the current state of Home Assistant."""
+    """Represent the current state of NRJHub."""
 
     not_running = "NOT_RUNNING"
     starting = "STARTING"
@@ -384,7 +377,7 @@ class CoreState(enum.Enum):
 
 
 class HomeAssistant:
-    """Root object of the Home Assistant home automation."""
+    """Root object of the NRJHub home automation."""
 
     auth: AuthManager
     http: HomeAssistantHTTP = None  # type: ignore[assignment]
@@ -401,7 +394,7 @@ class HomeAssistant:
         return f"<HomeAssistant {self.state}>"
 
     def __init__(self, config_dir: str) -> None:
-        """Initialize new Home Assistant object."""
+        """Initialize new NRJHub object."""
         # pylint: disable-next=import-outside-toplevel
         from . import loader
 
@@ -429,20 +422,6 @@ class HomeAssistant:
             max_workers=1, thread_name_prefix="ImportExecutor"
         )
 
-    def verify_event_loop_thread(self, what: str) -> None:
-        """Report and raise if we are not running in the event loop thread."""
-        if (
-            loop_thread_ident := self.loop.__dict__.get("_thread_ident")
-        ) and loop_thread_ident != threading.get_ident():
-            from .helpers import frame  # pylint: disable=import-outside-toplevel
-
-            # frame is a circular import, so we import it here
-            frame.report(
-                f"calls {what} from a thread",
-                error_if_core=True,
-                error_if_integration=True,
-            )
-
     @property
     def _active_tasks(self) -> set[asyncio.Future[Any]]:
         """Return all active tasks.
@@ -457,12 +436,12 @@ class HomeAssistant:
 
     @cached_property
     def is_running(self) -> bool:
-        """Return if Home Assistant is running."""
+        """Return if NRJHub is running."""
         return self.state in (CoreState.starting, CoreState.running)
 
     @cached_property
     def is_stopping(self) -> bool:
-        """Return if Home Assistant is stopping."""
+        """Return if NRJHub is stopping."""
         return self.state in (CoreState.stopping, CoreState.final_write)
 
     def set_state(self, state: CoreState) -> None:
@@ -472,7 +451,7 @@ class HomeAssistant:
             self.__dict__.pop(prop, None)
 
     def start(self) -> int:
-        """Start Home Assistant.
+        """Start NRJHub.
 
         Note: This function is only used for testing.
         For regular use, use "await hass.run()".
@@ -481,7 +460,7 @@ class HomeAssistant:
         _future = asyncio.run_coroutine_threadsafe(self.async_start(), self.loop)
         # Run forever
         # Block until stopped
-        _LOGGER.info("Starting Home Assistant core loop")
+        _LOGGER.info("Starting NRJHub core loop")
         self.loop.run_forever()
         # The future is never retrieved but we still hold a reference to it
         # to prevent the task from being garbage collected prematurely.
@@ -489,14 +468,14 @@ class HomeAssistant:
         return self.exit_code
 
     async def async_run(self, *, attach_signals: bool = True) -> int:
-        """Home Assistant main entry point.
+        """NRJHub main entry point.
 
-        Start Home Assistant and block until stopped.
+        Start NRJHub and block until stopped.
 
         This method is a coroutine.
         """
         if self.state is not CoreState.not_running:
-            raise RuntimeError("Home Assistant is already running")
+            raise RuntimeError("NRJHub is already running")
 
         # _async_stop will set this instead of stopping the loop
         self._stopped = asyncio.Event()
@@ -516,11 +495,12 @@ class HomeAssistant:
 
         This method is a coroutine.
         """
-        _LOGGER.info("Starting Home Assistant")
+        _LOGGER.info("Starting NRJHub")
+        setattr(self.loop, "_thread_ident", threading.get_ident())
 
         self.set_state(CoreState.starting)
-        self.bus.async_fire_internal(EVENT_CORE_CONFIG_UPDATE)
-        self.bus.async_fire_internal(EVENT_HOMEASSISTANT_START)
+        self.bus.async_fire(EVENT_CORE_CONFIG_UPDATE)
+        self.bus.async_fire(EVENT_HOMEASSISTANT_START)
 
         if not self._tasks:
             pending: set[asyncio.Future[Any]] | None = None
@@ -532,7 +512,7 @@ class HomeAssistant:
         if pending:
             _LOGGER.warning(
                 (
-                    "Something is blocking Home Assistant from wrapping up the start up"
+                    "Something is blocking NRJHub from wrapping up the start up"
                     " phase. We're going to continue anyway. Please report the"
                     " following info at"
                     " https://github.com/home-assistant/core/issues: %s"
@@ -547,14 +527,14 @@ class HomeAssistant:
 
         if self.state is not CoreState.starting:
             _LOGGER.warning(
-                "Home Assistant startup has been interrupted. "
+                "NRJHub startup has been interrupted. "
                 "Its state may be inconsistent"
             )
             return
 
         self.set_state(CoreState.running)
-        self.bus.async_fire_internal(EVENT_CORE_CONFIG_UPDATE)
-        self.bus.async_fire_internal(EVENT_HOMEASSISTANT_STARTED)
+        self.bus.async_fire(EVENT_CORE_CONFIG_UPDATE)
+        self.bus.async_fire(EVENT_HOMEASSISTANT_STARTED)
 
     def add_job(
         self, target: Callable[[*_Ts], Any] | Coroutine[Any, Any, Any], *args: *_Ts
@@ -821,7 +801,7 @@ class HomeAssistant:
         """Create a task from within the event loop.
 
         This type of task is for background tasks that usually run for
-        the lifetime of Home Assistant or an integration's setup.
+        the lifetime of NRJHub or an integration's setup.
 
         A background task is different from a normal task:
 
@@ -1058,7 +1038,7 @@ class HomeAssistant:
         return remove_job
 
     def stop(self) -> None:
-        """Stop Home Assistant and shuts down all threads."""
+        """Stop NRJHub and shuts down all threads."""
         if self.state is CoreState.not_running:  # just ignore
             return
         # The future is never retrieved, and we only hold a reference
@@ -1068,10 +1048,10 @@ class HomeAssistant:
         )
 
     async def async_stop(self, exit_code: int = 0, *, force: bool = False) -> None:
-        """Stop Home Assistant and shuts down all threads.
+        """Stop NRJHub and shuts down all threads.
 
         The "force" flag commands async_stop to proceed regardless of
-        Home Assistant's current state. You should not set this flag
+        NRJHub's current state. You should not set this flag
         unless you're testing.
 
         This method is a coroutine.
@@ -1087,7 +1067,7 @@ class HomeAssistant:
             if self.state is CoreState.starting:
                 # This may not work
                 _LOGGER.warning(
-                    "Stopping Home Assistant before startup has completed may fail"
+                    "Stopping NRJHub before startup has completed may fail"
                 )
 
         # Stage 1 - Run shutdown jobs
@@ -1122,13 +1102,13 @@ class HomeAssistant:
         for task in self._background_tasks:
             self._tasks.add(task)
             task.add_done_callback(self._tasks.remove)
-            task.cancel("Home Assistant is stopping")
+            task.cancel("NRJHub is stopping")
         self._cancel_cancellable_timers()
 
         self.exit_code = exit_code
 
         self.set_state(CoreState.stopping)
-        self.bus.async_fire_internal(EVENT_HOMEASSISTANT_STOP)
+        self.bus.async_fire(EVENT_HOMEASSISTANT_STOP)
         try:
             async with self.timeout.async_timeout(STOP_STAGE_SHUTDOWN_TIMEOUT):
                 await self.async_block_till_done()
@@ -1141,7 +1121,7 @@ class HomeAssistant:
 
         # Stage 3 - Final write
         self.set_state(CoreState.final_write)
-        self.bus.async_fire_internal(EVENT_HOMEASSISTANT_FINAL_WRITE)
+        self.bus.async_fire(EVENT_HOMEASSISTANT_FINAL_WRITE)
         try:
             async with self.timeout.async_timeout(FINAL_WRITE_STAGE_SHUTDOWN_TIMEOUT):
                 await self.async_block_till_done()
@@ -1154,7 +1134,7 @@ class HomeAssistant:
 
         # Stage 4 - Close
         self.set_state(CoreState.not_running)
-        self.bus.async_fire_internal(EVENT_HOMEASSISTANT_CLOSE)
+        self.bus.async_fire(EVENT_HOMEASSISTANT_CLOSE)
 
         # Make a copy of running_tasks since a task can finish
         # while we are awaiting canceled tasks to get their result
@@ -1171,7 +1151,7 @@ class HomeAssistant:
                 "the stop event to prevent delaying shutdown",
                 task,
             )
-            task.cancel("Home Assistant final writes shutdown stage")
+            task.cancel("NRJHub final writes shutdown stage")
             try:
                 async with asyncio.timeout(0.1):
                     await task
@@ -1403,14 +1383,8 @@ class _OneTimeListener(Generic[_DataT]):
         return f"<_OneTimeListener {self.listener_job.target}>"
 
 
-# Empty list, used by EventBus.async_fire_internal
+# Empty list, used by EventBus._async_fire
 EMPTY_LIST: list[Any] = []
-
-
-def _verify_event_type_length_or_raise(event_type: EventType[_DataT] | str) -> None:
-    """Verify the length of the event type and raise if too long."""
-    if len(event_type) > MAX_LENGTH_EVENT_EVENT_TYPE:
-        raise MaxLengthExceeded(event_type, "event_type", MAX_LENGTH_EVENT_EVENT_TYPE)
 
 
 class EventBus:
@@ -1453,9 +1427,8 @@ class EventBus:
         context: Context | None = None,
     ) -> None:
         """Fire an event."""
-        _verify_event_type_length_or_raise(event_type)
         self._hass.loop.call_soon_threadsafe(
-            self.async_fire_internal, event_type, event_data, origin, context
+            self.async_fire, event_type, event_data, origin, context
         )
 
     @callback
@@ -1471,14 +1444,14 @@ class EventBus:
 
         This method must be run in the event loop.
         """
-        _verify_event_type_length_or_raise(event_type)
-        self._hass.verify_event_loop_thread("async_fire")
-        return self.async_fire_internal(
-            event_type, event_data, origin, context, time_fired
-        )
+        if len(event_type) > MAX_LENGTH_EVENT_EVENT_TYPE:
+            raise MaxLengthExceeded(
+                event_type, "event_type", MAX_LENGTH_EVENT_EVENT_TYPE
+            )
+        return self._async_fire(event_type, event_data, origin, context, time_fired)
 
     @callback
-    def async_fire_internal(
+    def _async_fire(
         self,
         event_type: EventType[_DataT] | str,
         event_data: _DataT | None = None,
@@ -1486,12 +1459,7 @@ class EventBus:
         context: Context | None = None,
         time_fired: float | None = None,
     ) -> None:
-        """Fire an event, for internal use only.
-
-        This method is intended to only be used by core internally
-        and should not be considered a stable API. We will make
-        breaking change to this function in the future and it
-        should not be used in integrations.
+        """Fire an event.
 
         This method must be run in the event loop.
         """
@@ -1588,7 +1556,7 @@ class EventBus:
 
             frame.report(
                 "calls `async_listen` with run_immediately, which is"
-                " deprecated and will be removed in Home Assistant 2025.5",
+                " deprecated and will be removed in NRJHub 2025.5",
                 error_if_core=False,
             )
 
@@ -1662,7 +1630,7 @@ class EventBus:
 
             frame.report(
                 "calls `async_listen_once` with run_immediately, which is "
-                "deprecated and will be removed in Home Assistant 2025.5",
+                "deprecated and will be removed in NRJHub 2025.5",
                 error_if_core=False,
             )
 
@@ -2137,7 +2105,7 @@ class StateMachine:
             "old_state": old_state,
             "new_state": None,
         }
-        self._bus.async_fire_internal(
+        self._bus._async_fire(  # pylint: disable=protected-access
             EVENT_STATE_CHANGED,
             state_changed_data,
             context=context,
@@ -2250,7 +2218,7 @@ class StateMachine:
             # mypy does not understand this is only possible if old_state is not None
             old_last_reported = old_state.last_reported  # type: ignore[union-attr]
             old_state.last_reported = now  # type: ignore[union-attr]
-            self._bus.async_fire_internal(
+            self._bus._async_fire(  # pylint: disable=protected-access
                 EVENT_STATE_REPORTED,
                 {
                     "entity_id": entity_id,
@@ -2293,7 +2261,7 @@ class StateMachine:
             "old_state": old_state,
             "new_state": state,
         }
-        self._bus.async_fire_internal(
+        self._bus._async_fire(  # pylint: disable=protected-access
             EVENT_STATE_CHANGED,
             state_changed_data,
             context=context,
@@ -2413,7 +2381,7 @@ class ServiceRegistry:
         """Return dictionary with per domain a list of available services.
 
         This method DOES NOT make a copy of the services like async_services does.
-        It is only expected to be called from the Home Assistant internals
+        It is only expected to be called from the NRJHub internals
         as a performance optimization when the caller is not going to modify the
         returned data.
 
@@ -2456,7 +2424,7 @@ class ServiceRegistry:
         """
         run_callback_threadsafe(
             self._hass.loop,
-            self._async_register,
+            self.async_register,
             domain,
             service,
             service_func,
@@ -2466,33 +2434,6 @@ class ServiceRegistry:
 
     @callback
     def async_register(
-        self,
-        domain: str,
-        service: str,
-        service_func: Callable[
-            [ServiceCall],
-            Coroutine[Any, Any, ServiceResponse | EntityServiceResponse]
-            | ServiceResponse
-            | EntityServiceResponse
-            | None,
-        ],
-        schema: vol.Schema | None = None,
-        supports_response: SupportsResponse = SupportsResponse.NONE,
-        job_type: HassJobType | None = None,
-    ) -> None:
-        """Register a service.
-
-        Schema is called to coerce and validate the service data.
-
-        This method must be run in the event loop.
-        """
-        self._hass.verify_event_loop_thread("async_register")
-        self._async_register(
-            domain, service, service_func, schema, supports_response, job_type
-        )
-
-    @callback
-    def _async_register(
         self,
         domain: str,
         service: str,
@@ -2529,27 +2470,18 @@ class ServiceRegistry:
         else:
             self._services[domain] = {service: service_obj}
 
-        self._hass.bus.async_fire_internal(
+        self._hass.bus.async_fire(
             EVENT_SERVICE_REGISTERED, {ATTR_DOMAIN: domain, ATTR_SERVICE: service}
         )
 
     def remove(self, domain: str, service: str) -> None:
         """Remove a registered service from service handler."""
         run_callback_threadsafe(
-            self._hass.loop, self._async_remove, domain, service
+            self._hass.loop, self.async_remove, domain, service
         ).result()
 
     @callback
     def async_remove(self, domain: str, service: str) -> None:
-        """Remove a registered service from service handler.
-
-        This method must be run in the event loop.
-        """
-        self._hass.verify_event_loop_thread("async_remove")
-        self._async_remove(domain, service)
-
-    @callback
-    def _async_remove(self, domain: str, service: str) -> None:
         """Remove a registered service from service handler.
 
         This method must be run in the event loop.
@@ -2566,7 +2498,7 @@ class ServiceRegistry:
         if not self._services[domain]:
             self._services.pop(domain)
 
-        self._hass.bus.async_fire_internal(
+        self._hass.bus.async_fire(
             EVENT_SERVICE_REMOVED, {ATTR_DOMAIN: domain, ATTR_SERVICE: service}
         )
 
@@ -2639,27 +2571,16 @@ class ServiceRegistry:
 
         if return_response:
             if not blocking:
-                raise ServiceValidationError(
-                    translation_domain=DOMAIN,
-                    translation_key="service_should_be_blocking",
-                    translation_placeholders={
-                        "return_response": "return_response=True",
-                        "non_blocking_argument": "blocking=False",
-                    },
+                raise ValueError(
+                    "Invalid argument return_response=True when blocking=False"
                 )
             if handler.supports_response is SupportsResponse.NONE:
-                raise ServiceValidationError(
-                    translation_domain=DOMAIN,
-                    translation_key="service_does_not_support_response",
-                    translation_placeholders={
-                        "return_response": "return_response=True"
-                    },
+                raise ValueError(
+                    "Invalid argument return_response=True when handler does not support responses"
                 )
         elif handler.supports_response is SupportsResponse.ONLY:
-            raise ServiceValidationError(
-                translation_domain=DOMAIN,
-                translation_key="service_lacks_response_request",
-                translation_placeholders={"return_response": "return_response=True"},
+            raise ValueError(
+                "Service call requires responses but caller did not ask for responses"
             )
 
         if target:
@@ -2683,7 +2604,7 @@ class ServiceRegistry:
             domain, service, processed_data, context, return_response
         )
 
-        self._hass.bus.async_fire_internal(
+        self._hass.bus._async_fire(  # pylint: disable=protected-access
             EVENT_CALL_SERVICE,
             {
                 ATTR_DOMAIN: domain,
@@ -2707,11 +2628,7 @@ class ServiceRegistry:
             return None
         if not isinstance(response_data, dict):
             raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="service_reponse_invalid",
-                translation_placeholders={
-                    "response_data_type": str(type(response_data))
-                },
+                f"Service response data expected a dictionary, was {type(response_data)}"
             )
         return response_data
 
@@ -2789,7 +2706,7 @@ class _ComponentSet(set[str]):
 
 
 class Config:
-    """Configuration settings for Home Assistant."""
+    """Configuration settings for NRJHub."""
 
     _store: Config._ConfigStore
 
@@ -2803,7 +2720,6 @@ class Config:
         self.elevation: int = 0
         """Elevation (always in meters regardless of the unit system)."""
 
-        self.debug: bool = False
         self.location_name: str = "Home"
         self.time_zone: str = "UTC"
         self.units: UnitSystem = METRIC_SYSTEM
@@ -2844,13 +2760,13 @@ class Config:
         # Dictionary of Media folders that integrations may use
         self.media_dirs: dict[str, str] = {}
 
-        # If Home Assistant is running in recovery mode
+        # If NRJHub is running in recovery mode
         self.recovery_mode: bool = False
 
         # Use legacy template behavior
         self.legacy_templates: bool = False
 
-        # If Home Assistant is running in safe mode
+        # If NRJHub is running in safe mode
         self.safe_mode: bool = False
 
     def async_initialize(self) -> None:
@@ -2861,7 +2777,7 @@ class Config:
         self._store = self._ConfigStore(self.hass)
 
     def distance(self, lat: float, lon: float) -> float | None:
-        """Calculate distance from Home Assistant.
+        """Calculate distance from NRJHub.
 
         Async friendly.
         """
@@ -2944,7 +2860,6 @@ class Config:
             "country": self.country,
             "language": self.language,
             "safe_mode": self.safe_mode,
-            "debug": self.debug,
         }
 
     def set_time_zone(self, time_zone_str: str) -> None:
@@ -3011,7 +2926,7 @@ class Config:
 
         self._update(source=ConfigSource.STORAGE, **kwargs)
         await self._async_store()
-        self.hass.bus.async_fire_internal(EVENT_CORE_CONFIG_UPDATE, kwargs)
+        self.hass.bus.async_fire(EVENT_CORE_CONFIG_UPDATE, kwargs)
 
         _raise_issue_if_historic_currency(self.hass, self.currency)
         _raise_issue_if_no_country(self.hass, self.country)

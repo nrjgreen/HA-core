@@ -64,7 +64,7 @@ def mock_expires_at() -> int:
 
 @pytest.fixture
 def webhook_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntry:
-    """Create Withings entry in Home Assistant."""
+    """Create Withings entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title=TITLE,
@@ -87,7 +87,7 @@ def webhook_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntry:
 
 @pytest.fixture
 def cloudhook_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntry:
-    """Create Withings entry in Home Assistant."""
+    """Create Withings entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title=TITLE,
@@ -111,7 +111,7 @@ def cloudhook_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntr
 
 @pytest.fixture
 def polling_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntry:
-    """Create Withings entry in Home Assistant."""
+    """Create Withings entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title=TITLE,

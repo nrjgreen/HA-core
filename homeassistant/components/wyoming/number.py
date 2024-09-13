@@ -55,7 +55,7 @@ class WyomingSatelliteAutoGainNumber(WyomingSatelliteEntity, RestoreNumber):
     _attr_native_value = 0
 
     async def async_added_to_hass(self) -> None:
-        """When entity is added to Home Assistant."""
+        """When entity is added to NRJHub."""
         await super().async_added_to_hass()
 
         state = await self.async_get_last_state()
@@ -85,7 +85,7 @@ class WyomingSatelliteVolumeMultiplierNumber(WyomingSatelliteEntity, RestoreNumb
     _attr_native_value = 1.0
 
     async def async_added_to_hass(self) -> None:
-        """When entity is added to Home Assistant."""
+        """When entity is added to NRJHub."""
         await super().async_added_to_hass()
         last_number_data = await self.async_get_last_number_data()
         if (last_number_data is not None) and (

@@ -163,7 +163,7 @@ class AbstractConfig(ABC):
 
     @abstractmethod
     def get_local_user_id(self, webhook_id):
-        """Map webhook ID to a Home Assistant user ID.
+        """Map webhook ID to a NRJHub user ID.
 
         Any action initiated by Google Assistant via the local SDK will be attributed
         to the returned user ID.
@@ -741,7 +741,7 @@ class GoogleEntity:
 
     @callback
     def async_update(self):
-        """Update the entity with latest info from Home Assistant."""
+        """Update the entity with latest info from NRJHub."""
         self.state = self.hass.states.get(self.entity_id)
 
         if self._traits is None:

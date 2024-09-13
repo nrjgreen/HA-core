@@ -167,7 +167,7 @@ async def test_generate_content_service_without_images(
     """Test generate content service."""
     stubbed_generated_content = (
         "I'm thrilled to welcome you all to the release "
-        "party for the latest version of Home Assistant!"
+        "party for the latest version of NRJHub!"
     )
 
     with patch("google.generativeai.GenerativeModel") as mock_model:
@@ -179,7 +179,7 @@ async def test_generate_content_service_without_images(
         response = await hass.services.async_call(
             "google_generative_ai_conversation",
             "generate_content",
-            {"prompt": "Write an opening speech for a Home Assistant release party"},
+            {"prompt": "Write an opening speech for a NRJHub release party"},
             blocking=True,
             return_response=True,
         )

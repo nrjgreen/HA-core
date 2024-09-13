@@ -26,7 +26,7 @@ from homeassistant.util import dt as dt_util
 
 from .const import CONF_TRACK_HOME, DOMAIN
 
-# Dedicated Home Assistant endpoint - do not change!
+# Dedicated NRJHub endpoint - do not change!
 URL = "https://aa015h6buqvih86i1.api.met.no/weatherapi/locationforecast/2.0/complete"
 
 _LOGGER = logging.getLogger(__name__)

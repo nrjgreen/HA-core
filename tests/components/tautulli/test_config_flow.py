@@ -133,7 +133,7 @@ async def test_flow_user_multiple_entries_allowed(hass: HomeAssistant) -> None:
     assert result["step_id"] == "user"
     assert result["errors"] == {}
 
-    user_input = {
+    input = {
         CONF_URL: "http://1.2.3.5:8181/test",
         CONF_API_KEY: "efgh",
         CONF_VERIFY_SSL: True,
@@ -141,13 +141,13 @@ async def test_flow_user_multiple_entries_allowed(hass: HomeAssistant) -> None:
     with patch_config_flow_tautulli(AsyncMock()):
         result2 = await hass.config_entries.flow.async_configure(
             result["flow_id"],
-            user_input=user_input,
+            user_input=input,
         )
     await hass.async_block_till_done()
 
     assert result2["type"] is FlowResultType.CREATE_ENTRY
     assert result2["title"] == NAME
-    assert result2["data"] == user_input
+    assert result2["data"] == input
 
 
 async def test_flow_reauth(

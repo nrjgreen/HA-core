@@ -60,7 +60,7 @@ async def async_get_device_diagnostics(
         "entities": [],
     }
 
-    # Gather information how this VeSync device is represented in Home Assistant
+    # Gather information how this VeSync device is represented in NRJHub
     entity_registry = er.async_get(hass)
     hass_entities = er.async_entries_for_device(
         entity_registry,

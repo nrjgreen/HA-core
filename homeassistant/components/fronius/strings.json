@@ -10,7 +10,7 @@
         }
       },
       "confirm_discovery": {
-        "description": "Do you want to add {device} to Home Assistant?"
+        "description": "Do you want to add {device} to NRJHub?"
       }
     },
     "error": {

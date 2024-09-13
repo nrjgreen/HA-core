@@ -26,7 +26,7 @@ from homeassistant.components.stream.worker import StreamState
 
 from .common import generate_h264_video, stream_teardown
 
-TEST_TIMEOUT = 7.0  # Lower than 9s home assistant timeout
+TEST_TIMEOUT = 7.0  # Lower than 9s NRJHub timeout
 
 
 class WorkerSync:

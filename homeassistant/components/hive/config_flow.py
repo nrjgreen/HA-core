@@ -39,7 +39,7 @@ class HiveFlowHandler(ConfigFlow, domain=DOMAIN):
         self.tokens = {}
         self.entry = None
         self.device_registration = False
-        self.device_name = "Home Assistant"
+        self.device_name = "NRJHub"
 
     async def async_step_user(self, user_input=None):
         """Prompt user input. Create or edit entry."""

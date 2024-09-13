@@ -232,7 +232,7 @@ class ZoneStorageCollection(collection.DictStorageCollection):
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up configured zones as well as Home Assistant zone if necessary."""
+    """Set up configured zones as well as NRJHub zone if necessary."""
     async_setup_track_zone_entity_ids(hass)
 
     component = entity_component.EntityComponent[Zone](_LOGGER, DOMAIN, hass)

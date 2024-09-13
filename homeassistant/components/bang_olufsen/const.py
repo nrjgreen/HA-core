@@ -34,7 +34,7 @@ class BangOlufsenSource(StrEnum):
 
 
 BANG_OLUFSEN_STATES: dict[str, MediaPlayerState] = {
-    # Dict used for translating device states to Home Assistant states.
+    # Dict used for translating device states to NRJHub states.
     "started": MediaPlayerState.PLAYING,
     "buffering": MediaPlayerState.PLAYING,
     "idle": MediaPlayerState.IDLE,

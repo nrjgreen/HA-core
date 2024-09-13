@@ -716,13 +716,13 @@ async def test_play_media_stopped(
 
     dmr_device_mock.construct_play_media_metadata.assert_awaited_once_with(
         media_url="http://198.51.100.20:8200/MediaItems/17621.mp3",
-        media_title="Home Assistant",
+        media_title="NRJHub",
         override_upnp_class="object.item.audioItem.musicTrack",
         meta_data={},
     )
     dmr_device_mock.async_stop.assert_awaited_once_with()
     dmr_device_mock.async_set_transport_uri.assert_awaited_once_with(
-        "http://198.51.100.20:8200/MediaItems/17621.mp3", "Home Assistant", ANY
+        "http://198.51.100.20:8200/MediaItems/17621.mp3", "NRJHub", ANY
     )
     dmr_device_mock.async_wait_for_can_play.assert_awaited_once_with()
     dmr_device_mock.async_play.assert_awaited_once_with()
@@ -750,13 +750,13 @@ async def test_play_media_playing(
 
     dmr_device_mock.construct_play_media_metadata.assert_awaited_once_with(
         media_url="http://198.51.100.20:8200/MediaItems/17621.mp3",
-        media_title="Home Assistant",
+        media_title="NRJHub",
         override_upnp_class="object.item.audioItem.musicTrack",
         meta_data={},
     )
     dmr_device_mock.async_stop.assert_not_awaited()
     dmr_device_mock.async_set_transport_uri.assert_awaited_once_with(
-        "http://198.51.100.20:8200/MediaItems/17621.mp3", "Home Assistant", ANY
+        "http://198.51.100.20:8200/MediaItems/17621.mp3", "NRJHub", ANY
     )
     dmr_device_mock.async_wait_for_can_play.assert_not_awaited()
     dmr_device_mock.async_play.assert_not_awaited()
@@ -786,13 +786,13 @@ async def test_play_media_no_autoplay(
 
     dmr_device_mock.construct_play_media_metadata.assert_awaited_once_with(
         media_url="http://198.51.100.20:8200/MediaItems/17621.mp3",
-        media_title="Home Assistant",
+        media_title="NRJHub",
         override_upnp_class="object.item.audioItem.musicTrack",
         meta_data={},
     )
     dmr_device_mock.async_stop.assert_awaited_once_with()
     dmr_device_mock.async_set_transport_uri.assert_awaited_once_with(
-        "http://198.51.100.20:8200/MediaItems/17621.mp3", "Home Assistant", ANY
+        "http://198.51.100.20:8200/MediaItems/17621.mp3", "NRJHub", ANY
     )
     dmr_device_mock.async_wait_for_can_play.assert_not_awaited()
     dmr_device_mock.async_play.assert_not_awaited()

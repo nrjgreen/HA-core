@@ -31,7 +31,7 @@ def disable_bluetooth_auto_recovery():
 
 @pytest.fixture(name="operating_system_85")
 def mock_operating_system_85():
-    """Mock running Home Assistant Operating system 8.5."""
+    """Mock running NRJHub Operating system 8.5."""
     with (
         patch("homeassistant.components.hassio.is_hassio", return_value=True),
         patch(
@@ -53,7 +53,7 @@ def mock_operating_system_85():
 
 @pytest.fixture(name="operating_system_90")
 def mock_operating_system_90():
-    """Mock running Home Assistant Operating system 9.0."""
+    """Mock running NRJHub Operating system 9.0."""
     with (
         patch("homeassistant.components.hassio.is_hassio", return_value=True),
         patch(
@@ -212,45 +212,6 @@ def two_adapters_fixture():
                     "product_id": "aa01",
                     "vendor_id": "cc01",
                     "connection_slots": 2,
-                },
-            },
-        ),
-    ):
-        yield
-
-
-@pytest.fixture(name="crashed_adapter")
-def crashed_adapter_fixture():
-    """Fixture that mocks one crashed adapter on Linux."""
-    with (
-        patch(
-            "homeassistant.components.bluetooth.platform.system",
-            return_value="Linux",
-        ),
-        patch(
-            "habluetooth.scanner.platform.system",
-            return_value="Linux",
-        ),
-        patch(
-            "bluetooth_adapters.systems.platform.system",
-            return_value="Linux",
-        ),
-        patch("habluetooth.scanner.SYSTEM", "Linux"),
-        patch(
-            "bluetooth_adapters.systems.linux.LinuxAdapters.refresh",
-        ),
-        patch(
-            "bluetooth_adapters.systems.linux.LinuxAdapters.adapters",
-            {
-                "hci0": {
-                    "address": "00:00:00:00:00:00",
-                    "hw_version": "usb:v1D6Bp0246d053F",
-                    "passive_scan": True,
-                    "sw_version": "homeassistant",
-                    "manufacturer": None,
-                    "product": None,
-                    "product_id": None,
-                    "vendor_id": None,
                 },
             },
         ),

@@ -1,4 +1,4 @@
-"""The methods for loading Home Assistant integrations.
+"""The methods for loading NRJHub integrations.
 
 This module has quite some complex parts. I have tried to add as much
 documentation as possible to keep it understandable.
@@ -90,7 +90,7 @@ class BlockedIntegration:
 
 BLOCKED_CUSTOM_INTEGRATIONS: dict[str, BlockedIntegration] = {
     # Added in 2024.3.0 because of https://github.com/home-assistant/core/issues/112464
-    "start_time": BlockedIntegration(AwesomeVersion("1.1.7"), "breaks Home Assistant")
+    "start_time": BlockedIntegration(AwesomeVersion("1.1.7"), "breaks NRJHub")
 }
 
 DATA_COMPONENTS = "components"
@@ -102,15 +102,15 @@ PACKAGE_CUSTOM_COMPONENTS = "custom_components"
 PACKAGE_BUILTIN = "homeassistant.components"
 CUSTOM_WARNING = (
     "We found a custom integration %s which has not "
-    "been tested by Home Assistant. This component might "
+    "been tested by NRJHub. This component might "
     "cause stability problems, be sure to disable it if you "
-    "experience issues with Home Assistant"
+    "experience issues with NRJHub"
 )
 IMPORT_EVENT_LOOP_WARNING = (
     "We found an integration %s which is configured to "
     "to import its code in the event loop. This component might "
     "cause stability problems, be sure to disable it if you "
-    "experience issues with Home Assistant"
+    "experience issues with NRJHub"
 )
 
 _UNDEF = object()  # Internal; not helpers.typing.UNDEFINED due to circular dependency
@@ -623,7 +623,7 @@ def async_register_preload_platform(hass: HomeAssistant, platform_name: str) -> 
 
 
 class Integration:
-    """An integration in Home Assistant."""
+    """An integration in NRJHub."""
 
     @classmethod
     def resolve_from_root(
@@ -1528,7 +1528,7 @@ class Components:
         report(
             (
                 f"accesses hass.components.{comp_name}."
-                " This is deprecated and will stop working in Home Assistant 2024.9, it"
+                " This is deprecated and will stop working in NRJHub 2024.9, it"
                 f" should be updated to import functions used from {comp_name} directly"
             ),
             error_if_core=False,
@@ -1557,7 +1557,7 @@ class Helpers:
         report(
             (
                 f"accesses hass.helpers.{helper_name}."
-                " This is deprecated and will stop working in Home Assistant 2024.11, it"
+                " This is deprecated and will stop working in NRJHub 2024.11, it"
                 f" should be updated to import functions used from {helper_name} directly"
             ),
             error_if_core=False,

@@ -106,31 +106,16 @@
   },
   "exceptions": {
     "integration_not_found": {
-      "message": "Integration \"{target}\" not found in registry."
+      "message": "Integration \"{target}\" not found in registry"
     },
     "no_path": {
       "message": "Can't write to directory {target}, no access to path!"
     },
     "cant_write": {
-      "message": "Can't write to file."
+      "message": "Can't write to file"
     },
     "not_loaded": {
-      "message": "{target} is not loaded."
-    },
-    "failed_arm": {
-      "message": "Blink failed to arm camera."
-    },
-    "failed_disarm": {
-      "message": "Blink failed to disarm camera."
-    },
-    "failed_snap": {
-      "message": "Blink failed to snap a picture."
-    },
-    "failed_arm_motion": {
-      "message": "Blink failed to arm camera motion detection."
-    },
-    "failed_disarm_motion": {
-      "message": "Blink failed to disarm camera motion detection."
+      "message": "{target} is not loaded"
     }
   },
   "issues": {
@@ -140,7 +125,7 @@
         "step": {
           "confirm": {
             "title": "[%key:component::blink::issues::service_deprecation::title%]",
-            "description": "Blink update service is deprecated and will be removed.\nPlease update your automations and scripts to use `Home Assistant Core Integration: Update entity`."
+            "description": "Blink update service is deprecated and will be removed.\nPlease update your automations and scripts to use `NRJHub Core Integration: Update entity`."
           }
         }
       }

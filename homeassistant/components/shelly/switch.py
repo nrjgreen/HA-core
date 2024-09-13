@@ -51,7 +51,7 @@ class BlockSwitchDescription(BlockEntityDescription, SwitchEntityDescription):
     """Class to describe a BLOCK switch."""
 
 
-# This entity description is deprecated and will be removed in Home Assistant 2024.7.0.
+# This entity description is deprecated and will be removed in NRJHub 2024.7.0.
 GAS_VALVE_SWITCH = BlockSwitchDescription(
     key="valve|valve",
     name="Valve",
@@ -161,7 +161,7 @@ def async_setup_rpc_entry(
 class BlockValveSwitch(ShellyBlockAttributeEntity, SwitchEntity):
     """Entity that controls a Gas Valve on Block based Shelly devices.
 
-    This class is deprecated and will be removed in Home Assistant 2024.7.0.
+    This class is deprecated and will be removed in NRJHub 2024.7.0.
     """
 
     entity_description: BlockSwitchDescription

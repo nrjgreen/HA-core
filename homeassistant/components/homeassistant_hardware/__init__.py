@@ -1,4 +1,4 @@
-"""The Home Assistant Hardware integration."""
+"""The NRJHub Hardware integration."""
 
 from __future__ import annotations
 

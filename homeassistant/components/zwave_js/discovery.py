@@ -1,4 +1,4 @@
-"""Map Z-Wave nodes and values to Home Assistant entities."""
+"""Map Z-Wave nodes and values to NRJHub entities."""
 
 from __future__ import annotations
 
@@ -116,7 +116,7 @@ class ZwaveDiscoveryInfo:
     # bool to specify whether state is assumed and events should be fired on value
     # update
     assumed_state: bool
-    # the home assistant platform for which an entity should be created
+    # the NRJHub platform for which an entity should be created
     platform: Platform
     # helper data to use in platform setup
     platform_data: Any

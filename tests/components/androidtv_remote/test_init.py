@@ -92,7 +92,7 @@ async def test_config_entry_reauth_while_reconnecting(
 async def test_disconnect_on_stop(
     hass: HomeAssistant, mock_config_entry: MockConfigEntry, mock_api: MagicMock
 ) -> None:
-    """Test we close the connection with the Android TV when Home Assistants stops."""
+    """Test we close the connection with the Android TV when NRJHubs stops."""
     mock_config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(mock_config_entry.entry_id)
     await hass.async_block_till_done()

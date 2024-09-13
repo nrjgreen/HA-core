@@ -1,4 +1,4 @@
-"""Location helpers for Home Assistant."""
+"""Location helpers for NRJHub."""
 
 from __future__ import annotations
 

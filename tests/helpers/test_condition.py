@@ -2178,12 +2178,12 @@ def _find_run_id(traces, trace_type, item_id):
 
 async def assert_automation_condition_trace(hass_ws_client, automation_id, expected):
     """Test the result of automation condition."""
-    msg_id = 1
+    id = 1
 
     def next_id():
-        nonlocal msg_id
-        msg_id += 1
-        return msg_id
+        nonlocal id
+        id += 1
+        return id
 
     client = await hass_ws_client()
 

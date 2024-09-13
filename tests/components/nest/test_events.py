@@ -471,7 +471,7 @@ async def test_structure_update_event(
         await subscriber.async_receive_event(message)
         await hass.async_block_till_done()
 
-    # No home assistant events published
+    # No NRJHub events published
     assert not events
 
     assert registry.async_get("camera.front")

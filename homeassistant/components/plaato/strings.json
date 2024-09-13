@@ -19,7 +19,7 @@
       },
       "webhook": {
         "title": "Webhook to use",
-        "description": "To send events to Home Assistant, you will need to set up the webhook feature in Plaato Airlock.\n\nFill in the following info:\n\n- URL: `{webhook_url}`\n- Method: POST\n\nSee [the documentation]({docs_url}) for further details."
+        "description": "To send events to NRJHub, you will need to set up the webhook feature in Plaato Airlock.\n\nFill in the following info:\n\n- URL: `{webhook_url}`\n- Method: POST\n\nSee [the documentation]({docs_url}) for further details."
       }
     },
     "error": {

@@ -53,8 +53,6 @@ from homeassistant.util import Throttle, dt as dt_util
 
 from .const import DOMAIN as TIBBER_DOMAIN, MANUFACTURER
 
-FIVE_YEARS = 5 * 365 * 24
-
 _LOGGER = logging.getLogger(__name__)
 
 ICON = "mdi:currency-usd"
@@ -562,7 +560,7 @@ class TibberRtDataCoordinator(DataUpdateCoordinator):  # pylint: disable=hass-en
 
     @callback
     def _handle_ha_stop(self, _event: Event) -> None:
-        """Handle Home Assistant stopping."""
+        """Handle NRJHub stopping."""
         self._async_remove_device_updates_handler()
 
     @callback
@@ -726,16 +724,9 @@ class TibberDataCoordinator(DataUpdateCoordinator[None]):  # pylint: disable=has
                         None,
                         {"sum"},
                     )
-                    if statistic_id in stat:
-                        first_stat = stat[statistic_id][0]
-                        _sum = cast(float, first_stat["sum"])
-                        last_stats_time = first_stat["start"]
-                    else:
-                        hourly_data = await home.get_historic_data(
-                            FIVE_YEARS, production=is_production
-                        )
-                        _sum = 0.0
-                        last_stats_time = None
+                    first_stat = stat[statistic_id][0]
+                    _sum = cast(float, first_stat["sum"])
+                    last_stats_time = first_stat["start"]
 
                 statistics = []
 

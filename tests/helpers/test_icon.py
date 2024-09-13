@@ -1,4 +1,4 @@
-"""Test Home Assistant icon util methods."""
+"""Test NRJHub icon util methods."""
 
 import pathlib
 from unittest.mock import Mock, patch

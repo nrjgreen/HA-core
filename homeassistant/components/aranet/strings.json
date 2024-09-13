@@ -11,7 +11,7 @@
         "description": "[%key:component::bluetooth::config::step::bluetooth_confirm::description%]"
       }
     },
-    "flow_title": "{name}",
+    "flow_title": "[%key:component::bluetooth::config::flow_title%]",
     "error": {
       "unknown": "[%key:common::config_flow::error::unknown%]"
     },

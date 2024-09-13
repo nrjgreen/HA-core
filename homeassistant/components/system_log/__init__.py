@@ -86,9 +86,9 @@ def _figure_out_source(
                 stack = stack[0 : i + 1]
                 break
         # Iterate through the stack call (in reverse) and find the last call from
-        # a file in Home Assistant. Try to figure out where error happened.
+        # a file in NRJHub. Try to figure out where error happened.
         for path, line_number in reversed(stack):
-            # Try to match with a file within Home Assistant
+            # Try to match with a file within NRJHub
             if match := paths_re.match(path):
                 return (cast(str, match.group(1)), line_number)
     else:
@@ -99,7 +99,7 @@ def _figure_out_source(
         # We do this by walking up the stack until we find the first
         # frame match the record pathname so the code below
         # can be used to reverse the remaining stack frames
-        # and find the first one that is from a file within Home Assistant.
+        # and find the first one that is from a file within NRJHub.
         #
         # We do not call traceback.extract_stack() because it is
         # it makes many stat() syscalls calls which do blocking I/O,
@@ -124,7 +124,7 @@ def _figure_out_source(
         # support other python implementations.
         #
         # Iterate through the stack call (in reverse) and find the last call from
-        # a file in Home Assistant. Try to figure out where error happened.
+        # a file in NRJHub. Try to figure out where error happened.
         while back := frame.f_back:
             if match := paths_re.match(frame.f_code.co_filename):
                 return (cast(str, match.group(1)), frame.f_lineno)

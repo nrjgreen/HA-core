@@ -39,7 +39,7 @@ class WyomingService:
             self.platforms.append(Platform.WAKE_WORD)
 
     def has_services(self) -> bool:
-        """Return True if services are installed that Home Assistant can use."""
+        """Return True if services are installed that NRJHub can use."""
         return (
             any(asr for asr in self.info.asr if asr.installed)
             or any(tts for tts in self.info.tts if tts.installed)

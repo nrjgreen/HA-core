@@ -66,7 +66,6 @@ SUPPORTED_COMPONENTS = {
     "lawn_mower",
     "light",
     "lock",
-    "notify",
     "number",
     "scene",
     "siren",

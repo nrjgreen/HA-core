@@ -113,7 +113,7 @@ class CoolMasterNetMock:
 
 @pytest.fixture
 async def load_int(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Coolmaster integration in Home Assistant."""
+    """Set up the Coolmaster integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         data={

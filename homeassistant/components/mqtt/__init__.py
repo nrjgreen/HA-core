@@ -265,9 +265,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     conf: dict[str, Any]
     mqtt_data: MqttData
 
-    async def _setup_client(
-        client_available: asyncio.Future[bool],
-    ) -> tuple[MqttData, dict[str, Any]]:
+    async def _setup_client() -> tuple[MqttData, dict[str, Any]]:
         """Set up the MQTT client."""
         # Fetch configuration
         conf = dict(entry.data)
@@ -296,7 +294,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             entry.add_update_listener(_async_config_entry_updated)
         )
 
-        await mqtt_data.client.async_connect(client_available)
+        await mqtt_data.client.async_connect()
         return (mqtt_data, conf)
 
     client_available: asyncio.Future[bool]
@@ -305,7 +303,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     else:
         client_available = hass.data[DATA_MQTT_AVAILABLE]
 
-    mqtt_data, conf = await _setup_client(client_available)
+    setup_ok: bool = False
+    try:
+        mqtt_data, conf = await _setup_client()
+        setup_ok = True
+    finally:
+        if not client_available.done():
+            client_available.set_result(setup_ok)
 
     async def async_publish_service(call: ServiceCall) -> None:
         """Handle MQTT publish service calls."""

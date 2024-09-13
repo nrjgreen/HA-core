@@ -50,10 +50,10 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 
 class HassFlickAuth(AbstractFlickAuth):
-    """Implementation of AbstractFlickAuth based on a Home Assistant entity config."""
+    """Implementation of AbstractFlickAuth based on a NRJHub entity config."""
 
     def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
-        """Flick authentication based on a Home Assistant entity config."""
+        """Flick authentication based on a NRJHub entity config."""
         super().__init__(aiohttp_client.async_get_clientsession(hass))
         self._entry = entry
         self._hass = hass

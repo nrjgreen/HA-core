@@ -3,15 +3,15 @@
 from unittest.mock import AsyncMock
 
 from aiohttp import ClientError
-from pydrawise.exceptions import NotAuthorizedError
 from pydrawise.schema import User
 import pytest
 
 from homeassistant import config_entries
 from homeassistant.components.hydrawise.const import DOMAIN
-from homeassistant.const import CONF_API_KEY, CONF_PASSWORD, CONF_USERNAME
-from homeassistant.core import HomeAssistant
+from homeassistant.const import CONF_API_KEY, CONF_SCAN_INTERVAL
+from homeassistant.core import DOMAIN as HOMEASSISTANT_DOMAIN, HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
+import homeassistant.helpers.issue_registry as ir
 
 from tests.common import MockConfigEntry
 
@@ -33,20 +33,16 @@ async def test_form(
     assert result["errors"] == {}
 
     result2 = await hass.config_entries.flow.async_configure(
-        result["flow_id"],
-        {CONF_USERNAME: "asdf@asdf.com", CONF_PASSWORD: "__password__"},
+        result["flow_id"], {"api_key": "abc123"}
     )
     mock_pydrawise.get_user.return_value = user
     await hass.async_block_till_done()
 
     assert result2["type"] is FlowResultType.CREATE_ENTRY
     assert result2["title"] == "Hydrawise"
-    assert result2["data"] == {
-        CONF_USERNAME: "asdf@asdf.com",
-        CONF_PASSWORD: "__password__",
-    }
+    assert result2["data"] == {"api_key": "abc123"}
     assert len(mock_setup_entry.mock_calls) == 1
-    mock_pydrawise.get_user.assert_called_once_with()
+    mock_pydrawise.get_user.assert_called_once_with(fetch_zones=False)
 
 
 async def test_form_api_error(
@@ -58,7 +54,7 @@ async def test_form_api_error(
     init_result = await hass.config_entries.flow.async_init(
         DOMAIN, context={"source": config_entries.SOURCE_USER}
     )
-    data = {CONF_USERNAME: "asdf@asdf.com", CONF_PASSWORD: "__password__"}
+    data = {"api_key": "abc123"}
     result = await hass.config_entries.flow.async_configure(
         init_result["flow_id"], data
     )
@@ -79,7 +75,7 @@ async def test_form_connect_timeout(
     init_result = await hass.config_entries.flow.async_init(
         DOMAIN, context={"source": config_entries.SOURCE_USER}
     )
-    data = {CONF_USERNAME: "asdf@asdf.com", CONF_PASSWORD: "__password__"}
+    data = {"api_key": "abc123"}
     result = await hass.config_entries.flow.async_configure(
         init_result["flow_id"], data
     )
@@ -93,34 +89,86 @@ async def test_form_connect_timeout(
     assert result2["type"] is FlowResultType.CREATE_ENTRY
 
 
-async def test_form_not_authorized_error(
+async def test_flow_import_success(
     hass: HomeAssistant, mock_pydrawise: AsyncMock, user: User
 ) -> None:
-    """Test we handle API errors."""
-    mock_pydrawise.get_user.side_effect = NotAuthorizedError
-
-    init_result = await hass.config_entries.flow.async_init(
-        DOMAIN, context={"source": config_entries.SOURCE_USER}
+    """Test that we can import a YAML config."""
+    mock_pydrawise.get_user.return_value = User
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": config_entries.SOURCE_IMPORT},
+        data={
+            CONF_API_KEY: "__api_key__",
+            CONF_SCAN_INTERVAL: 120,
+        },
     )
-    data = {CONF_USERNAME: "asdf@asdf.com", CONF_PASSWORD: "__password__"}
-    result = await hass.config_entries.flow.async_configure(
-        init_result["flow_id"], data
+    await hass.async_block_till_done()
+
+    assert result["type"] is FlowResultType.CREATE_ENTRY
+    assert result["title"] == "Hydrawise"
+    assert result["data"] == {
+        CONF_API_KEY: "__api_key__",
+    }
+
+    issue_registry = ir.async_get(hass)
+    issue = issue_registry.async_get_issue(
+        HOMEASSISTANT_DOMAIN, "deprecated_yaml_hydrawise"
     )
-    assert result["type"] is FlowResultType.FORM
-    assert result["errors"] == {"base": "invalid_auth"}
-
-    mock_pydrawise.get_user.reset_mock(side_effect=True)
-    mock_pydrawise.get_user.return_value = user
-    result2 = await hass.config_entries.flow.async_configure(result["flow_id"], data)
-    assert result2["type"] is FlowResultType.CREATE_ENTRY
+    assert issue.translation_key == "deprecated_yaml"
 
 
-async def test_reauth(
-    hass: HomeAssistant,
-    user: User,
-    mock_pydrawise: AsyncMock,
+async def test_flow_import_api_error(
+    hass: HomeAssistant, mock_pydrawise: AsyncMock
 ) -> None:
-    """Test that re-authorization works."""
+    """Test that we handle API errors on YAML import."""
+    mock_pydrawise.get_user.side_effect = ClientError
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": config_entries.SOURCE_IMPORT},
+        data={
+            CONF_API_KEY: "__api_key__",
+            CONF_SCAN_INTERVAL: 120,
+        },
+    )
+    await hass.async_block_till_done()
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "cannot_connect"
+
+    issue_registry = ir.async_get(hass)
+    issue = issue_registry.async_get_issue(
+        DOMAIN, "deprecated_yaml_import_issue_cannot_connect"
+    )
+    assert issue.translation_key == "deprecated_yaml_import_issue"
+
+
+async def test_flow_import_connect_timeout(
+    hass: HomeAssistant, mock_pydrawise: AsyncMock
+) -> None:
+    """Test that we handle connection timeouts on YAML import."""
+    mock_pydrawise.get_user.side_effect = TimeoutError
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": config_entries.SOURCE_IMPORT},
+        data={
+            CONF_API_KEY: "__api_key__",
+            CONF_SCAN_INTERVAL: 120,
+        },
+    )
+    await hass.async_block_till_done()
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "timeout_connect"
+
+    issue_registry = ir.async_get(hass)
+    issue = issue_registry.async_get_issue(
+        DOMAIN, "deprecated_yaml_import_issue_timeout_connect"
+    )
+    assert issue.translation_key == "deprecated_yaml_import_issue"
+
+
+async def test_flow_import_already_imported(
+    hass: HomeAssistant, mock_pydrawise: AsyncMock, user: User
+) -> None:
+    """Test that we can handle a YAML config already imported."""
     mock_config_entry = MockConfigEntry(
         title="Hydrawise",
         domain=DOMAIN,
@@ -131,20 +179,23 @@ async def test_reauth(
     )
     mock_config_entry.add_to_hass(hass)
 
-    mock_config_entry.async_start_reauth(hass)
-    await hass.async_block_till_done()
-
-    flows = hass.config_entries.flow.async_progress()
-    assert len(flows) == 1
-    [result] = flows
-    assert result["step_id"] == "user"
-
-    result2 = await hass.config_entries.flow.async_configure(
-        result["flow_id"],
-        {CONF_USERNAME: "asdf@asdf.com", CONF_PASSWORD: "__password__"},
-    )
     mock_pydrawise.get_user.return_value = user
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": config_entries.SOURCE_IMPORT},
+        data={
+            CONF_API_KEY: "__api_key__",
+            CONF_SCAN_INTERVAL: 120,
+        },
+    )
     await hass.async_block_till_done()
 
-    assert result2["type"] is FlowResultType.ABORT
-    assert result2["reason"] == "reauth_successful"
+    assert result["type"] is FlowResultType.ABORT
+    assert result.get("reason") == "already_configured"
+
+    issue_registry = ir.async_get(hass)
+    issue = issue_registry.async_get_issue(
+        HOMEASSISTANT_DOMAIN, "deprecated_yaml_hydrawise"
+    )
+    assert issue.translation_key == "deprecated_yaml"

@@ -40,7 +40,7 @@
         "description": "The ESPHome device {name} enabled transport encryption or changed the encryption key. Please enter the updated key. You can find it in the ESPHome Dashboard or in your device configuration."
       },
       "discovery_confirm": {
-        "description": "Do you want to add the ESPHome node `{name}` to Home Assistant?",
+        "description": "Do you want to add the ESPHome node `{name}` to NRJHub?",
         "title": "Discovered ESPHome node"
       }
     },
@@ -50,7 +50,7 @@
     "step": {
       "init": {
         "data": {
-          "allow_service_calls": "Allow the device to make Home Assistant service calls."
+          "allow_service_calls": "Allow the device to make NRJHub service calls."
         }
       }
     }
@@ -99,8 +99,8 @@
       "description": "The API password for ESPHome is deprecated and the use of an API encryption key is recommended instead.\n\nRemove the API password and add an encryption key to your ESPHome device to resolve this issue."
     },
     "service_calls_not_allowed": {
-      "title": "{name} is not permitted to call Home Assistant services",
-      "description": "The ESPHome device attempted to make a Home Assistant service call, but this functionality is not enabled.\n\nIf you trust this device and want to allow it to make Home Assistant service calls, you can enable this functionality in the options flow."
+      "title": "{name} is not permitted to call NRJHub services",
+      "description": "The ESPHome device attempted to make a NRJHub service call, but this functionality is not enabled.\n\nIf you trust this device and want to allow it to make NRJHub service calls, you can enable this functionality in the options flow."
     }
   }
 }

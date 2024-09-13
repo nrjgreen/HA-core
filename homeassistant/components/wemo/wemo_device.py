@@ -1,4 +1,4 @@
-"""Home Assistant wrapper for a pyWeMo device."""
+"""NRJHub wrapper for a pyWeMo device."""
 
 from __future__ import annotations
 
@@ -88,7 +88,7 @@ class Options:
 
 
 class DeviceCoordinator(DataUpdateCoordinator[None]):  # pylint: disable=hass-enforce-coordinator-module
-    """Home Assistant wrapper for a pyWeMo device."""
+    """NRJHub wrapper for a pyWeMo device."""
 
     options: Options | None = None
 
@@ -214,7 +214,7 @@ class DeviceCoordinator(DataUpdateCoordinator[None]):  # pylint: disable=hass-en
         """Return True if polling is needed to update the state for the device.
 
         The alternative, when this returns False, is to rely on the subscription
-        "push updates" to update the device state in Home Assistant.
+        "push updates" to update the device state in NRJHub.
         """
         if isinstance(self.wemo, Insight) and self.wemo.get_state() == 0:
             # The WeMo Insight device does not send subscription updates for the
@@ -276,7 +276,7 @@ def _device_info(wemo: WeMoDevice) -> DeviceInfo:
 async def async_register_device(
     hass: HomeAssistant, config_entry: ConfigEntry, wemo: WeMoDevice
 ) -> DeviceCoordinator:
-    """Register a device with home assistant and enable pywemo event callbacks."""
+    """Register a device with NRJHub and enable pywemo event callbacks."""
     device = DeviceCoordinator(hass, wemo)
     await device.async_refresh()
     if not device.last_update_success and device.last_exception:

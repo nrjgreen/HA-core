@@ -76,7 +76,7 @@ SHUTDOWN_SERVICES = (SERVICE_HOMEASSISTANT_STOP, SERVICE_HOMEASSISTANT_RESTART)
 
 
 async def async_setup(hass: ha.HomeAssistant, config: ConfigType) -> bool:  # noqa: C901
-    """Set up general services related to Home Assistant."""
+    """Set up general services related to NRJHub."""
 
     async def async_save_persistent_states(service: ha.ServiceCall) -> None:
         """Handle calls to homeassistant.save_persistent_states."""
@@ -383,7 +383,7 @@ async def async_setup(hass: ha.HomeAssistant, config: ConfigType) -> bool:  # no
 
 
 async def _async_stop(hass: ha.HomeAssistant, restart: bool) -> None:
-    """Stop home assistant."""
+    """Stop NRJHub."""
     exit_code = RESTART_EXIT_CODE if restart else 0
     # Track trask in hass.data. No need to cleanup, we're stopping.
     hass.data["homeassistant_stop"] = asyncio.create_task(hass.async_stop(exit_code))

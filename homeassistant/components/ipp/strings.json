@@ -4,7 +4,7 @@
     "step": {
       "user": {
         "title": "Link your printer",
-        "description": "Set up your printer via Internet Printing Protocol (IPP) to integrate with Home Assistant.",
+        "description": "Set up your printer via Internet Printing Protocol (IPP) to integrate with NRJHub.",
         "data": {
           "host": "[%key:common::config_flow::data::host%]",
           "port": "[%key:common::config_flow::data::port%]",

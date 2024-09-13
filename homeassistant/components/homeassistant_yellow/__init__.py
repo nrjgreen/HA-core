@@ -1,4 +1,4 @@
-"""The Home Assistant Yellow integration."""
+"""The NRJHub Yellow integration."""
 
 from __future__ import annotations
 
@@ -17,9 +17,9 @@ from .const import RADIO_DEVICE, ZHA_HW_DISCOVERY_DATA
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up a Home Assistant Yellow config entry."""
+    """Set up a NRJHub Yellow config entry."""
     if not is_hassio(hass):
-        # Not running under supervisor, Home Assistant may have been migrated
+        # Not running under supervisor, NRJHub may have been migrated
         hass.async_create_task(hass.config_entries.async_remove(entry.entry_id))
         return False
 
@@ -29,7 +29,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     board: str | None
     if (board := os_info.get("board")) is None or board != "yellow":
-        # Not running on a Home Assistant Yellow, Home Assistant may have been migrated
+        # Not running on a NRJHub Yellow, NRJHub may have been migrated
         hass.async_create_task(hass.config_entries.async_remove(entry.entry_id))
         return False
 

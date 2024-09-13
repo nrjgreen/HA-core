@@ -2,11 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Hydrawise Login",
-        "description": "Please provide the username and password for your Hydrawise cloud account:",
         "data": {
-          "username": "[%key:common::config_flow::data::username%]",
-          "password": "[%key:common::config_flow::data::password%]"
+          "api_key": "[%key:common::config_flow::data::api_key%]"
         }
       }
     },
@@ -16,8 +13,13 @@
       "unknown": "[%key:common::config_flow::error::unknown%]"
     },
     "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_service%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]"
+      "already_configured": "[%key:common::config_flow::abort::already_configured_service%]"
+    }
+  },
+  "issues": {
+    "deprecated_yaml_import_issue": {
+      "title": "The Hydrawise YAML configuration import failed",
+      "description": "Configuring Hydrawise using YAML is being removed but there was an {error_type} error importing your YAML configuration.\n\nEnsure connection to Hydrawise works and restart NRJHub to try again or remove the Hydrawise YAML configuration from your configuration.yaml file and continue to [set up the integration]({url}) manually."
     }
   },
   "entity": {

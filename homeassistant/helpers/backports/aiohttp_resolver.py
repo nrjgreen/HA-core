@@ -1,4 +1,4 @@
-"""Backport of aiohttp's AsyncResolver for Home Assistant.
+"""Backport of aiohttp's AsyncResolver for NRJHub.
 
 This is a backport of the AsyncResolver class from aiohttp 3.10.
 

@@ -54,7 +54,7 @@ def mock_api_call(cmd: str, fetch_data: bool = False) -> dict[str, Any]:
 
 
 async def async_init_integration(hass: HomeAssistant):
-    """Set up the AEMET OpenData integration in Home Assistant."""
+    """Set up the AEMET OpenData integration in NRJHub."""
 
     config_entry = MockConfigEntry(
         domain=DOMAIN,

@@ -15,7 +15,7 @@ CONF_DATA = {
 
 
 def create_entry(hass: HomeAssistant):
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         unique_id="c0715bba-c2d0-48ef-9e3e-bc81c9ea4447",
@@ -30,7 +30,7 @@ async def init_integration(
     aioclient_mock: AiohttpClientMocker,
     skip_setup: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Agent DVR integration in Home Assistant."""
+    """Set up the Agent DVR integration in NRJHub."""
 
     aioclient_mock.get(
         "http://example.local:8090/command.cgi?cmd=getStatus",

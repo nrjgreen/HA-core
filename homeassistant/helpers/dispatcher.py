@@ -1,4 +1,4 @@
-"""Helpers for Home Assistant dispatcher & internal component/platform."""
+"""Helpers for NRJHub dispatcher & internal component/platform."""
 
 from __future__ import annotations
 
@@ -7,12 +7,7 @@ from functools import partial
 import logging
 from typing import Any, TypeVarTuple, overload
 
-from homeassistant.core import (
-    HassJob,
-    HomeAssistant,
-    callback,
-    get_hassjob_callable_job_type,
-)
+from homeassistant.core import HassJob, HomeAssistant, callback
 from homeassistant.loader import bind_hass
 from homeassistant.util.async_ import run_callback_threadsafe
 from homeassistant.util.logging import catch_log_exception
@@ -166,13 +161,9 @@ def _generate_job(
     signal: SignalType[*_Ts] | str, target: Callable[[*_Ts], Any] | Callable[..., Any]
 ) -> HassJob[..., None | Coroutine[Any, Any, None]]:
     """Generate a HassJob for a signal and target."""
-    job_type = get_hassjob_callable_job_type(target)
     return HassJob(
-        catch_log_exception(
-            target, partial(_format_err, signal, target), job_type=job_type
-        ),
+        catch_log_exception(target, partial(_format_err, signal, target)),
         f"dispatcher {signal}",
-        job_type=job_type,
     )
 
 
@@ -199,9 +190,6 @@ def async_dispatcher_send(
 
     This method must be run in the event loop.
     """
-    if hass.config.debug:
-        hass.verify_event_loop_thread("async_dispatcher_send")
-
     if (maybe_dispatchers := hass.data.get(DATA_DISPATCHER)) is None:
         return
     dispatchers: _DispatcherDataType[*_Ts] = maybe_dispatchers

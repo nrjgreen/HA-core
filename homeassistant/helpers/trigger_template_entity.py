@@ -158,7 +158,7 @@ class TriggerBaseEntity(Entity):
         return self._rendered.get(CONF_ATTRIBUTES)
 
     async def async_added_to_hass(self) -> None:
-        """Handle being added to Home Assistant."""
+        """Handle being added to NRJHub."""
         await super().async_added_to_hass()
         template_attach(self.hass, self._config)
 

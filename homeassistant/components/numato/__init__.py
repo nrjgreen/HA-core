@@ -157,7 +157,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
             hass.data[DOMAIN][DATA_API].ports_registered.clear()
 
     def prepare_gpio(event):
-        """Stuff to do when home assistant starts."""
+        """Stuff to do when NRJHub starts."""
         _LOGGER.debug("Setup cleanup at stop for Numato GPIO")
         hass.bus.listen_once(EVENT_HOMEASSISTANT_STOP, cleanup_gpio)
 

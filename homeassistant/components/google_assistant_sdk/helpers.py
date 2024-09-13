@@ -106,7 +106,7 @@ async def async_send_text_commands(
 
 
 def default_language_code(hass: HomeAssistant) -> str:
-    """Get default language code based on Home Assistant config."""
+    """Get default language code based on NRJHub config."""
     language_code = f"{hass.config.language}-{hass.config.country}"
     if language_code in SUPPORTED_LANGUAGE_CODES:
         return language_code

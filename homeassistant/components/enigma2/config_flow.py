@@ -8,6 +8,7 @@ from openwebif.error import InvalidAuthError
 import voluptuous as vol
 from yarl import URL
 
+from homeassistant.components.homeassistant import DOMAIN as HOMEASSISTANT_DOMAIN
 from homeassistant.config_entries import SOURCE_USER, ConfigFlow, ConfigFlowResult
 from homeassistant.const import (
     CONF_HOST,
@@ -17,7 +18,6 @@ from homeassistant.const import (
     CONF_USERNAME,
     CONF_VERIFY_SSL,
 )
-from homeassistant.core import DOMAIN as HOMEASSISTANT_DOMAIN
 from homeassistant.helpers import selector
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.issue_registry import IssueSeverity, async_create_issue
@@ -68,12 +68,17 @@ class Enigma2ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
     )
     OPTIONS_KEYS = (CONF_DEEP_STANDBY, CONF_SOURCE_BOUQUET, CONF_USE_CHANNEL_ICON)
 
-    async def validate_user_input(
-        self, user_input: dict[str, Any]
-    ) -> dict[str, str] | None:
+    def __init__(self) -> None:
+        """Initialize the config flow."""
+        super().__init__()
+        self.errors: dict[str, str] = {}
+        self._data: dict[str, Any] = {}
+        self._options: dict[str, Any] = {}
+
+    async def validate_user_input(self, user_input: dict[str, Any]) -> dict[str, Any]:
         """Validate user input."""
 
-        errors = None
+        self.errors = {}
 
         self._async_abort_entries_match({CONF_HOST: user_input[CONF_HOST]})
 
@@ -92,16 +97,16 @@ class Enigma2ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
         try:
             about = await OpenWebIfDevice(session).get_about()
         except InvalidAuthError:
-            errors = {"base": "invalid_auth"}
+            self.errors["base"] = "invalid_auth"
         except ClientError:
-            errors = {"base": "cannot_connect"}
+            self.errors["base"] = "cannot_connect"
         except Exception:  # pylint: disable=broad-except
-            errors = {"base": "unknown"}
+            self.errors["base"] = "unknown"
         else:
             await self.async_set_unique_id(about["info"]["ifaces"][0]["mac"])
             self._abort_if_unique_id_configured()
 
-        return errors
+        return user_input
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
@@ -110,40 +115,22 @@ class Enigma2ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
         if user_input is None:
             return self.async_show_form(step_id=SOURCE_USER, data_schema=CONFIG_SCHEMA)
 
-        if errors := await self.validate_user_input(user_input):
+        data = await self.validate_user_input(user_input)
+        if "base" in self.errors:
             return self.async_show_form(
-                step_id=SOURCE_USER, data_schema=CONFIG_SCHEMA, errors=errors
+                step_id=SOURCE_USER, data_schema=CONFIG_SCHEMA, errors=self.errors
             )
-        return self.async_create_entry(data=user_input, title=user_input[CONF_HOST])
+        return self.async_create_entry(
+            data=data, title=data[CONF_HOST], options=self._options
+        )
 
     async def async_step_import(self, user_input: dict[str, Any]) -> ConfigFlowResult:
-        """Handle the import step."""
+        """Validate import."""
         if CONF_PORT not in user_input:
             user_input[CONF_PORT] = DEFAULT_PORT
         if CONF_SSL not in user_input:
             user_input[CONF_SSL] = DEFAULT_SSL
         user_input[CONF_VERIFY_SSL] = DEFAULT_VERIFY_SSL
-
-        data = {key: user_input[key] for key in user_input if key in self.DATA_KEYS}
-        options = {
-            key: user_input[key] for key in user_input if key in self.OPTIONS_KEYS
-        }
-
-        if errors := await self.validate_user_input(user_input):
-            async_create_issue(
-                self.hass,
-                DOMAIN,
-                f"deprecated_yaml_{DOMAIN}_import_issue_{errors["base"]}",
-                breaks_in_ha_version="2024.11.0",
-                is_fixable=False,
-                issue_domain=DOMAIN,
-                severity=IssueSeverity.WARNING,
-                translation_key=f"deprecated_yaml_import_issue_{errors["base"]}",
-                translation_placeholders={
-                    "url": "/config/integrations/dashboard/add?domain=enigma2"
-                },
-            )
-            return self.async_abort(reason=errors["base"])
 
         async_create_issue(
             self.hass,
@@ -160,6 +147,12 @@ class Enigma2ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
                 "integration_title": "Enigma2",
             },
         )
-        return self.async_create_entry(
-            data=data, title=data[CONF_HOST], options=options
-        )
+
+        self._data = {
+            key: user_input[key] for key in user_input if key in self.DATA_KEYS
+        }
+        self._options = {
+            key: user_input[key] for key in user_input if key in self.OPTIONS_KEYS
+        }
+
+        return await self.async_step_user(self._data)

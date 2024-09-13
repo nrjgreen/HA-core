@@ -217,7 +217,7 @@ async def async_create_backup(
 @bind_hass
 @api_data
 async def async_update_os(hass: HomeAssistant, version: str | None = None) -> dict:
-    """Update Home Assistant Operating System.
+    """Update NRJHub Operating System.
 
     The caller of the function should handle HassioAPIError.
     """
@@ -233,7 +233,7 @@ async def async_update_os(hass: HomeAssistant, version: str | None = None) -> di
 @bind_hass
 @api_data
 async def async_update_supervisor(hass: HomeAssistant) -> dict:
-    """Update Home Assistant Supervisor.
+    """Update NRJHub Supervisor.
 
     The caller of the function should handle HassioAPIError.
     """
@@ -247,7 +247,7 @@ async def async_update_supervisor(hass: HomeAssistant) -> dict:
 async def async_update_core(
     hass: HomeAssistant, version: str | None = None, backup: bool = False
 ) -> dict:
-    """Update Home Assistant Core.
+    """Update NRJHub Core.
 
     The caller of the function should handle HassioAPIError.
     """
@@ -271,7 +271,7 @@ async def async_apply_suggestion(hass: HomeAssistant, suggestion_uuid: str) -> d
 
 @api_data
 async def async_get_green_settings(hass: HomeAssistant) -> dict[str, bool]:
-    """Return settings specific to Home Assistant Green."""
+    """Return settings specific to NRJHub Green."""
     hassio: HassIO = hass.data[DOMAIN]
     return await hassio.send_command("/os/boards/green", method="get")
 
@@ -280,7 +280,7 @@ async def async_get_green_settings(hass: HomeAssistant) -> dict[str, bool]:
 async def async_set_green_settings(
     hass: HomeAssistant, settings: dict[str, bool]
 ) -> dict:
-    """Set settings specific to Home Assistant Green.
+    """Set settings specific to NRJHub Green.
 
     Returns an empty dict.
     """
@@ -292,7 +292,7 @@ async def async_set_green_settings(
 
 @api_data
 async def async_get_yellow_settings(hass: HomeAssistant) -> dict[str, bool]:
-    """Return settings specific to Home Assistant Yellow."""
+    """Return settings specific to NRJHub Yellow."""
     hassio: HassIO = hass.data[DOMAIN]
     return await hassio.send_command("/os/boards/yellow", method="get")
 
@@ -301,7 +301,7 @@ async def async_get_yellow_settings(hass: HomeAssistant) -> dict[str, bool]:
 async def async_set_yellow_settings(
     hass: HomeAssistant, settings: dict[str, bool]
 ) -> dict:
-    """Set settings specific to Home Assistant Yellow.
+    """Set settings specific to NRJHub Yellow.
 
     Returns an empty dict.
     """
@@ -505,7 +505,7 @@ class HassIO:
     async def update_hass_api(
         self, http_config: dict[str, Any], refresh_token: RefreshToken
     ):
-        """Update Home Assistant API data on Hass.io."""
+        """Update NRJHub API data on Hass.io."""
         port = http_config.get(CONF_SERVER_PORT) or SERVER_PORT
         options = {
             "ssl": CONF_SSL_CERTIFICATE in http_config,

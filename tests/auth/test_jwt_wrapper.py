@@ -1,4 +1,4 @@
-"""Tests for the Home Assistant auth jwt_wrapper module."""
+"""Tests for the NRJHub auth jwt_wrapper module."""
 
 import jwt
 import pytest

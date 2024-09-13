@@ -32,7 +32,7 @@ async def init_integration(
     has_hourly_forecast: bool = True,
     has_daily_forecast: bool = True,
 ) -> MockConfigEntry:
-    """Set up the WeatherKit integration in Home Assistant."""
+    """Set up the WeatherKit integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Home",

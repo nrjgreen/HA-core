@@ -30,7 +30,7 @@ class SirenEntityFeature(IntFlag):
     DURATION = 16
 
 
-# These constants are deprecated as of Home Assistant 2022.5
+# These constants are deprecated as of NRJHub 2022.5
 # Please use the SirenEntityFeature enum instead.
 _DEPRECATED_SUPPORT_TURN_ON: Final = DeprecatedConstantEnum(
     SirenEntityFeature.TURN_ON, "2025.1"

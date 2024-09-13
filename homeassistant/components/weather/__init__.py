@@ -1026,7 +1026,7 @@ async def async_get_forecast_service(
     """
     _LOGGER.warning(
         "Detected use of service 'weather.get_forecast'. "
-        "This is deprecated and will stop working in Home Assistant 2024.6. "
+        "This is deprecated and will stop working in NRJHub 2024.6. "
         "Use 'weather.get_forecasts' instead which supports multiple entities",
     )
     ir.async_create_issue(

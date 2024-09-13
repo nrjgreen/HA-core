@@ -21,7 +21,7 @@ SUPERVISOR_NETWORK_HOST = "homeassistant"
 
 
 class NoURLAvailableError(HomeAssistantError):
-    """An URL to the Home Assistant instance is not available."""
+    """An URL to the NRJHub instance is not available."""
 
 
 @bind_hass
@@ -40,7 +40,7 @@ def is_internal_request(hass: HomeAssistant) -> bool:
 def get_supervisor_network_url(
     hass: HomeAssistant, *, allow_ssl: bool = False
 ) -> str | None:
-    """Get URL for home assistant within supervisor network."""
+    """Get URL for NRJHub within supervisor network."""
     # Local import to avoid circular dependencies
     # pylint: disable-next=import-outside-toplevel
     from homeassistant.components.hassio import is_hassio
@@ -66,7 +66,7 @@ def get_supervisor_network_url(
 
 
 def is_hass_url(hass: HomeAssistant, url: str) -> bool:
-    """Return if the URL points at this Home Assistant instance."""
+    """Return if the URL points at this NRJHub instance."""
     parsed = yarl.URL(url)
 
     if not parsed.is_absolute():
@@ -122,7 +122,6 @@ def get_url(
     require_current_request: bool = False,
     require_ssl: bool = False,
     require_standard_port: bool = False,
-    require_cloud: bool = False,
     allow_internal: bool = True,
     allow_external: bool = True,
     allow_cloud: bool = True,
@@ -146,7 +145,7 @@ def get_url(
 
     # Try finding an URL in the order specified
     for url_type in order:
-        if allow_internal and url_type == TYPE_URL_INTERNAL and not require_cloud:
+        if allow_internal and url_type == TYPE_URL_INTERNAL:
             with suppress(NoURLAvailableError):
                 return _get_internal_url(
                     hass,
@@ -156,7 +155,7 @@ def get_url(
                     require_standard_port=require_standard_port,
                 )
 
-        if require_cloud or (allow_external and url_type == TYPE_URL_EXTERNAL):
+        if allow_external and url_type == TYPE_URL_EXTERNAL:
             with suppress(NoURLAvailableError):
                 return _get_external_url(
                     hass,
@@ -166,10 +165,7 @@ def get_url(
                     require_current_request=require_current_request,
                     require_ssl=require_ssl,
                     require_standard_port=require_standard_port,
-                    require_cloud=require_cloud,
                 )
-            if require_cloud:
-                raise NoURLAvailableError
 
     # For current request, we accept loopback interfaces (e.g., 127.0.0.1),
     # the Supervisor hostname and localhost transparently
@@ -267,12 +263,8 @@ def _get_external_url(
     require_current_request: bool = False,
     require_ssl: bool = False,
     require_standard_port: bool = False,
-    require_cloud: bool = False,
 ) -> str:
     """Get external URL of this instance."""
-    if require_cloud:
-        return _get_cloud_url(hass, require_current_request=require_current_request)
-
     if prefer_cloud and allow_cloud:
         with suppress(NoURLAvailableError):
             return _get_cloud_url(hass)
@@ -304,7 +296,7 @@ def _get_external_url(
 
 @bind_hass
 def _get_cloud_url(hass: HomeAssistant, require_current_request: bool = False) -> str:
-    """Get external Home Assistant Cloud URL of this instance."""
+    """Get external NRJHub Cloud URL of this instance."""
     if "cloud" in hass.config.components:
         # Local import to avoid circular dependencies
         # pylint: disable-next=import-outside-toplevel

@@ -393,7 +393,7 @@ async def async_log_error_from_test_path(hass, path, watcher):
 async def test_homeassistant_path(
     hass: HomeAssistant, hass_ws_client: WebSocketGenerator
 ) -> None:
-    """Test error logged from Home Assistant path."""
+    """Test error logged from NRJHub path."""
 
     with patch(
         "homeassistant.components.system_log.HOMEASSISTANT_PATH",
@@ -454,7 +454,7 @@ async def test__figure_out_source(hass: HomeAssistant) -> None:
     """Test that source is figured out correctly.
 
     We have to test this directly for exception tracebacks since
-    we cannot generate a trackback from a Home Assistant component
+    we cannot generate a trackback from a NRJHub component
     in a test because the test is not a component.
     """
     try:

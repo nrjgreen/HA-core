@@ -29,7 +29,7 @@
           "port": "Port of the KNX/IP tunneling device.",
           "host": "IP address or hostname of the KNX/IP tunneling device.",
           "route_back": "Enable if your KNXnet/IP tunneling server is behind NAT. Only applies for UDP connections.",
-          "local_ip": "Local IP or interface name used for the connection from Home Assistant. Leave blank to use auto-discovery."
+          "local_ip": "Local IP or interface name used for the connection from NRJHub. Leave blank to use auto-discovery."
         }
       },
       "secure_key_source_menu_tunnel": {
@@ -103,7 +103,7 @@
           "local_ip": "[%key:component::knx::config::step::manual_tunnel::data::local_ip%]"
         },
         "data_description": {
-          "individual_address": "KNX address to be used by Home Assistant, e.g. `0.0.4`",
+          "individual_address": "KNX address to be used by NRJHub, e.g. `0.0.4`",
           "local_ip": "[%key:component::knx::config::step::manual_tunnel::data_description::local_ip%]"
         }
       }
@@ -140,7 +140,7 @@
           "telegram_log_size": "Telegram history limit"
         },
         "data_description": {
-          "state_updater": "Set default for reading states from the KNX Bus. When disabled, Home Assistant will not actively retrieve entity states from the KNX Bus. Can be overridden by `sync_state` entity options.",
+          "state_updater": "Set default for reading states from the KNX Bus. When disabled, NRJHub will not actively retrieve entity states from the KNX Bus. Can be overridden by `sync_state` entity options.",
           "rate_limit": "Maximum outgoing telegrams per second.\n`0` to disable limit. Recommended: 0 or 20 to 40",
           "telegram_log_size": "Telegrams to keep in memory for KNX panel group monitor. Maximum: {telegram_log_size_max}"
         }
@@ -383,19 +383,6 @@
     "reload": {
       "name": "[%key:common::action::reload%]",
       "description": "Reloads the KNX integration."
-    }
-  },
-  "issues": {
-    "migrate_notify": {
-      "title": "Migration of KNX notify service",
-      "fix_flow": {
-        "step": {
-          "confirm": {
-            "description": "The KNX `notify` service has been migrated. New `notify` entities are available now.\n\nUpdate any automations to use the new `notify.send_message` exposed by these new entities. When this is done, fix this issue and restart Home Assistant.",
-            "title": "Disable legacy KNX notify service"
-          }
-        }
-      }
     }
   }
 }

@@ -31,7 +31,7 @@ async def test_failing_setups_no_entities(
 
 
 async def test_regular_hass_operations(hass: HomeAssistant, numato_fixture) -> None:
-    """Test regular operations from within Home Assistant."""
+    """Test regular operations from within NRJHub."""
     assert await async_setup_component(hass, "numato", NUMATO_CFG)
     await hass.async_block_till_done()  # wait until services are registered
     await hass.services.async_call(
@@ -71,7 +71,7 @@ async def test_regular_hass_operations(hass: HomeAssistant, numato_fixture) -> N
 async def test_failing_hass_operations(
     hass: HomeAssistant, numato_fixture, monkeypatch
 ) -> None:
-    """Test failing operations called from within Home Assistant.
+    """Test failing operations called from within NRJHub.
 
     Switches remain in their initial 'off' state when the device can't
     be written to.

@@ -14,7 +14,7 @@ class HaZeroconf(Zeroconf):
 
 
 class HaAsyncZeroconf(AsyncZeroconf):
-    """Home Assistant version of AsyncZeroconf."""
+    """NRJHub version of AsyncZeroconf."""
 
     async def async_close(self) -> None:
         """Fake method to avoid integrations closing it."""

@@ -57,7 +57,7 @@ async def test_api_date_time_event(
     """Test an event with a start/end date time.
 
     Events created in various timezones are ultimately returned relative
-    to local home assistant timezone.
+    to local NRJHub timezone.
     """
     client = await ws_client()
     await client.cmd_result(

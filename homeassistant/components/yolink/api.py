@@ -1,4 +1,4 @@
-"""API for yolink bound to Home Assistant OAuth."""
+"""API for yolink bound to NRJHub OAuth."""
 
 from aiohttp import ClientSession
 from yolink.auth_mgr import YoLinkAuthMgr

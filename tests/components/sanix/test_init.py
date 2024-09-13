@@ -1,4 +1,4 @@
-"""Test the Sanix init module."""
+"""Test the NRJHub analytics init module."""
 
 from __future__ import annotations
 

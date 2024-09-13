@@ -34,13 +34,7 @@ from homeassistant.const import (
     STATE_OPEN,
     STATE_OPENING,
 )
-from homeassistant.core import (
-    Event,
-    EventStateChangedData,
-    HassJobType,
-    State,
-    callback,
-)
+from homeassistant.core import Event, EventStateChangedData, State, callback
 from homeassistant.helpers.event import async_track_state_change_event
 
 from .accessories import TYPES, HomeAccessory
@@ -134,7 +128,7 @@ class GarageDoorOpener(HomeAccessory):
     def run(self) -> None:
         """Handle accessory driver started event.
 
-        Run inside the Home Assistant event loop.
+        Run inside the NRJHub event loop.
         """
         if self.linked_obstruction_sensor:
             self._subscriptions.append(
@@ -142,7 +136,6 @@ class GarageDoorOpener(HomeAccessory):
                     self.hass,
                     [self.linked_obstruction_sensor],
                     self._async_update_obstruction_event,
-                    job_type=HassJobType.Callback,
                 )
             )
 

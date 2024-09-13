@@ -22,11 +22,11 @@
       },
       "pairing_complete": {
         "title": "Pairing Complete",
-        "description": "Your VIZIO SmartCast Device is now connected to Home Assistant."
+        "description": "Your VIZIO SmartCast Device is now connected to NRJHub."
       },
       "pairing_complete_import": {
         "title": "[%key:component::vizio::config::step::pairing_complete::title%]",
-        "description": "Your VIZIO SmartCast Device is now connected to Home Assistant.\n\nYour access token is '**{access_token}**'."
+        "description": "Your VIZIO SmartCast Device is now connected to NRJHub.\n\nYour access token is '**{access_token}**'."
       }
     },
     "error": {

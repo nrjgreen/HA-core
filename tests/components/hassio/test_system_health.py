@@ -39,7 +39,7 @@ async def test_hassio_system_health(
         "hassos": True,
     }
     hass.data["hassio_host_info"] = {
-        "operating_system": "Home Assistant OS 5.9",
+        "operating_system": "NRJHub OS 5.9",
         "agent_version": "1337",
         "disk_total": "32.0",
         "disk_used": "30.0",
@@ -65,7 +65,7 @@ async def test_hassio_system_health(
         "disk_used": "30.0 GB",
         "docker_version": "19.0.3",
         "healthy": True,
-        "host_os": "Home Assistant OS 5.9",
+        "host_os": "NRJHub OS 5.9",
         "installed_addons": "Awesome Addon (1.0.0)",
         "supervisor_api": "ok",
         "supervisor_version": "supervisor-2020.11.1",

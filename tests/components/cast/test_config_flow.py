@@ -75,7 +75,7 @@ async def test_user_setup(hass: HomeAssistant) -> None:
         "ignore_cec": [],
         "known_hosts": [],
         "uuid": [],
-        "user_id": users[0].id,  # Home Assistant cast user
+        "user_id": users[0].id,  # NRJHub cast user
     }
 
 
@@ -97,7 +97,7 @@ async def test_user_setup_options(hass: HomeAssistant) -> None:
         "ignore_cec": [],
         "known_hosts": ["192.168.0.1", "192.168.0.2"],
         "uuid": [],
-        "user_id": users[0].id,  # Home Assistant cast user
+        "user_id": users[0].id,  # NRJHub cast user
     }
 
 
@@ -117,7 +117,7 @@ async def test_zeroconf_setup(hass: HomeAssistant) -> None:
         "ignore_cec": [],
         "known_hosts": [],
         "uuid": [],
-        "user_id": users[0].id,  # Home Assistant cast user
+        "user_id": users[0].id,  # NRJHub cast user
     }
 
 
@@ -137,7 +137,7 @@ async def test_zeroconf_setup_onboarding(hass: HomeAssistant) -> None:
         "ignore_cec": [],
         "known_hosts": [],
         "uuid": [],
-        "user_id": users[0].id,  # Home Assistant cast user
+        "user_id": users[0].id,  # NRJHub cast user
     }
 
 

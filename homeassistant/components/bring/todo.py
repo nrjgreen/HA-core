@@ -6,8 +6,7 @@ from typing import TYPE_CHECKING
 import uuid
 
 from bring_api.exceptions import BringRequestException
-from bring_api.types import BringItem, BringItemOperation, BringNotificationType
-import voluptuous as vol
+from bring_api.types import BringItem, BringItemOperation
 
 from homeassistant.components.todo import (
     TodoItem,
@@ -17,18 +16,11 @@ from homeassistant.components.todo import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
-from homeassistant.helpers import config_validation as cv, entity_platform
-from homeassistant.helpers.config_validation import make_entity_service_schema
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import (
-    ATTR_ITEM_NAME,
-    ATTR_NOTIFICATION_TYPE,
-    DOMAIN,
-    SERVICE_PUSH_NOTIFICATION,
-)
+from .const import DOMAIN
 from .coordinator import BringData, BringDataUpdateCoordinator
 
 
@@ -52,21 +44,6 @@ async def async_setup_entry(
             unique_id=unique_id,
         )
         for bring_list in coordinator.data.values()
-    )
-
-    platform = entity_platform.async_get_current_platform()
-
-    platform.async_register_entity_service(
-        SERVICE_PUSH_NOTIFICATION,
-        make_entity_service_schema(
-            {
-                vol.Required(ATTR_NOTIFICATION_TYPE): vol.All(
-                    vol.Upper, cv.enum(BringNotificationType)
-                ),
-                vol.Optional(ATTR_ITEM_NAME): cv.string,
-            }
-        ),
-        "async_send_message",
     )
 
 
@@ -152,7 +129,7 @@ class BringTodoListEntity(
 
         This results in following behaviour:
 
-        - Completed items will move to the "completed" section in home assistant todo
+        - Completed items will move to the "completed" section in NRJHub todo
             list and get moved to the recently list in bring
         - Bring shows some odd behaviour when renaming items. This is because Bring
             did not have unique identifiers for items in the past and this is still
@@ -254,26 +231,3 @@ class BringTodoListEntity(
             ) from e
 
         await self.coordinator.async_refresh()
-
-    async def async_send_message(
-        self,
-        message: BringNotificationType,
-        item: str | None = None,
-    ) -> None:
-        """Send a push notification to members of a shared bring list."""
-
-        try:
-            await self.coordinator.bring.notify(self._list_uuid, message, item or None)
-        except BringRequestException as e:
-            raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="notify_request_failed",
-            ) from e
-        except ValueError as e:
-            raise ServiceValidationError(
-                translation_domain=DOMAIN,
-                translation_key="notify_missing_argument_item",
-                translation_placeholders={
-                    "service": f"{DOMAIN}.{SERVICE_PUSH_NOTIFICATION}",
-                },
-            ) from e

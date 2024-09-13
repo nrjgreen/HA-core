@@ -70,7 +70,7 @@ async def test_migration_changes_prevent_trying_to_migrate_again(
 ) -> None:
     """Test that we do not try to migrate when migration_changes indicate its already migrated.
 
-    This test will start Home Assistant 3 times:
+    This test will start NRJHub 3 times:
 
     1. With schema 32 to populate the data
     2. With current schema so the migration happens

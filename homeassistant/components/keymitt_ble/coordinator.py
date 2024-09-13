@@ -1,4 +1,4 @@
-"""Integration to integrate Keymitt BLE devices with Home Assistant."""
+"""Integration to integrate Keymitt BLE devices with NRJHub."""
 
 from __future__ import annotations
 

@@ -167,7 +167,7 @@ async def setup_integration(
     windows: bool = False,
     single_return: bool = False,
 ) -> MockConfigEntry:
-    """Set up the radarr integration in Home Assistant."""
+    """Set up the radarr integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         unique_id=unique_id,
@@ -208,7 +208,7 @@ def patch_async_setup_entry(return_value=True):
 
 
 def create_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Create Radarr entry in Home Assistant."""
+    """Create Radarr entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data={

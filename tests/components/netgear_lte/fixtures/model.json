@@ -54,7 +54,7 @@
         "msgId": 1,
         "receiver": "+15555555555",
         "status": "Succeeded",
-        "text": "test SMS from Home Assistant",
+        "text": "test SMS from NRJHub",
         "txTime": "1367252824"
       },
       {}

@@ -62,7 +62,7 @@ class HumidifierEntityFeature(IntFlag):
     MODES = 1
 
 
-# The SUPPORT_MODES constant is deprecated as of Home Assistant 2022.5.
+# The SUPPORT_MODES constant is deprecated as of NRJHub 2022.5.
 # Please use the HumidifierEntityFeature enum instead.
 _DEPRECATED_SUPPORT_MODES = DeprecatedConstantEnum(
     HumidifierEntityFeature.MODES, "2025.1"

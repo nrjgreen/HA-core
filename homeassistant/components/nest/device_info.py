@@ -73,7 +73,7 @@ class NestDeviceInfo:
         """Return device suggested area based on the Google Home room."""
         if parent_relations := self._device.parent_relations:
             items = sorted(parent_relations.items())
-            names = [name for _, name in items]
+            names = [name for id, name in items]
             return " ".join(names)
         return None
 
@@ -93,7 +93,7 @@ def async_nest_devices(hass: HomeAssistant) -> Mapping[str, Device]:
 
 @callback
 def async_nest_devices_by_device_id(hass: HomeAssistant) -> Mapping[str, Device]:
-    """Return a mapping of all nest devices by home assistant device id, for all config entries."""
+    """Return a mapping of all nest devices by NRJHub device id, for all config entries."""
     device_registry = dr.async_get(hass)
     devices = {}
     for nest_device_id, device in async_nest_devices(hass).items():

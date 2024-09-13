@@ -551,7 +551,7 @@ class _ScriptRun:
         ):
             raise exception
 
-        # Only Home Assistant errors can be ignored.
+        # Only NRJHub errors can be ignored.
         if not isinstance(exception, exceptions.HomeAssistantError):
             raise exception
 
@@ -650,12 +650,6 @@ class _ScriptRun:
         # check if condition already okay
         if condition.async_template(self._hass, wait_template, self._variables, False):
             self._variables["wait"]["completed"] = True
-            self._changed()
-            return
-
-        if timeout == 0:
-            self._changed()
-            self._async_handle_timeout()
             return
 
         futures, timeout_handle, timeout_future = self._async_futures_with_timeout(
@@ -784,7 +778,7 @@ class _ScriptRun:
                 )
 
         trace_set_result(event=self._action[CONF_EVENT], event_data=event_data)
-        self._hass.bus.async_fire_internal(
+        self._hass.bus.async_fire(
             self._action[CONF_EVENT], event_data, context=self._context
         )
 
@@ -1084,11 +1078,6 @@ class _ScriptRun:
         self._variables["wait"] = {"remaining": timeout, "trigger": None}
         trace_set_result(wait=self._variables["wait"])
 
-        if timeout == 0:
-            self._changed()
-            self._async_handle_timeout()
-            return
-
         futures, timeout_handle, timeout_future = self._async_futures_with_timeout(
             timeout
         )
@@ -1119,14 +1108,6 @@ class _ScriptRun:
             futures, timeout_handle, timeout_future, remove_triggers
         )
 
-    def _async_handle_timeout(self) -> None:
-        """Handle timeout."""
-        self._variables["wait"]["remaining"] = 0.0
-        if not self._action.get(CONF_CONTINUE_ON_TIMEOUT, True):
-            self._log(_TIMEOUT_MSG)
-            trace_set_result(wait=self._variables["wait"], timeout=True)
-            raise _AbortScript from TimeoutError()
-
     async def _async_wait_with_optional_timeout(
         self,
         futures: list[asyncio.Future[None]],
@@ -1137,7 +1118,11 @@ class _ScriptRun:
         try:
             await asyncio.wait(futures, return_when=asyncio.FIRST_COMPLETED)
             if timeout_future and timeout_future.done():
-                self._async_handle_timeout()
+                self._variables["wait"]["remaining"] = 0.0
+                if not self._action.get(CONF_CONTINUE_ON_TIMEOUT, True):
+                    self._log(_TIMEOUT_MSG)
+                    trace_set_result(wait=self._variables["wait"], timeout=True)
+                    raise _AbortScript from TimeoutError()
         finally:
             if timeout_future and not timeout_future.done() and timeout_handle:
                 timeout_handle.cancel()
@@ -1642,9 +1627,9 @@ class Script:
             )
             context = Context()
 
-        # Prevent spawning new script runs when Home Assistant is shutting down
+        # Prevent spawning new script runs when NRJHub is shutting down
         if DATA_NEW_SCRIPT_RUNS_NOT_ALLOWED in self._hass.data:
-            self._log("Home Assistant is shutting down, starting script blocked")
+            self._log("NRJHub is shutting down, starting script blocked")
             return None
 
         # Prevent spawning new script runs if not allowed by script mode

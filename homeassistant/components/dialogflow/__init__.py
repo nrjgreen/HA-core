@@ -16,7 +16,7 @@ from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-SOURCE = "Home Assistant Dialogflow"
+SOURCE = "NRJHub Dialogflow"
 
 CONFIG_SCHEMA = vol.Schema({DOMAIN: {}}, extra=vol.ALLOW_EXTRA)
 
@@ -46,7 +46,7 @@ async def handle_webhook(hass, webhook_id, request):
         _LOGGER.warning(str(err))
         return web.json_response(
             dialogflow_error_response(
-                message, "This intent is not yet configured within Home Assistant."
+                message, "This intent is not yet configured within NRJHub."
             )
         )
 

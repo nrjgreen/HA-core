@@ -113,10 +113,7 @@ class BondConfigFlow(ConfigFlow, domain=DOMAIN):
             ):
                 updates[CONF_ACCESS_TOKEN] = token
             return self.async_update_reload_and_abort(
-                entry,
-                data={**entry.data, **updates},
-                reason="already_configured",
-                reload_even_if_entry_is_unchanged=False,
+                entry, data={**entry.data, **updates}, reason="already_configured"
             )
 
         self._discovered = {CONF_HOST: host, CONF_NAME: bond_id}

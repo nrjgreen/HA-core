@@ -161,7 +161,7 @@
     },
     "push_update_failure": {
       "title": "Shelly device {device_name} push update failure",
-      "description": "Home Assistant is not receiving push updates from the Shelly device {device_name} with IP address {ip_address}. Check the CoIoT configuration in the web panel of the device and your network configuration."
+      "description": "NRJHub is not receiving push updates from the Shelly device {device_name} with IP address {ip_address}. Check the CoIoT configuration in the web panel of the device and your network configuration."
     },
     "deprecated_valve_switch": {
       "title": "The switch entity for Shelly Gas Valve is deprecated",

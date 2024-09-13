@@ -11,7 +11,7 @@
       },
       "zeroconf_confirm": {
         "title": "Confirm adding Bose SoundTouch device",
-        "description": "You are about to add the SoundTouch device named `{name}` to Home Assistant."
+        "description": "You are about to add the SoundTouch device named `{name}` to NRJHub."
       }
     },
     "error": {

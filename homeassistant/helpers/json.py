@@ -1,4 +1,4 @@
-"""Helpers to help with encoding Home Assistant objects in JSON."""
+"""Helpers to help with encoding NRJHub objects in JSON."""
 
 from collections import deque
 from collections.abc import Callable
@@ -24,10 +24,10 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class JSONEncoder(json.JSONEncoder):
-    """JSONEncoder that supports Home Assistant objects."""
+    """JSONEncoder that supports NRJHub objects."""
 
     def default(self, o: Any) -> Any:
-        """Convert Home Assistant objects.
+        """Convert NRJHub objects.
 
         Hand other objects to the original method.
         """
@@ -42,7 +42,7 @@ class JSONEncoder(json.JSONEncoder):
 
 
 def json_encoder_default(obj: Any) -> Any:
-    """Convert Home Assistant objects.
+    """Convert NRJHub objects.
 
     Hand other objects to the original method.
     """
@@ -74,7 +74,7 @@ else:
 
 
 class ExtendedJSONEncoder(JSONEncoder):
-    """JSONEncoder that supports Home Assistant objects and falls back to repr(o)."""
+    """JSONEncoder that supports NRJHub objects and falls back to repr(o)."""
 
     def default(self, o: Any) -> Any:
         """Convert certain objects.
@@ -113,7 +113,7 @@ def json_bytes_strip_null(data: Any) -> bytes:
         return result
 
     # We work on the processed result so we don't need to worry about
-    # Home Assistant extensions which allows encoding sets, tuples, etc.
+    # NRJHub extensions which allows encoding sets, tuples, etc.
     return json_bytes(_strip_null(orjson.loads(result)))
 
 

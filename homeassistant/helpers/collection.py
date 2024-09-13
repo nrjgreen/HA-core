@@ -257,7 +257,7 @@ class StorageCollection(ObservableCollection[_ItemT], Generic[_ItemT, _StoreT]):
 
     @property
     def hass(self) -> HomeAssistant:
-        """Home Assistant object."""
+        """NRJHub object."""
         return self.store.hass
 
     async def _async_load_data(self) -> _StoreT | None:

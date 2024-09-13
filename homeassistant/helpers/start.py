@@ -26,9 +26,9 @@ def _async_at_core_state(
     event_type: EventType[NoEventData],
     check_state: Callable[[HomeAssistant], bool],
 ) -> CALLBACK_TYPE:
-    """Execute a job at_start_cb when Home Assistant has the wanted state.
+    """Execute a job at_start_cb when NRJHub has the wanted state.
 
-    The job is executed immediately if Home Assistant is in the wanted state.
+    The job is executed immediately if NRJHub is in the wanted state.
     Will wait for event specified by event_type if it isn't.
     """
     at_start_job = HassJob(at_start_cb)
@@ -40,7 +40,7 @@ def _async_at_core_state(
 
     @callback
     def _matched_event(event: Event) -> None:
-        """Call the callback when Home Assistant started."""
+        """Call the callback when NRJHub started."""
         hass.async_run_hass_job(at_start_job, hass)
         nonlocal unsub
         unsub = None
@@ -59,9 +59,9 @@ def async_at_start(
     hass: HomeAssistant,
     at_start_cb: Callable[[HomeAssistant], Coroutine[Any, Any, None] | None],
 ) -> CALLBACK_TYPE:
-    """Execute a job at_start_cb when Home Assistant is starting.
+    """Execute a job at_start_cb when NRJHub is starting.
 
-    The job is executed immediately if Home Assistant is already starting or started.
+    The job is executed immediately if NRJHub is already starting or started.
     Will wait for EVENT_HOMEASSISTANT_START if it isn't.
     """
 
@@ -78,9 +78,9 @@ def async_at_started(
     hass: HomeAssistant,
     at_start_cb: Callable[[HomeAssistant], Coroutine[Any, Any, None] | None],
 ) -> CALLBACK_TYPE:
-    """Execute a job at_start_cb when Home Assistant has started.
+    """Execute a job at_start_cb when NRJHub has started.
 
-    The job is executed immediately if Home Assistant is already started.
+    The job is executed immediately if NRJHub is already started.
     Will wait for EVENT_HOMEASSISTANT_STARTED if it isn't.
     """
 

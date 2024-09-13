@@ -94,7 +94,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     async_delete_issue(hass, DOMAIN, "invalid_server_version")
 
     async def on_hass_stop(event: Event) -> None:
-        """Handle incoming stop event from Home Assistant."""
+        """Handle incoming stop event from NRJHub."""
         await matter_client.disconnect()
 
     entry.async_on_unload(

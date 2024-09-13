@@ -157,7 +157,7 @@ async def async_setup_entry(
 
     @callback
     def _async_stop_auto_update(event: Event) -> None:
-        """Stop the isy auto update on Home Assistant Shutdown."""
+        """Stop the isy auto update on NRJHub Shutdown."""
         _LOGGER.debug("ISY Stopping Event Stream and automatic updates")
         isy.websocket.stop()
 

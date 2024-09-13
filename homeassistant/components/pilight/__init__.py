@@ -80,13 +80,13 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
         return False
 
     def start_pilight_client(_):
-        """Run when Home Assistant starts."""
+        """Run when NRJHub starts."""
         pilight_client.start()
 
     hass.bus.listen_once(EVENT_HOMEASSISTANT_START, start_pilight_client)
 
     def stop_pilight_client(_):
-        """Run once when Home Assistant stops."""
+        """Run once when NRJHub stops."""
         pilight_client.stop()
 
     hass.bus.listen_once(EVENT_HOMEASSISTANT_STOP, stop_pilight_client)

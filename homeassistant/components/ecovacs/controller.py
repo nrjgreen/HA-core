@@ -43,8 +43,7 @@ class EcovacsController:
         self._hass = hass
         self._devices: list[Device] = []
         self.legacy_devices: list[VacBot] = []
-        rest_url = config.get(CONF_OVERRIDE_REST_URL)
-        self._device_id = get_client_device_id(hass, rest_url is not None)
+        self._device_id = get_client_device_id()
         country = config[CONF_COUNTRY]
         self._continent = get_continent(country)
 
@@ -53,7 +52,7 @@ class EcovacsController:
                 aiohttp_client.async_get_clientsession(self._hass),
                 device_id=self._device_id,
                 alpha_2_country=country,
-                override_rest_url=rest_url,
+                override_rest_url=config.get(CONF_OVERRIDE_REST_URL),
             ),
             config[CONF_USERNAME],
             md5(config[CONF_PASSWORD]),

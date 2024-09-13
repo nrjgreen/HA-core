@@ -111,7 +111,7 @@ async def app_fixture(hass, config_file):
     app.app_id = str(uuid4())
     app.app_type = "WEBHOOK_SMART_APP"
     app.classifications = [CLASSIFICATION_AUTOMATION]
-    app.display_name = "Home Assistant"
+    app.display_name = "NRJHub"
     app.description = f"{hass.config.location_name} at https://test.local"
     app.single_instance = True
     app.webhook_target_url = webhook.async_generate_url(
@@ -342,7 +342,7 @@ def event_request_factory_fixture(event_factory):
         if events is None:
             events = []
         if device_ids:
-            events.extend([event_factory(device_id) for device_id in device_ids])
+            events.extend([event_factory(id) for id in device_ids])
             events.append(event_factory(uuid4()))
             events.append(event_factory(device_ids[0], event_type="OTHER"))
         request.events = events

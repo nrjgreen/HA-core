@@ -27,7 +27,7 @@ class AuroraAbbDataUpdateCoordinator(DataUpdateCoordinator[dict[str, float]]):  
     def _update_data(self) -> dict[str, float]:
         """Fetch new state data for the sensors.
 
-        This is the only function that should fetch new data for Home Assistant.
+        This is the only function that should fetch new data for NRJHub.
         """
         data: dict[str, float] = {}
         self.available_prev = self.available

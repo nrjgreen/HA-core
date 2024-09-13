@@ -1,4 +1,4 @@
-"""Adapter to wrap the pyjuicenet api for home assistant."""
+"""Adapter to wrap the pyjuicenet api for NRJHub."""
 
 from pyjuicenet import Charger
 

@@ -1,4 +1,4 @@
-"""Test the Home Assistant Supervisor config flow."""
+"""Test the NRJHub Supervisor config flow."""
 
 from unittest.mock import patch
 

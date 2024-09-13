@@ -15,7 +15,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     persistent_notification.async_create(
         hass,
         (
-            "Home Assistant is running in recovery mode. Check [the error"
+            "NRJHub is running in recovery mode. Check [the error"
             " log](/config/logs) to see what went wrong."
         ),
         "Recovery Mode",

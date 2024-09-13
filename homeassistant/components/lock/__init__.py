@@ -66,7 +66,7 @@ class LockEntityFeature(IntFlag):
     OPEN = 1
 
 
-# The SUPPORT_OPEN constant is deprecated as of Home Assistant 2022.5.
+# The SUPPORT_OPEN constant is deprecated as of NRJHub 2022.5.
 # Please use the LockEntityFeature enum instead.
 _DEPRECATED_SUPPORT_OPEN = DeprecatedConstantEnum(LockEntityFeature.OPEN, "2025.1")
 

@@ -94,7 +94,7 @@ async def init_integration(
     status: dict | None = None,
     grid: dict | None = None,
 ) -> tuple[MagicMock, Event, FutureContainer]:
-    """Set up the Blue Current integration in Home Assistant."""
+    """Set up the Blue Current integration in NRJHub."""
 
     if charge_point is None:
         charge_point = DEFAULT_CHARGE_POINT

@@ -11,7 +11,7 @@ from tests.common import MockConfigEntry
 async def load_int(
     hass: HomeAssistant, display_option: str | None = None
 ) -> MockConfigEntry:
-    """Set up the Time & Date integration in Home Assistant."""
+    """Set up the Time & Date integration in NRJHub."""
     if display_option is None:
         display_option = "time"
     config_entry = MockConfigEntry(

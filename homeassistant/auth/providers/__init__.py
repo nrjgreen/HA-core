@@ -1,4 +1,4 @@
-"""Auth providers for Home Assistant."""
+"""Auth providers for NRJHub."""
 
 from __future__ import annotations
 

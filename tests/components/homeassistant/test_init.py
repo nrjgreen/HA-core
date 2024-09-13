@@ -84,7 +84,7 @@ def toggle(hass, entity_id=None, **service_data):
 
 
 def stop(hass):
-    """Stop Home Assistant.
+    """Stop NRJHub.
 
     This is a legacy helper method. Do not use it for new tests.
     """
@@ -92,7 +92,7 @@ def stop(hass):
 
 
 def restart(hass):
-    """Stop Home Assistant.
+    """Stop NRJHub.
 
     This is a legacy helper method. Do not use it for new tests.
     """

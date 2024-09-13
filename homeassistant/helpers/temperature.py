@@ -1,4 +1,4 @@
-"""Temperature helpers for Home Assistant."""
+"""Temperature helpers for NRJHub."""
 
 from __future__ import annotations
 

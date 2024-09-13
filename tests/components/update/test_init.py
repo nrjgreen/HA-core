@@ -577,7 +577,7 @@ async def test_entity_without_progress_support(
 ) -> None:
     """Test update entity without progress support.
 
-    In that case, progress is still handled by Home Assistant.
+    In that case, progress is still handled by NRJHub.
     """
     setup_test_component_platform(hass, DOMAIN, mock_update_entities)
 
@@ -615,7 +615,7 @@ async def test_entity_without_progress_support_raising(
 ) -> None:
     """Test update entity without progress support that raises during install.
 
-    In that case, progress is still handled by Home Assistant.
+    In that case, progress is still handled by NRJHub.
     """
     setup_test_component_platform(hass, DOMAIN, mock_update_entities)
 

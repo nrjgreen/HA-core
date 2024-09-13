@@ -1,4 +1,4 @@
-"""Support for Home Assistant Cloud binary sensors."""
+"""Support for NRJHub Cloud binary sensors."""
 
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the Home Assistant Cloud binary sensors."""
+    """Set up the NRJHub Cloud binary sensors."""
     cloud: Cloud[CloudClient] = hass.data[DOMAIN]
     async_add_entities([CloudRemoteBinary(cloud)])
 

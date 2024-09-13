@@ -312,7 +312,7 @@ HVAC_WEBSERVER_MOCK = {
 async def async_init_integration(
     hass: HomeAssistant,
 ) -> None:
-    """Set up the Airzone integration in Home Assistant."""
+    """Set up the Airzone integration in NRJHub."""
 
     config_entry = MockConfigEntry(
         data=CONFIG,

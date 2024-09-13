@@ -49,8 +49,8 @@ async def test_get_system_info_supervisor_not_available(
         assert info["version"] == current_version
         assert info["user"] is not None
         assert json.dumps(info) is not None
-        assert info["installation_type"] == "Home Assistant Supervised"
-        assert "No Home Assistant Supervisor info available" in caplog.text
+        assert info["installation_type"] == "NRJHub Supervised"
+        assert "No NRJHub Supervisor info available" in caplog.text
 
 
 async def test_get_system_info_supervisor_not_loaded(hass: HomeAssistant) -> None:
@@ -79,7 +79,7 @@ async def test_container_installationtype(hass: HomeAssistant) -> None:
         patch("homeassistant.helpers.system_info.cached_get_user", return_value="root"),
     ):
         info = await async_get_system_info(hass)
-        assert info["installation_type"] == "Home Assistant Container"
+        assert info["installation_type"] == "NRJHub Container"
 
     with (
         patch("platform.system", return_value="Linux"),

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+import contextlib
 import logging
 from typing import Any
 
@@ -96,10 +97,7 @@ class BlinkCamera(CoordinatorEntity[BlinkUpdateCoordinator], Camera):
             await self._camera.async_arm(True)
 
         except TimeoutError as er:
-            raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="failed_arm",
-            ) from er
+            raise HomeAssistantError("Blink failed to arm camera") from er
 
         self._camera.motion_enabled = True
         await self.coordinator.async_refresh()
@@ -109,10 +107,7 @@ class BlinkCamera(CoordinatorEntity[BlinkUpdateCoordinator], Camera):
         try:
             await self._camera.async_arm(False)
         except TimeoutError as er:
-            raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="failed_disarm",
-            ) from er
+            raise HomeAssistantError("Blink failed to disarm camera") from er
 
         self._camera.motion_enabled = False
         await self.coordinator.async_refresh()
@@ -129,14 +124,8 @@ class BlinkCamera(CoordinatorEntity[BlinkUpdateCoordinator], Camera):
 
     async def trigger_camera(self) -> None:
         """Trigger camera to take a snapshot."""
-        try:
+        with contextlib.suppress(TimeoutError):
             await self._camera.snap_picture()
-        except TimeoutError as er:
-            raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="failed_snap",
-            ) from er
-
         self.async_write_ha_state()
 
     def camera_image(

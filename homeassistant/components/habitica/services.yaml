@@ -12,6 +12,6 @@ api_call:
       selector:
         object:
     args:
-      example: '{"text": "Use API from Home Assistant", "type": "todo"}'
+      example: '{"text": "Use API from NRJHub", "type": "todo"}'
       selector:
         object:

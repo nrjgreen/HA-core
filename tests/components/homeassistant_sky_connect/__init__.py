@@ -1,1 +1,1 @@
-"""Tests for the Home Assistant SkyConnect integration."""
+"""Tests for the NRJHub SkyConnect integration."""

@@ -46,7 +46,7 @@ async def async_setup_entry(
     mowers: list[EcovacsMower] = [
         EcovacsMower(device) for device in controller.devices(MowerCapabilities)
     ]
-    _LOGGER.debug("Adding Ecovacs Mowers to Home Assistant: %s", mowers)
+    _LOGGER.debug("Adding Ecovacs Mowers to NRJHub: %s", mowers)
     async_add_entities(mowers)
 
 

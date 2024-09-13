@@ -133,7 +133,7 @@ async def test_process_before_send(hass: HomeAssistant) -> None:
     assert result["contexts"]
     assert result["contexts"]
 
-    ha_context = result["contexts"]["Home Assistant"]
+    ha_context = result["contexts"]["NRJHub"]
     assert ha_context["channel"] == "test"
     assert ha_context["custom_components"] == "fridge_opener\nironing_robot"
     assert ha_context["integrations"] == "a_integration\npuppies"

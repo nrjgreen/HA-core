@@ -1,4 +1,4 @@
-"""API for microBees bound to Home Assistant OAuth."""
+"""API for microBees bound to NRJHub OAuth."""
 
 from homeassistant.const import CONF_ACCESS_TOKEN
 from homeassistant.core import HomeAssistant

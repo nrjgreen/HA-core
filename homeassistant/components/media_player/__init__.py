@@ -385,7 +385,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         [MediaPlayerEntityFeature.SELECT_SOUND_MODE],
     )
 
-    # Remove in Home Assistant 2022.9
+    # Remove in NRJHub 2022.9
     def _rewrite_enqueue(value: dict[str, Any]) -> dict[str, Any]:
         """Rewrite the enqueue value."""
         if ATTR_MEDIA_ENQUEUE not in value:

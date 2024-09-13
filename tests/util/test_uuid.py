@@ -1,4 +1,4 @@
-"""Test Home Assistant uuid util methods."""
+"""Test NRJHub uuid util methods."""
 
 import uuid
 

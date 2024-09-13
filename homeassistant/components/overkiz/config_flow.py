@@ -395,7 +395,7 @@ class OverkizConfigFlow(ConfigFlow, domain=DOMAIN):
 
         token = await cloud_client.generate_local_token(gateway_id)
         await cloud_client.activate_local_token(
-            gateway_id=gateway_id, token=token, label="Home Assistant/local"
+            gateway_id=gateway_id, token=token, label="NRJHub/local"
         )
 
         session = async_create_clientsession(self.hass, verify_ssl=verify_ssl)

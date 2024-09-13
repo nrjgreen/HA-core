@@ -55,7 +55,7 @@ async def test_attributes(hass: HomeAssistant, weather_only) -> None:
     assert data.get(ATTR_WEATHER_WIND_SPEED) == 1.8  # 0.5 m/s -> km/h
     assert data.get(ATTR_WEATHER_WIND_BEARING) is None
     assert data.get(ATTR_WEATHER_OZONE) is None
-    assert data.get(ATTR_ATTRIBUTION) == "Powered by Home Assistant"
+    assert data.get(ATTR_ATTRIBUTION) == "Powered by NRJHub"
 
 
 TEST_TIME_ADVANCE_INTERVAL = datetime.timedelta(seconds=5 + 1)

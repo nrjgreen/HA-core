@@ -79,7 +79,7 @@ class IGloLamp(LightEntity):
         if self._lamp.state()["mode"] == MODE_WHITE:
             return ColorMode.COLOR_TEMP
         # The iglo library reports MODE_WHITE when an effect is active, this is not
-        # supported by Home Assistant, just report ColorMode.HS
+        # supported by NRJHub, just report ColorMode.HS
         return ColorMode.HS
 
     @property

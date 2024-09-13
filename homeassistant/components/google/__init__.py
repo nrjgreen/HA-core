@@ -244,7 +244,7 @@ async def async_setup_add_event_service(
         """Add a new event to calendar."""
         _LOGGER.warning(
             "The Google Calendar add_event service has been deprecated, and "
-            "will be removed in a future Home Assistant release. Please move "
+            "will be removed in a future NRJHub release. Please move "
             "calls to the create_event service"
         )
 

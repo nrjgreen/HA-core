@@ -80,7 +80,7 @@ class WyomingSatelliteNoiseSuppressionLevelSelect(
     _attr_options = list(_NOISE_SUPPRESSION_LEVEL.keys())
 
     async def async_added_to_hass(self) -> None:
-        """When entity is added to Home Assistant."""
+        """When entity is added to NRJHub."""
         await super().async_added_to_hass()
 
         state = await self.async_get_last_state()

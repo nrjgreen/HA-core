@@ -41,13 +41,13 @@ MOCK_DATA2 = {"goodbye": "cruel world"}
 
 @pytest.fixture
 def store(hass):
-    """Fixture of a store that prevents writing on Home Assistant stop."""
+    """Fixture of a store that prevents writing on NRJHub stop."""
     return storage.Store(hass, MOCK_VERSION, MOCK_KEY)
 
 
 @pytest.fixture
 def store_v_1_1(hass):
-    """Fixture of a store that prevents writing on Home Assistant stop."""
+    """Fixture of a store that prevents writing on NRJHub stop."""
     return storage.Store(
         hass, MOCK_VERSION, MOCK_KEY, minor_version=MOCK_MINOR_VERSION_1
     )
@@ -55,7 +55,7 @@ def store_v_1_1(hass):
 
 @pytest.fixture
 def store_v_1_2(hass):
-    """Fixture of a store that prevents writing on Home Assistant stop."""
+    """Fixture of a store that prevents writing on NRJHub stop."""
     return storage.Store(
         hass, MOCK_VERSION, MOCK_KEY, minor_version=MOCK_MINOR_VERSION_2
     )
@@ -63,7 +63,7 @@ def store_v_1_2(hass):
 
 @pytest.fixture
 def store_v_2_1(hass):
-    """Fixture of a store that prevents writing on Home Assistant stop."""
+    """Fixture of a store that prevents writing on NRJHub stop."""
     return storage.Store(
         hass, MOCK_VERSION_2, MOCK_KEY, minor_version=MOCK_MINOR_VERSION_1
     )
@@ -225,7 +225,7 @@ async def test_saving_with_delay_churn_reduction(
 async def test_saving_on_final_write(
     hass: HomeAssistant, hass_storage: dict[str, Any]
 ) -> None:
-    """Test delayed saves trigger when we quit Home Assistant."""
+    """Test delayed saves trigger when we quit NRJHub."""
     store = storage.Store(hass, MOCK_VERSION, MOCK_KEY)
     store.async_delay_save(lambda: MOCK_DATA, 5)
     assert store.key not in hass_storage
@@ -266,7 +266,7 @@ async def test_not_delayed_saving_while_stopping(
 async def test_not_delayed_saving_after_stopping(
     hass: HomeAssistant, hass_storage: dict[str, Any]
 ) -> None:
-    """Test delayed saves don't write after stop if issued before stopping Home Assistant."""
+    """Test delayed saves don't write after stop if issued before stopping NRJHub."""
     store = storage.Store(hass, MOCK_VERSION, MOCK_KEY)
     store.async_delay_save(lambda: MOCK_DATA, 10)
     assert store.key not in hass_storage
@@ -284,7 +284,7 @@ async def test_not_delayed_saving_after_stopping(
 async def test_not_saving_while_stopping(
     hass: HomeAssistant, hass_storage: dict[str, Any]
 ) -> None:
-    """Test saves don't write when stopping Home Assistant."""
+    """Test saves don't write when stopping NRJHub."""
     store = storage.Store(hass, MOCK_VERSION, MOCK_KEY)
     hass.set_state(CoreState.stopping)
     await store.async_save(MOCK_DATA)

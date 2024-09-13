@@ -1,4 +1,4 @@
-"""Plugwise Binary Sensor component for Home Assistant."""
+"""Plugwise Binary Sensor component for NRJHub."""
 
 from __future__ import annotations
 
@@ -64,8 +64,8 @@ BINARY_SENSORS: tuple[PlugwiseBinarySensorEntityDescription, ...] = (
         entity_category=EntityCategory.DIAGNOSTIC,
     ),
     PlugwiseBinarySensorEntityDescription(
-        key="secondary_boiler_state",
-        translation_key="secondary_boiler_state",
+        key="slave_boiler_state",
+        translation_key="slave_boiler_state",
         entity_category=EntityCategory.DIAGNOSTIC,
     ),
     PlugwiseBinarySensorEntityDescription(

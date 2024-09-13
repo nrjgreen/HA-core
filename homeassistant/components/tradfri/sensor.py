@@ -151,7 +151,7 @@ async def async_setup_entry(
             continue
 
         for description in descriptions:
-            # Added in Home assistant 2022.3
+            # Added in NRJHub 2022.3
             _migrate_old_unique_ids(
                 hass=hass,
                 old_unique_id=f"{gateway_id}-{device_coordinator.device.id}",
@@ -171,7 +171,7 @@ async def async_setup_entry(
 
 
 class TradfriSensor(TradfriBaseEntity, SensorEntity):
-    """The platform class required by Home Assistant."""
+    """The platform class required by NRJHub."""
 
     entity_description: TradfriSensorEntityDescription
 

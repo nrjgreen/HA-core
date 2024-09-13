@@ -20,7 +20,7 @@
   "issues": {
     "deprecated_yaml_import_issue_cannot_connect": {
       "title": "The Velux YAML configuration import cannot connect to server",
-      "description": "Configuring Velux using YAML is being removed but there was an connection error importing your YAML configuration.\n\nMake sure your home assistant can reach the KLF 200."
+      "description": "Configuring Velux using YAML is being removed but there was an connection error importing your YAML configuration.\n\nMake sure your NRJHub can reach the KLF 200."
     },
     "deprecated_yaml_import_issue_unknown": {
       "title": "The Velux YAML configuration import failed with unknown error raised by pyvlx",

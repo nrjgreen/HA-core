@@ -118,7 +118,7 @@ def _get_logger_class(hass_overrides: dict[str, int]) -> type[logging.Logger]:
     """
 
     class HassLogger(logging.Logger):
-        """Home Assistant aware logger class."""
+        """NRJHub aware logger class."""
 
         def setLevel(self, level: int | str) -> None:
             """Set the log level unless overridden."""

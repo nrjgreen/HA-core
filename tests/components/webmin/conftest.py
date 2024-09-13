@@ -38,7 +38,7 @@ def mock_setup_entry() -> Generator[AsyncMock, None, None]:
 
 
 async def async_init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Webmin integration in Home Assistant."""
+    """Set up the Webmin integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, options=TEST_USER_INPUT, title="name")
     entry.add_to_hass(hass)
 

@@ -566,7 +566,7 @@ class Thermostat(HomeAccessory):
         #
         # HEAT_COOL is preferred over auto because HomeKit Accessory Protocol describes
         # heating or cooling comes on to maintain a target temp which is closest to
-        # the Home Assistant spec
+        # the NRJHub spec
         #
         # HVACMode.HEAT_COOL: The device supports heating/cooling to a range
         self.hc_homekit_to_hass = {

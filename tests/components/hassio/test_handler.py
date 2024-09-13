@@ -68,7 +68,7 @@ async def test_api_info(
 async def test_api_info_error(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant info error."""
+    """Test setup with API NRJHub info error."""
     aioclient_mock.get(
         "http://127.0.0.1/info", json={"result": "error", "message": None}
     )
@@ -142,7 +142,7 @@ async def test_api_os_info(
 async def test_api_host_info_error(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant info error."""
+    """Test setup with API NRJHub info error."""
     aioclient_mock.get(
         "http://127.0.0.1/host/info", json={"result": "error", "message": None}
     )
@@ -156,7 +156,7 @@ async def test_api_host_info_error(
 async def test_api_core_info(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant Core info."""
+    """Test setup with API NRJHub Core info."""
     aioclient_mock.get(
         "http://127.0.0.1/core/info",
         json={"result": "ok", "data": {"version_latest": "1.0.0"}},
@@ -170,7 +170,7 @@ async def test_api_core_info(
 async def test_api_core_info_error(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant Core info error."""
+    """Test setup with API NRJHub Core info error."""
     aioclient_mock.get(
         "http://127.0.0.1/core/info", json={"result": "error", "message": None}
     )
@@ -184,7 +184,7 @@ async def test_api_core_info_error(
 async def test_api_homeassistant_stop(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant stop."""
+    """Test setup with API NRJHub stop."""
     aioclient_mock.post("http://127.0.0.1/homeassistant/stop", json={"result": "ok"})
 
     assert await hassio_handler.stop_homeassistant()
@@ -194,7 +194,7 @@ async def test_api_homeassistant_stop(
 async def test_api_homeassistant_restart(
     hassio_handler: HassIO, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Test setup with API Home Assistant restart."""
+    """Test setup with API NRJHub restart."""
     aioclient_mock.post("http://127.0.0.1/homeassistant/restart", json={"result": "ok"})
 
     assert await hassio_handler.restart_homeassistant()

@@ -280,7 +280,7 @@ async def test_restore_state(
     mock_sensor_api_instances: MagicMock,
 ) -> None:
     """Test sensor restore state."""
-    # Home assistant is not running yet
+    # NRJHub is not running yet
     hass.set_state(CoreState.not_running)
     thetimestamp: datetime = datetime(2022, 11, 29, 00, 00, 00, 00, UTC)
     mock_restore_cache_with_extra_data(

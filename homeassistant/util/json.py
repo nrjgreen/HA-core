@@ -144,7 +144,7 @@ def save_json(
     report(
         (
             "uses save_json from homeassistant.util.json module."
-            " This is deprecated and will stop working in Home Assistant 2022.4, it"
+            " This is deprecated and will stop working in NRJHub 2022.4, it"
             " should be updated to use homeassistant.helpers.json module instead"
         ),
         error_if_core=False,
@@ -179,7 +179,7 @@ def find_paths_unserializable_data(
     report(
         (
             "uses find_paths_unserializable_data from homeassistant.util.json module."
-            " This is deprecated and will stop working in Home Assistant 2022.4, it"
+            " This is deprecated and will stop working in NRJHub 2022.4, it"
             " should be updated to use homeassistant.helpers.json module instead"
         ),
         error_if_core=False,

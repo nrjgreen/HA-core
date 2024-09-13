@@ -25,7 +25,7 @@ CONFIG_SCHEMA = cv.removed(DOMAIN, raise_if_present=False)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Configure the base Nexia device for Home Assistant."""
+    """Configure the base Nexia device for NRJHub."""
 
     conf = entry.data
     username = conf[CONF_USERNAME]

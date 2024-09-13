@@ -29,6 +29,7 @@ def async_describe_events(
         device = device_registry.devices[event.data[ATTR_DEVICE_ID]]
         if device:
             device_name = device.name_by_user or device.name or "Unknown device"
+            console.log(device_id)
 
         message = f"{device_name} captured an audio sample"
 

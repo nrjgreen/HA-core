@@ -19,7 +19,7 @@ from hass_nabucasa.const import STATE_DISCONNECTED
 from hass_nabucasa.voice import TTS_VOICES
 import voluptuous as vol
 
-from homeassistant.components import http, websocket_api
+from homeassistant.components import websocket_api
 from homeassistant.components.alexa import (
     entities as alexa_entities,
     errors as alexa_errors,
@@ -46,7 +46,6 @@ from .const import (
     PREF_GOOGLE_REPORT_STATE,
     PREF_GOOGLE_SECURE_DEVICES_PIN,
     PREF_REMOTE_ALLOW_REMOTE_ENABLE,
-    PREF_STRICT_CONNECTION,
     PREF_TTS_DEFAULT_VOICE,
     REQUEST_TIMEOUT,
 )
@@ -60,7 +59,7 @@ _LOGGER = logging.getLogger(__name__)
 _CLOUD_ERRORS: dict[type[Exception], tuple[HTTPStatus, str]] = {
     TimeoutError: (
         HTTPStatus.BAD_GATEWAY,
-        "Unable to reach the Home Assistant cloud.",
+        "Unable to reach the NRJHub Cloud.",
     ),
     aiohttp.ClientError: (
         HTTPStatus.INTERNAL_SERVER_ERROR,
@@ -208,7 +207,7 @@ class GoogleActionsSyncView(HomeAssistantView):
 
 
 class CloudLoginView(HomeAssistantView):
-    """Login to Home Assistant cloud."""
+    """Login to NRJHub Cloud."""
 
     url = "/api/cloud/login"
     name = "api:cloud:login"
@@ -232,7 +231,7 @@ class CloudLoginView(HomeAssistantView):
 
 
 class CloudLogoutView(HomeAssistantView):
-    """Log out of the Home Assistant cloud."""
+    """Log out of the NRJHub Cloud."""
 
     url = "/api/cloud/logout"
     name = "api:cloud:logout"
@@ -251,7 +250,7 @@ class CloudLogoutView(HomeAssistantView):
 
 
 class CloudRegisterView(HomeAssistantView):
-    """Register on the Home Assistant cloud."""
+    """Register on the NRJHub Cloud."""
 
     url = "/api/cloud/register"
     name = "api:cloud:register"
@@ -453,9 +452,6 @@ def validate_language_voice(value: tuple[str, str]) -> tuple[str, str]:
             vol.Coerce(tuple), validate_language_voice
         ),
         vol.Optional(PREF_REMOTE_ALLOW_REMOTE_ENABLE): bool,
-        vol.Optional(PREF_STRICT_CONNECTION): vol.Coerce(
-            http.const.StrictConnectionMode
-        ),
     }
 )
 @websocket_api.async_response
@@ -487,7 +483,7 @@ async def websocket_update_prefs(
                 msg["id"],
                 "alexa_relink",
                 (
-                    "Please go to the Alexa app and re-link the Home Assistant "
+                    "Please go to the Alexa app and re-link the NRJHub "
                     "skill and then try to enable state reporting."
                 ),
             )
@@ -818,7 +814,7 @@ async def alexa_sync(
             connection.send_error(
                 msg["id"],
                 "alexa_relink",
-                "Please go to the Alexa app and re-link the Home Assistant skill.",
+                "Please go to the Alexa app and re-link the NRJHub skill.",
             )
             return
 

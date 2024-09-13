@@ -253,7 +253,7 @@ class OctoPrintConfigFlow(ConfigFlow, domain=DOMAIN):
         octoprint = self._get_octoprint_client(self._user_input)
 
         self._user_input[CONF_API_KEY] = await octoprint.request_app_key(
-            "Home Assistant", self._user_input[CONF_USERNAME], 300
+            "NRJHub", self._user_input[CONF_USERNAME], 300
         )
 
     def _get_octoprint_client(self, user_input: dict) -> OctoprintClient:

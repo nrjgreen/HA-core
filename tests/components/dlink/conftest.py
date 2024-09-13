@@ -45,7 +45,7 @@ ComponentSetup = Callable[[], Awaitable[None]]
 
 
 def create_entry(hass: HomeAssistant, unique_id: str | None = None) -> MockConfigEntry:
-    """Create fixture for adding config entry in Home Assistant."""
+    """Create fixture for adding config entry in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=CONF_DATA, unique_id=unique_id)
     entry.add_to_hass(hass)
     return entry
@@ -53,13 +53,13 @@ def create_entry(hass: HomeAssistant, unique_id: str | None = None) -> MockConfi
 
 @pytest.fixture
 def config_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     return create_entry(hass)
 
 
 @pytest.fixture
 def config_entry_with_uid(hass: HomeAssistant) -> MockConfigEntry:
-    """Add config entry with unique ID in Home Assistant."""
+    """Add config entry with unique ID in NRJHub."""
     return create_entry(hass, unique_id="aabbccddeeff")
 
 
@@ -119,7 +119,7 @@ async def mock_setup_integration(
     hass: HomeAssistant,
     mocked_plug: MagicMock,
 ) -> None:
-    """Set up the D-Link integration in Home Assistant."""
+    """Set up the D-Link integration in NRJHub."""
     with patch_setup(mocked_plug):
         assert await async_setup_component(hass, DOMAIN, {})
         await hass.async_block_till_done()
@@ -131,7 +131,7 @@ async def setup_integration(
     config_entry_with_uid: MockConfigEntry,
     mocked_plug: MagicMock,
 ) -> Generator[ComponentSetup, None, None]:
-    """Set up the D-Link integration in Home Assistant."""
+    """Set up the D-Link integration in NRJHub."""
 
     async def func() -> None:
         await mock_setup_integration(hass, mocked_plug)
@@ -145,7 +145,7 @@ async def setup_integration_legacy(
     config_entry_with_uid: MockConfigEntry,
     mocked_plug_legacy: MagicMock,
 ) -> Generator[ComponentSetup, None, None]:
-    """Set up the D-Link integration in Home Assistant with different data."""
+    """Set up the D-Link integration in NRJHub with different data."""
 
     async def func() -> None:
         await mock_setup_integration(hass, mocked_plug_legacy)

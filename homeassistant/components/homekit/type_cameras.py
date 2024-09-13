@@ -20,7 +20,6 @@ from homeassistant.const import STATE_ON
 from homeassistant.core import (
     Event,
     EventStateChangedData,
-    HassJobType,
     HomeAssistant,
     State,
     callback,
@@ -264,7 +263,7 @@ class Camera(HomeAccessory, PyhapCamera):  # type: ignore[misc]
     def run(self) -> None:
         """Handle accessory driver started event.
 
-        Run inside the Home Assistant event loop.
+        Run inside the NRJHub event loop.
         """
         if self._char_motion_detected:
             assert self.linked_motion_sensor
@@ -273,7 +272,6 @@ class Camera(HomeAccessory, PyhapCamera):  # type: ignore[misc]
                     self.hass,
                     [self.linked_motion_sensor],
                     self._async_update_motion_state_event,
-                    job_type=HassJobType.Callback,
                 )
             )
 
@@ -284,7 +282,6 @@ class Camera(HomeAccessory, PyhapCamera):  # type: ignore[misc]
                     self.hass,
                     [self.linked_doorbell_sensor],
                     self._async_update_doorbell_state_event,
-                    job_type=HassJobType.Callback,
                 )
             )
 

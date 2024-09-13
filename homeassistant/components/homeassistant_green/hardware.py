@@ -1,4 +1,4 @@
-"""The Home Assistant Green hardware platform."""
+"""The NRJHub Green hardware platform."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from homeassistant.exceptions import HomeAssistantError
 
 from .const import DOMAIN
 
-BOARD_NAME = "Home Assistant Green"
+BOARD_NAME = "NRJHub Green"
 DOCUMENTATION_URL = "https://green.home-assistant.io/documentation/"
 MANUFACTURER = "homeassistant"
 MODEL = "green"

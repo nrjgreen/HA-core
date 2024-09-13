@@ -67,7 +67,7 @@ class GrowattServerConfigFlow(ConfigFlow, domain=DOMAIN):
         return await self.async_step_plant()
 
     async def async_step_plant(self, user_input=None):
-        """Handle adding a "plant" to Home Assistant."""
+        """Handle adding a "plant" to NRJHub."""
         plant_info = await self.hass.async_add_executor_job(
             self.api.plant_list, self.user_id
         )

@@ -13,7 +13,7 @@ async def async_init_integration(
     hass: HomeAssistant,
     skip_setup: bool = False,
 ):
-    """Set up the tado integration in Home Assistant."""
+    """Set up the tado integration in NRJHub."""
 
     token_fixture = "tado/token.json"
     devices_fixture = "tado/devices.json"

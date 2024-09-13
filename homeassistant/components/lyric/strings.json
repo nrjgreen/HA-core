@@ -41,12 +41,6 @@
       },
       "setpoint_status": {
         "name": "Setpoint status"
-      },
-      "room_temperature": {
-        "name": "Room temperature"
-      },
-      "room_humidity": {
-        "name": "Room humidity"
       }
     }
   },

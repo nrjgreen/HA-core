@@ -51,7 +51,7 @@ async def async_setup_platform(
     name = config.get(CONF_NAME)
 
     if None in (latitude, longitude):
-        _LOGGER.error("Latitude or longitude not set in Home Assistant config")
+        _LOGGER.error("Latitude or longitude not set in NRJHub config")
         return
 
     coordinates = {"lat": str(latitude), "lon": str(longitude)}

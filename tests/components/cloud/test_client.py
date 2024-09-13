@@ -24,7 +24,6 @@ from homeassistant.components.homeassistant.exposed_entities import (
     ExposedEntities,
     async_expose_entity,
 )
-from homeassistant.components.http.const import StrictConnectionMode
 from homeassistant.const import CONTENT_TYPE_JSON, __version__ as HA_VERSION
 from homeassistant.core import HomeAssistant, State
 from homeassistant.helpers import entity_registry as er
@@ -77,10 +76,10 @@ async def test_handler_alexa(hass: HomeAssistant) -> None:
     assert len(endpoints) == 1
     device = endpoints[0]
 
-    assert device["description"] == "Config description via Home Assistant"
+    assert device["description"] == "Config description via NRJHub"
     assert device["friendlyName"] == "Config name"
     assert device["displayCategories"] == ["LIGHT"]
-    assert device["manufacturerName"] == "Home Assistant"
+    assert device["manufacturerName"] == "NRJHub"
 
 
 async def test_handler_alexa_disabled(hass: HomeAssistant, mock_cloud_fixture) -> None:
@@ -388,7 +387,6 @@ async def test_cloud_connection_info(hass: HomeAssistant) -> None:
             "connected": False,
             "enabled": False,
             "instance_domain": None,
-            "strict_connection": StrictConnectionMode.DISABLED,
         },
         "version": HA_VERSION,
     }

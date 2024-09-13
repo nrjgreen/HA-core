@@ -767,7 +767,7 @@ async def async_remove_discovery_payload(
     """Clear retained discovery payload.
 
     Remove discovery topic in broker to avoid rediscovery
-    after a restart of Home Assistant.
+    after a restart of NRJHub.
     """
     discovery_topic = discovery_data[ATTR_DISCOVERY_TOPIC]
     await async_publish(hass, discovery_topic, "", retain=True)

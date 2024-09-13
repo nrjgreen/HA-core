@@ -87,7 +87,7 @@ class MatterEntity(Entity):
         self._update_from_device()
 
     async def async_added_to_hass(self) -> None:
-        """Handle being added to Home Assistant."""
+        """Handle being added to NRJHub."""
         await super().async_added_to_hass()
 
         # Subscribe to attribute updates.

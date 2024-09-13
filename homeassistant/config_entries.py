@@ -1,4 +1,4 @@
-"""Manage config entries in Home Assistant."""
+"""Manage config entries in NRJHub."""
 
 from __future__ import annotations
 
@@ -365,7 +365,7 @@ class ConfigEntry:
             report(  # type: ignore[unreachable]
                 (
                     "uses str for config entry disabled_by. This is deprecated and will"
-                    " stop working in Home Assistant 2022.3, it should be updated to"
+                    " stop working in NRJHub 2022.3, it should be updated to"
                     " use ConfigEntryDisabler instead"
                 ),
                 error_if_core=False,
@@ -432,7 +432,7 @@ class ConfigEntry:
                 )
             report(
                 f'sets "{key}" directly to update a config entry. This is deprecated and will'
-                " stop working in Home Assistant 2024.9, it should be updated to use"
+                " stop working in NRJHub 2024.9, it should be updated to use"
                 " async_update_entry instead",
                 error_if_core=False,
             )
@@ -715,7 +715,7 @@ class ConfigEntry:
 
     @callback
     def async_shutdown(self) -> None:
-        """Call when Home Assistant is stopping."""
+        """Call when NRJHub is stopping."""
         self.async_cancel_retry_setup()
 
     @callback
@@ -1211,7 +1211,7 @@ class ConfigEntriesFlowManager(data_entry_flow.FlowManager[ConfigFlowResult]):
             async with interrupt(
                 cancel_init_future,
                 FlowCancelledError,
-                "Config entry initialize canceled: Home Assistant is shutting down",
+                "Config entry initialize canceled: NRJHub is shutting down",
             ):
                 flow, result = await self._async_init(flow_id, handler, context, data)
         except FlowCancelledError as ex:
@@ -1405,9 +1405,7 @@ class ConfigEntriesFlowManager(data_entry_flow.FlowManager[ConfigFlowResult]):
     @callback
     def _async_discovery(self) -> None:
         """Handle discovery."""
-        # async_fire_internal is used here because this is only
-        # called from the Debouncer so we know the usage is safe
-        self.hass.bus.async_fire_internal(EVENT_FLOW_DISCOVERED)
+        self.hass.bus.async_fire(EVENT_FLOW_DISCOVERED)
         persistent_notification.async_create(
             self.hass,
             title="New devices discovered",
@@ -1656,7 +1654,7 @@ class ConfigEntries:
 
     @callback
     def _async_shutdown(self, event: Event) -> None:
-        """Call when Home Assistant is stopping."""
+        """Call when NRJHub is stopping."""
         for entry in self._entries.values():
             entry.async_shutdown()
         self.flow.async_shutdown()
@@ -1814,7 +1812,7 @@ class ConfigEntries:
             report(  # type: ignore[unreachable]
                 (
                     "uses str for config entry disabled_by. This is deprecated and will"
-                    " stop working in Home Assistant 2022.3, it should be updated to"
+                    " stop working in NRJHub 2022.3, it should be updated to"
                     " use ConfigEntryDisabler instead"
                 ),
                 error_if_core=False,
@@ -2022,7 +2020,7 @@ class ConfigEntries:
         This is primarily intended for existing config entries which are loaded at
         startup, awaiting this function will block until the component and all its
         config entries are loaded.
-        Config entries which are created after Home Assistant is started can't be waited
+        Config entries which are created after NRJHub is started can't be waited
         for, the function will just return if the config entry is loaded or not.
         """
         setup_done: dict[str, asyncio.Future[bool]] = self.hass.data.get(
@@ -2399,7 +2397,6 @@ class ConfigFlow(ConfigEntryBaseFlow):
         data: Mapping[str, Any] | UndefinedType = UNDEFINED,
         options: Mapping[str, Any] | UndefinedType = UNDEFINED,
         reason: str = "reauth_successful",
-        reload_even_if_entry_is_unchanged: bool = True,
     ) -> ConfigFlowResult:
         """Update config entry, reload config entry and finish config flow."""
         result = self.hass.config_entries.async_update_entry(
@@ -2409,7 +2406,7 @@ class ConfigFlow(ConfigEntryBaseFlow):
             data=data,
             options=options,
         )
-        if reload_even_if_entry_is_unchanged or result:
+        if result:
             self.hass.config_entries.async_schedule_reload(entry.entry_id)
         return self.async_abort(reason=reason)
 
@@ -2612,12 +2609,14 @@ def _handle_entry_updated_filter(
     Only handle changes to "disabled_by".
     If "disabled_by" was CONFIG_ENTRY, reload is not needed.
     """
-    return not (
+    if (
         event_data["action"] != "update"
         or "disabled_by" not in event_data["changes"]
         or event_data["changes"]["disabled_by"]
         is entity_registry.RegistryEntryDisabler.CONFIG_ENTRY
-    )
+    ):
+        return False
+    return True
 
 
 async def support_entry_unload(hass: HomeAssistant, domain: str) -> bool:

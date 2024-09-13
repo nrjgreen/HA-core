@@ -58,7 +58,7 @@ async def init_integration(
     options: dict = ENTRY_OPTIONS,
     skip_entry_setup: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Canary integration in Home Assistant."""
+    """Set up the Canary integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=data, options=options)
     entry.add_to_hass(hass)
 

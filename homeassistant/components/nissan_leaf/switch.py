@@ -50,7 +50,7 @@ class LeafClimateSwitch(LeafEntity, SwitchEntity):
     def log_registration(self) -> None:
         """Log registration."""
         _LOGGER.debug(
-            "Registered LeafClimateSwitch integration with Home Assistant for VIN %s",
+            "Registered LeafClimateSwitch integration with NRJHub for VIN %s",
             self.car.leaf.vin,
         )
 

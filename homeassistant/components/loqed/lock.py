@@ -1,4 +1,4 @@
-"""LOQED lock integration for Home Assistant."""
+"""LOQED lock integration for NRJHub."""
 
 from __future__ import annotations
 

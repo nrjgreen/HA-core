@@ -1,4 +1,4 @@
-"""Test the Home Assistant Yellow config flow."""
+"""Test the NRJHub Yellow config flow."""
 
 from collections.abc import Generator
 from unittest.mock import Mock, patch
@@ -66,7 +66,7 @@ async def test_config_flow(hass: HomeAssistant) -> None:
         )
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert result["title"] == "Home Assistant Yellow"
+    assert result["title"] == "NRJHub Yellow"
     assert result["data"] == {}
     assert result["options"] == {}
     assert len(mock_setup_entry.mock_calls) == 1
@@ -74,7 +74,7 @@ async def test_config_flow(hass: HomeAssistant) -> None:
     config_entry = hass.config_entries.async_entries(DOMAIN)[0]
     assert config_entry.data == {}
     assert config_entry.options == {}
-    assert config_entry.title == "Home Assistant Yellow"
+    assert config_entry.title == "NRJHub Yellow"
 
 
 async def test_config_flow_single_entry(hass: HomeAssistant) -> None:
@@ -87,7 +87,7 @@ async def test_config_flow_single_entry(hass: HomeAssistant) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -121,7 +121,7 @@ async def test_option_flow_install_multi_pan_addon(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -192,7 +192,7 @@ async def test_option_flow_install_multi_pan_addon_zha(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -284,7 +284,7 @@ async def test_option_flow_led_settings(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -330,7 +330,7 @@ async def test_option_flow_led_settings_unchanged(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -362,7 +362,7 @@ async def test_option_flow_led_settings_fail_1(hass: HomeAssistant) -> None:
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 
@@ -394,7 +394,7 @@ async def test_option_flow_led_settings_fail_2(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
 

@@ -53,7 +53,7 @@ class GoogleHybridAuth(AuthImplementation):
     """OAuth implementation that supports both Web Auth (base class) and Device Auth."""
 
     async def async_resolve_external_data(self, external_data: Any) -> dict:
-        """Resolve a Google API Credentials object to Home Assistant token."""
+        """Resolve a Google API Credentials object to NRJHub token."""
         if DEVICE_AUTH_CREDS not in external_data:
             # Assume the Web Auth flow was used, so use the default behavior
             return await super().async_resolve_external_data(external_data)

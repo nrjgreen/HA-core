@@ -27,7 +27,7 @@ DEFAULT_PROMPT = """{%- set used_domains = set([
   "percentage",
 ]) %}
 
-This smart home is controlled by Home Assistant.
+This smart home is controlled by NRJHub.
 The current time is {{ now().strftime("%X") }}.
 Today's date is {{ now().strftime("%x") }}.
 

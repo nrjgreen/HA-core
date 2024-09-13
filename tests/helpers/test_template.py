@@ -1,4 +1,4 @@
-"""Test Home Assistant template helper methods."""
+"""Test NRJHub template helper methods."""
 
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ from homeassistant.const import (
     UnitOfTemperature,
     UnitOfVolume,
 )
-from homeassistant.core import DOMAIN as HA_DOMAIN, HomeAssistant
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import TemplateError
 from homeassistant.helpers import (
     area_registry as ar,
@@ -1199,35 +1199,6 @@ def test_as_datetime_from_timestamp(
 
 
 @pytest.mark.parametrize(
-    ("input", "output"),
-    [
-        (
-            "{% set dt = as_datetime('2024-01-01 16:00:00-08:00') %}",
-            "2024-01-01 16:00:00-08:00",
-        ),
-        (
-            "{% set dt = as_datetime('2024-01-29').date() %}",
-            "2024-01-29 00:00:00",
-        ),
-    ],
-)
-def test_as_datetime_from_datetime(
-    hass: HomeAssistant, input: str, output: str
-) -> None:
-    """Test using datetime.datetime or datetime.date objects as input."""
-
-    assert (
-        template.Template(f"{input}{{{{ dt | as_datetime }}}}", hass).async_render()
-        == output
-    )
-
-    assert (
-        template.Template(f"{input}{{{{ as_datetime(dt) }}}}", hass).async_render()
-        == output
-    )
-
-
-@pytest.mark.parametrize(
     ("input", "default", "output"),
     [
         (1469119144, 123, "2016-07-21 16:39:04+00:00"),
@@ -1584,19 +1555,19 @@ def test_base64_decode(hass: HomeAssistant) -> None:
 def test_slugify(hass: HomeAssistant) -> None:
     """Test the slugify filter."""
     assert (
-        template.Template('{{ slugify("Home Assistant") }}', hass).async_render()
+        template.Template('{{ slugify("NRJHub") }}', hass).async_render()
         == "home_assistant"
     )
     assert (
-        template.Template('{{ "Home Assistant" | slugify }}', hass).async_render()
+        template.Template('{{ "NRJHub" | slugify }}', hass).async_render()
         == "home_assistant"
     )
     assert (
-        template.Template('{{ slugify("Home Assistant", "-") }}', hass).async_render()
+        template.Template('{{ slugify("NRJHub", "-") }}', hass).async_render()
         == "home-assistant"
     )
     assert (
-        template.Template('{{ "Home Assistant" | slugify("-") }}', hass).async_render()
+        template.Template('{{ "NRJHub" | slugify("-") }}', hass).async_render()
         == "home-assistant"
     )
 
@@ -2240,7 +2211,6 @@ def test_relative_time(mock_is_safe, hass: HomeAssistant) -> None:
     """Test relative_time method."""
     hass.config.set_time_zone("UTC")
     now = datetime.strptime("2000-01-01 10:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-    issue_registry = ir.async_get(hass)
     relative_time_template = (
         '{{relative_time(strptime("2000-01-01 09:00:00", "%Y-%m-%d %H:%M:%S"))}}'
     )
@@ -2250,9 +2220,7 @@ def test_relative_time(mock_is_safe, hass: HomeAssistant) -> None:
             hass,
         ).async_render()
         assert result == "1 hour"
-        assert issue_registry.async_get_issue(
-            HA_DOMAIN, "template_function_relative_time_deprecated"
-        )
+
         result = template.Template(
             (
                 "{{"
@@ -2308,333 +2276,6 @@ def test_relative_time(mock_is_safe, hass: HomeAssistant) -> None:
         assert result == "string"
 
         info = template.Template(relative_time_template, hass).async_render_to_info()
-        assert info.has_time is True
-
-
-@patch(
-    "homeassistant.helpers.template.TemplateEnvironment.is_safe_callable",
-    return_value=True,
-)
-def test_time_since(mock_is_safe, hass: HomeAssistant) -> None:
-    """Test time_since method."""
-    hass.config.set_time_zone("UTC")
-    now = datetime.strptime("2000-01-01 10:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-    time_since_template = (
-        '{{time_since(strptime("2000-01-01 09:00:00", "%Y-%m-%d %H:%M:%S"))}}'
-    )
-    with freeze_time(now):
-        result = template.Template(
-            time_since_template,
-            hass,
-        ).async_render()
-        assert result == "1 hour"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '        "2000-01-01 09:00:00 +01:00",'
-                '        "%Y-%m-%d %H:%M:%S %z"'
-                "    )"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "2 hours"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "2000-01-01 03:00:00 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"'
-                "    )"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour"
-
-        result1 = str(
-            template.strptime("2000-01-01 11:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-        )
-        result2 = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "2000-01-01 11:00:00 +00:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "    precision = 2"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result1 == result2
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '        "2000-01-01 09:05:00 +01:00",'
-                '        "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision=2"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour 55 minutes"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "2000-01-01 02:05:27 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision = 3"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour 54 minutes 33 seconds"
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "2000-01-01 02:05:27 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z")'
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "2 hours"
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "1999-02-01 02:05:27 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision = 0"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "11 months 4 days 1 hour 54 minutes 33 seconds"
-        result = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "1999-02-01 02:05:27 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z")'
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "11 months"
-        result1 = str(
-            template.strptime("2000-01-01 11:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-        )
-        result2 = template.Template(
-            (
-                "{{"
-                "  time_since("
-                "    strptime("
-                '       "2000-01-01 11:00:00 +00:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision=3"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result1 == result2
-
-        result = template.Template(
-            '{{time_since("string")}}',
-            hass,
-        ).async_render()
-        assert result == "string"
-
-        info = template.Template(time_since_template, hass).async_render_to_info()
-        assert info.has_time is True
-
-
-@patch(
-    "homeassistant.helpers.template.TemplateEnvironment.is_safe_callable",
-    return_value=True,
-)
-def test_time_until(mock_is_safe, hass: HomeAssistant) -> None:
-    """Test time_until method."""
-    hass.config.set_time_zone("UTC")
-    now = datetime.strptime("2000-01-01 10:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-    time_until_template = (
-        '{{time_until(strptime("2000-01-01 11:00:00", "%Y-%m-%d %H:%M:%S"))}}'
-    )
-    with freeze_time(now):
-        result = template.Template(
-            time_until_template,
-            hass,
-        ).async_render()
-        assert result == "1 hour"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '        "2000-01-01 13:00:00 +01:00",'
-                '        "%Y-%m-%d %H:%M:%S %z"'
-                "    )"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "2 hours"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2000-01-01 05:00:00 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"'
-                "    )"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour"
-
-        result1 = str(
-            template.strptime("2000-01-01 09:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-        )
-        result2 = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2000-01-01 09:00:00 +00:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "    precision = 2"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result1 == result2
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '        "2000-01-01 12:05:00 +01:00",'
-                '        "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision=2"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour 5 minutes"
-
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2000-01-01 05:54:33 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision = 3"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 hour 54 minutes 33 seconds"
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2000-01-01 05:54:33 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z")'
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "2 hours"
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2001-02-01 05:54:33 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision = 0"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 year 1 month 2 days 1 hour 54 minutes 33 seconds"
-        result = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2001-02-01 05:54:33 -06:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision = 4"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result == "1 year 1 month 2 days 2 hours"
-        result1 = str(
-            template.strptime("2000-01-01 09:00:00 +00:00", "%Y-%m-%d %H:%M:%S %z")
-        )
-        result2 = template.Template(
-            (
-                "{{"
-                "  time_until("
-                "    strptime("
-                '       "2000-01-01 09:00:00 +00:00",'
-                '       "%Y-%m-%d %H:%M:%S %z"),'
-                "       precision=3"
-                "  )"
-                "}}"
-            ),
-            hass,
-        ).async_render()
-        assert result1 == result2
-
-        result = template.Template(
-            '{{time_until("string")}}',
-            hass,
-        ).async_render()
-        assert result == "string"
-
-        info = template.Template(time_until_template, hass).async_render_to_info()
         assert info.has_time is True
 
 
@@ -2739,7 +2380,7 @@ def test_regex_match(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-{{ 'Home Assistant test' | regex_match('home', True) }}
+{{ 'NRJHub test' | regex_match('home', True) }}
             """,
         hass,
     )
@@ -2747,7 +2388,7 @@ def test_regex_match(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-    {{ 'Another Home Assistant test' | regex_match('Home') }}
+    {{ 'Another NRJHub test' | regex_match('Home') }}
                     """,
         hass,
     )
@@ -2755,7 +2396,7 @@ def test_regex_match(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-{{ ['Home Assistant test'] | regex_match('.*Assist') }}
+{{ ['NRJHub test'] | regex_match('.*Assist') }}
             """,
         hass,
     )
@@ -2785,7 +2426,7 @@ def test_regex_search(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-{{ 'Home Assistant test' | regex_search('home', True) }}
+{{ 'NRJHub test' | regex_search('home', True) }}
             """,
         hass,
     )
@@ -2793,7 +2434,7 @@ def test_regex_search(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-    {{ 'Another Home Assistant test' | regex_search('Home') }}
+    {{ 'Another NRJHub test' | regex_search('Home') }}
                     """,
         hass,
     )
@@ -2801,7 +2442,7 @@ def test_regex_search(hass: HomeAssistant) -> None:
 
     tpl = template.Template(
         """
-{{ ['Home Assistant test'] | regex_search('Assist') }}
+{{ ['NRJHub test'] | regex_search('Assist') }}
             """,
         hass,
     )
@@ -2835,7 +2476,7 @@ def test_regex_replace(hass: HomeAssistant) -> None:
             """,
         hass,
     )
-    assert tpl.async_render() == ["Home Assistant test"]
+    assert tpl.async_render() == ["NRJHub test"]
 
 
 def test_regex_findall(hass: HomeAssistant) -> None:
@@ -6087,20 +5728,3 @@ async def test_label_areas(
     info = render_to_info(hass, f"{{{{ '{label.name}' | label_areas }}}}")
     assert_result_info(info, [master_bedroom.id])
     assert info.rate_limit is None
-
-
-async def test_template_thread_safety_checks(hass: HomeAssistant) -> None:
-    """Test template thread safety checks."""
-    hass.states.async_set("sensor.test", "23")
-    template_str = "{{ states('sensor.test') }}"
-    template_obj = template.Template(template_str, None)
-    template_obj.hass = hass
-    hass.config.debug = True
-
-    with pytest.raises(
-        RuntimeError,
-        match="Detected code that calls async_render_to_info from a thread.",
-    ):
-        await hass.async_add_executor_job(template_obj.async_render_to_info)
-
-    assert template_obj.async_render_to_info().result() == 23

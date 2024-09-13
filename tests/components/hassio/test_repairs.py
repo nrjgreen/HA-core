@@ -641,7 +641,7 @@ async def test_supervisor_issue_docker_config_repair_flow(
         "step_id": "system_execute_rebuild",
         "data_schema": [],
         "errors": None,
-        "description_placeholders": {"components": "Home Assistant\n- test"},
+        "description_placeholders": {"components": "NRJHub\n- test"},
         "last_step": True,
         "preview": None,
     }

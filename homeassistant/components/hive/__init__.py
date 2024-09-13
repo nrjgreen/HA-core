@@ -164,7 +164,7 @@ class HiveEntity(Entity):
         self.attributes: dict[str, Any] = {}
 
     async def async_added_to_hass(self) -> None:
-        """When entity is added to Home Assistant."""
+        """When entity is added to NRJHub."""
         self.async_on_remove(
             async_dispatcher_connect(self.hass, DOMAIN, self.async_write_ha_state)
         )

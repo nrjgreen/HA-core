@@ -1,4 +1,4 @@
-"""Sensor for Home Assistant analytics."""
+"""Sensor for NRJHub analytics."""
 
 from __future__ import annotations
 
@@ -92,7 +92,7 @@ async def async_setup_entry(
 class HomeassistantAnalyticsSensor(
     CoordinatorEntity[HomeassistantAnalyticsDataUpdateCoordinator], SensorEntity
 ):
-    """Home Assistant Analytics Sensor."""
+    """NRJHub Analytics Sensor."""
 
     _attr_has_entity_name = True
     _attr_entity_category = EntityCategory.DIAGNOSTIC

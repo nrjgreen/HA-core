@@ -38,7 +38,7 @@ MAX_LENGTH_STEAM_IDS = 30
 
 
 def create_entry(hass: HomeAssistant) -> MockConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data=CONF_DATA,

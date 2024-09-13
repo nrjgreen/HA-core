@@ -72,7 +72,7 @@ async def test_form(
     await hass.async_block_till_done()
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert result["title"] == "Home Assistant Analytics Insights"
+    assert result["title"] == "NRJHub Analytics Insights"
     assert result["data"] == {}
     assert result["options"] == expected_options
     assert len(mock_setup_entry.mock_calls) == 1
@@ -119,7 +119,7 @@ async def test_submitting_empty_form(
     await hass.async_block_till_done()
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert result["title"] == "Home Assistant Analytics Insights"
+    assert result["title"] == "NRJHub Analytics Insights"
     assert result["data"] == {}
     assert result["options"] == {
         CONF_TRACKED_INTEGRATIONS: ["youtube"],

@@ -1,4 +1,4 @@
-"""Test to verify that Home Assistant core works."""
+"""Test to verify that NRJHub core works."""
 
 from __future__ import annotations
 
@@ -42,7 +42,6 @@ from homeassistant.core import (
     CoreState,
     HassJob,
     HomeAssistant,
-    ReleaseChannel,
     ServiceCall,
     ServiceResponse,
     State,
@@ -56,7 +55,6 @@ from homeassistant.exceptions import (
     InvalidStateError,
     MaxLengthExceeded,
     ServiceNotFound,
-    ServiceValidationError,
 )
 from homeassistant.helpers.json import json_dumps
 from homeassistant.setup import async_setup_component
@@ -1148,11 +1146,11 @@ async def test_eventbus_filtered_listener(hass: HomeAssistant) -> None:
         calls.append(event)
 
     @ha.callback
-    def mock_filter(event_data):
+    def filter(event_data):
         """Mock filter."""
         return not event_data["filtered"]
 
-    unsub = hass.bus.async_listen("test", listener, event_filter=mock_filter)
+    unsub = hass.bus.async_listen("test", listener, event_filter=filter)
 
     hass.bus.async_fire("test", {"filtered": True})
     await hass.async_block_till_done()
@@ -1793,9 +1791,8 @@ async def test_services_call_return_response_requires_blocking(
     hass: HomeAssistant,
 ) -> None:
     """Test that non-blocking service calls cannot ask for response data."""
-    await async_setup_component(hass, "homeassistant", {})
     async_mock_service(hass, "test_domain", "test_service")
-    with pytest.raises(ServiceValidationError, match="blocking=False") as exc:
+    with pytest.raises(ValueError, match="when blocking=False"):
         await hass.services.async_call(
             "test_domain",
             "test_service",
@@ -1803,10 +1800,6 @@ async def test_services_call_return_response_requires_blocking(
             blocking=False,
             return_response=True,
         )
-    assert str(exc.value) == (
-        "A non blocking service call with argument blocking=False "
-        "can't be used together with argument return_response=True"
-    )
 
 
 @pytest.mark.parametrize(
@@ -1823,7 +1816,6 @@ async def test_serviceregistry_return_response_invalid(
     hass: HomeAssistant, response_data: Any, expected_error: str
 ) -> None:
     """Test service call response data must be json serializable objects."""
-    await async_setup_component(hass, "homeassistant", {})
 
     def service_handler(call: ServiceCall) -> ServiceResponse:
         """Service handler coroutine."""
@@ -1850,8 +1842,8 @@ async def test_serviceregistry_return_response_invalid(
 @pytest.mark.parametrize(
     ("supports_response", "return_response", "expected_error"),
     [
-        (SupportsResponse.NONE, True, "does not return responses"),
-        (SupportsResponse.ONLY, False, "call requires responses"),
+        (SupportsResponse.NONE, True, "not support responses"),
+        (SupportsResponse.ONLY, False, "caller did not ask for responses"),
     ],
 )
 async def test_serviceregistry_return_response_arguments(
@@ -1861,7 +1853,6 @@ async def test_serviceregistry_return_response_arguments(
     expected_error: str,
 ) -> None:
     """Test service call response data invalid arguments."""
-    await async_setup_component(hass, "homeassistant", {})
 
     hass.services.async_register(
         "test_domain",
@@ -1870,7 +1861,7 @@ async def test_serviceregistry_return_response_arguments(
         supports_response=supports_response,
     )
 
-    with pytest.raises(ServiceValidationError, match=expected_error):
+    with pytest.raises(ValueError, match=expected_error):
         await hass.services.async_call(
             "test_domain",
             "test_service",
@@ -1990,7 +1981,6 @@ async def test_config_as_dict() -> None:
         "country": None,
         "language": "en",
         "safe_mode": False,
-        "debug": False,
     }
 
     assert expected == config.as_dict()
@@ -2092,7 +2082,7 @@ async def test_start_taking_too_long(caplog: pytest.LogCaptureFixture) -> None:
             await hass.async_start()
 
         assert hass.state == ha.CoreState.running
-        assert "Something is blocking Home Assistant" in caplog.text
+        assert "Something is blocking NRJHub" in caplog.text
 
     finally:
         await hass.async_stop()
@@ -2343,7 +2333,7 @@ async def test_incorrect_internal_external_url(
 
 
 async def test_start_events(hass: HomeAssistant) -> None:
-    """Test events fired when starting Home Assistant."""
+    """Test events fired when starting NRJHub."""
     hass.state = ha.CoreState.not_running
 
     all_events = []
@@ -3062,16 +3052,14 @@ async def test_validate_state(hass: HomeAssistant) -> None:
 @pytest.mark.parametrize(
     ("version", "release_channel"),
     [
-        ("0.115.0.dev20200815", ReleaseChannel.NIGHTLY),
-        ("0.115.0", ReleaseChannel.STABLE),
-        ("0.115.0b4", ReleaseChannel.BETA),
-        ("0.115.0dev0", ReleaseChannel.DEV),
+        ("0.115.0.dev20200815", "nightly"),
+        ("0.115.0", "stable"),
+        ("0.115.0b4", "beta"),
+        ("0.115.0dev0", "dev"),
     ],
 )
-async def test_get_release_channel(
-    version: str, release_channel: ReleaseChannel
-) -> None:
-    """Test if release channel detection works from Home Assistant version number."""
+async def test_get_release_channel(version: str, release_channel: str) -> None:
+    """Test if release channel detection works from NRJHub version number."""
     with patch("homeassistant.core.__version__", f"{version}"):
         assert get_release_channel() == release_channel
 
@@ -3225,7 +3213,7 @@ async def test_async_run_job_deprecated(
     hass.async_run_job(_test)
     assert (
         "Detected code that calls `async_run_job`, which is deprecated "
-        "and will be removed in Home Assistant 2025.4; Please review "
+        "and will be removed in NRJHub 2025.4; Please review "
         "https://developers.home-assistant.io/blog/2024/03/13/deprecate_add_run_job"
         " for replacement options"
     ) in caplog.text
@@ -3242,7 +3230,7 @@ async def test_async_add_job_deprecated(
     hass.async_add_job(_test)
     assert (
         "Detected code that calls `async_add_job`, which is deprecated "
-        "and will be removed in Home Assistant 2025.4; Please review "
+        "and will be removed in NRJHub 2025.4; Please review "
         "https://developers.home-assistant.io/blog/2024/03/13/deprecate_add_run_job"
         " for replacement options"
     ) in caplog.text
@@ -3259,7 +3247,7 @@ async def test_async_add_hass_job_deprecated(
     hass.async_add_hass_job(HassJob(_test))
     assert (
         "Detected code that calls `async_add_hass_job`, which is deprecated "
-        "and will be removed in Home Assistant 2025.5; Please review "
+        "and will be removed in NRJHub 2025.5; Please review "
         "https://developers.home-assistant.io/blog/2024/04/07/deprecate_add_hass_job"
         " for replacement options"
     ) in caplog.text
@@ -3275,11 +3263,11 @@ async def test_eventbus_lazy_object_creation(hass: HomeAssistant) -> None:
         calls.append(event)
 
     @ha.callback
-    def mock_filter(event_data):
+    def filter(event_data):
         """Mock filter."""
         return not event_data["filtered"]
 
-    unsub = hass.bus.async_listen("test_1", listener, event_filter=mock_filter)
+    unsub = hass.bus.async_listen("test_1", listener, event_filter=filter)
 
     # Test lazy creation of Event objects
     with patch("homeassistant.core.Event") as mock_event:
@@ -3344,7 +3332,7 @@ async def test_statemachine_report_state(hass: HomeAssistant) -> None:
     """Test report state event."""
 
     @ha.callback
-    def mock_filter(event_data):
+    def filter(event_data):
         """Mock filter."""
         return True
 
@@ -3355,7 +3343,7 @@ async def test_statemachine_report_state(hass: HomeAssistant) -> None:
     hass.states.async_set("light.bowl", "on", {})
     state_changed_events = async_capture_events(hass, EVENT_STATE_CHANGED)
     state_reported_events = []
-    hass.bus.async_listen(EVENT_STATE_REPORTED, listener, event_filter=mock_filter)
+    hass.bus.async_listen(EVENT_STATE_REPORTED, listener, event_filter=filter)
 
     hass.states.async_set("light.bowl", "on")
     await hass.async_block_till_done()
@@ -3386,7 +3374,7 @@ async def test_report_state_listener_restrictions(hass: HomeAssistant) -> None:
         """Mock listener."""
 
     @ha.callback
-    def mock_filter(event_data):
+    def filter(event_data):
         """Mock filter."""
         return False
 
@@ -3395,7 +3383,7 @@ async def test_report_state_listener_restrictions(hass: HomeAssistant) -> None:
         hass.bus.async_listen(EVENT_STATE_REPORTED, listener)
 
     # Both filter and run_immediately
-    hass.bus.async_listen(EVENT_STATE_REPORTED, listener, event_filter=mock_filter)
+    hass.bus.async_listen(EVENT_STATE_REPORTED, listener, event_filter=filter)
 
 
 @pytest.mark.parametrize(
@@ -3421,7 +3409,7 @@ async def test_async_listen_with_run_immediately_deprecated(
     func(EVENT_HOMEASSISTANT_START, _test, run_immediately=run_immediately)
     assert (
         f"Detected code that calls `{method}` with run_immediately, which is "
-        "deprecated and will be removed in Home Assistant 2025.5."
+        "deprecated and will be removed in NRJHub 2025.5."
     ) in caplog.text
 
 
@@ -3440,43 +3428,3 @@ async def test_top_level_components(hass: HomeAssistant) -> None:
         hass.config.components.remove("homeassistant.scene")
     with pytest.raises(NotImplementedError):
         hass.config.components.discard("homeassistant")
-
-
-async def test_debug_mode_defaults_to_off(hass: HomeAssistant) -> None:
-    """Test debug mode defaults to off."""
-    assert not hass.config.debug
-
-
-async def test_async_fire_thread_safety(hass: HomeAssistant) -> None:
-    """Test async_fire thread safety."""
-    events = async_capture_events(hass, "test_event")
-    hass.bus.async_fire("test_event")
-    with pytest.raises(
-        RuntimeError, match="Detected code that calls async_fire from a thread."
-    ):
-        await hass.async_add_executor_job(hass.bus.async_fire, "test_event")
-
-    assert len(events) == 1
-
-
-async def test_async_register_thread_safety(hass: HomeAssistant) -> None:
-    """Test async_register thread safety."""
-    with pytest.raises(
-        RuntimeError, match="Detected code that calls async_register from a thread."
-    ):
-        await hass.async_add_executor_job(
-            hass.services.async_register,
-            "test_domain",
-            "test_service",
-            lambda call: None,
-        )
-
-
-async def test_async_remove_thread_safety(hass: HomeAssistant) -> None:
-    """Test async_remove thread safety."""
-    with pytest.raises(
-        RuntimeError, match="Detected code that calls async_remove from a thread."
-    ):
-        await hass.async_add_executor_job(
-            hass.services.async_remove, "test_domain", "test_service"
-        )

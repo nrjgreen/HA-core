@@ -1,4 +1,4 @@
-"""Selectors for Home Assistant."""
+"""Selectors for NRJHub."""
 
 from __future__ import annotations
 

@@ -39,7 +39,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class HomeAssistantBluetoothManager(BluetoothManager):
-    """Manage Bluetooth for Home Assistant."""
+    """Manage Bluetooth for NRJHub."""
 
     __slots__ = (
         "hass",

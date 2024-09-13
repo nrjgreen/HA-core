@@ -20,7 +20,7 @@ from tests.common import MockConfigEntry
 def mock_config_entry() -> MockConfigEntry:
     """Return the default mocked config entry."""
     return MockConfigEntry(
-        title="Home Assistant",
+        title="NRJHub",
         domain=DOMAIN,
         data={
             CONF_DOMAIN: "home-assistant.io",

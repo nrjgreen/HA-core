@@ -5,7 +5,7 @@ import logging
 DOMAIN = "openai_conversation"
 LOGGER = logging.getLogger(__name__)
 CONF_PROMPT = "prompt"
-DEFAULT_PROMPT = """This smart home is controlled by Home Assistant.
+DEFAULT_PROMPT = """This smart home is controlled by NRJHub.
 
 An overview of the areas and the devices in this smart home:
 {%- for area in areas() %}
@@ -24,7 +24,7 @@ An overview of the areas and the devices in this smart home:
 
 Answer the user's questions about the world truthfully.
 
-If the user wants to control a device, reject the request and suggest using the Home Assistant app.
+If the user wants to control a device, reject the request and suggest using the NRJHub app.
 """
 CONF_CHAT_MODEL = "chat_model"
 DEFAULT_CHAT_MODEL = "gpt-3.5-turbo"

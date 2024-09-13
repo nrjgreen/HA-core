@@ -132,14 +132,14 @@ async def async_setup_platform(
 
         timeout = service.data.get(CONF_TIMEOUT, entity.timeout)
 
-        _LOGGER.info("Press the key you want Home Assistant to learn")
+        _LOGGER.info("Press the key you want NRJHub to learn")
         start_time = utcnow()
         while (utcnow() - start_time) < timedelta(seconds=timeout):
             message = await hass.async_add_executor_job(device.read, slot)
             _LOGGER.debug("Message received from device: '%s'", message)
 
-            if code := message.get("code"):
-                log_msg = f"Received command is: {code}"
+            if "code" in message and message["code"]:
+                log_msg = "Received command is: {}".format(message["code"])
                 _LOGGER.info(log_msg)
                 persistent_notification.async_create(
                     hass, log_msg, title="Xiaomi Miio Remote"

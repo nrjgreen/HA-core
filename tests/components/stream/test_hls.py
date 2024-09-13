@@ -35,7 +35,7 @@ STREAM_SOURCE = "some-stream-source"
 INIT_BYTES = b"\x00\x00\x00\x08moov"
 FAKE_PAYLOAD = b"fake-payload"
 SEGMENT_DURATION = 10
-TEST_TIMEOUT = 5.0  # Lower than 9s home assistant timeout
+TEST_TIMEOUT = 5.0  # Lower than 9s NRJHub timeout
 MAX_ABORT_SEGMENTS = 20  # Abort test to avoid looping forever
 
 HLS_CONFIG = {

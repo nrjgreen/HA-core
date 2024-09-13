@@ -11,7 +11,7 @@ from tests.common import MockConfigEntry
 async def async_init_integration(
     hass, use_switch=False, use_scene=False
 ) -> MockConfigEntry:
-    """Set up the LiteJet integration in Home Assistant."""
+    """Set up the LiteJet integration in NRJHub."""
 
     registry = er.async_get(hass)
 

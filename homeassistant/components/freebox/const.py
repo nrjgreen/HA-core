@@ -12,7 +12,7 @@ SERVICE_REBOOT = "reboot"
 
 APP_DESC = {
     "app_id": "hass",
-    "app_name": "Home Assistant",
+    "app_name": "NRJHub",
     "app_version": "0.106",
     "device_name": socket.gethostname(),
 }

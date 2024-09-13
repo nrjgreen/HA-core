@@ -136,7 +136,7 @@ async def test_send_text_command(
             entries[0], options={"language_code": configured_language_code}
         )
 
-    command = "turn on home assistant unsupported device"
+    command = "turn on NRJHub unsupported device"
     with patch(
         "homeassistant.components.google_assistant_sdk.helpers.TextAssistant"
     ) as mock_text_assistant:

@@ -50,7 +50,6 @@ class WeatherFlowCloudConfigFlow(ConfigFlow, domain=DOMAIN):
                         existing_entry,
                         data={CONF_API_TOKEN: api_token},
                         reason="reauth_successful",
-                        reload_even_if_entry_is_unchanged=False,
                     )
 
         return self.async_show_form(

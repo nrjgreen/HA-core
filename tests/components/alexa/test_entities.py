@@ -89,7 +89,7 @@ async def test_serialize_discovery(hass: HomeAssistant) -> None:
     endpoint = msg["payload"]["endpoints"][0]
 
     assert endpoint["additionalAttributes"] == {
-        "manufacturer": "Home Assistant",
+        "manufacturer": "NRJHub",
         "model": "switch",
         "softwareVersion": __version__,
         "customIdentifier": "mock-user-id-switch.bla",

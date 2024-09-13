@@ -24,7 +24,7 @@ CONF_DATA = CONF_INPUT | {CONF_NAME: TEAM_NAME}
 
 
 def create_entry(hass: HomeAssistant) -> ConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data=CONF_DATA,
@@ -62,7 +62,7 @@ async def async_init_integration(
     skip_setup: bool = False,
     error: str | None = None,
 ) -> ConfigEntry:
-    """Set up the Slack integration in Home Assistant."""
+    """Set up the Slack integration in NRJHub."""
     entry = create_entry(hass)
     mock_connection(aioclient_mock, error)
 

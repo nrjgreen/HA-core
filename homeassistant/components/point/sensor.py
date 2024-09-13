@@ -69,7 +69,7 @@ async def async_setup_entry(
 
 
 class MinutPointSensor(MinutPointEntity, SensorEntity):
-    """The platform class required by Home Assistant."""
+    """The platform class required by NRJHub."""
 
     def __init__(
         self, point_client, device_id, description: SensorEntityDescription

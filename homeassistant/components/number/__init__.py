@@ -221,7 +221,7 @@ class NumberEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
                 (
                     "%s::%s is overriding deprecated methods on an instance of "
                     "NumberEntity, this is not valid and will be unsupported "
-                    "from Home Assistant 2022.10. Please %s"
+                    "from NRJHub 2022.10. Please %s"
                 ),
                 cls.__module__,
                 cls.__name__,

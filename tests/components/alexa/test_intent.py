@@ -27,7 +27,7 @@ NPR_NEWS_MP3_URL = "https://pd.npr.org/anon.npr-mp3/npr/news/newscast.mp3"
 
 @pytest.fixture
 def alexa_client(event_loop, hass, hass_client):
-    """Initialize a Home Assistant server for testing this module."""
+    """Initialize a NRJHub server for testing this module."""
     loop = event_loop
 
     @callback
@@ -215,7 +215,7 @@ async def test_intent_launch_request_not_configured(alexa_client) -> None:
     assert req.status == HTTPStatus.OK
     data = await req.json()
     text = data.get("response", {}).get("outputSpeech", {}).get("text")
-    assert text == "This intent is not yet configured within Home Assistant."
+    assert text == "This intent is not yet configured within NRJHub."
 
 
 async def test_intent_request_with_slots(alexa_client) -> None:
@@ -610,7 +610,7 @@ async def test_intent_session_ended_request(alexa_client) -> None:
     data = await req.json()
     assert (
         data["response"]["outputSpeech"]["text"]
-        == "This intent is not yet configured within Home Assistant."
+        == "This intent is not yet configured within NRJHub."
     )
 
 

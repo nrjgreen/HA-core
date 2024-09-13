@@ -1,4 +1,4 @@
-"""Home Assistant trigger dispatcher."""
+"""NRJHub trigger dispatcher."""
 
 from typing import cast
 

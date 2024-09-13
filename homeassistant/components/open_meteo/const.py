@@ -23,7 +23,7 @@ LOGGER = logging.getLogger(__package__)
 SCAN_INTERVAL = timedelta(minutes=30)
 
 # World Meteorological Organization Weather Code
-# mapped to Home Assistant weather conditions.
+# mapped to NRJHub weather conditions.
 # https://www.weather.gov/tg/wmo
 WMO_TO_HA_CONDITION_MAP = {
     0: ATTR_CONDITION_SUNNY,  # Clear sky

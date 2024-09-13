@@ -58,7 +58,7 @@ def mock_expires_at() -> int:
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry(expires_at: int, scopes: list[str]) -> MockConfigEntry:
-    """Create YouTube entry in Home Assistant."""
+    """Create YouTube entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title=TITLE,

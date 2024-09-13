@@ -192,7 +192,7 @@ class EntityPlatform:
           to that number.
 
         The default value for parallel requests is decided based on the first
-        entity that is added to Home Assistant. It's 0 if the entity defines
+        entity that is added to NRJHub. It's 0 if the entity defines
         the async_update method, else it's 1.
         """
         if self.parallel_updates_created:
@@ -294,7 +294,7 @@ class EntityPlatform:
 
     @callback
     def async_shutdown(self) -> None:
-        """Call when Home Assistant is stopping."""
+        """Call when NRJHub is stopping."""
         self.async_cancel_retry_setup()
         self.async_unsub_polling()
 

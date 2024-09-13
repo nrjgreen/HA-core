@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from collections.abc import Callable, Coroutine
 from functools import partial, wraps
 import inspect
@@ -11,12 +12,7 @@ import queue
 import traceback
 from typing import Any, TypeVar, TypeVarTuple, cast, overload
 
-from homeassistant.core import (
-    HassJobType,
-    HomeAssistant,
-    callback,
-    get_hassjob_callable_job_type,
-)
+from homeassistant.core import HomeAssistant, callback, is_callback
 
 _T = TypeVar("_T")
 _Ts = TypeVarTuple("_Ts")
@@ -133,38 +129,34 @@ def _callback_wrapper(
 
 @overload
 def catch_log_exception(
-    func: Callable[[*_Ts], Coroutine[Any, Any, Any]],
-    format_err: Callable[[*_Ts], Any],
-    job_type: HassJobType | None = None,
+    func: Callable[[*_Ts], Coroutine[Any, Any, Any]], format_err: Callable[[*_Ts], Any]
 ) -> Callable[[*_Ts], Coroutine[Any, Any, None]]: ...
 
 
 @overload
 def catch_log_exception(
-    func: Callable[[*_Ts], Any],
-    format_err: Callable[[*_Ts], Any],
-    job_type: HassJobType | None = None,
+    func: Callable[[*_Ts], Any], format_err: Callable[[*_Ts], Any]
 ) -> Callable[[*_Ts], None] | Callable[[*_Ts], Coroutine[Any, Any, None]]: ...
 
 
 def catch_log_exception(
-    func: Callable[[*_Ts], Any],
-    format_err: Callable[[*_Ts], Any],
-    job_type: HassJobType | None = None,
+    func: Callable[[*_Ts], Any], format_err: Callable[[*_Ts], Any]
 ) -> Callable[[*_Ts], None] | Callable[[*_Ts], Coroutine[Any, Any, None]]:
     """Decorate a function func to catch and log exceptions.
 
     If func is a coroutine function, a coroutine function will be returned.
     If func is a callback, a callback will be returned.
     """
-    if job_type is None:
-        job_type = get_hassjob_callable_job_type(func)
+    # Check for partials to properly determine if coroutine function
+    check_func = func
+    while isinstance(check_func, partial):
+        check_func = check_func.func  # type: ignore[unreachable]  # false positive
 
-    if job_type is HassJobType.Coroutinefunction:
+    if asyncio.iscoroutinefunction(check_func):
         async_func = cast(Callable[[*_Ts], Coroutine[Any, Any, None]], func)
         return wraps(async_func)(partial(_async_wrapper, async_func, format_err))  # type: ignore[return-value]
 
-    if job_type is HassJobType.Callback:
+    if is_callback(check_func):
         return wraps(func)(partial(_callback_wrapper, func, format_err))  # type: ignore[return-value]
 
     return wraps(func)(partial(_sync_wrapper, func, format_err))  # type: ignore[return-value]

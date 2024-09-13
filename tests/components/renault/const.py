@@ -127,12 +127,7 @@ MOCK_VEHICLES = {
             {
                 ATTR_ENTITY_ID: "select.reg_number_charge_mode",
                 ATTR_ICON: "mdi:calendar-remove",
-                ATTR_OPTIONS: [
-                    "always",
-                    "always_charging",
-                    "schedule_mode",
-                    "scheduled",
-                ],
+                ATTR_OPTIONS: ["always", "always_charging", "schedule_mode"],
                 ATTR_STATE: "always",
                 ATTR_UNIQUE_ID: "vf1aaaaa555777999_charge_mode",
             },
@@ -368,12 +363,7 @@ MOCK_VEHICLES = {
             {
                 ATTR_ENTITY_ID: "select.reg_number_charge_mode",
                 ATTR_ICON: "mdi:calendar-clock",
-                ATTR_OPTIONS: [
-                    "always",
-                    "always_charging",
-                    "schedule_mode",
-                    "scheduled",
-                ],
+                ATTR_OPTIONS: ["always", "always_charging", "schedule_mode"],
                 ATTR_STATE: "schedule_mode",
                 ATTR_UNIQUE_ID: "vf1aaaaa555777999_charge_mode",
             },
@@ -609,12 +599,7 @@ MOCK_VEHICLES = {
             {
                 ATTR_ENTITY_ID: "select.reg_number_charge_mode",
                 ATTR_ICON: "mdi:calendar-remove",
-                ATTR_OPTIONS: [
-                    "always",
-                    "always_charging",
-                    "schedule_mode",
-                    "scheduled",
-                ],
+                ATTR_OPTIONS: ["always", "always_charging", "schedule_mode"],
                 ATTR_STATE: "always",
                 ATTR_UNIQUE_ID: "vf1aaaaa555777123_charge_mode",
             },

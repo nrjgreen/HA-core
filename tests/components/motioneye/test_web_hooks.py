@@ -254,7 +254,7 @@ async def test_setup_camera_with_correct_webhook(
 async def test_setup_camera_with_no_home_assistant_urls(
     hass: HomeAssistant, caplog: pytest.LogCaptureFixture
 ) -> None:
-    """Verify setup works without Home Assistant internal/external URLs."""
+    """Verify setup works without NRJHub internal/external URLs."""
 
     client = create_mock_motioneye_client()
     config_entry = create_mock_motioneye_config_entry(hass, data={CONF_URL: TEST_URL})
@@ -269,7 +269,7 @@ async def test_setup_camera_with_no_home_assistant_urls(
         )
 
     # Should log a warning ...
-    assert "Unable to get Home Assistant URL" in caplog.text
+    assert "Unable to get NRJHub URL" in caplog.text
 
     # ... should not set callbacks in the camera ...
     assert not client.async_set_camera.called

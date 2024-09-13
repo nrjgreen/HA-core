@@ -161,7 +161,7 @@ def get_os_info(hass: HomeAssistant) -> dict[str, Any] | None:
 @callback
 @bind_hass
 def get_core_info(hass: HomeAssistant) -> dict[str, Any] | None:
-    """Return Home Assistant Core information from Supervisor.
+    """Return NRJHub Core information from Supervisor.
 
     Async friendly.
     """
@@ -204,10 +204,10 @@ def async_register_os_in_dev_reg(
     """Register OS in the device registry."""
     params = DeviceInfo(
         identifiers={(DOMAIN, "OS")},
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         model=SupervisorEntityModel.OS,
         sw_version=os_dict[ATTR_VERSION],
-        name="Home Assistant Operating System",
+        name="NRJHub Operating System",
         entry_type=dr.DeviceEntryType.SERVICE,
     )
     dev_reg.async_get_or_create(config_entry_id=entry_id, **params)
@@ -221,9 +221,9 @@ def async_register_host_in_dev_reg(
     """Register host in the device registry."""
     params = DeviceInfo(
         identifiers={(DOMAIN, "host")},
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         model=SupervisorEntityModel.HOST,
-        name="Home Assistant Host",
+        name="NRJHub Host",
         entry_type=dr.DeviceEntryType.SERVICE,
     )
     dev_reg.async_get_or_create(config_entry_id=entry_id, **params)
@@ -238,10 +238,10 @@ def async_register_core_in_dev_reg(
     """Register OS in the device registry."""
     params = DeviceInfo(
         identifiers={(DOMAIN, "core")},
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         model=SupervisorEntityModel.CORE,
         sw_version=core_dict[ATTR_VERSION],
-        name="Home Assistant Core",
+        name="NRJHub Core",
         entry_type=dr.DeviceEntryType.SERVICE,
     )
     dev_reg.async_get_or_create(config_entry_id=entry_id, **params)
@@ -256,10 +256,10 @@ def async_register_supervisor_in_dev_reg(
     """Register OS in the device registry."""
     params = DeviceInfo(
         identifiers={(DOMAIN, "supervisor")},
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         model=SupervisorEntityModel.SUPERVIOSR,
         sw_version=supervisor_dict[ATTR_VERSION],
-        name="Home Assistant Supervisor",
+        name="NRJHub Supervisor",
         entry_type=dr.DeviceEntryType.SERVICE,
     )
     dev_reg.async_get_or_create(config_entry_id=entry_id, **params)

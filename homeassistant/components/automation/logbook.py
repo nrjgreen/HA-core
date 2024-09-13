@@ -1,8 +1,5 @@
 """Describe logbook events."""
 
-from collections.abc import Callable
-from typing import Any
-
 from homeassistant.components.logbook import (
     LOGBOOK_ENTRY_CONTEXT_ID,
     LOGBOOK_ENTRY_ENTITY_ID,
@@ -19,16 +16,11 @@ from .const import DOMAIN
 
 
 @callback
-def async_describe_events(
-    hass: HomeAssistant,
-    async_describe_event: Callable[
-        [str, str, Callable[[LazyEventPartialState], dict[str, Any]]], None
-    ],
-) -> None:
+def async_describe_events(hass: HomeAssistant, async_describe_event):  # type: ignore[no-untyped-def]
     """Describe logbook events."""
 
     @callback
-    def async_describe_logbook_event(event: LazyEventPartialState) -> dict[str, Any]:
+    def async_describe_logbook_event(event: LazyEventPartialState):  # type: ignore[no-untyped-def]
         """Describe a logbook event."""
         data = event.data
         message = "triggered"

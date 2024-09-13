@@ -221,7 +221,7 @@ class OpenhomeDevice(MediaPlayerEntity):
 
         media_id = async_process_play_media_url(self.hass, media_id)
 
-        track_details = {"title": "Home Assistant", "uri": media_id}
+        track_details = {"title": "NRJHub", "uri": media_id}
         await self._device.play_media(track_details)
 
     @catch_request_errors()

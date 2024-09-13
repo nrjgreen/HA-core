@@ -81,7 +81,7 @@ class RingLight(RingEntity[RingStickUpCam], LightEntity):
 
     @exception_wrap
     def _set_light(self, new_state: OnOffState) -> None:
-        """Update light state, and causes Home Assistant to correctly update."""
+        """Update light state, and causes NRJHub to correctly update."""
         self._device.lights = new_state
 
         self._attr_is_on = new_state == OnOffState.ON

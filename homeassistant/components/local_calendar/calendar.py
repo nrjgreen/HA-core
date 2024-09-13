@@ -159,7 +159,7 @@ class LocalCalendarEntity(CalendarEntity):
 
 
 def _parse_event(event: dict[str, Any]) -> Event:
-    """Parse an ical event from a home assistant event dictionary."""
+    """Parse an ical event from a NRJHub event dictionary."""
     if rrule := event.get(EVENT_RRULE):
         event[EVENT_RRULE] = Recur.from_rrule(rrule)
 

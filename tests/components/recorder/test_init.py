@@ -1352,7 +1352,7 @@ def test_compile_missing_statistics(
         wait_recording_done(hass)
         hass.stop()
 
-    # Start Home Assistant one hour later
+    # Start NRJHub one hour later
     stats_5min = []
     stats_hourly = []
 

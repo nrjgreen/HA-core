@@ -2787,7 +2787,7 @@ async def test_recursive_automation(
     """Test automation triggering itself.
 
     - Illegal recursion detection should not be triggered
-    - Home Assistant should not hang on shut down
+    - NRJHub should not hang on shut down
     """
     stop_scripts_at_shutdown_called = asyncio.Event()
     real_stop_scripts_at_shutdown = _async_stop_scripts_at_shutdown

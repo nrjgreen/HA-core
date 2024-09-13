@@ -12,7 +12,7 @@ PATH_HOMEKIT = "homeassistant.components.homekit"
 
 
 async def async_init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the homekit integration in Home Assistant."""
+    """Set up the homekit integration in NRJHub."""
 
     with patch(f"{PATH_HOMEKIT}.HomeKit.async_start"):
         entry = MockConfigEntry(
@@ -25,7 +25,7 @@ async def async_init_integration(hass: HomeAssistant) -> MockConfigEntry:
 
 
 async def async_init_entry(hass: HomeAssistant, entry: MockConfigEntry):
-    """Set up the homekit integration in Home Assistant."""
+    """Set up the homekit integration in NRJHub."""
 
     with patch(f"{PATH_HOMEKIT}.HomeKit.async_start"):
         entry.add_to_hass(hass)

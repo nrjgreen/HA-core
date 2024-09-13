@@ -51,7 +51,7 @@ BAD_LIST_SENSOR_CONFIG_3 = {
 }
 
 # This configuration has some sensors where values are lists
-# Home Assistant maps this to one sensor for each list item
+# NRJHub maps this to one sensor for each list item
 LIST_SENSOR_CONFIG = {
     "sn": {
         "Time": "2020-09-25T12:47:15",
@@ -108,7 +108,7 @@ LIST_SENSOR_CONFIG_2 = {
 }
 
 # This configuration has some sensors where values are dicts
-# Home Assistant maps this to one sensor for each dictionary item
+# NRJHub maps this to one sensor for each dictionary item
 DICT_SENSOR_CONFIG_1 = {
     "sn": {
         "Time": "2020-03-03T00:00:00+00:00",

@@ -1,4 +1,4 @@
-"""API for Husqvarna Automower bound to Home Assistant OAuth."""
+"""API for Husqvarna Automower bound to NRJHub OAuth."""
 
 import logging
 

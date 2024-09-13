@@ -78,7 +78,7 @@ def number_limit_sub_validator(entity_config: OrderedDict) -> OrderedDict:
 
     if dpt_class is None:
         raise vol.Invalid(f"'type: {value_type}' is not a valid numeric sensor type.")
-    # Infinity is not supported by Home Assistant frontend so user defined
+    # Infinity is not supported by NRJHub frontend so user defined
     # config is required if if xknx DPTNumeric subclass defines it as limit.
     if min_config is None and dpt_class.value_min == float("-inf"):
         raise vol.Invalid(f"'min' key required for value type '{value_type}'")
@@ -750,7 +750,6 @@ class NotifySchema(KNXPlatformSchema):
             vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
             vol.Optional(CONF_TYPE, default="latin_1"): string_type_validator,
             vol.Required(KNX_ADDRESS): ga_validator,
-            vol.Optional(CONF_ENTITY_CATEGORY): ENTITY_CATEGORIES_SCHEMA,
         }
     )
 

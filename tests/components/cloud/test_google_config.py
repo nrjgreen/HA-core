@@ -345,7 +345,7 @@ async def test_sync_google_when_started(
 async def test_sync_google_on_home_assistant_start(
     hass: HomeAssistant, mock_cloud_login, cloud_prefs
 ) -> None:
-    """Test Google config syncs when home assistant started."""
+    """Test Google config syncs when NRJHub started."""
     config = CloudGoogleConfig(
         hass, GACTIONS_SCHEMA({}), "mock-user-id", cloud_prefs, hass.data["cloud"]
     )

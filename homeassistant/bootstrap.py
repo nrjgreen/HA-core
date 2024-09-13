@@ -1,4 +1,4 @@
-"""Provide methods to bootstrap a Home Assistant instance."""
+"""Provide methods to bootstrap a NRJHub instance."""
 
 from __future__ import annotations
 
@@ -242,7 +242,7 @@ PRELOAD_STORAGE = [
 async def async_setup_hass(
     runtime_config: RuntimeConfig,
 ) -> core.HomeAssistant | None:
-    """Set up Home Assistant."""
+    """Set up NRJHub."""
     hass = core.HomeAssistant(runtime_config.config_dir)
 
     async_enable_logging(
@@ -252,9 +252,6 @@ async def async_setup_hass(
         runtime_config.log_file,
         runtime_config.log_no_color,
     )
-
-    if runtime_config.debug or hass.loop.get_debug():
-        hass.config.debug = True
 
     hass.config.safe_mode = runtime_config.safe_mode
     hass.config.skip_pip = runtime_config.skip_pip
@@ -319,7 +316,6 @@ async def async_setup_hass(
         hass = core.HomeAssistant(old_config.config_dir)
         if old_logging:
             hass.data[DATA_LOGGING] = old_logging
-        hass.config.debug = old_config.debug
         hass.config.skip_pip = old_config.skip_pip
         hass.config.skip_pip_packages = old_config.skip_pip_packages
         hass.config.internal_url = old_config.internal_url
@@ -361,7 +357,7 @@ def open_hass_ui(hass: core.HomeAssistant) -> None:
 
     if not webbrowser.open(url):
         _LOGGER.warning(
-            "Unable to open the Home Assistant UI in a browser. Open it yourself at %s",
+            "Unable to open the NRJHub UI in a browser. Open it yourself at %s",
             url,
         )
 
@@ -406,7 +402,7 @@ async def async_load_base_functionality(hass: core.HomeAssistant) -> None:
 async def async_from_config_dict(
     config: ConfigType, hass: core.HomeAssistant
 ) -> core.HomeAssistant | None:
-    """Try to configure Home Assistant from a configuration dictionary.
+    """Try to configure NRJHub from a configuration dictionary.
 
     Dynamically loads required components and its dependencies.
     This method is a coroutine.
@@ -427,10 +423,10 @@ async def async_from_config_dict(
             )
         )
     ):
-        _LOGGER.error("Home Assistant core failed to initialize. ")
+        _LOGGER.error("NRJHub core failed to initialize. ")
         return None
 
-    _LOGGER.debug("Home Assistant core initialized")
+    _LOGGER.debug("NRJHub core initialized")
 
     core_config = config.get(core.DOMAIN, {})
 
@@ -442,14 +438,14 @@ async def async_from_config_dict(
         return None
     except HomeAssistantError:
         _LOGGER.error(
-            "Home Assistant core failed to initialize. Further initialization aborted"
+            "NRJHub core failed to initialize. Further initialization aborted"
         )
         return None
 
     await _async_set_up_integrations(hass, config)
 
     stop = monotonic()
-    _LOGGER.info("Home Assistant initialized in %.2fs", stop - start)
+    _LOGGER.info("NRJHub initialized in %.2fs", stop - start)
 
     if (
         REQUIRED_NEXT_PYTHON_HA_RELEASE
@@ -460,7 +456,7 @@ async def async_from_config_dict(
         _LOGGER.warning(
             (
                 "Support for the running Python version %s is deprecated and "
-                "will be removed in Home Assistant %s; "
+                "will be removed in NRJHub %s; "
                 "Please upgrade Python to %s"
             ),
             current_python_version,

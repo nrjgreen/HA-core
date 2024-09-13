@@ -1376,12 +1376,9 @@ async def test_measure_cet(recorder_mock: Recorder, hass: HomeAssistant) -> None
             ]
         }
 
-    with (
-        patch(
-            "homeassistant.components.recorder.history.state_changes_during_period",
-            _fake_states,
-        ),
-        freeze_time(start_time),
+    with patch(
+        "homeassistant.components.recorder.history.state_changes_during_period",
+        _fake_states,
     ):
         await async_setup_component(
             hass,

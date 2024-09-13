@@ -130,7 +130,7 @@ def test_blueprint_validate() -> None:
                 "homeassistant": {"min_version": "100000.0.0"},
             },
         }
-    ).validate() == ["Requires at least Home Assistant 100000.0.0"]
+    ).validate() == ["Requires at least NRJHub 100000.0.0"]
 
 
 def test_blueprint_inputs(blueprint_2) -> None:

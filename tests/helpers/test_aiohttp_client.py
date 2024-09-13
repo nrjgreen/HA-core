@@ -202,7 +202,7 @@ async def test_warning_close_session_integration(
         session = client.async_get_clientsession(hass)
         await session.close()
     assert (
-        "Detected that integration 'hue' closes the Home Assistant aiohttp session at "
+        "Detected that integration 'hue' closes the NRJHub aiohttp session at "
         "homeassistant/components/hue/light.py, line 23: await session.close(), "
         "please create a bug report at https://github.com/home-assistant/core/issues?"
         "q=is%3Aopen+is%3Aissue+label%3A%22integration%3A+hue%22"
@@ -246,7 +246,7 @@ async def test_warning_close_session_custom(
         session = client.async_get_clientsession(hass)
         await session.close()
     assert (
-        "Detected that custom integration 'hue' closes the Home Assistant aiohttp "
+        "Detected that custom integration 'hue' closes the NRJHub aiohttp "
         "session at custom_components/hue/light.py, line 23: await session.close(), "
         "please report it to the author of the 'hue' custom integration"
     ) in caplog.text

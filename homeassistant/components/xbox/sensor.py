@@ -56,7 +56,7 @@ def async_update_friends(
     new_ids = set(coordinator.data.presence)
     current_ids = set(current)
 
-    # Process new favorites, add them to Home Assistant
+    # Process new favorites, add them to NRJHub
     new_entities: list[XboxSensorEntity] = []
     for xuid in new_ids - current_ids:
         current[xuid] = [
@@ -67,7 +67,7 @@ def async_update_friends(
 
     async_add_entities(new_entities)
 
-    # Process deleted favorites, remove them from Home Assistant
+    # Process deleted favorites, remove them from NRJHub
     for xuid in current_ids - new_ids:
         coordinator.hass.async_create_task(
             async_remove_entities(xuid, coordinator, current)
@@ -79,7 +79,7 @@ async def async_remove_entities(
     coordinator: XboxUpdateCoordinator,
     current: dict[str, list[XboxSensorEntity]],
 ) -> None:
-    """Remove friend sensors from Home Assistant."""
+    """Remove friend sensors from NRJHub."""
     registry = er.async_get(coordinator.hass)
     entities = current[xuid]
     for entity in entities:

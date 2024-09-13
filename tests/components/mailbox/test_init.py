@@ -116,7 +116,7 @@ def mock_mailbox(hass: HomeAssistant) -> None:
 async def mock_http_client(
     hass: HomeAssistant, hass_client: ClientSessionGenerator, mock_mailbox: None
 ) -> TestClient:
-    """Start the Home Assistant HTTP component."""
+    """Start the NRJHub HTTP component."""
     assert await async_setup_component(
         hass, mailbox.DOMAIN, {mailbox.DOMAIN: {"platform": "test"}}
     )

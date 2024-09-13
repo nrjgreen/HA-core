@@ -28,7 +28,7 @@ CONF_DHCP_FLOW = dhcp.DhcpServiceInfo(
 
 
 def create_entry(hass: HomeAssistant):
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data=CONF_DATA,
@@ -62,7 +62,7 @@ async def async_init_integration(
     aioclient_mock: AiohttpClientMocker,
     skip_setup: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Goal Zero integration in Home Assistant."""
+    """Set up the Goal Zero integration in NRJHub."""
     entry = create_entry(hass)
     base_url = f"http://{HOST}/"
     aioclient_mock.get(

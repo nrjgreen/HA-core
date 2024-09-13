@@ -74,7 +74,7 @@ class WaterHeaterEntityFeature(IntFlag):
     ON_OFF = 8
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the WaterHeaterEntityFeature enum instead.
 _DEPRECATED_SUPPORT_TARGET_TEMPERATURE = DeprecatedConstantEnum(
     WaterHeaterEntityFeature.TARGET_TEMPERATURE, "2025.1"

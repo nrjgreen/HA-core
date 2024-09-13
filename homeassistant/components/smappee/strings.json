@@ -3,7 +3,7 @@
     "flow_title": "{name}",
     "step": {
       "environment": {
-        "description": "Set up your Smappee to integrate with Home Assistant.",
+        "description": "Set up your Smappee to integrate with NRJHub.",
         "data": {
           "environment": "Environment"
         }
@@ -15,7 +15,7 @@
         }
       },
       "zeroconf_confirm": {
-        "description": "Do you want to add the Smappee device with serialnumber `{serialnumber}` to Home Assistant?",
+        "description": "Do you want to add the Smappee device with serialnumber `{serialnumber}` to NRJHub?",
         "title": "Discovered Smappee device"
       },
       "pick_implementation": {

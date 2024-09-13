@@ -66,7 +66,7 @@ class OnboardingStorage(Store[OnboardingStoreData]):
 @bind_hass
 @callback
 def async_is_onboarded(hass: HomeAssistant) -> bool:
-    """Return if Home Assistant has been onboarded."""
+    """Return if NRJHub has been onboarded."""
     data: OnboardingData | None = hass.data.get(DOMAIN)
     return data is None or data.onboarded is True
 

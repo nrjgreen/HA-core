@@ -1,4 +1,4 @@
-"""Test Home Assistant scenes."""
+"""Test NRJHub scenes."""
 
 from unittest.mock import patch
 

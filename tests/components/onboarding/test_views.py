@@ -641,14 +641,14 @@ async def test_onboarding_installation_type(
 
     with patch(
         "homeassistant.components.onboarding.views.async_get_system_info",
-        return_value={"installation_type": "Home Assistant Core"},
+        return_value={"installation_type": "NRJHub Core"},
     ):
         resp = await client.get("/api/onboarding/installation_type")
 
         assert resp.status == 200
 
         resp_content = await resp.json()
-        assert resp_content["installation_type"] == "Home Assistant Core"
+        assert resp_content["installation_type"] == "NRJHub Core"
 
 
 async def test_onboarding_installation_type_after_done(

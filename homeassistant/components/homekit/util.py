@@ -409,7 +409,7 @@ def temperature_to_homekit(temperature: float, unit: str) -> float:
 
 
 def temperature_to_states(temperature: float, unit: str) -> float:
-    """Convert temperature back from Celsius to Home Assistant unit."""
+    """Convert temperature back from Celsius to NRJHub unit."""
     return (
         round(
             TemperatureConverter.convert(temperature, UnitOfTemperature.CELSIUS, unit)
@@ -599,7 +599,7 @@ def pid_is_alive(pid: int) -> bool:
 def accessory_friendly_name(hass_name: str, accessory: Accessory) -> str:
     """Return the combined name for the accessory.
 
-    The mDNS name and the Home Assistant config entry
+    The mDNS name and the NRJHub config entry
     name are usually different which means they need to
     see both to identify the accessory.
     """

@@ -125,7 +125,7 @@ CONFIGURATION_URL_PROTOCOL_SCHEMA_LIST = frozenset(
     {UrlProtocolSchema.HOMEASSISTANT, UrlProtocolSchema.HTTP, UrlProtocolSchema.HTTPS}
 )
 
-# Home Assistant types
+# NRJHub types
 byte = vol.All(vol.Coerce(int), vol.Range(min=0, max=255))
 small_float = vol.All(vol.Coerce(float), vol.Range(min=0, max=1))
 positive_int = vol.All(vol.Coerce(int), vol.Range(min=0))
@@ -1106,7 +1106,7 @@ def empty_config_schema(domain: str) -> Callable[[dict], dict]:
     """Return a config schema which logs if there are configuration parameters."""
 
     def validator(config: dict) -> dict:
-        if config_domain := config.get(domain):
+        if domain in config and config[domain]:
             get_integration_logger(__name__).error(
                 (
                     "The %s integration does not support any configuration parameters, "
@@ -1114,7 +1114,7 @@ def empty_config_schema(domain: str) -> Callable[[dict], dict]:
                     "configuration."
                 ),
                 domain,
-                config_domain,
+                config[domain],
             )
         return config
 

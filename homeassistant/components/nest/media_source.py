@@ -238,7 +238,7 @@ class NestEventMediaStore(EventMediaStore):
             _LOGGER.error("Unable to remove media file: %s %s", filename, err)
 
     async def _get_devices(self) -> Mapping[str, str]:
-        """Return a mapping of nest device id to home assistant device id."""
+        """Return a mapping of nest device id to NRJHub device id."""
         device_registry = dr.async_get(self._hass)
         device_manager = await self._subscriber.async_get_device_manager()
         devices = {}

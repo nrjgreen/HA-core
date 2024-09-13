@@ -1,4 +1,4 @@
-"""Typing helpers for Home Assistant tests."""
+"""Typing helpers for NRJHub tests."""
 
 from __future__ import annotations
 

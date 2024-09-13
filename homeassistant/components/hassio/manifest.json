@@ -1,6 +1,6 @@
 {
   "domain": "hassio",
-  "name": "Home Assistant Supervisor",
+  "name": "NRJHub Supervisor",
   "codeowners": ["@home-assistant/supervisor"],
   "dependencies": ["http", "repairs"],
   "documentation": "https://www.home-assistant.io/integrations/hassio",

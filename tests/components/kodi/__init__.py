@@ -18,7 +18,7 @@ from tests.common import MockConfigEntry
 
 
 async def init_integration(hass) -> MockConfigEntry:
-    """Set up the Kodi integration in Home Assistant."""
+    """Set up the Kodi integration in NRJHub."""
     entry_data = {
         CONF_NAME: "name",
         CONF_HOST: "1.1.1.1",

@@ -11,7 +11,7 @@ API_POINT_URL = (
 
 
 async def init_integration(hass, aioclient_mock) -> MockConfigEntry:
-    """Set up the Airly integration in Home Assistant."""
+    """Set up the Airly integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Home",

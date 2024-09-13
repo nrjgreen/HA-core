@@ -39,7 +39,7 @@ class MatterEntityInfo:
     # MatterEndpoint to which the value(s) belongs
     endpoint: MatterEndpoint
 
-    # the home assistant platform for which an entity should be created
+    # the NRJHub platform for which an entity should be created
     platform: Platform
 
     # All attributes that need to be watched by entity (incl. primary)

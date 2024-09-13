@@ -1,7 +1,7 @@
 """Support for Homekit buttons.
 
 These are mostly used where a HomeKit accessory exposes additional non-standard
-characteristics that don't map to a Home Assistant feature.
+characteristics that don't map to a NRJHub feature.
 """
 
 from __future__ import annotations

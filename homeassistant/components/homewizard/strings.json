@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Configure device",
-        "description": "Enter the IP address of your HomeWizard Energy device to integrate with Home Assistant.",
+        "description": "Enter the IP address of your HomeWizard Energy device to integrate with NRJHub.",
         "data": {
           "ip_address": "[%key:common::config_flow::data::ip%]"
         }

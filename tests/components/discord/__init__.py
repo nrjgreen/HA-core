@@ -23,7 +23,7 @@ CONF_DATA = {
 
 
 def create_entry(hass: HomeAssistant) -> ConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data=CONF_DATA,

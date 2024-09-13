@@ -1,6 +1,6 @@
 {
   "config": {
-    "flow_title": "{name}",
+    "flow_title": "[%key:component::bluetooth::config::flow_title%]",
     "step": {
       "user": {
         "description": "What is the IRK (Identity Resolving Key) of the BLE device you want to track?",
@@ -10,7 +10,7 @@
       }
     },
     "error": {
-      "irk_not_found": "The provided IRK does not match any BLE devices that Home Assistant can see.",
+      "irk_not_found": "The provided IRK does not match any BLE devices that NRJHub can see.",
       "irk_not_valid": "The key does not look like a valid IRK."
     },
     "abort": {

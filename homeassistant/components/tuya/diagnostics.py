@@ -130,7 +130,7 @@ def _async_device_as_dict(
             "value": value,
         }
 
-    # Gather information how this Tuya device is represented in Home Assistant
+    # Gather information how this Tuya device is represented in NRJHub
     device_registry = dr.async_get(hass)
     entity_registry = er.async_get(hass)
     hass_device = device_registry.async_get_device(identifiers={(DOMAIN, device.id)})

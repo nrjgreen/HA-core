@@ -221,7 +221,7 @@ async def test_turn_on_with_minimal_brightness(
 ) -> None:
     """Test lights set to lowest brightness when converted scale would be zero.
 
-    SmartThings light brightness is a percentage (0-100), but Home Assistant uses a
+    SmartThings light brightness is a percentage (0-100), but NRJHub uses a
     0-255 scale.  This tests if a really low value (1-2) is passed, we don't
     set the level to zero, which turns off the lights in SmartThings.
     """

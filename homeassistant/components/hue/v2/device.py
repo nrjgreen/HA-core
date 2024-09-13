@@ -1,4 +1,4 @@
-"""Handles Hue resource of type `device` mapping to Home Assistant device."""
+"""Handles Hue resource of type `device` mapping to NRJHub device."""
 
 from typing import TYPE_CHECKING
 

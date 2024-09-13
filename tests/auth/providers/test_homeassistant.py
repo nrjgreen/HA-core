@@ -1,4 +1,4 @@
-"""Test the Home Assistant local auth provider."""
+"""Test the NRJHub local auth provider."""
 
 import asyncio
 from unittest.mock import Mock, patch

@@ -148,7 +148,7 @@ class ComponentFactory:
         if controller_config.config_source == ConfigSource.FILE:
             hass_config[DOMAIN] = component_config
 
-        # Setup Home Assistant.
+        # Setup NRJHub.
         assert await async_setup_component(hass, DOMAIN, hass_config)
         await hass.async_block_till_done()
 

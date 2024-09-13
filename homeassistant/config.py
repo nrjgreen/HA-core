@@ -39,7 +39,6 @@ from .const import (
     CONF_CUSTOMIZE,
     CONF_CUSTOMIZE_DOMAIN,
     CONF_CUSTOMIZE_GLOB,
-    CONF_DEBUG,
     CONF_ELEVATION,
     CONF_EXTERNAL_URL,
     CONF_ID,
@@ -392,7 +391,6 @@ CORE_CONFIG_SCHEMA = vol.All(
             vol.Optional(CONF_CURRENCY): _validate_currency,
             vol.Optional(CONF_COUNTRY): cv.country,
             vol.Optional(CONF_LANGUAGE): cv.language,
-            vol.Optional(CONF_DEBUG): cv.boolean,
         }
     ),
     _filter_bad_internal_external_urls,
@@ -474,7 +472,7 @@ def _write_default_config(config_dir: str) -> bool:
 
 
 async def async_hass_config_yaml(hass: HomeAssistant) -> dict:
-    """Load YAML from a Home Assistant configuration file.
+    """Load YAML from a NRJHub configuration file.
 
     This function allows a component inside the asyncio loop to reload its
     configuration by itself. Include package merge.
@@ -711,7 +709,7 @@ def find_annotation(
 
 
 def _relpath(hass: HomeAssistant, path: str) -> str:
-    """Return path relative to the Home Assistant config dir."""
+    """Return path relative to the NRJHub config dir."""
     return os.path.relpath(path, hass.config.config_dir)
 
 
@@ -900,9 +898,6 @@ async def async_process_ha_core_config(hass: HomeAssistant, config: dict) -> Non
     ):
         if key in config:
             setattr(hac, attr, config[key])
-
-    if config.get(CONF_DEBUG):
-        hac.debug = True
 
     _raise_issue_if_legacy_templates(hass, config.get(CONF_LEGACY_TEMPLATES))
     _raise_issue_if_historic_currency(hass, hass.config.currency)
@@ -1695,7 +1690,7 @@ def config_without_domain(config: ConfigType, domain: str) -> ConfigType:
 
 
 async def async_check_ha_config_file(hass: HomeAssistant) -> str | None:
-    """Check if Home Assistant configuration file is valid.
+    """Check if NRJHub configuration file is valid.
 
     This method is a coroutine.
     """

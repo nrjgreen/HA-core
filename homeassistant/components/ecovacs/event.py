@@ -13,7 +13,6 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import DOMAIN
 from .controller import EcovacsController
 from .entity import EcovacsEntity
-from .util import get_name_key
 
 
 async def async_setup_entry(
@@ -55,7 +54,10 @@ class EcovacsLastJobEventEntity(
                 # we trigger only on job done
                 return
 
-            event_type = get_name_key(event.status)
+            event_type = event.status.name.lower()
+            if event.status == CleanJobStatus.MANUAL_STOPPED:
+                event_type = "manually_stopped"
+
             self._trigger_event(event_type)
             self.async_write_ha_state()
 

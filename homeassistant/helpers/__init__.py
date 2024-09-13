@@ -1,4 +1,4 @@
-"""Helper methods for components within Home Assistant."""
+"""Helper methods for components within NRJHub."""
 
 from __future__ import annotations
 

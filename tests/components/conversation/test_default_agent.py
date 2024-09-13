@@ -179,7 +179,7 @@ async def test_expose_flag_automatically_set(
 
     # After setting up conversation, the expose flag should now be set on all entities
     assert async_get_assistant_settings(hass, conversation.DOMAIN) == {
-        "conversation.home_assistant": {"should_expose": False},
+        "conversation.nrjhub": {"should_expose": False},
         light.entity_id: {"should_expose": True},
         test.entity_id: {"should_expose": False},
     }
@@ -189,7 +189,7 @@ async def test_expose_flag_automatically_set(
     hass.states.async_set(new_light, "test")
     await hass.async_block_till_done()
     assert async_get_assistant_settings(hass, conversation.DOMAIN) == {
-        "conversation.home_assistant": {"should_expose": False},
+        "conversation.nrjhub": {"should_expose": False},
         light.entity_id: {"should_expose": True},
         new_light: {"should_expose": True},
         test.entity_id: {"should_expose": False},

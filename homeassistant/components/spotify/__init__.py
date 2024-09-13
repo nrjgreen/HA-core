@@ -42,7 +42,7 @@ __all__ = [
 
 @dataclass
 class HomeAssistantSpotifyData:
-    """Spotify data stored in the Home Assistant data object."""
+    """Spotify data stored in the NRJHub data object."""
 
     client: Spotify
     current_user: dict[str, Any]

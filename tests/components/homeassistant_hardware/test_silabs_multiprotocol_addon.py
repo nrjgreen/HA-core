@@ -1,4 +1,4 @@
-"""Test the Home Assistant Hardware silabs multiprotocol addon manager."""
+"""Test the NRJHub Hardware silabs multiprotocol addon manager."""
 
 from __future__ import annotations
 

@@ -3,7 +3,7 @@
   "config": {
     "step": {
       "user": {
-        "description": "Pick a switch that you want to show up in Home Assistant as a light, cover or anything else. The original switch will be hidden.",
+        "description": "Pick a switch that you want to show up in NRJHub as a light, cover or anything else. The original switch will be hidden.",
         "data": {
           "entity_id": "Switch",
           "invert": "Invert state",

@@ -58,7 +58,7 @@ class FreeboxSwitch(SwitchEntity):
             await self._router.wifi.set_global_config({"enabled": enabled})
         except InsufficientPermissionsError:
             _LOGGER.warning(
-                "Home Assistant does not have permissions to modify the Freebox"
+                "NRJHub does not have permissions to modify the Freebox"
                 " settings. Please refer to documentation"
             )
 

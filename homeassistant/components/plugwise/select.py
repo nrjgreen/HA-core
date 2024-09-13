@@ -1,4 +1,4 @@
-"""Plugwise Select component for Home Assistant."""
+"""Plugwise Select component for NRJHub."""
 
 from __future__ import annotations
 

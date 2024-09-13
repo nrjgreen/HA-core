@@ -12,7 +12,7 @@ from zigpy.application import ControllerApplication
 import zigpy.backups
 from zigpy.exceptions import NetworkSettingsInconsistent
 
-from homeassistant.components.homeassistant_sky_connect.const import (
+from homeassistant.components.homeassistant_sky_connect import (
     DOMAIN as SKYCONNECT_DOMAIN,
 )
 from homeassistant.components.repairs import DOMAIN as REPAIRS_DOMAIN
@@ -59,13 +59,11 @@ def test_detect_radio_hardware(hass: HomeAssistant) -> None:
             "pid": "EA60",
             "serial_number": "3c0ed67c628beb11b1cd64a0f320645d",
             "manufacturer": "Nabu Casa",
-            "product": "SkyConnect v1.0",
-            "firmware": "ezsp",
+            "description": "SkyConnect v1.0",
         },
-        version=2,
         domain=SKYCONNECT_DOMAIN,
         options={},
-        title="Home Assistant SkyConnect",
+        title="NRJHub SkyConnect",
     )
     skyconnect_config_entry.add_to_hass(hass)
 
@@ -76,13 +74,11 @@ def test_detect_radio_hardware(hass: HomeAssistant) -> None:
             "pid": "EA60",
             "serial_number": "3c0ed67c628beb11b1cd64a0f320645d",
             "manufacturer": "Nabu Casa",
-            "product": "Home Assistant Connect ZBT-1",
-            "firmware": "ezsp",
+            "description": "NRJHub Connect ZBT-1",
         },
-        version=2,
         domain=SKYCONNECT_DOMAIN,
         options={},
-        title="Home Assistant Connect ZBT-1",
+        title="NRJHub Connect ZBT-1",
     )
     connect_zbt1_config_entry.add_to_hass(hass)
 

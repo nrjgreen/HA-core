@@ -310,7 +310,7 @@ def platforms() -> list[Platform]:
 
 @pytest.fixture(name="tz")
 def mock_tz() -> str | None:
-    """Fixture to specify the Home Assistant timezone to use during the test."""
+    """Fixture to specify the NRJHub timezone to use during the test."""
     return None
 
 

@@ -1,4 +1,4 @@
-"""The exceptions used by Home Assistant."""
+"""The exceptions used by NRJHub."""
 
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ def import_async_get_exception_message() -> (
 
 
 class HomeAssistantError(Exception):
-    """General Home Assistant exception occurred."""
+    """General NRJHub exception occurred."""
 
     _message: str | None = None
     generate_message: bool = False
@@ -255,7 +255,7 @@ class UnknownUser(Unauthorized):
     """When call is made with user ID that doesn't exist."""
 
 
-class ServiceNotFound(ServiceValidationError):
+class ServiceNotFound(HomeAssistantError):
     """Raised when a service is not found."""
 
     def __init__(self, domain: str, service: str) -> None:

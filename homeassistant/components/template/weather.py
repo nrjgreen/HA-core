@@ -313,7 +313,7 @@ class WeatherTemplate(TemplateEntity, WeatherEntity):
     def attribution(self) -> str | None:
         """Return the attribution."""
         if self._attribution is None:
-            return "Powered by Home Assistant"
+            return "Powered by NRJHub"
         return self._attribution
 
     @callback

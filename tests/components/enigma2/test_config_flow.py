@@ -10,9 +10,8 @@ import pytest
 from homeassistant import config_entries
 from homeassistant.components.enigma2.const import DOMAIN
 from homeassistant.const import CONF_HOST
-from homeassistant.core import DOMAIN as HOMEASSISTANT_DOMAIN, HomeAssistant
+from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
-from homeassistant.helpers.issue_registry import IssueRegistry
 
 from .conftest import (
     EXPECTED_OPTIONS,
@@ -97,7 +96,6 @@ async def test_form_import(
     test_config: dict[str, Any],
     expected_data: dict[str, Any],
     expected_options: dict[str, Any],
-    issue_registry: IssueRegistry,
 ) -> None:
     """Test we get the form with import source."""
     with (
@@ -117,12 +115,6 @@ async def test_form_import(
         )
         await hass.async_block_till_done()
 
-    issue = issue_registry.async_get_issue(
-        HOMEASSISTANT_DOMAIN, f"deprecated_yaml_{DOMAIN}"
-    )
-
-    assert issue
-    assert issue.issue_domain == DOMAIN
     assert result["type"] == FlowResultType.CREATE_ENTRY
     assert result["title"] == test_config[CONF_HOST]
     assert result["data"] == expected_data
@@ -140,10 +132,7 @@ async def test_form_import(
     ],
 )
 async def test_form_import_errors(
-    hass: HomeAssistant,
-    exception: Exception,
-    error_type: str,
-    issue_registry: IssueRegistry,
+    hass: HomeAssistant, exception: Exception, error_type: str
 ) -> None:
     """Test we handle errors on import."""
     with patch(
@@ -156,11 +145,5 @@ async def test_form_import_errors(
             data=TEST_IMPORT_FULL,
         )
 
-    issue = issue_registry.async_get_issue(
-        DOMAIN, f"deprecated_yaml_{DOMAIN}_import_issue_{error_type}"
-    )
-
-    assert issue
-    assert issue.issue_domain == DOMAIN
-    assert result["type"] is FlowResultType.ABORT
-    assert result["reason"] == error_type
+    assert result["type"] == FlowResultType.FORM
+    assert result["errors"] == {"base": error_type}

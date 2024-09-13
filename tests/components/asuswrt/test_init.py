@@ -11,7 +11,7 @@ from tests.common import MockConfigEntry
 
 
 async def test_disconnect_on_stop(hass: HomeAssistant, connect_legacy) -> None:
-    """Test we close the connection with the router when Home Assistants stops."""
+    """Test we close the connection with the router when NRJHubs stops."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         data=CONFIG_DATA_TELNET,

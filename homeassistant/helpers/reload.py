@@ -33,7 +33,7 @@ async def async_reload_integration_platforms(
     The platform must support being re-setup.
 
     This functionality is only intended to be used for integrations that process
-    Home Assistant data and make this available to other integrations.
+    NRJHub data and make this available to other integrations.
 
     Examples are template, stats, derivative, utility meter.
     """

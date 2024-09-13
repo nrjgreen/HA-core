@@ -31,7 +31,7 @@ from .data import (
     EnergyPreferencesUpdate,
     async_get_manager,
 )
-from .types import EnergyPlatform, GetSolarForecastType, SolarForecastType
+from .types import EnergyPlatform, GetSolarForecastType
 from .validate import async_validate
 
 EnergyWebSocketCommandHandler = Callable[
@@ -203,18 +203,19 @@ async def ws_solar_forecast(
     for source in manager.data["energy_sources"]:
         if (
             source["type"] != "solar"
-            or (solar_forecast := source.get("config_entry_solar_forecast")) is None
+            or source.get("config_entry_solar_forecast") is None
         ):
             continue
 
-        for entry in solar_forecast:
-            config_entries[entry] = None
+        # typing is not catching the above guard for config_entry_solar_forecast being none
+        for config_entry in source["config_entry_solar_forecast"]:  # type: ignore[union-attr]
+            config_entries[config_entry] = None
 
     if not config_entries:
         connection.send_result(msg["id"], {})
         return
 
-    forecasts: dict[str, SolarForecastType] = {}
+    forecasts = {}
 
     forecast_platforms = await async_get_energy_platforms(hass)
 

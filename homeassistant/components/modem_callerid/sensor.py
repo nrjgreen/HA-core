@@ -59,7 +59,7 @@ class ModemCalleridSensor(SensorEntity):
         self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, server_unique_id)})
 
     async def async_added_to_hass(self) -> None:
-        """Call when the modem sensor is added to Home Assistant."""
+        """Call when the modem sensor is added to NRJHub."""
         self.api.registercallback(self._async_incoming_call)
         await super().async_added_to_hass()
 

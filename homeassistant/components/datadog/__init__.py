@@ -61,7 +61,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
         message = event.data.get("message")
 
         statsd.event(
-            title="Home Assistant",
+            title="NRJHub",
             text=f"%%% \n **{name}** {message} \n %%%",
             tags=[
                 f"entity:{event.data.get('entity_id')}",

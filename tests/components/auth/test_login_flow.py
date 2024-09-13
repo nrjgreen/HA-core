@@ -45,7 +45,7 @@ _TRUSTED_NETWORKS_CONFIG = {
             [{"type": "homeassistant"}],
             [
                 {
-                    "name": "Home Assistant Local",
+                    "name": "NRJHub Local",
                     "type": "homeassistant",
                     "id": None,
                 }

@@ -33,7 +33,7 @@ CONF_DEFAULT_RECIPIENTS = "default_recipients"
 
 ATTR_SENDER = CONF_SENDER
 
-DEFAULT_SENDER = "Home Assistant"
+DEFAULT_SENDER = "NRJHub"
 
 _LOGGER = logging.getLogger(__name__)
 

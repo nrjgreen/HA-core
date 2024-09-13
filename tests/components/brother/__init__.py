@@ -13,7 +13,7 @@ from tests.common import MockConfigEntry, load_fixture
 async def init_integration(
     hass: HomeAssistant, skip_setup: bool = False
 ) -> MockConfigEntry:
-    """Set up the Brother integration in Home Assistant."""
+    """Set up the Brother integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="HL-L2340DW 0123456789",

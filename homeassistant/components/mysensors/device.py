@@ -181,7 +181,7 @@ class MySensorsChildEntity(MySensorNodeEntity):
 
     @property
     def unique_id(self) -> str:
-        """Return a unique ID for use in home assistant."""
+        """Return a unique ID for use in NRJHub."""
         return f"{self.gateway_id}-{self.node_id}-{self.child_id}-{self.value_type}"
 
     @property
@@ -194,7 +194,7 @@ class MySensorsChildEntity(MySensorNodeEntity):
         return f"{self.node_name} {self.child_id}"
 
     async def async_will_remove_from_hass(self) -> None:
-        """Remove this entity from home assistant."""
+        """Remove this entity from NRJHub."""
         for platform in PLATFORM_TYPES:
             platform_str = MYSENSORS_PLATFORM_DEVICES.format(platform)
             if platform_str in self.hass.data[DOMAIN]:

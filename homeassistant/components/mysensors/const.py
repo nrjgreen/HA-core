@@ -70,7 +70,7 @@ DevId = tuple[GatewayId, int, int, int]
 #
 # The string version of v_type can be looked up in the enum gateway.const.SetReq
 # of the appropriate BaseAsyncGateway
-# Home Assistant Entities are quite limited and only ever do one thing.
+# NRJHub Entities are quite limited and only ever do one thing.
 # MySensors Nodes have multiple child_ids each with a s_type several associated v_types
 # The MySensors integration brings these together by creating an entity for every v_type
 # of every child_id of every node.

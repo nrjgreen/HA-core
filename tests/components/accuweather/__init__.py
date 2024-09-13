@@ -12,7 +12,7 @@ from tests.common import (
 
 
 async def init_integration(hass, unsupported_icon=False) -> MockConfigEntry:
-    """Set up the AccuWeather integration in Home Assistant."""
+    """Set up the AccuWeather integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Home",

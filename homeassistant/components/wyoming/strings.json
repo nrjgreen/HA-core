@@ -8,10 +8,10 @@
         }
       },
       "hassio_confirm": {
-        "description": "Do you want to configure Home Assistant to connect to the Wyoming service provided by the add-on: {addon}?"
+        "description": "Do you want to configure NRJHub to connect to the Wyoming service provided by the add-on: {addon}?"
       },
       "zeroconf_confirm": {
-        "description": "Do you want to configure Home Assistant to connect to the Wyoming service {name}?",
+        "description": "Do you want to configure NRJHub to connect to the Wyoming service {name}?",
         "title": "Discovered Wyoming service"
       }
     },

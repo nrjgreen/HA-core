@@ -123,7 +123,7 @@ async def test_loading_pipelines_from_storage(
         hass,
         "conversation",
         conversation.OLD_HOME_ASSISTANT_AGENT,
-        conversation.HOME_ASSISTANT_AGENT,
+        conversation.nrjhub_AGENT,
     )
     id_1 = "01GX8ZWBAQYWNB1XV3EXEZ75DY"
     hass_storage[STORAGE_KEY] = {
@@ -185,7 +185,7 @@ async def test_loading_pipelines_from_storage(
     store = pipeline_data.pipeline_store
     assert len(store.data) == 3
     assert store.async_get_preferred_item() == id_1
-    assert store.data[id_1].conversation_engine == conversation.HOME_ASSISTANT_AGENT
+    assert store.data[id_1].conversation_engine == conversation.nrjhub_AGENT
 
 
 async def test_migrate_pipeline_store(
@@ -272,7 +272,7 @@ async def test_create_default_pipeline(
         tts_engine_id="test",
         pipeline_name="Test pipeline",
     ) == Pipeline(
-        conversation_engine="conversation.home_assistant",
+        conversation_engine="conversation.nrjhub",
         conversation_language="en",
         id=ANY,
         language="en",
@@ -314,11 +314,11 @@ async def test_get_pipelines(hass: HomeAssistant) -> None:
     pipelines = async_get_pipelines(hass)
     assert list(pipelines) == [
         Pipeline(
-            conversation_engine="conversation.home_assistant",
+            conversation_engine="conversation.nrjhub",
             conversation_language="en",
             id=ANY,
             language="en",
-            name="Home Assistant",
+            name="NRJHub",
             stt_engine=None,
             stt_language=None,
             tts_engine=None,
@@ -361,11 +361,11 @@ async def test_default_pipeline_no_stt_tts(
     # Check the default pipeline
     pipeline = async_get_pipeline(hass, None)
     assert pipeline == Pipeline(
-        conversation_engine="conversation.home_assistant",
+        conversation_engine="conversation.nrjhub",
         conversation_language=conv_language,
         id=pipeline.id,
         language=pipeline_language,
-        name="Home Assistant",
+        name="NRJHub",
         stt_engine=None,
         stt_language=None,
         tts_engine=None,
@@ -424,11 +424,11 @@ async def test_default_pipeline(
     # Check the default pipeline
     pipeline = async_get_pipeline(hass, None)
     assert pipeline == Pipeline(
-        conversation_engine="conversation.home_assistant",
+        conversation_engine="conversation.nrjhub",
         conversation_language=conv_language,
         id=pipeline.id,
         language=pipeline_language,
-        name="Home Assistant",
+        name="NRJHub",
         stt_engine="test",
         stt_language=stt_language,
         tts_engine="test",
@@ -455,11 +455,11 @@ async def test_default_pipeline_unsupported_stt_language(
     # Check the default pipeline
     pipeline = async_get_pipeline(hass, None)
     assert pipeline == Pipeline(
-        conversation_engine="conversation.home_assistant",
+        conversation_engine="conversation.nrjhub",
         conversation_language="en",
         id=pipeline.id,
         language="en",
-        name="Home Assistant",
+        name="NRJHub",
         stt_engine=None,
         stt_language=None,
         tts_engine="test",
@@ -486,11 +486,11 @@ async def test_default_pipeline_unsupported_tts_language(
     # Check the default pipeline
     pipeline = async_get_pipeline(hass, None)
     assert pipeline == Pipeline(
-        conversation_engine="conversation.home_assistant",
+        conversation_engine="conversation.nrjhub",
         conversation_language="en",
         id=pipeline.id,
         language="en",
-        name="Home Assistant",
+        name="NRJHub",
         stt_engine="test",
         stt_language="en-US",
         tts_engine=None,
@@ -512,11 +512,11 @@ async def test_update_pipeline(
     pipelines = list(pipelines)
     assert pipelines == [
         Pipeline(
-            conversation_engine="conversation.home_assistant",
+            conversation_engine="conversation.nrjhub",
             conversation_language="en",
             id=ANY,
             language="en",
-            name="Home Assistant",
+            name="NRJHub",
             stt_engine=None,
             stt_language=None,
             tts_engine=None,
@@ -534,7 +534,7 @@ async def test_update_pipeline(
         conversation_engine="homeassistant_1",
         conversation_language="de",
         language="de",
-        name="Home Assistant 1",
+        name="NRJHub 1",
         stt_engine="stt.test_1",
         stt_language="de",
         tts_engine="test_1",
@@ -553,7 +553,7 @@ async def test_update_pipeline(
             conversation_language="de",
             id=pipeline.id,
             language="de",
-            name="Home Assistant 1",
+            name="NRJHub 1",
             stt_engine="stt.test_1",
             stt_language="de",
             tts_engine="test_1",
@@ -569,7 +569,7 @@ async def test_update_pipeline(
         "conversation_language": "de",
         "id": pipeline.id,
         "language": "de",
-        "name": "Home Assistant 1",
+        "name": "NRJHub 1",
         "stt_engine": "stt.test_1",
         "stt_language": "de",
         "tts_engine": "test_1",
@@ -596,7 +596,7 @@ async def test_update_pipeline(
             conversation_language="de",
             id=pipeline.id,
             language="de",
-            name="Home Assistant 1",
+            name="NRJHub 1",
             stt_engine="stt.test_2",
             stt_language="en",
             tts_engine="test_2",
@@ -612,7 +612,7 @@ async def test_update_pipeline(
         "conversation_language": "de",
         "id": pipeline.id,
         "language": "de",
-        "name": "Home Assistant 1",
+        "name": "NRJHub 1",
         "stt_engine": "stt.test_2",
         "stt_language": "en",
         "tts_engine": "test_2",

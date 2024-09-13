@@ -1,4 +1,4 @@
-"""The tests for the Home Assistant SpaceAPI component."""
+"""The tests for the NRJHub SpaceAPI component."""
 
 from http import HTTPStatus
 from unittest.mock import patch
@@ -81,7 +81,7 @@ SENSOR_OUTPUT = {
 
 @pytest.fixture
 def mock_client(hass, hass_client):
-    """Start the Home Assistant HTTP component."""
+    """Start the NRJHub HTTP component."""
     with patch("homeassistant.components.spaceapi", return_value=True):
         hass.loop.run_until_complete(async_setup_component(hass, "spaceapi", CONFIG))
 
@@ -103,7 +103,7 @@ def mock_client(hass, hass_client):
 
 
 async def test_spaceapi_get(hass: HomeAssistant, mock_client) -> None:
-    """Test response after start-up Home Assistant."""
+    """Test response after start-up NRJHub."""
     resp = await mock_client.get(URL_API_SPACEAPI)
     assert resp.status == HTTPStatus.OK
 

@@ -1,4 +1,4 @@
-"""Support for a Hue API to control Home Assistant."""
+"""Support for a Hue API to control NRJHub."""
 
 from __future__ import annotations
 
@@ -771,7 +771,7 @@ def state_to_json(config: Config, state: State) -> dict[str, Any]:
         "state": json_state,
         "name": config.get_entity_name(state),
         "uniqueid": unique_id,
-        "manufacturername": "Home Assistant",
+        "manufacturername": "NRJHub",
         "swversion": "123",
     }
     is_light = state.domain == light.DOMAIN

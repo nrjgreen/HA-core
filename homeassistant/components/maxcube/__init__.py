@@ -70,7 +70,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
             persistent_notification.create(
                 hass,
                 (
-                    f"Error: {ex}<br />You will need to restart Home Assistant after"
+                    f"Error: {ex}<br />You will need to restart NRJHub after"
                     " fixing."
                 ),
                 title=NOTIFICATION_TITLE,

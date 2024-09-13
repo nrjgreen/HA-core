@@ -4,7 +4,6 @@
   "after_dependencies": ["media_player"],
   "codeowners": ["@home-assistant/core"],
   "dependencies": ["http", "ffmpeg"],
-  "documentation": "https://www.home-assistant.io/integrations/tts",
   "integration_type": "entity",
   "loggers": ["mutagen"],
   "quality_scale": "internal",
