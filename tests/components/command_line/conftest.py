@@ -63,7 +63,7 @@ async def get_config_to_integration_load() -> dict[str, Any]:
 
 @pytest.fixture(name="load_yaml_integration")
 async def load_int(hass: HomeAssistant, get_config: dict[str, Any]) -> None:
-    """Set up the Command Line integration in Home Assistant."""
+    """Set up the Command Line integration in NRJHub."""
     await setup.async_setup_component(
         hass,
         DOMAIN,

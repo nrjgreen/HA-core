@@ -23,7 +23,7 @@ KNOWN_BRANDS: dict[str | None, str] = {
     "eero": "eero",
     "Google Inc.": "google",
     "HomeAssistant": "homeassistant",
-    "Home Assistant": "homeassistant",
+    "NRJHub": "homeassistant",
     "Nanoleaf": "nanoleaf",
     "OpenThread": "openthread",
     "Samsung": "samsung",

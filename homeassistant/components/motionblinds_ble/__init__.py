@@ -67,7 +67,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         blind_type=MotionBlindType[entry.data[CONF_BLIND_TYPE].upper()],
     )
 
-    # Register Home Assistant functions to use in the library
+    # Register NRJHub functions to use in the library
     device.set_create_task_factory(
         partial(
             entry.async_create_background_task,

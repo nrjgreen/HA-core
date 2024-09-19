@@ -1,6 +1,6 @@
 {
   "domain": "my",
-  "name": "My Home Assistant",
+  "name": "My NRJHub",
   "codeowners": ["@home-assistant/core"],
   "dependencies": ["frontend"],
   "documentation": "https://www.home-assistant.io/integrations/my",

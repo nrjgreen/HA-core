@@ -1,6 +1,6 @@
 {
   "domain": "onboarding",
-  "name": "Home Assistant Onboarding",
+  "name": "NRJHub Onboarding",
   "after_dependencies": ["hassio"],
   "codeowners": ["@home-assistant/core"],
   "dependencies": ["auth", "http", "person"],

@@ -552,7 +552,7 @@ async def test_services_play_media_audio(
             "t": "a",
             "songName": resolved_name,
             "songFormat": resolved_format,
-            "artistName": "Home Assistant",
+            "artistName": "NRJHub",
         },
     )
 

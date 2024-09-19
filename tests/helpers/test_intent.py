@@ -633,7 +633,7 @@ def test_async_register_overwrite(hass: HomeAssistant) -> None:
 
 
 def test_async_remove(hass: HomeAssistant) -> None:
-    """Test removing an intent and verifying it is no longer present in the Home Assistant data."""
+    """Test removing an intent and verifying it is no longer present in the NRJHub data."""
     handler = MagicMock()
     handler.intent_type = "test_intent"
 
@@ -644,7 +644,7 @@ def test_async_remove(hass: HomeAssistant) -> None:
 
 
 def test_async_remove_no_existing_entry(hass: HomeAssistant) -> None:
-    """Test the removal of a non-existing intent from Home Assistant's data."""
+    """Test the removal of a non-existing intent from NRJHub's data."""
     handler = MagicMock()
     handler.intent_type = "test_intent"
     intent.async_register(hass, handler)

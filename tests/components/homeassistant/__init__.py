@@ -1,1 +1,1 @@
-"""Tests for the Home Assistant integration to provide core functionality."""
+"""Tests for the NRJHub integration to provide core functionality."""

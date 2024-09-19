@@ -233,7 +233,7 @@ _SENTINEL = object()
 
 
 class EntityDescription(metaclass=FrozenOrThawed, frozen_or_thawed=True):
-    """A class that describes Home Assistant entities."""
+    """A class that describes NRJHub entities."""
 
     # This is the key identifier for this entity
     key: str
@@ -429,7 +429,7 @@ CACHED_PROPERTIES_WITH_ATTR_ = {
 class Entity(
     metaclass=ABCCachedProperties, cached_properties=CACHED_PROPERTIES_WITH_ATTR_
 ):
-    """An abstract class for Home Assistant entities."""
+    """An abstract class for NRJHub entities."""
 
     # SAFE TO OVERWRITE
     # The properties and methods here are safe to overwrite when inheriting
@@ -902,7 +902,7 @@ class Entity(
         return {}
 
     # DO NOT OVERWRITE
-    # These properties and methods are either managed by Home Assistant or they
+    # These properties and methods are either managed by NRJHub or they
     # are used to perform a very specific function. Overwriting these may
     # produce undesirable effects in the entity's operation.
 
@@ -922,7 +922,7 @@ class Entity(
         self._context_set = time.time()
 
     async def async_update_ha_state(self, force_refresh: bool = False) -> None:
-        """Update Home Assistant with current state of entity.
+        """Update NRJHub with current state of entity.
 
         If force_refresh == True will update entity before setting state.
 
@@ -1367,7 +1367,7 @@ class Entity(
 
     @final
     async def async_remove(self, *, force_remove: bool = False) -> None:
-        """Remove entity from Home Assistant.
+        """Remove entity from NRJHub.
 
         If the entity has a non disabled entry in the entity registry,
         the entity's state will be set to unavailable, in the same way
@@ -1391,7 +1391,7 @@ class Entity(
 
     @final
     async def __async_remove_impl(self, force_remove: bool) -> None:
-        """Remove entity from Home Assistant."""
+        """Remove entity from NRJHub."""
 
         self._platform_state = EntityPlatformState.REMOVED
 
@@ -1696,7 +1696,7 @@ class ToggleEntity(
     def toggle(self, **kwargs: Any) -> None:
         """Toggle the entity.
 
-        This method will never be called by Home Assistant and should not be implemented
+        This method will never be called by NRJHub and should not be implemented
         by integrations.
         """
 

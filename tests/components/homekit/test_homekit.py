@@ -735,7 +735,7 @@ async def test_homekit_start(
         connections={connection},
         manufacturer="Any",
         name="Any",
-        model="Home Assistant HomeKit Bridge",
+        model="NRJHub HomeKit Bridge",
     )
 
     hass.states.async_set("light.demo", "on")
@@ -752,7 +752,7 @@ async def test_homekit_start(
     await hass.async_block_till_done()
     mock_add_acc.assert_any_call(state)
     mock_setup_msg.assert_called_with(
-        hass, entry.entry_id, "Mock Title (Home Assistant Bridge)", ANY, ANY
+        hass, entry.entry_id, "Mock Title (NRJHub Bridge)", ANY, ANY
     )
     assert hk_driver_start.called
     assert homekit.status == STATUS_RUNNING
@@ -829,7 +829,7 @@ async def test_homekit_start_with_a_broken_accessory(
 
     await hass.async_block_till_done()
     mock_setup_msg.assert_called_with(
-        hass, entry.entry_id, "Mock Title (Home Assistant Bridge)", ANY, ANY
+        hass, entry.entry_id, "Mock Title (NRJHub Bridge)", ANY, ANY
     )
     assert hk_driver_start.called
     assert homekit.status == STATUS_RUNNING
@@ -874,7 +874,7 @@ async def test_homekit_start_with_a_device(
 
     await hass.async_block_till_done()
     mock_setup_msg.assert_called_with(
-        hass, entry.entry_id, "Mock Title (Home Assistant Bridge)", ANY, ANY
+        hass, entry.entry_id, "Mock Title (NRJHub Bridge)", ANY, ANY
     )
     assert homekit.status == STATUS_RUNNING
 
@@ -2124,7 +2124,7 @@ async def test_homekit_finds_linked_humidity_sensors(
         config_entry_id=config_entry.entry_id,
         sw_version="0.16.1",
         model="Smart Brainy Clever Humidifier",
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         connections={(dr.CONNECTION_NETWORK_MAC, "12:34:56:AB:CD:EF")},
     )
 
@@ -2164,7 +2164,7 @@ async def test_homekit_finds_linked_humidity_sensors(
         ANY,
         ANY,
         {
-            "manufacturer": "Home Assistant",
+            "manufacturer": "NRJHub",
             "model": "Smart Brainy Clever Humidifier",
             "platform": "test",
             "sw_version": "0.16.1",

@@ -1,4 +1,4 @@
-"""Test Home Assistant date util methods."""
+"""Test NRJHub date util methods."""
 
 from __future__ import annotations
 

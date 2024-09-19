@@ -1,4 +1,4 @@
-"""Alexa configuration for Home Assistant Cloud."""
+"""Alexa configuration for NRJHub Cloud."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Script to manage users for the Home Assistant auth provider."""
+"""Script to manage users for the NRJHub auth provider."""
 
 import argparse
 import asyncio
@@ -18,14 +18,14 @@ from homeassistant.helpers import device_registry as dr, entity_registry as er
 
 
 def run(args: Sequence[str] | None) -> None:
-    """Handle Home Assistant auth provider script."""
-    parser = argparse.ArgumentParser(description="Manage Home Assistant users")
+    """Handle NRJHub auth provider script."""
+    parser = argparse.ArgumentParser(description="Manage NRJHub users")
     parser.add_argument("--script", choices=["auth"])
     parser.add_argument(
         "-c",
         "--config",
         default=get_default_config_dir(),
-        help="Directory that contains the Home Assistant configuration",
+        help="Directory that contains the NRJHub configuration",
     )
 
     subparsers = parser.add_subparsers(dest="func")

@@ -1,4 +1,4 @@
-"""Home Assistant extension for Syrupy."""
+"""NRJHub extension for Syrupy."""
 
 from __future__ import annotations
 
@@ -68,9 +68,9 @@ class StateSnapshot(dict):
 
 
 class HomeAssistantSnapshotSerializer(AmberDataSerializer):
-    """Home Assistant snapshot serializer for Syrupy.
+    """NRJHub snapshot serializer for Syrupy.
 
-    Handles special cases for Home Assistant data structures.
+    Handles special cases for NRJHub data structures.
     """
 
     @classmethod
@@ -87,7 +87,7 @@ class HomeAssistantSnapshotSerializer(AmberDataSerializer):
     ) -> str:
         """Pre-process data before serializing.
 
-        This allows us to handle specific cases for Home Assistant data structures.
+        This allows us to handle specific cases for NRJHub data structures.
         """
         if isinstance(data, State):
             serializable_data = cls._serializable_state(data)
@@ -129,14 +129,14 @@ class HomeAssistantSnapshotSerializer(AmberDataSerializer):
 
     @classmethod
     def _serializable_area_registry_entry(cls, data: ar.AreaEntry) -> SerializableData:
-        """Prepare a Home Assistant area registry entry for serialization."""
+        """Prepare a NRJHub area registry entry for serialization."""
         serialized = AreaRegistryEntrySnapshot(dataclasses.asdict(data) | {"id": ANY})
         serialized.pop("_json_repr")
         return serialized
 
     @classmethod
     def _serializable_config_entry(cls, data: ConfigEntry) -> SerializableData:
-        """Prepare a Home Assistant config entry for serialization."""
+        """Prepare a NRJHub config entry for serialization."""
         entry = ConfigEntrySnapshot(data.as_dict() | {"entry_id": ANY})
         return cls._remove_created_and_modified_at(entry)
 
@@ -144,7 +144,7 @@ class HomeAssistantSnapshotSerializer(AmberDataSerializer):
     def _serializable_device_registry_entry(
         cls, data: dr.DeviceEntry
     ) -> SerializableData:
-        """Prepare a Home Assistant device registry entry for serialization."""
+        """Prepare a NRJHub device registry entry for serialization."""
         serialized = DeviceRegistryEntrySnapshot(
             attrs.asdict(data)
             | {
@@ -171,7 +171,7 @@ class HomeAssistantSnapshotSerializer(AmberDataSerializer):
     def _serializable_entity_registry_entry(
         cls, data: er.RegistryEntry
     ) -> SerializableData:
-        """Prepare a Home Assistant entity registry entry for serialization."""
+        """Prepare a NRJHub entity registry entry for serialization."""
         serialized = EntityRegistryEntrySnapshot(
             attrs.asdict(data)
             | {
@@ -186,19 +186,19 @@ class HomeAssistantSnapshotSerializer(AmberDataSerializer):
 
     @classmethod
     def _serializable_flow_result(cls, data: FlowResult) -> SerializableData:
-        """Prepare a Home Assistant flow result for serialization."""
+        """Prepare a NRJHub flow result for serialization."""
         return FlowResultSnapshot(data | {"flow_id": ANY})
 
     @classmethod
     def _serializable_issue_registry_entry(
         cls, data: ir.IssueEntry
     ) -> SerializableData:
-        """Prepare a Home Assistant issue registry entry for serialization."""
+        """Prepare a NRJHub issue registry entry for serialization."""
         return IssueRegistryItemSnapshot(data.to_json() | {"created": ANY})
 
     @classmethod
     def _serializable_state(cls, data: State) -> SerializableData:
-        """Prepare a Home Assistant State for serialization."""
+        """Prepare a NRJHub State for serialization."""
         return StateSnapshot(
             data.as_dict()
             | {
@@ -222,7 +222,7 @@ class _IntFlagWrapper:
 
 
 class HomeAssistantSnapshotExtension(AmberSnapshotExtension):
-    """Home Assistant extension for Syrupy."""
+    """NRJHub extension for Syrupy."""
 
     VERSION = "1"
     """Current version of serialization format.
@@ -237,7 +237,7 @@ class HomeAssistantSnapshotExtension(AmberSnapshotExtension):
         """Return the directory for the snapshot files.
 
         Syrupy, by default, uses the `__snapshosts__` directory in the same
-        folder as the test file. For Home Assistant, this is changed to just
+        folder as the test file. For NRJHub, this is changed to just
         `snapshots` in the same folder as the test file, to match our `fixtures`
         folder structure.
         """

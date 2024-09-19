@@ -35,7 +35,7 @@ from homeassistant.loader import (
 
 @callback
 def async_setup(hass: HomeAssistant) -> bool:
-    """Enable the Home Assistant views."""
+    """Enable the NRJHub views."""
     hass.http.register_view(ConfigManagerEntryIndexView)
     hass.http.register_view(ConfigManagerEntryResourceView)
     hass.http.register_view(ConfigManagerEntryResourceReloadView)

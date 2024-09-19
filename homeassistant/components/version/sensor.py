@@ -1,4 +1,4 @@
-"""Sensor that can display the current Home Assistant versions."""
+"""Sensor that can display the current NRJHub versions."""
 
 from __future__ import annotations
 

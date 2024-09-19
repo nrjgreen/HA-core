@@ -94,7 +94,7 @@ class SystemBridgeDataUpdateCoordinator(DataUpdateCoordinator[SystemBridgeData])
         await self.websocket_client.close()
         if self.listen_task is not None:
             self.listen_task.cancel(
-                msg="WebSocket closed on Home Assistant shutdown",
+                msg="WebSocket closed on NRJHub shutdown",
             )
 
     async def clean_disconnect(self) -> None:
@@ -199,7 +199,7 @@ class SystemBridgeDataUpdateCoordinator(DataUpdateCoordinator[SystemBridgeData])
             self.last_update_success = True
             self.async_update_listeners()
 
-            # Clean disconnect WebSocket on Home Assistant shutdown
+            # Clean disconnect WebSocket on NRJHub shutdown
             self.unsub = self.hass.bus.async_listen_once(
                 EVENT_HOMEASSISTANT_STOP,
                 lambda _: self.close_websocket(),

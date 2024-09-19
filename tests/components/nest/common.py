@@ -97,7 +97,7 @@ class FakeSubscriber(GoogleNestSubscriber):
         self._device_manager = DeviceManager()
 
     def set_update_callback(self, target: Callable[[EventMessage], Awaitable[None]]):
-        """Capture the callback set by Home Assistant."""
+        """Capture the callback set by NRJHub."""
         self._device_manager.set_update_callback(target)
 
     async def create_subscription(self):

@@ -32,7 +32,7 @@ def disable_bluetooth_auto_recovery():
 
 @pytest.fixture(name="operating_system_85")
 def mock_operating_system_85():
-    """Mock running Home Assistant Operating system 8.5."""
+    """Mock running NRJHub Operating system 8.5."""
     with (
         patch("homeassistant.components.hassio.is_hassio", return_value=True),
         patch(
@@ -54,7 +54,7 @@ def mock_operating_system_85():
 
 @pytest.fixture(name="operating_system_90")
 def mock_operating_system_90():
-    """Mock running Home Assistant Operating system 9.0."""
+    """Mock running NRJHub Operating system 9.0."""
     with (
         patch("homeassistant.components.hassio.is_hassio", return_value=True),
         patch(

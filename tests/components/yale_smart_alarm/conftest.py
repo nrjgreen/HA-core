@@ -39,7 +39,7 @@ async def load_config_entry(
     get_all_data: YaleSmartAlarmData,
     load_platforms: list[Platform],
 ) -> tuple[MockConfigEntry, Mock]:
-    """Set up the Yale Smart Living integration in Home Assistant."""
+    """Set up the Yale Smart Living integration in NRJHub."""
     with patch("homeassistant.components.yale_smart_alarm.PLATFORMS", load_platforms):
         config_entry = MockConfigEntry(
             domain=DOMAIN,

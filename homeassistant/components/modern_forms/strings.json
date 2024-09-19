@@ -3,7 +3,7 @@
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "Set up your Modern Forms fan to integrate with Home Assistant.",
+        "description": "Set up your Modern Forms fan to integrate with NRJHub.",
         "data": {
           "host": "[%key:common::config_flow::data::host%]"
         },
@@ -12,7 +12,7 @@
         }
       },
       "zeroconf_confirm": {
-        "description": "Do you want to add the Modern Forms fan named `{name}` to Home Assistant?",
+        "description": "Do you want to add the Modern Forms fan named `{name}` to NRJHub?",
         "title": "Discovered Modern Forms fan device"
       }
     },

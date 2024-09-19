@@ -120,10 +120,10 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
                 server.start()
 
             def handle_stop_event(event):
-                """Handle Home Assistant stop event."""
+                """Handle NRJHub stop event."""
                 server.stop()
 
-            # listen to Home Assistant stop event
+            # listen to NRJHub stop event
             hass.bus.listen_once(EVENT_HOMEASSISTANT_STOP, handle_stop_event)
 
         except OSError:

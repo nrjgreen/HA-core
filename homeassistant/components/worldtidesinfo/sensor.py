@@ -51,7 +51,7 @@ def setup_platform(
     key = config.get(CONF_API_KEY)
 
     if None in (lat, lon):
-        _LOGGER.error("Latitude or longitude not set in Home Assistant config")
+        _LOGGER.error("Latitude or longitude not set in NRJHub config")
 
     tides = WorldTidesInfoSensor(name, lat, lon, key)
     tides.update()

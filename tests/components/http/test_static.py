@@ -26,7 +26,7 @@ async def http(hass: HomeAssistant) -> None:
 
 @pytest.fixture
 async def mock_http_client(hass: HomeAssistant, aiohttp_client: ClientSessionGenerator):
-    """Start the Home Assistant HTTP component."""
+    """Start the NRJHub HTTP component."""
     return await aiohttp_client(hass.http.app, server_kwargs={"skip_url_asserts": True})
 
 

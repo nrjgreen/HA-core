@@ -11,7 +11,7 @@ from homeassistant.exceptions import ConfigEntryNotReady
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up a Raspberry Pi config entry."""
     if not is_hassio(hass):
-        # Not running under supervisor, Home Assistant may have been migrated
+        # Not running under supervisor, NRJHub may have been migrated
         hass.async_create_task(hass.config_entries.async_remove(entry.entry_id))
         return False
 
@@ -21,7 +21,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     board: str | None
     if (board := os_info.get("board")) is None or not board.startswith("rpi"):
-        # Not running on a Raspberry Pi, Home Assistant may have been migrated
+        # Not running on a Raspberry Pi, NRJHub may have been migrated
         hass.async_create_task(hass.config_entries.async_remove(entry.entry_id))
         return False
 

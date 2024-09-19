@@ -54,14 +54,14 @@ MOCK_ZEROCONF_DATA = zeroconf.ZeroconfServiceInfo(
 
 
 def mock_unavailable(aioclient_mock: AiohttpClientMocker) -> None:
-    """Mock the Devialet connection for Home Assistant."""
+    """Mock the Devialet connection for NRJHub."""
     aioclient_mock.get(
         f"http://{HOST}{UrlSuffix.GET_GENERAL_INFO}", exc=ServerTimeoutError
     )
 
 
 def mock_idle(aioclient_mock: AiohttpClientMocker) -> None:
-    """Mock the Devialet connection for Home Assistant."""
+    """Mock the Devialet connection for NRJHub."""
     aioclient_mock.get(
         f"http://{HOST}{UrlSuffix.GET_GENERAL_INFO}",
         text=load_fixture("general_info.json", DOMAIN),
@@ -75,7 +75,7 @@ def mock_idle(aioclient_mock: AiohttpClientMocker) -> None:
 
 
 def mock_playing(aioclient_mock: AiohttpClientMocker) -> None:
-    """Mock the Devialet connection for Home Assistant."""
+    """Mock the Devialet connection for NRJHub."""
     aioclient_mock.get(
         f"http://{HOST}{UrlSuffix.GET_GENERAL_INFO}",
         text=load_fixture("general_info.json", DOMAIN),
@@ -126,7 +126,7 @@ async def setup_integration(
     state: str = "playing",
     serial: str = SERIAL,
 ) -> MockConfigEntry:
-    """Set up the Devialet integration in Home Assistant."""
+    """Set up the Devialet integration in NRJHub."""
 
     if state == "playing":
         mock_playing(aioclient_mock)

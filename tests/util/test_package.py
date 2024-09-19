@@ -1,4 +1,4 @@
-"""Test Home Assistant package util methods."""
+"""Test NRJHub package util methods."""
 
 import asyncio
 from collections.abc import Generator

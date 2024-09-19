@@ -102,7 +102,7 @@ class VerisureDataUpdateCoordinator(DataUpdateCoordinator):
             )
             return unpacked or []
 
-        # Store data in a way Home Assistant can easily consume it
+        # Store data in a way NRJHub can easily consume it
         self._overview = overview
         return {
             "alarm": unpack(overview, "armState"),

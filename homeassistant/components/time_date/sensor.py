@@ -47,7 +47,7 @@ async def async_setup_platform(
 ) -> None:
     """Set up the Time and Date sensor."""
     if hass.config.time_zone is None:
-        _LOGGER.error("Timezone is not set in Home Assistant configuration")  # type: ignore[unreachable]
+        _LOGGER.error("Timezone is not set in NRJHub configuration")  # type: ignore[unreachable]
         return
 
     async_add_entities(

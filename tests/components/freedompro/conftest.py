@@ -47,7 +47,7 @@ def mock_freedompro():
 
 @pytest.fixture
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Freedompro integration in Home Assistant."""
+    """Set up the Freedompro integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Feedompro",
@@ -66,7 +66,7 @@ async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
 
 @pytest.fixture
 async def init_integration_no_state(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Freedompro integration in Home Assistant without state."""
+    """Set up the Freedompro integration in NRJHub without state."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Feedompro",

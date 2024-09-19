@@ -1,1 +1,1 @@
-"""Tests for the Home Assistant Yellow integration."""
+"""Tests for the NRJHub Yellow integration."""

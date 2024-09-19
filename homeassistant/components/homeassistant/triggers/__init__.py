@@ -1,1 +1,1 @@
-"""Home Assistant triggers."""
+"""NRJHub triggers."""

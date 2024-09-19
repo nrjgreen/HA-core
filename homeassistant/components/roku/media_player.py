@@ -437,7 +437,7 @@ class RokuMediaPlayer(RokuEntity, MediaPlayerEntity):
             await self.coordinator.roku.tune(media_id)
         elif media_type == MediaType.MUSIC:
             if extra.get(ATTR_ARTIST_NAME) is None:
-                extra[ATTR_ARTIST_NAME] = "Home Assistant"
+                extra[ATTR_ARTIST_NAME] = "NRJHub"
 
             params = {
                 param: extra[attr]

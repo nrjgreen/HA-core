@@ -294,7 +294,7 @@ class AlexaEntity:
     def description(self) -> str:
         """Return the Alexa API description."""
         description = self.entity_conf.get(CONF_DESCRIPTION) or self.entity_id
-        return f"{description} via Home Assistant".translate(TRANSLATION_TABLE)
+        return f"{description} via NRJHub".translate(TRANSLATION_TABLE)
 
     def alexa_id(self) -> str:
         """Return the Alexa API entity id."""
@@ -310,7 +310,7 @@ class AlexaEntity:
     def default_display_categories(self) -> list[str] | None:
         """Return a list of default display categories.
 
-        This can be overridden by the user in the Home Assistant configuration.
+        This can be overridden by the user in the NRJHub configuration.
 
         See also DisplayCategory.
         """
@@ -340,9 +340,9 @@ class AlexaEntity:
             "endpointId": self.alexa_id(),
             "friendlyName": self.friendly_name(),
             "description": self.description(),
-            "manufacturerName": "Home Assistant",
+            "manufacturerName": "NRJHub",
             "additionalAttributes": {
-                "manufacturer": "Home Assistant",
+                "manufacturer": "NRJHub",
                 "model": self.entity.domain,
                 "softwareVersion": __version__,
                 "customIdentifier": f"{self.config.user_identifier()}-{self.entity_id}",

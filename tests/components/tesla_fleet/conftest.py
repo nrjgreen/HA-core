@@ -34,7 +34,7 @@ def mock_expires_at() -> int:
 
 
 def create_config_entry(expires_at: int, scopes: list[Scope]) -> MockConfigEntry:
-    """Create Tesla Fleet entry in Home Assistant."""
+    """Create Tesla Fleet entry in NRJHub."""
     access_token = jwt.encode(
         {
             "sub": UID,
@@ -66,19 +66,19 @@ def create_config_entry(expires_at: int, scopes: list[Scope]) -> MockConfigEntry
 
 @pytest.fixture
 def normal_config_entry(expires_at: int) -> MockConfigEntry:
-    """Create Tesla Fleet entry in Home Assistant."""
+    """Create Tesla Fleet entry in NRJHub."""
     return create_config_entry(expires_at, SCOPES)
 
 
 @pytest.fixture
 def noscope_config_entry(expires_at: int) -> MockConfigEntry:
-    """Create Tesla Fleet entry in Home Assistant without scopes."""
+    """Create Tesla Fleet entry in NRJHub without scopes."""
     return create_config_entry(expires_at, [Scope.OPENID, Scope.OFFLINE_ACCESS])
 
 
 @pytest.fixture
 def readonly_config_entry(expires_at: int) -> MockConfigEntry:
-    """Create Tesla Fleet entry in Home Assistant without scopes."""
+    """Create Tesla Fleet entry in NRJHub without scopes."""
     return create_config_entry(
         expires_at,
         [

@@ -92,7 +92,7 @@ class TOTPSensor(SensorEntity):
         )
 
     async def async_added_to_hass(self) -> None:
-        """Handle when an entity is about to be added to Home Assistant."""
+        """Handle when an entity is about to be added to NRJHub."""
         self._call_loop()
 
     @callback

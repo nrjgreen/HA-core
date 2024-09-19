@@ -64,7 +64,7 @@ async def init_integration(
     unique_id: str = MOCK_ZONE["name"],
     skip_setup: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Cloudflare integration in Home Assistant."""
+    """Set up the Cloudflare integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data=ENTRY_CONFIG if data is UNDEFINED else data,

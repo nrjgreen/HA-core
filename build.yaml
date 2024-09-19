@@ -13,10 +13,10 @@ cosign:
   identity: https://github.com/home-assistant/core/.*
 labels:
   io.hass.type: core
-  org.opencontainers.image.title: Home Assistant
+  org.opencontainers.image.title: NRJHub
   org.opencontainers.image.description: Open-source home automation platform running on Python 3
   org.opencontainers.image.source: https://github.com/home-assistant/core
-  org.opencontainers.image.authors: The Home Assistant Authors
+  org.opencontainers.image.authors: The NRJHub Authors
   org.opencontainers.image.url: https://www.home-assistant.io/
   org.opencontainers.image.documentation: https://www.home-assistant.io/docs/
   org.opencontainers.image.licenses: Apache License 2.0

@@ -1573,7 +1573,7 @@ async def test_delayed_birth_message(
     mqtt_config_entry_data: dict[str, Any],
     mqtt_client_mock: MqttMockPahoClient,
 ) -> None:
-    """Test sending birth message does not happen until Home Assistant starts."""
+    """Test sending birth message does not happen until NRJHub starts."""
     hass.set_state(CoreState.starting)
     await hass.async_block_till_done()
     birth = asyncio.Event()

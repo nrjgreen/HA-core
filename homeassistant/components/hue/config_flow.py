@@ -41,7 +41,7 @@ from .errors import CannotConnect
 LOGGER = logging.getLogger(__name__)
 
 HUE_MANUFACTURERURL = ("http://www.philips.com", "http://www.philips-hue.com")
-HUE_IGNORED_BRIDGE_NAMES = ["Home Assistant Bridge", "Espalexa"]
+HUE_IGNORED_BRIDGE_NAMES = ["NRJHub Bridge", "Espalexa"]
 HUE_MANUAL_BRIDGE_ID = "manual"
 
 

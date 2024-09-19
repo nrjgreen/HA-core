@@ -41,7 +41,7 @@ async def init_integration(
     options: dict[str, Any] | None = None,
     skip_setup: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Shelly integration in Home Assistant."""
+    """Set up the Shelly integration in NRJHub."""
     data = {
         CONF_HOST: "192.168.1.37",
         CONF_SLEEP_PERIOD: sleep_period,

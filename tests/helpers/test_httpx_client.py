@@ -137,7 +137,7 @@ async def test_warning_close_session_integration(
         await httpx_session.aclose()
 
     assert (
-        "Detected that integration 'hue' closes the Home Assistant httpx client at "
+        "Detected that integration 'hue' closes the NRJHub httpx client at "
         "homeassistant/components/hue/light.py, line 23: await session.aclose(), "
         "please create a bug report at https://github.com/home-assistant/core/issues?"
         "q=is%3Aopen+is%3Aissue+label%3A%22integration%3A+hue%22"
@@ -181,7 +181,7 @@ async def test_warning_close_session_custom(
         httpx_session = client.get_async_client(hass)
         await httpx_session.aclose()
     assert (
-        "Detected that custom integration 'hue' closes the Home Assistant httpx client "
+        "Detected that custom integration 'hue' closes the NRJHub httpx client "
         "at custom_components/hue/light.py, line 23: await session.aclose(), "
         "please report it to the author of the 'hue' custom integration"
     ) in caplog.text

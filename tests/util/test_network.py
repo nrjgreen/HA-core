@@ -1,4 +1,4 @@
-"""Test Home Assistant volume utility functions."""
+"""Test NRJHub volume utility functions."""
 
 from ipaddress import ip_address
 

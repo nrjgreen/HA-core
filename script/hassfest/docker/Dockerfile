@@ -26,7 +26,7 @@ RUN --mount=from=ghcr.io/astral-sh/uv:0.4.9,source=/uv,target=/bin/uv \
         PyTurboJPEG==1.7.5 ha-ffmpeg==3.2.0 hassil==1.7.4 home-assistant-intents==2024.9.4 mutagen==1.47.0 pymicro-vad==1.0.1 pyspeex-noise==1.0.2
 
 LABEL "name"="hassfest"
-LABEL "maintainer"="Home Assistant <hello@home-assistant.io>"
+LABEL "maintainer"="NRJHub <hello@home-assistant.io>"
 
 LABEL "com.github.actions.name"="hassfest"
 LABEL "com.github.actions.description"="Run hassfest to validate standalone integration repositories"

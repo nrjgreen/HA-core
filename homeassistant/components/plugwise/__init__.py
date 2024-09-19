@@ -1,4 +1,4 @@
-"""Plugwise platform for Home Assistant Core."""
+"""Plugwise platform for NRJHub Core."""
 
 from __future__ import annotations
 

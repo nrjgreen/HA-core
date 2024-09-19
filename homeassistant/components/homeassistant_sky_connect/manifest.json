@@ -1,6 +1,6 @@
 {
   "domain": "homeassistant_sky_connect",
-  "name": "Home Assistant SkyConnect",
+  "name": "NRJHub SkyConnect",
   "codeowners": ["@home-assistant/core"],
   "config_flow": true,
   "dependencies": ["hardware", "usb", "homeassistant_hardware"],
@@ -16,8 +16,8 @@
     {
       "vid": "10C4",
       "pid": "EA60",
-      "description": "*home assistant connect zbt-1*",
-      "known_devices": ["Home Assistant Connect ZBT-1"]
+      "description": "*nrjhub connect zbt-1*",
+      "known_devices": ["NRJHub Connect ZBT-1"]
     }
   ]
 }

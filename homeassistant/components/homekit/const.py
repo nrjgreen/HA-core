@@ -107,11 +107,11 @@ SERVICE_HOMEKIT_UNPAIR = "unpair"
 
 # #### String Constants ####
 BRIDGE_MODEL = "Bridge"
-BRIDGE_NAME = "Home Assistant Bridge"
+BRIDGE_NAME = "NRJHub Bridge"
 SHORT_BRIDGE_NAME = "HASS Bridge"
 SHORT_ACCESSORY_NAME = "HASS Accessory"
 BRIDGE_SERIAL_NUMBER = "homekit.bridge"
-MANUFACTURER = "Home Assistant"
+MANUFACTURER = "NRJHub"
 
 # #### Switch Types ####
 TYPE_FAUCET = "faucet"

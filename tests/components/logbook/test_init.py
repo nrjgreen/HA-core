@@ -235,8 +235,8 @@ async def test_home_assistant_start_stop_not_grouped(hass_: HomeAssistant) -> No
     )
 
     assert len(entries) == 2
-    assert_entry(entries[0], name="Home Assistant", message="stopped", domain=ha.DOMAIN)
-    assert_entry(entries[1], name="Home Assistant", message="started", domain=ha.DOMAIN)
+    assert_entry(entries[0], name="NRJHub", message="stopped", domain=ha.DOMAIN)
+    assert_entry(entries[1], name="NRJHub", message="started", domain=ha.DOMAIN)
 
 
 async def test_home_assistant_start(hass_: HomeAssistant) -> None:
@@ -255,7 +255,7 @@ async def test_home_assistant_start(hass_: HomeAssistant) -> None:
     )
 
     assert len(entries) == 2
-    assert_entry(entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN)
+    assert_entry(entries[0], name="NRJHub", message="started", domain=ha.DOMAIN)
     assert_entry(entries[1], pointA, "bla", entity_id=entity_id)
 
 
@@ -1926,7 +1926,7 @@ async def test_exclude_events_domain(
 
     assert len(entries) == 2
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="blu", entity_id=entity_id2)
 
@@ -1972,7 +1972,7 @@ async def test_exclude_events_domain_glob(
 
     assert len(entries) == 2
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="blu", entity_id=entity_id2)
 
@@ -2015,7 +2015,7 @@ async def test_include_events_entity(
 
     assert len(entries) == 2
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="blu", entity_id=entity_id2)
 
@@ -2052,7 +2052,7 @@ async def test_exclude_events_entity(
     entries = await _async_fetch_logbook(client)
     assert len(entries) == 2
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="blu", entity_id=entity_id2)
 
@@ -2096,7 +2096,7 @@ async def test_include_events_domain(
 
     assert len(entries) == 3
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="Amazon Alexa", domain="alexa")
     _assert_entry(entries[2], name="blu", entity_id=entity_id2)
@@ -2155,7 +2155,7 @@ async def test_include_events_domain_glob(
 
     assert len(entries) == 4
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="Amazon Alexa", domain="alexa")
     _assert_entry(entries[2], name="blu", entity_id=entity_id2)
@@ -2212,7 +2212,7 @@ async def test_include_exclude_events_no_globs(
 
     assert len(entries) == 6
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="bla", entity_id=entity_id, state="10")
     _assert_entry(entries[2], name="blu", entity_id=entity_id2, state="10")
@@ -2278,7 +2278,7 @@ async def test_include_exclude_events_with_glob_filters(
 
     assert len(entries) == 7
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="bla", entity_id=entity_id, state="10")
     _assert_entry(entries[2], name="blu", entity_id=entity_id2, state="10")
@@ -2318,7 +2318,7 @@ async def test_empty_config(
 
     assert len(entries) == 2
     _assert_entry(
-        entries[0], name="Home Assistant", message="started", domain=ha.DOMAIN
+        entries[0], name="NRJHub", message="started", domain=ha.DOMAIN
     )
     _assert_entry(entries[1], name="blu", entity_id=entity_id)
 

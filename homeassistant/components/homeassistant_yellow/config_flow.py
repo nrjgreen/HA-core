@@ -1,4 +1,4 @@
-"""Config flow for the Home Assistant Yellow integration."""
+"""Config flow for the NRJHub Yellow integration."""
 
 from __future__ import annotations
 
@@ -49,7 +49,7 @@ STEP_HW_SETTINGS_SCHEMA = vol.Schema(
 
 
 class HomeAssistantYellowConfigFlow(BaseFirmwareConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Home Assistant Yellow."""
+    """Handle a config flow for NRJHub Yellow."""
 
     VERSION = 1
     MINOR_VERSION = 2
@@ -106,7 +106,7 @@ class HomeAssistantYellowConfigFlow(BaseFirmwareConfigFlow, domain=DOMAIN):
 
 
 class BaseHomeAssistantYellowOptionsFlow(OptionsFlow, ABC):
-    """Base Home Assistant Yellow options flow shared between firmware and multi-PAN."""
+    """Base NRJHub Yellow options flow shared between firmware and multi-PAN."""
 
     _hw_settings: dict[str, bool] | None = None
 
@@ -188,7 +188,7 @@ class BaseHomeAssistantYellowOptionsFlow(OptionsFlow, ABC):
 class HomeAssistantYellowMultiPanOptionsFlowHandler(
     BaseHomeAssistantYellowOptionsFlow, MultiprotocolOptionsFlowHandler
 ):
-    """Handle a multi-PAN options flow for Home Assistant Yellow."""
+    """Handle a multi-PAN options flow for NRJHub Yellow."""
 
     async def async_step_main_menu(self, _: None = None) -> ConfigFlowResult:
         """Show the main menu."""
@@ -252,7 +252,7 @@ class HomeAssistantYellowMultiPanOptionsFlowHandler(
 class HomeAssistantYellowOptionsFlowHandler(
     BaseHomeAssistantYellowOptionsFlow, BaseFirmwareOptionsFlow
 ):
-    """Handle a firmware options flow for Home Assistant Yellow."""
+    """Handle a firmware options flow for NRJHub Yellow."""
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         """Instantiate options flow."""

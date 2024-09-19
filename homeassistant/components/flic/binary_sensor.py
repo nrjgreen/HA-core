@@ -79,7 +79,7 @@ def setup_platform(
         return
 
     def new_button_callback(address):
-        """Set up newly verified button as device in Home Assistant."""
+        """Set up newly verified button as device in NRJHub."""
         setup_button(hass, config, add_entities, client, address)
 
     client.on_new_verified_button = new_button_callback

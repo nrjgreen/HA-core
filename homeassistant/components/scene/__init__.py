@@ -65,7 +65,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     )
 
     await component.async_setup(config)
-    # Ensure Home Assistant platform always loaded.
+    # Ensure NRJHub platform always loaded.
     hass.async_create_task(
         component.async_setup_platform(
             HOMEASSISTANT_DOMAIN, {"platform": HOMEASSISTANT_DOMAIN, STATES: []}

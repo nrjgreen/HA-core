@@ -47,7 +47,7 @@ from .coordinator import OverkizDataUpdateCoordinator
 
 @dataclass
 class HomeAssistantOverkizData:
-    """Overkiz data stored in the Home Assistant data object."""
+    """Overkiz data stored in the NRJHub data object."""
 
     coordinator: OverkizDataUpdateCoordinator
     platforms: defaultdict[Platform, list[Device]]
@@ -127,7 +127,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         coordinator=coordinator, platforms=platforms, scenarios=scenarios
     )
 
-    # Map Overkiz entities to Home Assistant platform
+    # Map Overkiz entities to NRJHub platform
     for device in coordinator.data.values():
         LOGGER.debug(
             (

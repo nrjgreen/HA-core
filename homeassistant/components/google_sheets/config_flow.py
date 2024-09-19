@@ -87,7 +87,7 @@ class OAuth2FlowHandler(
 
         try:
             doc = await self.hass.async_add_executor_job(
-                service.create, "Home Assistant"
+                service.create, "NRJHub"
             )
         except GSpreadException as err:
             _LOGGER.error("Error creating spreadsheet: %s", str(err))

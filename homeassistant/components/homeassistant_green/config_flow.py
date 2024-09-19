@@ -1,4 +1,4 @@
-"""Config flow for the Home Assistant Green integration."""
+"""Config flow for the NRJHub Green integration."""
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ STEP_HW_SETTINGS_SCHEMA = vol.Schema(
 
 
 class HomeAssistantGreenConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Home Assistant Green."""
+    """Handle a config flow for NRJHub Green."""
 
     VERSION = 1
 
@@ -58,11 +58,11 @@ class HomeAssistantGreenConfigFlow(ConfigFlow, domain=DOMAIN):
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
 
-        return self.async_create_entry(title="Home Assistant Green", data={})
+        return self.async_create_entry(title="NRJHub Green", data={})
 
 
 class HomeAssistantGreenOptionsFlow(OptionsFlow):
-    """Handle an option flow for Home Assistant Green."""
+    """Handle an option flow for NRJHub Green."""
 
     _hw_settings: dict[str, bool] | None = None
 

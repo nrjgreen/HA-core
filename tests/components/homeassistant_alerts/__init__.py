@@ -1,1 +1,1 @@
-"""Tests for the Home Assistant alerts integration."""
+"""Tests for the NRJHub alerts integration."""

@@ -1,4 +1,4 @@
-"""API for Google Tasks bound to Home Assistant OAuth."""
+"""API for Google Tasks bound to NRJHub OAuth."""
 
 from functools import partial
 import json

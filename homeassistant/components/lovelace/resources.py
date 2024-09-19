@@ -138,7 +138,7 @@ class ResourceStorageCollectionWebsocket(collection.DictStorageCollectionWebsock
         super().async_setup(hass)
 
         # Register lovelace/resources for backwards compatibility, remove in
-        # Home Assistant Core 2025.1
+        # NRJHub Core 2025.1
         websocket_api.async_register_command(
             hass,
             self.api_prefix,

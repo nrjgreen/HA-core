@@ -3,7 +3,7 @@
     "flow_title": "{name}",
     "step": {
       "user": {
-        "description": "Set up GeoSphere Austria to integrate with Home Assistant.",
+        "description": "Set up GeoSphere Austria to integrate with NRJHub.",
         "data": {
           "station_id": "Station ID (Defaults to nearest station)"
         }

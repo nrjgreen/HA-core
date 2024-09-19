@@ -28,7 +28,7 @@ from .const import (
     TELLDUS_DISCOVERY_NEW,
 )
 
-APPLICATION_NAME = "Home Assistant"
+APPLICATION_NAME = "NRJHub"
 
 _LOGGER = logging.getLogger(__name__)
 

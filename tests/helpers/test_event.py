@@ -4895,7 +4895,7 @@ async def test_track_state_change_deprecated(
     assert (
         "Detected code that calls `async_track_state_change` instead "
         "of `async_track_state_change_event` which is deprecated and "
-        "will be removed in Home Assistant 2025.5. Please report this issue."
+        "will be removed in NRJHub 2025.5. Please report this issue."
     ) in caplog.text
 
 

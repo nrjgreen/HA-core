@@ -29,7 +29,7 @@ def alexa_client(
     hass: HomeAssistant,
     hass_client: ClientSessionGenerator,
 ) -> TestClient:
-    """Initialize a Home Assistant server for testing this module."""
+    """Initialize a NRJHub server for testing this module."""
     loop = event_loop
 
     @callback

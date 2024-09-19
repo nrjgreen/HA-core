@@ -1,4 +1,4 @@
-"""Constants for the Home Assistant Yellow integration."""
+"""Constants for the NRJHub Yellow integration."""
 
 DOMAIN = "homeassistant_yellow"
 

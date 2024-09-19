@@ -27,7 +27,7 @@
 # name: test_get_agent_info
   dict({
     'id': 'conversation.home_assistant',
-    'name': 'Home Assistant',
+    'name': 'NRJHub',
   })
 # ---
 # name: test_get_agent_info.1
@@ -39,7 +39,7 @@
 # name: test_get_agent_info.2
   dict({
     'id': 'conversation.home_assistant',
-    'name': 'Home Assistant',
+    'name': 'NRJHub',
   })
 # ---
 # name: test_turn_on_intent[None-turn kitchen on-None]

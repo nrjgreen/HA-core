@@ -11,7 +11,7 @@
         }
       },
       "user": {
-        "description": "Set up your Tailwind garage door opener to integrate with Home Assistant.\n\nTo do so, you will need to get the local control key and IP address of your Tailwind device. For more details, see the description below the fields down below.",
+        "description": "Set up your Tailwind garage door opener to integrate with NRJHub.\n\nTo do so, you will need to get the local control key and IP address of your Tailwind device. For more details, see the description below the fields down below.",
         "data": {
           "host": "[%key:common::config_flow::data::host%]",
           "token": "Local control key token"
@@ -22,7 +22,7 @@
         }
       },
       "zeroconf_confirm": {
-        "description": "Set up your discovered Tailwind garage door opener to integrate with Home Assistant.\n\nTo do so, you will need to get the local control key of your Tailwind device. For more details, see the description below the field down below.",
+        "description": "Set up your discovered Tailwind garage door opener to integrate with NRJHub.\n\nTo do so, you will need to get the local control key of your Tailwind device. For more details, see the description below the field down below.",
         "data": {
           "token": "[%key:component::tailwind::config::step::user::data::token%]"
         },

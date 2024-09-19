@@ -19,7 +19,7 @@
     "error": {
       "unknown": "[%key:common::config_flow::error::unknown%]",
       "invalid_token": "Invalid token",
-      "invalid_code": "Invalid code, please try again. If you get this error consistently, please make sure the clock of your Home Assistant system is accurate."
+      "invalid_code": "Invalid code, please try again. If you get this error consistently, please make sure the clock of your NRJHub system is accurate."
     },
     "abort": {
       "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"

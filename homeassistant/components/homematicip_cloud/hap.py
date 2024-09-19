@@ -155,7 +155,7 @@ class HomematicipHAP:
         await self.hass.config_entries.async_reload(self.config_entry.entry_id)
 
     async def get_state(self) -> None:
-        """Update HMIP state and tell Home Assistant."""
+        """Update HMIP state and tell NRJHub."""
         await self.home.get_current_state()
         self.update_all()
 
@@ -170,7 +170,7 @@ class HomematicipHAP:
             self.hass.async_create_task(self.home.disable_events())
 
     def set_all_to_unavailable(self) -> None:
-        """Set all devices to unavailable and tell Home Assistant."""
+        """Set all devices to unavailable and tell NRJHub."""
         for device in self.home.devices:
             device.unreach = True
         self.update_all()

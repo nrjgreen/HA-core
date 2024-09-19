@@ -1,5 +1,5 @@
 {
-  "name": "Home Assistant Dev",
+  "name": "NRJHub Dev",
   "context": "..",
   "dockerFile": "../Dockerfile.dev",
   "postCreateCommand": "script/setup",

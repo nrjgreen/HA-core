@@ -1417,7 +1417,7 @@ async def test_recursive_script_turn_on(
     """Test script turning itself on.
 
     - Illegal recursion detection should not be triggered
-    - Home Assistant should not hang on shut down
+    - NRJHub should not hang on shut down
     - SCRIPT_MODE_SINGLE is not relevant because suca script can't turn itself on
     """
     # Make sure we cover all script modes

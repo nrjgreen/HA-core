@@ -362,7 +362,7 @@ class SqueezeBoxEntity(MediaPlayerEntity):
     @property
     def shuffle(self) -> bool:
         """Boolean if shuffle is enabled."""
-        # Squeezebox has a third shuffle mode (album) not recognized by Home Assistant
+        # Squeezebox has a third shuffle mode (album) not recognized by NRJHub
         return bool(self._player.shuffle == "song")
 
     @property

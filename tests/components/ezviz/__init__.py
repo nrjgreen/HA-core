@@ -92,7 +92,7 @@ def patch_async_setup_entry() -> _patch:
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the EZVIZ integration in Home Assistant."""
+    """Set up the EZVIZ integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=ENTRY_CONFIG, options=ENTRY_OPTIONS)
     entry.add_to_hass(hass)
 

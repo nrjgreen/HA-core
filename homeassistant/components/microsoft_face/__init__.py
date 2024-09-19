@@ -248,7 +248,7 @@ class MicrosoftFaceGroupEntity(Entity):  # pylint: disable=hass-enforce-class-mo
 
 
 class MicrosoftFace:
-    """Microsoft Face api for Home Assistant."""
+    """Microsoft Face api for NRJHub."""
 
     def __init__(self, hass, server_loc, api_key, timeout, component, entities):
         """Initialize Microsoft Face api."""

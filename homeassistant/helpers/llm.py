@@ -62,7 +62,7 @@ BASE_PROMPT = (
     'Today\'s date is {{ now().strftime("%Y-%m-%d") }}.\n'
 )
 
-DEFAULT_INSTRUCTIONS_PROMPT = """You are a voice assistant for Home Assistant.
+DEFAULT_INSTRUCTIONS_PROMPT = """You are a voice assistant for NRJHub.
 Answer questions about the world truthfully.
 Answer in plain text. Keep it simple and to the point.
 """
@@ -72,7 +72,7 @@ Answer in plain text. Keep it simple and to the point.
 def async_render_no_api_prompt(hass: HomeAssistant) -> str:
     """Return the prompt to be used when no API is configured.
 
-    No longer used since Home Assistant 2024.7.
+    No longer used since NRJHub 2024.7.
     """
     return ""
 
@@ -210,7 +210,7 @@ class IntentTool(Tool):
         """Init the class."""
         self.name = name
         self.description = (
-            intent_handler.description or f"Execute Home Assistant {self.name} intent"
+            intent_handler.description or f"Execute NRJHub {self.name} intent"
         )
         self.extra_slots = None
         if not (slot_schema := intent_handler.slot_schema):
@@ -322,12 +322,12 @@ class AssistAPI(API):
         if not exposed_entities:
             return (
                 "Only if the user wants to control a device, tell them to expose entities "
-                "to their voice assistant in Home Assistant."
+                "to their voice assistant in NRJHub."
             )
 
         prompt = [
             (
-                "When controlling Home Assistant always call the intent tools. "
+                "When controlling NRJHub always call the intent tools. "
                 "Use HassTurnOn to lock and HassTurnOff to unlock a lock. "
                 "When controlling a device, prefer passing just name and domain. "
                 "When controlling an area, prefer passing just area name and domain."

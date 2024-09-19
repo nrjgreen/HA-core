@@ -15,7 +15,7 @@ def renormalize(
 
 
 def convert_to_matter_hs(hass_hs: tuple[float, float]) -> tuple[float, float]:
-    """Convert Home Assistant HS to Matter HS."""
+    """Convert NRJHub HS to Matter HS."""
 
     return (
         hass_hs[0] / 360 * 254,
@@ -24,7 +24,7 @@ def convert_to_matter_hs(hass_hs: tuple[float, float]) -> tuple[float, float]:
 
 
 def convert_to_hass_hs(matter_hs: tuple[float, float]) -> tuple[float, float]:
-    """Convert Matter HS to Home Assistant HS."""
+    """Convert Matter HS to NRJHub HS."""
 
     return (
         matter_hs[0] * 360 / 254,
@@ -33,12 +33,12 @@ def convert_to_hass_hs(matter_hs: tuple[float, float]) -> tuple[float, float]:
 
 
 def convert_to_matter_xy(hass_xy: tuple[float, float]) -> tuple[float, float]:
-    """Convert Home Assistant XY to Matter XY."""
+    """Convert NRJHub XY to Matter XY."""
 
     return (hass_xy[0] * XY_COLOR_FACTOR, hass_xy[1] * XY_COLOR_FACTOR)
 
 
 def convert_to_hass_xy(matter_xy: tuple[float, float]) -> tuple[float, float]:
-    """Convert Matter XY to Home Assistant XY."""
+    """Convert Matter XY to NRJHub XY."""
 
     return (matter_xy[0] / XY_COLOR_FACTOR, matter_xy[1] / XY_COLOR_FACTOR)

@@ -437,7 +437,7 @@ async def test_migrating_pipelines(
     )
     assert hass_storage[STORAGE_KEY]["data"]["items"][0]["language"] == "language_1"
     assert (
-        hass_storage[STORAGE_KEY]["data"]["items"][0]["name"] == "Home Assistant Cloud"
+        hass_storage[STORAGE_KEY]["data"]["items"][0]["name"] == "NRJHub Cloud"
     )
     assert hass_storage[STORAGE_KEY]["data"]["items"][0]["stt_language"] == "language_1"
     assert hass_storage[STORAGE_KEY]["data"]["items"][0]["tts_language"] == "language_1"
@@ -701,7 +701,7 @@ async def test_deprecated_gender(
     assert issue.severity == ir.IssueSeverity.WARNING
     assert issue.translation_key == "deprecated_gender"
     assert issue.translation_placeholders == {
-        "integration_name": "Home Assistant Cloud",
+        "integration_name": "NRJHub Cloud",
         "deprecated_option": "gender",
         "replacement_option": "voice",
     }
@@ -723,7 +723,7 @@ async def test_deprecated_gender(
         "data_schema": [],
         "errors": None,
         "description_placeholders": {
-            "integration_name": "Home Assistant Cloud",
+            "integration_name": "NRJHub Cloud",
             "deprecated_option": "gender",
             "replacement_option": "voice",
         },

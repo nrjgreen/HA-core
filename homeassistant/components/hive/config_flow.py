@@ -39,7 +39,7 @@ class HiveFlowHandler(ConfigFlow, domain=DOMAIN):
         self.tokens: dict[str, str] = {}
         self.entry: ConfigEntry | None = None
         self.device_registration: bool = False
-        self.device_name = "Home Assistant"
+        self.device_name = "NRJHub"
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None

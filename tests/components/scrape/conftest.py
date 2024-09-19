@@ -82,7 +82,7 @@ async def get_data_to_integration_load() -> MockRestData:
 async def load_integration(
     hass: HomeAssistant, get_config: dict[str, Any], get_data: MockRestData
 ) -> MockConfigEntry:
-    """Set up the Scrape integration in Home Assistant."""
+    """Set up the Scrape integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         source=SOURCE_USER,

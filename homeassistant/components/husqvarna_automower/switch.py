@@ -138,7 +138,7 @@ def async_remove_entities(
     entry: AutomowerConfigEntry,
     mower_id: str,
 ) -> None:
-    """Remove deleted stay-out-zones from Home Assistant."""
+    """Remove deleted stay-out-zones from NRJHub."""
     entity_reg = er.async_get(hass)
     active_zones = set()
     _zones = coordinator.data[mower_id].stay_out_zones

@@ -1,4 +1,4 @@
-"""Map Z-Wave nodes and values to Home Assistant entities."""
+"""Map Z-Wave nodes and values to NRJHub entities."""
 
 from __future__ import annotations
 

@@ -81,7 +81,7 @@ def message():
         "testuser",
         "testpass",
         ["recip1@example.com", "testrecip@test.com"],
-        "Home Assistant",
+        "NRJHub",
         0,
         True,
     )
@@ -189,10 +189,10 @@ def test_send_text_message(hass: HomeAssistant, message) -> None:
         '^Content-Type: text/plain; charset="us-ascii"\n'
         "MIME-Version: 1.0\n"
         "Content-Transfer-Encoding: 7bit\n"
-        "Subject: Home Assistant\n"
+        "Subject: NRJHub\n"
         "To: recip1@example.com,testrecip@test.com\n"
-        "From: Home Assistant <test@test.com>\n"
-        "X-Mailer: Home Assistant\n"
+        "From: NRJHub <test@test.com>\n"
+        "X-Mailer: NRJHub\n"
         "Date: [^\n]+\n"
         "Message-Id: <[^@]+@[^>]+>\n"
         "\n"

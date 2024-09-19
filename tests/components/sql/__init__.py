@@ -266,7 +266,7 @@ async def init_integration(
     entry_id: str = "1",
     source: str = SOURCE_USER,
 ) -> MockConfigEntry:
-    """Set up the SQL integration in Home Assistant."""
+    """Set up the SQL integration in NRJHub."""
     if not config:
         config = ENTRY_CONFIG
 

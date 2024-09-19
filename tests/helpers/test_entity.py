@@ -908,13 +908,13 @@ async def test_attribution_attribute(hass: HomeAssistant) -> None:
     mock_entity = entity.Entity()
     mock_entity.hass = hass
     mock_entity.entity_id = "hello.world"
-    mock_entity._attr_attribution = "Home Assistant"
+    mock_entity._attr_attribution = "NRJHub"
 
     mock_entity.async_schedule_update_ha_state(True)
     await hass.async_block_till_done()
 
     state = hass.states.get(mock_entity.entity_id)
-    assert state.attributes.get(ATTR_ATTRIBUTION) == "Home Assistant"
+    assert state.attributes.get(ATTR_ATTRIBUTION) == "NRJHub"
 
 
 async def test_entity_category_property(hass: HomeAssistant) -> None:

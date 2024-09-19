@@ -128,7 +128,7 @@ def shutdown_run_callback_threadsafe(loop: AbstractEventLoop) -> None:
     executor thread.
 
     This function is considered irreversible and should only ever
-    be called when Home Assistant is going to shutdown and
+    be called when NRJHub is going to shutdown and
     python is going to exit.
     """
     setattr(loop, _SHUTDOWN_RUN_CALLBACK_THREADSAFE, True)

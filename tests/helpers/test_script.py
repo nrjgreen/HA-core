@@ -5051,7 +5051,7 @@ async def test_start_script_after_shutdown(
     # Attempt to spawn additional script run
     await script_obj.async_run(context=Context())
     assert not script_obj.is_running
-    assert "Home Assistant is shutting down, starting script blocked" in caplog.text
+    assert "NRJHub is shutting down, starting script blocked" in caplog.text
 
 
 async def test_update_logger(

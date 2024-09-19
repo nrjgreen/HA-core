@@ -1,5 +1,5 @@
-name: Report an issue with Home Assistant Core
-description: Report an issue with Home Assistant Core.
+name: Report an issue with NRJHub Core
+description: Report an issue with NRJHub Core.
 body:
   - type: markdown
     attributes:
@@ -28,7 +28,7 @@ body:
     validations:
       required: true
     attributes:
-      label: What version of Home Assistant Core has the issue?
+      label: What version of NRJHub Core has the issue?
       placeholder: core-
       description: >
         Can be found in: [Settings ⇒ System ⇒ Repairs ⇒ Three Dots in Upper Right ⇒ System information](https://my.home-assistant.io/redirect/system_health/).

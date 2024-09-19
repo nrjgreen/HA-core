@@ -124,7 +124,7 @@ def valid_color_configuration(
             _LOGGER.warning(
                 "Deprecated flags [%s] used in MQTT JSON light config "
                 "for handling color mode, please use `supported_color_modes` instead. "
-                "Got: %s. This will stop working in Home Assistant Core 2025.3",
+                "Got: %s. This will stop working in NRJHub Core 2025.3",
                 deprecated_flags,
                 config,
             )
@@ -156,7 +156,7 @@ def valid_color_configuration(
             _LOGGER.warning(
                 "Deprecated flag `color_mode` used in MQTT JSON light config "
                 ", the `color_mode` flag is not used anymore and should be removed. "
-                "Got: %s. This will stop working in Home Assistant Core 2025.3",
+                "Got: %s. This will stop working in NRJHub Core 2025.3",
                 config,
             )
             if not setup_from_yaml:

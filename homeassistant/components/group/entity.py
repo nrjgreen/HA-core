@@ -348,7 +348,7 @@ class Group(Entity):
 
     @callback
     def _async_stop(self) -> None:
-        """Unregister the group from Home Assistant.
+        """Unregister the group from NRJHub.
 
         This method must be run in the event loop.
         """
@@ -363,14 +363,14 @@ class Group(Entity):
         self._async_update_group_state()
 
     async def async_added_to_hass(self) -> None:
-        """Handle addition to Home Assistant."""
+        """Handle addition to NRJHub."""
         self._registry = self.hass.data[REG_KEY]
         self._set_tracked(self._entity_ids)
         self.async_on_remove(start.async_at_start(self.hass, self._async_start))
         self.async_on_remove(self._async_deregister)
 
     async def async_will_remove_from_hass(self) -> None:
-        """Handle removal from Home Assistant."""
+        """Handle removal from NRJHub."""
         self._async_stop()
 
     async def _async_state_changed_listener(

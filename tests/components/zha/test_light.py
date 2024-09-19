@@ -409,7 +409,7 @@ async def async_test_on_off_from_hass(
 async def async_test_off_from_hass(
     hass: HomeAssistant, cluster: Cluster, entity_id: str
 ):
-    """Test turning off the light from Home Assistant."""
+    """Test turning off the light from NRJHub."""
 
     # turn off via UI
     cluster.request.reset_mock()

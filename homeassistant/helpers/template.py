@@ -1,4 +1,4 @@
-"""Template helper methods for rendering strings with Home Assistant data."""
+"""Template helper methods for rendering strings with NRJHub data."""
 
 from __future__ import annotations
 
@@ -510,7 +510,7 @@ class Template:
         """Instantiate a template.
 
         Note: A valid hass instance should always be passed in. The hass parameter
-        will be non optional in Home Assistant Core 2025.10.
+        will be non optional in NRJHub Core 2025.10.
         """
         # pylint: disable-next=import-outside-toplevel
         from .frame import report
@@ -2834,7 +2834,7 @@ class HassLoader(jinja2.BaseLoader):
 
 
 class TemplateEnvironment(ImmutableSandboxedEnvironment):
-    """The Home Assistant template environment."""
+    """The NRJHub template environment."""
 
     def __init__(
         self,

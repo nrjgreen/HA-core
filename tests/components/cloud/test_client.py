@@ -77,10 +77,10 @@ async def test_handler_alexa(hass: HomeAssistant) -> None:
     assert len(endpoints) == 1
     device = endpoints[0]
 
-    assert device["description"] == "Config description via Home Assistant"
+    assert device["description"] == "Config description via NRJHub"
     assert device["friendlyName"] == "Config name"
     assert device["displayCategories"] == ["LIGHT"]
-    assert device["manufacturerName"] == "Home Assistant"
+    assert device["manufacturerName"] == "NRJHub"
 
 
 async def test_handler_alexa_disabled(

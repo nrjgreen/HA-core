@@ -65,7 +65,7 @@ def create_knx_exposure(
 
 
 class KNXExposeSensor:
-    """Object to Expose Home Assistant entity to KNX bus."""
+    """Object to Expose NRJHub entity to KNX bus."""
 
     def __init__(
         self,

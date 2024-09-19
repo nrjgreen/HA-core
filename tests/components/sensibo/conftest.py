@@ -22,7 +22,7 @@ from tests.test_util.aiohttp import AiohttpClientMocker
 
 @pytest.fixture
 async def load_int(hass: HomeAssistant, get_data: SensiboData) -> MockConfigEntry:
-    """Set up the Sensibo integration in Home Assistant."""
+    """Set up the Sensibo integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         source=SOURCE_USER,

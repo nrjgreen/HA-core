@@ -17,7 +17,7 @@
             "type": "20",
             "perms": ["pr"],
             "format": "string",
-            "value": "Home Assistant"
+            "value": "NRJHub"
           },
           {
             "iid": 4,

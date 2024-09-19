@@ -15,7 +15,7 @@ async def test_at_start_when_running_awaitable(hass: HomeAssistant) -> None:
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_start(hass, cb_at_start)
@@ -41,7 +41,7 @@ async def test_at_start_when_running_callback(
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_start(hass, cb_at_start)()
@@ -66,7 +66,7 @@ async def test_at_start_when_starting_awaitable(hass: HomeAssistant) -> None:
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_start(hass, cb_at_start)
@@ -89,7 +89,7 @@ async def test_at_start_when_starting_callback(
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     cancel = start.async_at_start(hass, cb_at_start)
@@ -117,7 +117,7 @@ async def test_cancelling_at_start_when_running(
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_start(hass, cb_at_start)()
@@ -138,7 +138,7 @@ async def test_cancelling_at_start_when_starting(hass: HomeAssistant) -> None:
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_start(hass, cb_at_start)()
@@ -157,7 +157,7 @@ async def test_at_started_when_running_awaitable(hass: HomeAssistant) -> None:
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_started(hass, cb_at_start)
@@ -182,7 +182,7 @@ async def test_at_started_when_running_callback(
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_started(hass, cb_at_start)()
@@ -206,7 +206,7 @@ async def test_at_started_when_starting_awaitable(hass: HomeAssistant) -> None:
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_started(hass, cb_at_start)
@@ -232,7 +232,7 @@ async def test_at_started_when_starting_callback(
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     cancel = start.async_at_started(hass, cb_at_start)
@@ -264,7 +264,7 @@ async def test_cancelling_at_started_when_running(
     calls = []
 
     async def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_started(hass, cb_at_start)()
@@ -285,7 +285,7 @@ async def test_cancelling_at_started_when_starting(hass: HomeAssistant) -> None:
 
     @callback
     def cb_at_start(hass: HomeAssistant) -> None:
-        """Home Assistant is started."""
+        """NRJHub is started."""
         calls.append(1)
 
     start.async_at_started(hass, cb_at_start)()

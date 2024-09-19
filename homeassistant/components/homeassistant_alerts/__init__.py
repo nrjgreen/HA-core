@@ -1,4 +1,4 @@
-"""The Home Assistant alerts integration."""
+"""The NRJHub alerts integration."""
 
 from __future__ import annotations
 

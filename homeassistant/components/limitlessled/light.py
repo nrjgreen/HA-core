@@ -353,7 +353,7 @@ class LimitlessLEDGroup(LightEntity, RestoreEntity):
                 self._attr_hs_color = WHITE
 
     def limitlessled_temperature(self) -> float:
-        """Convert Home Assistant color temperature units to percentage."""
+        """Convert NRJHub color temperature units to percentage."""
         max_kelvin = color_temperature_mired_to_kelvin(self.min_mireds)
         min_kelvin = color_temperature_mired_to_kelvin(self.max_mireds)
         width = max_kelvin - min_kelvin
@@ -363,11 +363,11 @@ class LimitlessLEDGroup(LightEntity, RestoreEntity):
         return max(0, min(1, temperature))
 
     def limitlessled_brightness(self) -> float:
-        """Convert Home Assistant brightness units to percentage."""
+        """Convert NRJHub brightness units to percentage."""
         assert self.brightness is not None
         return self.brightness / 255
 
     def limitlessled_color(self) -> Color:
-        """Convert Home Assistant HS list to RGB Color tuple."""
+        """Convert NRJHub HS list to RGB Color tuple."""
         assert self.hs_color is not None
         return Color(*color_hs_to_RGB(*self.hs_color))

@@ -87,7 +87,7 @@ async def test_events_changed(
     assert len(api.change_favorite.mock_calls) == 1
     favorite_type, title, url = api.change_favorite.mock_calls[0][1]
     assert favorite_type == "http"
-    assert title == "Home Assistant (mydoorbird_xyz)"
+    assert title == "NRJHub (mydoorbird_xyz)"
     assert url == (
         f"http://10.10.10.10:8123/api/doorbird/mydoorbird_xyz?token={entry.entry_id}"
     )

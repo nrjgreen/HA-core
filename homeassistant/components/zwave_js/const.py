@@ -162,7 +162,7 @@ ENTITY_DESC_KEY_ENERGY_PRODUCTION_TIME = "energy_production_time"
 ENTITY_DESC_KEY_ENERGY_PRODUCTION_TOTAL = "energy_production_total"
 ENTITY_DESC_KEY_ENERGY_PRODUCTION_TODAY = "energy_production_today"
 
-# This API key is only for use with Home Assistant. Reach out to Z-Wave JS to apply for
+# This API key is only for use with NRJHub. Reach out to Z-Wave JS to apply for
 # your own (https://github.com/zwave-js/firmware-updates/).
 API_KEY_FIRMWARE_UPDATE_SERVICE = (
     "2e39d98fc56386389fbb35e5a98fa1b44b9fdd8f971460303587cff408430d4cfcde6134"

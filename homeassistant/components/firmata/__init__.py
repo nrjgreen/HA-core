@@ -178,7 +178,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     hass.data[DOMAIN][config_entry.entry_id] = board
 
     async def handle_shutdown(event) -> None:
-        """Handle shutdown of board when Home Assistant shuts down."""
+        """Handle shutdown of board when NRJHub shuts down."""
         # Ensure board was not already removed previously before shutdown
         if config_entry.entry_id in hass.data[DOMAIN]:
             await board.async_reset()

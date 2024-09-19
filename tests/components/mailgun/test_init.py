@@ -23,7 +23,7 @@ API_KEY = "abc123"
 async def http_client(
     hass: HomeAssistant, hass_client_no_auth: ClientSessionGenerator
 ) -> TestClient:
-    """Initialize a Home Assistant Server for testing this module."""
+    """Initialize a NRJHub Server for testing this module."""
     await async_setup_component(hass, webhook.DOMAIN, {})
     return await hass_client_no_auth()
 

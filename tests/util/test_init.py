@@ -1,4 +1,4 @@
-"""Test Home Assistant util methods."""
+"""Test NRJHub util methods."""
 
 from datetime import datetime, timedelta
 from unittest.mock import MagicMock, patch

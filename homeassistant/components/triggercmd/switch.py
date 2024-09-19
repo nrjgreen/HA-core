@@ -79,7 +79,7 @@ class TRIGGERcmdSwitch(SwitchEntity):
                 "computer": self._switch.computer_id,
                 "trigger": self._switch.trigger_id,
                 "params": params,
-                "sender": "Home Assistant",
+                "sender": "NRJHub",
             },
         )
         _LOGGER.debug("TRIGGERcmd trigger response: %s", r.json())

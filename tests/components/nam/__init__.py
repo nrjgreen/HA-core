@@ -16,7 +16,7 @@ INCOMPLETE_NAM_DATA = {
 async def init_integration(
     hass: HomeAssistant, co2_sensor: bool = True
 ) -> MockConfigEntry:
-    """Set up the Nettigo Air Monitor integration in Home Assistant."""
+    """Set up the Nettigo Air Monitor integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="10.10.2.3",

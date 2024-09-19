@@ -132,7 +132,7 @@ class RaspberryCamera(Camera):
             cmd_args.append(str(device_info[CONF_OVERLAY_TIMESTAMP]))
 
         # The raspistill process started below must run "forever" in
-        # the background until killed when Home Assistant is stopped.
+        # the background until killed when NRJHub is stopped.
         # Therefore it must not be wrapped with "with", since that
         # waits for the subprocess to exit before continuing.
         subprocess.Popen(  # pylint: disable=consider-using-with

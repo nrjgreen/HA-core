@@ -53,7 +53,7 @@ async def init_integration(
     skip_setup: bool = False,
     mock_type: Callable = modern_forms_call_mock,
 ) -> MockConfigEntry:
-    """Set up the Modern Forms integration in Home Assistant."""
+    """Set up the Modern Forms integration in NRJHub."""
 
     aioclient_mock.post(
         "http://192.168.1.123:80/mf",

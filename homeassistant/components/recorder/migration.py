@@ -120,8 +120,8 @@ LIVE_MIGRATION_MIN_SCHEMA_VERSION = 42
 
 MIGRATION_NOTE_OFFLINE = (
     "Note: this may take several hours on large databases and slow machines. "
-    "Home Assistant will not start until the upgrade is completed. Please be patient "
-    "and do not turn off or restart Home Assistant while the upgrade is in progress!"
+    "NRJHub will not start until the upgrade is completed. Please be patient "
+    "and do not turn off or restart NRJHub while the upgrade is in progress!"
 )
 MIGRATION_NOTE_MINUTES = (
     "Note: this may take several minutes on large databases and slow machines. "

@@ -118,7 +118,7 @@ async def app_fixture(hass: HomeAssistant, config_file: dict[str, str]) -> Mock:
     app.app_id = str(uuid4())
     app.app_type = "WEBHOOK_SMART_APP"
     app.classifications = [CLASSIFICATION_AUTOMATION]
-    app.display_name = "Home Assistant"
+    app.display_name = "NRJHub"
     app.description = f"{hass.config.location_name} at https://test.local"
     app.single_instance = True
     app.webhook_target_url = webhook.async_generate_url(

@@ -39,7 +39,7 @@
       '().generate_content_async',
       tuple(
         list([
-          'Write an opening speech for a Home Assistant release party',
+          'Write an opening speech for a NRJHub release party',
         ]),
       ),
       dict({

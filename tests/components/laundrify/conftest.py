@@ -36,7 +36,7 @@ def laundrify_sensor_fixture() -> LaundrifyDevice:
 async def laundrify_setup_config_entry(
     hass: HomeAssistant, access_token: str = VALID_ACCESS_TOKEN
 ) -> MockConfigEntry:
-    """Create laundrify entry in Home Assistant."""
+    """Create laundrify entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         unique_id=VALID_ACCOUNT_ID,

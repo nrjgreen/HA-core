@@ -1,4 +1,4 @@
-"""API for Electric Kiwi bound to Home Assistant OAuth."""
+"""API for Electric Kiwi bound to NRJHub OAuth."""
 
 from __future__ import annotations
 

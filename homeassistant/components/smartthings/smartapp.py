@@ -95,7 +95,7 @@ async def validate_installed_app(api, installed_app_id: str):
 
 
 def validate_webhook_requirements(hass: HomeAssistant) -> bool:
-    """Ensure Home Assistant is setup properly to receive webhooks."""
+    """Ensure NRJHub is setup properly to receive webhooks."""
     if cloud.async_active_subscription(hass):
         return True
     if hass.data[DOMAIN][CONF_CLOUDHOOK_URL] is not None:
@@ -127,7 +127,7 @@ def _get_app_template(hass: HomeAssistant):
 
     return {
         "app_name": APP_NAME_PREFIX + str(uuid4()),
-        "display_name": "Home Assistant",
+        "display_name": "NRJHub",
         "description": description,
         "webhook_target_url": get_webhook_url(hass),
         "app_type": APP_TYPE_WEBHOOK,

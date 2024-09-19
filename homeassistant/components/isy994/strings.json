@@ -79,7 +79,7 @@
     },
     "send_node_command": {
       "name": "Send node command",
-      "description": "Sends a command to an ISY Device using its Home Assistant entity ID. Valid commands are: beep, brighten, dim, disable, enable, fade_down, fade_stop, fade_up, fast_off, fast_on, and query.",
+      "description": "Sends a command to an ISY Device using its NRJHub entity ID. Valid commands are: beep, brighten, dim, disable, enable, fade_down, fade_stop, fade_up, fast_off, fast_on, and query.",
       "fields": {
         "command": {
           "name": "Command",
@@ -141,7 +141,7 @@
     },
     "rename_node": {
       "name": "Rename Node on ISY",
-      "description": "Renames a node or group (scene) on the ISY. Note: this will not automatically change the Home Assistant Entity Name or Entity ID to match. The entity name and ID will only be updated after reloading the integration or restarting Home Assistant, and ONLY IF you have not already customized the name within Home Assistant.",
+      "description": "Renames a node or group (scene) on the ISY. Note: this will not automatically change the NRJHub Entity Name or Entity ID to match. The entity name and ID will only be updated after reloading the integration or restarting NRJHub, and ONLY IF you have not already customized the name within NRJHub.",
       "fields": {
         "name": {
           "name": "New Name",

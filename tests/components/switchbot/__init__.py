@@ -37,7 +37,7 @@ def patch_async_setup_entry(return_value=True):
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Switchbot integration in Home Assistant."""
+    """Set up the Switchbot integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=ENTRY_CONFIG)
     entry.add_to_hass(hass)
 

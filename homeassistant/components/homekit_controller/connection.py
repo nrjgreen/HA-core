@@ -257,7 +257,7 @@ class HKDevice:
             )
 
     async def async_setup(self) -> None:
-        """Prepare to use a paired HomeKit device in Home Assistant."""
+        """Prepare to use a paired HomeKit device in NRJHub."""
         pairing = self.pairing
         transport = pairing.transport
         entry = self.config_entry
@@ -358,7 +358,7 @@ class HKDevice:
         )
 
     async def async_add_new_entities(self) -> None:
-        """Add new entities to Home Assistant."""
+        """Add new entities to NRJHub."""
         await self.async_load_platforms()
         self.add_entities()
 
@@ -1005,7 +1005,7 @@ class HKDevice:
     async def put_characteristics(
         self, characteristics: Iterable[tuple[int, int, Any]]
     ) -> None:
-        """Control a HomeKit device state from Home Assistant."""
+        """Control a HomeKit device state from NRJHub."""
         await self.pairing.put_characteristics(characteristics)
 
     @property

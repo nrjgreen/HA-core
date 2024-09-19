@@ -34,7 +34,7 @@ def mock_setup_entry() -> Generator[AsyncMock]:
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry() -> MockConfigEntry:
-    """Create OpenSky entry in Home Assistant."""
+    """Create OpenSky entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title="OpenSky",
@@ -51,7 +51,7 @@ def mock_config_entry() -> MockConfigEntry:
 
 @pytest.fixture(name="config_entry_altitude")
 def mock_config_entry_altitude() -> MockConfigEntry:
-    """Create Opensky entry with altitude in Home Assistant."""
+    """Create Opensky entry with altitude in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title="OpenSky",
@@ -68,7 +68,7 @@ def mock_config_entry_altitude() -> MockConfigEntry:
 
 @pytest.fixture(name="config_entry_authenticated")
 def mock_config_entry_authenticated() -> MockConfigEntry:
-    """Create authenticated Opensky entry in Home Assistant."""
+    """Create authenticated Opensky entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title="OpenSky",

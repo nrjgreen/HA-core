@@ -375,7 +375,7 @@ class QNAPMemorySensor(QNAPSensor):
 
         return None
 
-    # Deprecated since Home Assistant 2024.6.0
+    # Deprecated since NRJHub 2024.6.0
     # Can be removed completely in 2024.12.0
     @property
     def extra_state_attributes(self) -> dict[str, Any] | None:
@@ -414,7 +414,7 @@ class QNAPNetworkSensor(QNAPSensor):
 
         return None
 
-    # Deprecated since Home Assistant 2024.6.0
+    # Deprecated since NRJHub 2024.6.0
     # Can be removed completely in 2024.12.0
     @property
     def extra_state_attributes(self) -> dict[str, Any] | None:
@@ -455,7 +455,7 @@ class QNAPSystemSensor(QNAPSensor):
 
         return None
 
-    # Deprecated since Home Assistant 2024.6.0
+    # Deprecated since NRJHub 2024.6.0
     # Can be removed completely in 2024.12.0
     @property
     def extra_state_attributes(self) -> dict[str, Any] | None:
@@ -534,7 +534,7 @@ class QNAPVolumeSensor(QNAPSensor):
 
         return None
 
-    # Deprecated since Home Assistant 2024.6.0
+    # Deprecated since NRJHub 2024.6.0
     # Can be removed completely in 2024.12.0
     @property
     def extra_state_attributes(self) -> dict[str, Any] | None:

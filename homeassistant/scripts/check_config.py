@@ -60,13 +60,13 @@ def color(the_color, *args, reset=None):
 
 def run(script_args: list) -> int:
     """Handle check config commandline script."""
-    parser = argparse.ArgumentParser(description="Check Home Assistant configuration.")
+    parser = argparse.ArgumentParser(description="Check NRJHub configuration.")
     parser.add_argument("--script", choices=["check_config"])
     parser.add_argument(
         "-c",
         "--config",
         default=get_default_config_dir(),
-        help="Directory that contains the Home Assistant configuration",
+        help="Directory that contains the NRJHub configuration",
     )
     parser.add_argument(
         "-i",

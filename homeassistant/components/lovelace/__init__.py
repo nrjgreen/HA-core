@@ -116,7 +116,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             schema=RESOURCE_RELOAD_SERVICE_SCHEMA,
         )
         # Register lovelace/resources for backwards compatibility, remove in
-        # Home Assistant Core 2025.1
+        # NRJHub Core 2025.1
         for command in ("lovelace/resources", "lovelace/resources/list"):
             websocket_api.async_register_command(
                 hass,

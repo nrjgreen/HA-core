@@ -1,4 +1,4 @@
-"""API for Google Photos bound to Home Assistant OAuth."""
+"""API for Google Photos bound to NRJHub OAuth."""
 
 from typing import cast
 

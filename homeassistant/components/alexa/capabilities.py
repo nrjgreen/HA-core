@@ -111,7 +111,7 @@ class AlexaCapability:
     """Base class for Alexa capability interfaces.
 
     The Smart Home Skills API defines a number of "capability interfaces",
-    roughly analogous to domains in Home Assistant. The supported interfaces
+    roughly analogous to domains in NRJHub. The supported interfaces
     describe what actions can be performed on a particular device.
 
     https://developer.amazon.com/docs/device-apis/message-guide.html
@@ -302,7 +302,7 @@ class Alexa(AlexaCapability):
 
     https://developer.amazon.com/docs/device-apis/alexa-interface.html
 
-    To compare current supported locales in Home Assistant
+    To compare current supported locales in NRJHub
     with Alexa supported locales, run the following script:
     python -m script.alexa_locales
     """

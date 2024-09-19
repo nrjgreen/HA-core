@@ -2,7 +2,7 @@
 
 DOMAIN = "permobil"
 
-APPLICATION = "Home Assistant"
+APPLICATION = "NRJHub"
 
 
 BATTERY_ASSUMED_VOLTAGE = 25.0  # This is the average voltage over all states of charge

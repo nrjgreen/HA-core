@@ -73,7 +73,7 @@ class AbstractOAuth2Implementation(ABC):
         """Generate a url for the user to authorize.
 
         This step is called when a config flow is initialized. It should redirect the
-        user to the vendor website where they can authorize Home Assistant.
+        user to the vendor website where they can authorize NRJHub.
 
         The implementation is responsible to get notified when the user is authorized
         and pass this to the specified config flow. Do as little work as possible once
@@ -469,7 +469,7 @@ class OAuth2AuthorizeCallbackView(http.HomeAssistantView):
         if state is None:
             return web.Response(
                 text=(
-                    "Invalid state. Is My Home Assistant configured "
+                    "Invalid state. Is My NRJHub configured "
                     "to go to the right instance?"
                 ),
                 status=400,

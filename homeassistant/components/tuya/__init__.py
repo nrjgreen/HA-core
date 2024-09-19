@@ -39,7 +39,7 @@ type TuyaConfigEntry = ConfigEntry[HomeAssistantTuyaData]
 
 
 class HomeAssistantTuyaData(NamedTuple):
-    """Tuya data stored in the Home Assistant data object."""
+    """Tuya data stored in the NRJHub data object."""
 
     manager: Manager
     listener: SharingDeviceListener
@@ -168,7 +168,7 @@ class DeviceListener(SharingDeviceListener):
 
     @callback
     def async_remove_device(self, device_id: str) -> None:
-        """Remove device from Home Assistant."""
+        """Remove device from NRJHub."""
         LOGGER.debug("Remove device: %s", device_id)
         device_registry = dr.async_get(self.hass)
         device_entry = device_registry.async_get_device(

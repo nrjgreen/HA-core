@@ -93,7 +93,7 @@ def get_internal_store_manager(hass: HomeAssistant) -> _StoreManager:
     """Get the store manager.
 
     This function is not part of the API and should only be
-    used in the Home Assistant core internals. It is not
+    used in the NRJHub core internals. It is not
     guaranteed to be stable.
     """
     if STORAGE_MANAGER not in hass.data:
@@ -198,7 +198,7 @@ class _StoreManager:
         """Cleanup unused cache.
 
         If nothing consumes the cache 60s after startup or when we
-        stop Home Assistant, we'll clear the cache.
+        stop NRJHub, we'll clear the cache.
         """
         self._data_preload.clear()
 
@@ -508,14 +508,14 @@ class Store[_T: Mapping[str, Any] | Sequence[Any]]:
 
     async def _async_callback_delayed_write(self) -> None:
         """Handle a delayed write callback."""
-        # catch the case where a call is scheduled and then we stop Home Assistant
+        # catch the case where a call is scheduled and then we stop NRJHub
         if self.hass.state is CoreState.stopping:
             self._async_ensure_final_write_listener()
             return
         await self._async_handle_write_data()
 
     async def _async_callback_final_write(self, _event: Event) -> None:
-        """Handle a write because Home Assistant is in final write state."""
+        """Handle a write because NRJHub is in final write state."""
         self._unsub_final_write_listener = None
         await self._async_handle_write_data()
 

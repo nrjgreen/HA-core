@@ -42,13 +42,13 @@ class AssistSatelliteState(StrEnum):
     """Valid states of an Assist satellite entity."""
 
     LISTENING_WAKE_WORD = "listening_wake_word"
-    """Device is streaming audio for wake word detection to Home Assistant."""
+    """Device is streaming audio for wake word detection to NRJHub."""
 
     LISTENING_COMMAND = "listening_command"
-    """Device is streaming audio with the voice command to Home Assistant."""
+    """Device is streaming audio with the voice command to NRJHub."""
 
     PROCESSING = "processing"
-    """Home Assistant is processing the voice command."""
+    """NRJHub is processing the voice command."""
 
     RESPONDING = "responding"
     """Device is speaking the response."""
@@ -235,7 +235,7 @@ class AssistSatelliteEntity(entity.Entity):
         end_stage: PipelineStage = PipelineStage.TTS,
         wake_word_phrase: str | None = None,
     ) -> None:
-        """Triggers an Assist pipeline in Home Assistant from a satellite."""
+        """Triggers an Assist pipeline in NRJHub from a satellite."""
         await self._cancel_running_pipeline()
 
         if self._wake_word_intercept_future and start_stage in (

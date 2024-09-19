@@ -40,10 +40,10 @@ from syrupy.assertion import SnapshotAssertion
 from homeassistant import block_async_io
 from homeassistant.exceptions import ServiceNotFound
 
-# Setup patching of recorder functions before any other Home Assistant imports
+# Setup patching of recorder functions before any other NRJHub imports
 from . import patch_recorder  # noqa: F401, isort:skip
 
-# Setup patching of dt_util time functions before any other Home Assistant imports
+# Setup patching of dt_util time functions before any other NRJHub imports
 from . import patch_time  # noqa: F401, isort:skip
 
 from homeassistant import core as ha, loader, runner
@@ -556,7 +556,7 @@ async def hass(
     request: pytest.FixtureRequest,
     mock_recorder_before_hass: None,
 ) -> AsyncGenerator[HomeAssistant]:
-    """Create a test instance of Home Assistant."""
+    """Create a test instance of NRJHub."""
 
     loop = asyncio.get_running_loop()
     hass_fixture_setup.append(True)
@@ -695,7 +695,7 @@ async def hass_admin_credential(
 async def hass_access_token(
     hass: HomeAssistant, hass_admin_user: MockUser, hass_admin_credential: Credentials
 ) -> str:
-    """Return an access token to access Home Assistant."""
+    """Return an access token to access NRJHub."""
     await hass.auth.async_link_user(hass_admin_user, hass_admin_credential)
 
     refresh_token = await hass.auth.async_create_refresh_token(
@@ -708,7 +708,7 @@ async def hass_access_token(
 def hass_owner_user(
     hass: HomeAssistant, local_auth: homeassistant.HassAuthProvider
 ) -> MockUser:
-    """Return a Home Assistant admin user."""
+    """Return a NRJHub admin user."""
     return MockUser(is_owner=True).add_to_hass(hass)
 
 
@@ -716,7 +716,7 @@ def hass_owner_user(
 async def hass_admin_user(
     hass: HomeAssistant, local_auth: homeassistant.HassAuthProvider
 ) -> MockUser:
-    """Return a Home Assistant admin user."""
+    """Return a NRJHub admin user."""
     admin_group = await hass.auth.async_get_group(GROUP_ID_ADMIN)
     return MockUser(groups=[admin_group]).add_to_hass(hass)
 
@@ -725,7 +725,7 @@ async def hass_admin_user(
 async def hass_read_only_user(
     hass: HomeAssistant, local_auth: homeassistant.HassAuthProvider
 ) -> MockUser:
-    """Return a Home Assistant read only user."""
+    """Return a NRJHub read only user."""
     read_only_group = await hass.auth.async_get_group(GROUP_ID_READ_ONLY)
     return MockUser(groups=[read_only_group]).add_to_hass(hass)
 
@@ -736,7 +736,7 @@ async def hass_read_only_access_token(
     hass_read_only_user: MockUser,
     local_auth: homeassistant.HassAuthProvider,
 ) -> str:
-    """Return a Home Assistant read only user."""
+    """Return a NRJHub read only user."""
     credential = Credentials(
         id="mock-readonly-credential-id",
         auth_provider_type="homeassistant",
@@ -756,7 +756,7 @@ async def hass_read_only_access_token(
 async def hass_supervisor_user(
     hass: HomeAssistant, local_auth: homeassistant.HassAuthProvider
 ) -> MockUser:
-    """Return the Home Assistant Supervisor user."""
+    """Return the NRJHub Supervisor user."""
     admin_group = await hass.auth.async_get_group(GROUP_ID_ADMIN)
     return MockUser(
         name=HASSIO_USER_NAME, groups=[admin_group], system_generated=True
@@ -769,7 +769,7 @@ async def hass_supervisor_access_token(
     hass_supervisor_user: MockUser,
     local_auth: homeassistant.HassAuthProvider,
 ) -> str:
-    """Return a Home Assistant Supervisor access token."""
+    """Return a NRJHub Supervisor access token."""
     refresh_token = await hass.auth.async_create_refresh_token(hass_supervisor_user)
     return hass.auth.async_create_access_token(refresh_token)
 
@@ -1636,7 +1636,7 @@ async def async_test_recorder(
             )
             await hass.async_block_till_done()
             instance = hass.data[recorder.DATA_INSTANCE]
-            # The recorder's worker is not started until Home Assistant is running
+            # The recorder's worker is not started until NRJHub is running
             if hass.state is CoreState.running and wait_recorder:
                 await async_recorder_block_till_done(hass)
             try:
@@ -1889,7 +1889,7 @@ def service_calls(hass: HomeAssistant) -> Generator[list[ServiceCall]]:
 
 @pytest.fixture
 def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
-    """Return snapshot assertion fixture with the Home Assistant extension."""
+    """Return snapshot assertion fixture with the NRJHub extension."""
     return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 

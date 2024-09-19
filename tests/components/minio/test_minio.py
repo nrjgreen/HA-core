@@ -155,7 +155,7 @@ async def test_minio_listen(
 
 
 async def test_queue_listener() -> None:
-    """Tests QueueListener firing events on Home Assistant event bus."""
+    """Tests QueueListener firing events on NRJHub event bus."""
     hass = MagicMock()
 
     queue_listener = QueueListener(hass)

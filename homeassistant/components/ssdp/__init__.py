@@ -91,7 +91,7 @@ ATTR_UPNP_SERVICE_LIST = "serviceList"
 ATTR_UPNP_UDN = "UDN"
 ATTR_UPNP_UPC = "UPC"
 ATTR_UPNP_PRESENTATION_URL = "presentationURL"
-# Attributes for accessing info added by Home Assistant
+# Attributes for accessing info added by NRJHub
 ATTR_HA_MATCHING_DOMAINS = "x_homeassistant_matching_domains"
 
 PRIMARY_MATCH_KEYS = [
@@ -672,7 +672,7 @@ class HassUpnpServiceDevice(UpnpServerDevice):
     DEVICE_DEFINITION = DeviceInfo(
         device_type="urn:home-assistant.io:device:HomeAssistant:1",
         friendly_name="filled_later_on",
-        manufacturer="Home Assistant",
+        manufacturer="NRJHub",
         manufacturer_url="https://www.home-assistant.io",
         model_description=None,
         model_name="filled_later_on",
@@ -773,7 +773,7 @@ class Server:
             _LOGGER.warning(
                 "Could not set up UPnP/SSDP server, as a presentation URL could"
                 " not be determined; Please configure your internal URL"
-                " in the Home Assistant general configuration"
+                " in the NRJHub general configuration"
             )
             return
 
@@ -781,7 +781,7 @@ class Server:
         HassUpnpServiceDevice.DEVICE_DEFINITION = (
             HassUpnpServiceDevice.DEVICE_DEFINITION._replace(
                 udn=udn,
-                friendly_name=f"{self.hass.config.location_name} (Home Assistant)",
+                friendly_name=f"{self.hass.config.location_name} (NRJHub)",
                 model_name=model_name,
                 presentation_url=presentation_url,
                 serial_number=serial_number,

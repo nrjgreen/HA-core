@@ -12,7 +12,7 @@ from tests.common import MockConfigEntry
 async def init_integration(
     hass: HomeAssistant, track_home: bool = False
 ) -> MockConfigEntry:
-    """Set up the Met integration in Home Assistant."""
+    """Set up the Met integration in NRJHub."""
     entry_data = {
         CONF_NAME: "test",
         CONF_LATITUDE: 0,

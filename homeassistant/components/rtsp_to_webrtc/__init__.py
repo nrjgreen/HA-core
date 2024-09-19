@@ -1,13 +1,13 @@
 """RTSPtoWebRTC integration with an external RTSPToWebRTC Server.
 
 WebRTC uses a direct communication from the client (e.g. a web browser) to a
-camera device. Home Assistant acts as the signal path for initial set up,
+camera device. NRJHub acts as the signal path for initial set up,
 passing through the client offer and returning a camera answer, then the client
 and camera communicate directly.
 
 However, not all cameras natively support WebRTC. This integration is a shim
 for camera devices that support RTSP streams only, relying on an external
-server RTSPToWebRTC that is a proxy. Home Assistant does not participate in
+server RTSPToWebRTC that is a proxy. NRJHub does not participate in
 the offer/answer SDP protocol, other than as a signal path pass through.
 
 Other integrations may use this integration with these steps:

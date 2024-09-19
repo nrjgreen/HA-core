@@ -1,4 +1,4 @@
-"""Test fixtures for the Home Assistant Yellow integration."""
+"""Test fixtures for the NRJHub Yellow integration."""
 
 from collections.abc import Generator
 from typing import Any

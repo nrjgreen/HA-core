@@ -196,14 +196,14 @@ class MatrixBot:
         self._unparsed_commands = commands
 
         async def stop_client(event: HassEvent) -> None:
-            """Run once when Home Assistant stops."""
+            """Run once when NRJHub stops."""
             if self._client is not None:
                 await self._client.close()
 
         self.hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, stop_client)
 
         async def handle_startup(event: HassEvent) -> None:
-            """Run once when Home Assistant finished startup."""
+            """Run once when NRJHub finished startup."""
             self._access_tokens = await self._get_auth_tokens()
             await self._login()
             await self._resolve_room_aliases(listening_rooms)

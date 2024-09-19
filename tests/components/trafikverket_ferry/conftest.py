@@ -22,7 +22,7 @@ from tests.common import MockConfigEntry
 async def load_integration_from_entry(
     hass: HomeAssistant, get_ferries: list[FerryStopModel]
 ) -> MockConfigEntry:
-    """Set up the Trafikverket Ferry integration in Home Assistant."""
+    """Set up the Trafikverket Ferry integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         source=SOURCE_USER,

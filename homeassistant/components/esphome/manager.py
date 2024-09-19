@@ -250,7 +250,7 @@ class ESPHomeManager:
             _LOGGER.error(
                 "%s: Service call %s.%s: with data %s rejected; "
                 "If you trust this device and want to allow access for it to make "
-                "Home Assistant service calls, you can enable this "
+                "NRJHub service calls, you can enable this "
                 "functionality in the options flow",
                 device_info.friendly_name or device_info.name,
                 domain,
@@ -262,7 +262,7 @@ class ESPHomeManager:
     def _send_home_assistant_state(
         self, entity_id: str, attribute: str | None, state: State | None
     ) -> None:
-        """Forward Home Assistant states to ESPHome."""
+        """Forward NRJHub states to ESPHome."""
         if state is None or (attribute and attribute not in state.attributes):
             return
 
@@ -283,7 +283,7 @@ class ESPHomeManager:
         attribute: str | None,
         event: Event[EventStateChangedData],
     ) -> None:
-        """Forward Home Assistant states updates to ESPHome."""
+        """Forward NRJHub states updates to ESPHome."""
         event_data = event.data
         new_state = event_data["new_state"]
         old_state = event_data["old_state"]
@@ -520,7 +520,7 @@ class ESPHomeManager:
         self.reconnect_logic = reconnect_logic
 
         # Use async_listen instead of async_listen_once so that we don't deregister
-        # the callback twice when shutting down Home Assistant.
+        # the callback twice when shutting down NRJHub.
         # "Unable to remove unknown listener
         # <function EventBus.async_listen_once.<locals>.onetime_listener>"
         # We only close the connection at the last possible moment

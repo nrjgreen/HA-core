@@ -125,7 +125,7 @@ class OwnTracksEntity(TrackerEntity, RestoreEntity):
         return device_info
 
     async def async_added_to_hass(self) -> None:
-        """Call when entity about to be added to Home Assistant."""
+        """Call when entity about to be added to NRJHub."""
         await super().async_added_to_hass()
 
         # Don't restore if we got set up with data.

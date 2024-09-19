@@ -2,7 +2,7 @@
 
 from datetime import timedelta
 
-APPLICATION_NAME = "Home Assistant"
+APPLICATION_NAME = "NRJHub"
 
 DOMAIN = "tellduslive"
 

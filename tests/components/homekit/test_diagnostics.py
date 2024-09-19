@@ -83,7 +83,7 @@ async def test_config_entry_running(
                                 "iid": 3,
                                 "perms": ["pr"],
                                 "type": "20",
-                                "value": "Home Assistant",
+                                "value": "NRJHub",
                             },
                             {
                                 "format": "string",
@@ -195,7 +195,7 @@ async def test_config_entry_accessory(
                                 "iid": 3,
                                 "perms": ["pr"],
                                 "type": "20",
-                                "value": "Home Assistant Light",
+                                "value": "NRJHub Light",
                             },
                             {
                                 "format": "string",
@@ -372,7 +372,7 @@ async def test_config_entry_with_trigger_accessory(
                                 "iid": 3,
                                 "perms": ["pr"],
                                 "type": "20",
-                                "value": "Home Assistant",
+                                "value": "NRJHub",
                             },
                             {
                                 "format": "string",
@@ -439,7 +439,7 @@ async def test_config_entry_with_trigger_accessory(
                                 "iid": 4,
                                 "perms": ["pr"],
                                 "type": "21",
-                                "value": "Home Assistant",
+                                "value": "NRJHub",
                             },
                             {
                                 "format": "string",

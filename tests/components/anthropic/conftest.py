@@ -53,5 +53,5 @@ async def mock_init_component(
 
 @pytest.fixture(autouse=True)
 async def setup_ha(hass: HomeAssistant) -> None:
-    """Set up Home Assistant."""
+    """Set up NRJHub."""
     assert await async_setup_component(hass, "homeassistant", {})

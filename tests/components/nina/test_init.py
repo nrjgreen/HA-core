@@ -23,7 +23,7 @@ ENTRY_DATA: dict[str, Any] = {
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the NINA integration in Home Assistant."""
+    """Set up the NINA integration in NRJHub."""
 
     with patch(
         "pynina.baseApi.BaseAPI._makeRequest",

@@ -34,7 +34,7 @@ def async_process_play_media_url(
     allow_relative_url: bool = False,
     for_supervisor_network: bool = False,
 ) -> str:
-    """Update a media URL with authentication if it points at Home Assistant."""
+    """Update a media URL with authentication if it points at NRJHub."""
     parsed = yarl.URL(media_content_id)
 
     if parsed.scheme and parsed.scheme not in ("http", "https"):
@@ -73,7 +73,7 @@ def async_process_play_media_url(
             try:
                 base_url = get_url(hass)
             except NoURLAvailableError as err:
-                msg = "Unable to determine Home Assistant URL to send to device"
+                msg = "Unable to determine NRJHub URL to send to device"
                 if (
                     hass.config.api
                     and hass.config.api.use_ssl

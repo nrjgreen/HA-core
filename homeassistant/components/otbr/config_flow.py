@@ -46,7 +46,7 @@ def get_addon_manager(hass: HomeAssistant, slug: str) -> AddonManager:
 
 
 def _is_yellow(hass: HomeAssistant) -> bool:
-    """Return True if Home Assistant is running on a Home Assistant Yellow."""
+    """Return True if NRJHub is running on a NRJHub Yellow."""
     try:
         yellow_hardware.async_info(hass)
     except HomeAssistantError:
@@ -64,13 +64,13 @@ async def _title(hass: HomeAssistant, discovery_info: HassioServiceInfo) -> str:
         device = addon_info.options.get("device")
 
     if _is_yellow(hass) and device == "/dev/ttyAMA1":
-        return f"Home Assistant Yellow ({discovery_info.name})"
+        return f"NRJHub Yellow ({discovery_info.name})"
 
     if device and "SkyConnect" in device:
-        return f"Home Assistant SkyConnect ({discovery_info.name})"
+        return f"NRJHub SkyConnect ({discovery_info.name})"
 
     if device and "Connect_ZBT-1" in device:
-        return f"Home Assistant Connect ZBT-1 ({discovery_info.name})"
+        return f"NRJHub Connect ZBT-1 ({discovery_info.name})"
 
     return discovery_info.name
 

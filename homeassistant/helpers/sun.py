@@ -30,7 +30,7 @@ type _AstralSunEventCallable = Callable[..., datetime.datetime]
 def get_astral_location(
     hass: HomeAssistant,
 ) -> tuple[astral.location.Location, astral.Elevation]:
-    """Get an astral location for the current Home Assistant configuration."""
+    """Get an astral location for the current NRJHub configuration."""
     from astral import LocationInfo  # pylint: disable=import-outside-toplevel
     from astral.location import Location  # pylint: disable=import-outside-toplevel
 

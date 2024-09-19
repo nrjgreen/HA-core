@@ -193,7 +193,7 @@ class ConfiguredDoorBird:
         }
         for identifier, data in http_fav.items():
             title: str | None = data.get("title")
-            if not title or not title.startswith("Home Assistant"):
+            if not title or not title.startswith("NRJHub"):
                 continue
             event = title.partition("(")[2].strip(")")
             if input_type := favorite_input_type.get(identifier):
@@ -231,7 +231,7 @@ class ConfiguredDoorBird:
             return False
 
         if not await self.device.change_favorite(
-            HTTP_EVENT_TYPE, f"Home Assistant ({event})", url
+            HTTP_EVENT_TYPE, f"NRJHub ({event})", url
         ):
             _LOGGER.warning(
                 'Unable to set favorite URL "%s". Event "%s" will not fire',

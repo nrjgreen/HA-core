@@ -46,7 +46,7 @@ def mock_dev_track(mock_device_tracker_conf: list[Device]) -> None:
 def mock_client(
     hass: HomeAssistant, hass_client_no_auth: ClientSessionGenerator
 ) -> TestClient:
-    """Start the Home Assistant HTTP component."""
+    """Start the NRJHub HTTP component."""
     mock_component(hass, "group")
     mock_component(hass, "zone")
     mock_component(hass, "device_tracker")

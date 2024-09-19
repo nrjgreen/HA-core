@@ -1,4 +1,4 @@
-"""Home Assistant representation of an UPnP/IGD."""
+"""NRJHub representation of an UPnP/IGD."""
 
 from __future__ import annotations
 
@@ -110,7 +110,7 @@ async def async_create_device(
 
 
 class Device:
-    """Home Assistant representation of a UPnP/IGD device."""
+    """NRJHub representation of a UPnP/IGD device."""
 
     def __init__(
         self, hass: HomeAssistant, igd_device: IgdDevice, force_poll: bool

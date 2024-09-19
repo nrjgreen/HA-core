@@ -1,4 +1,4 @@
-"""Test the Home Assistant SkyConnect config flow."""
+"""Test the NRJHub SkyConnect config flow."""
 
 from unittest.mock import Mock, patch
 
@@ -35,15 +35,15 @@ USB_DATA_ZBT1 = usb.UsbServiceInfo(
     pid="EA60",
     serial_number="9e2adbd75b8beb119fe564a0f320645d",
     manufacturer="Nabu Casa",
-    description="Home Assistant Connect ZBT-1",
+    description="NRJHub Connect ZBT-1",
 )
 
 
 @pytest.mark.parametrize(
     ("usb_data", "model"),
     [
-        (USB_DATA_SKY, "Home Assistant SkyConnect"),
-        (USB_DATA_ZBT1, "Home Assistant Connect ZBT-1"),
+        (USB_DATA_SKY, "NRJHub SkyConnect"),
+        (USB_DATA_ZBT1, "NRJHub Connect ZBT-1"),
     ],
 )
 async def test_config_flow(
@@ -97,8 +97,8 @@ async def test_config_flow(
 @pytest.mark.parametrize(
     ("usb_data", "model"),
     [
-        (USB_DATA_SKY, "Home Assistant SkyConnect"),
-        (USB_DATA_ZBT1, "Home Assistant Connect ZBT-1"),
+        (USB_DATA_SKY, "NRJHub SkyConnect"),
+        (USB_DATA_ZBT1, "NRJHub Connect ZBT-1"),
     ],
 )
 async def test_options_flow(
@@ -162,8 +162,8 @@ async def test_options_flow(
 @pytest.mark.parametrize(
     ("usb_data", "model"),
     [
-        (USB_DATA_SKY, "Home Assistant SkyConnect"),
-        (USB_DATA_ZBT1, "Home Assistant Connect ZBT-1"),
+        (USB_DATA_SKY, "NRJHub SkyConnect"),
+        (USB_DATA_ZBT1, "NRJHub Connect ZBT-1"),
     ],
 )
 async def test_options_flow_multipan_uninstall(

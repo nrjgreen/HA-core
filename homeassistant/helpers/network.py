@@ -21,7 +21,7 @@ SUPERVISOR_NETWORK_HOST = "homeassistant"
 
 
 class NoURLAvailableError(HomeAssistantError):
-    """An URL to the Home Assistant instance is not available."""
+    """An URL to the NRJHub instance is not available."""
 
 
 @bind_hass
@@ -66,7 +66,7 @@ def get_supervisor_network_url(
 
 
 def is_hass_url(hass: HomeAssistant, url: str) -> bool:
-    """Return if the URL points at this Home Assistant instance."""
+    """Return if the URL points at this NRJHub instance."""
     parsed = yarl.URL(url)
 
     if not parsed.is_absolute():
@@ -304,7 +304,7 @@ def _get_external_url(
 
 @bind_hass
 def _get_cloud_url(hass: HomeAssistant, require_current_request: bool = False) -> str:
-    """Get external Home Assistant Cloud URL of this instance."""
+    """Get external NRJHub Cloud URL of this instance."""
     if "cloud" in hass.config.components:
         # Local import to avoid circular dependencies
         # pylint: disable-next=import-outside-toplevel

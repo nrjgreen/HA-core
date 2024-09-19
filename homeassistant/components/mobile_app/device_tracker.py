@@ -114,7 +114,7 @@ class MobileAppEntity(TrackerEntity, RestoreEntity):
         return device_info(self._entry.data)
 
     async def async_added_to_hass(self) -> None:
-        """Call when entity about to be added to Home Assistant."""
+        """Call when entity about to be added to NRJHub."""
         await super().async_added_to_hass()
         self._dispatch_unsub = async_dispatcher_connect(
             self.hass,

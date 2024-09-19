@@ -69,7 +69,7 @@
     },
     "license_error": {
       "title": "Maximum number of connections was reached.",
-      "description": "Configuring LCN using YAML is being removed but there was an error importing your YAML configuration.\n\nEnsure sufficient PCHK licenses are registered and restart Home Assistant.\n\nConsider removing the LCN YAML configuration from your configuration.yaml file and continue to [set up the integration]({url}) manually."
+      "description": "Configuring LCN using YAML is being removed but there was an error importing your YAML configuration.\n\nEnsure sufficient PCHK licenses are registered and restart NRJHub.\n\nConsider removing the LCN YAML configuration from your configuration.yaml file and continue to [set up the integration]({url}) manually."
     },
     "connection_refused": {
       "title": "Unable to connect to PCHK.",

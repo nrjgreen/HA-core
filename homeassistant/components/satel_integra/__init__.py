@@ -153,7 +153,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
     @callback
     def alarm_status_update_callback():
-        """Send status update received from alarm to Home Assistant."""
+        """Send status update received from alarm to NRJHub."""
         _LOGGER.debug("Sending request to update panel state")
         async_dispatcher_send(hass, SIGNAL_PANEL_MESSAGE)
 

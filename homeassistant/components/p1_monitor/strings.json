@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "description": "Set up P1 Monitor to integrate with Home Assistant.",
+        "description": "Set up P1 Monitor to integrate with NRJHub.",
         "data": {
           "host": "[%key:common::config_flow::data::host%]"
         },

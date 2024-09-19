@@ -137,7 +137,7 @@ async def test_assist_api(
     assert len(api.tools) == 1
     tool = api.tools[0]
     assert tool.name == "test_intent"
-    assert tool.description == "Execute Home Assistant test_intent intent"
+    assert tool.description == "Execute NRJHub test_intent intent"
     assert tool.parameters == vol.Schema(
         {
             vol.Optional("area"): cv.string,
@@ -356,7 +356,7 @@ async def test_assist_api_prompt(
     api = await llm.async_get_api(hass, "assist", llm_context)
     assert api.api_prompt == (
         "Only if the user wants to control a device, tell them to expose entities to their "
-        "voice assistant in Home Assistant."
+        "voice assistant in NRJHub."
     )
 
     # Expose entities
@@ -559,7 +559,7 @@ async def test_assist_api_prompt(
   areas: Test Area 2
 """
     first_part_prompt = (
-        "When controlling Home Assistant always call the intent tools. "
+        "When controlling NRJHub always call the intent tools. "
         "Use HassTurnOn to lock and HassTurnOff to unlock a lock. "
         "When controlling a device, prefer passing just name and domain. "
         "When controlling an area, prefer passing just area name and domain."

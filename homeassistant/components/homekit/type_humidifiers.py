@@ -182,7 +182,7 @@ class HumidifierDehumidifier(HomeAccessory):
     def run(self) -> None:
         """Handle accessory driver started event.
 
-        Run inside the Home Assistant event loop.
+        Run inside the NRJHub event loop.
         """
         if self.linked_humidity_sensor:
             self._subscriptions.append(

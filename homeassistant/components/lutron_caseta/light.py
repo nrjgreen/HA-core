@@ -41,12 +41,12 @@ WARM_DEVICE_TYPES = {DEVICE_TYPE_WHITE_TUNE, DEVICE_TYPE_SPECTRUM_TUNE}
 
 
 def to_lutron_level(level):
-    """Convert the given Home Assistant light level (0-255) to Lutron (0-100)."""
+    """Convert the given NRJHub light level (0-255) to Lutron (0-100)."""
     return int(round((level * 100) / 255))
 
 
 def to_hass_level(level):
-    """Convert the given Lutron (0-100) light level to Home Assistant (0-255)."""
+    """Convert the given Lutron (0-100) light level to NRJHub (0-255)."""
     return int((level * 255) // 100)
 
 

@@ -1047,7 +1047,7 @@ async def test_async_forward_entry_setup_deprecated(
     assert (
         "Detected code that calls async_forward_entry_setup for integration, "
         f"original with title: Mock Title and entry_id: {entry_id}, "
-        "which is deprecated and will stop working in Home Assistant 2025.6, "
+        "which is deprecated and will stop working in NRJHub 2025.6, "
         "await async_forward_entry_setups instead. Please report this issue."
     ) in caplog.text
 
@@ -5709,7 +5709,7 @@ async def test_non_awaited_async_forward_entry_setups(
         "test with title: Mock Title and entry_id: test2, during setup without "
         "awaiting async_forward_entry_setups, which can cause the setup lock "
         "to be released before the setup is done. This will stop working in "
-        "Home Assistant 2025.1. Please report this issue."
+        "NRJHub 2025.1. Please report this issue."
     ) in caplog.text
 
 
@@ -5781,7 +5781,7 @@ async def test_non_awaited_async_forward_entry_setup(
         "test with title: Mock Title and entry_id: test2, during setup without "
         "awaiting async_forward_entry_setup, which can cause the setup lock "
         "to be released before the setup is done. This will stop working in "
-        "Home Assistant 2025.1. Please report this issue."
+        "NRJHub 2025.1. Please report this issue."
     ) in caplog.text
 
 

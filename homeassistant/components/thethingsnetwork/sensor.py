@@ -46,7 +46,7 @@ async def async_setup_entry(
 
 
 class TtnDataSensor(TTNEntity, SensorEntity):
-    """Represents a TTN Home Assistant Sensor."""
+    """Represents a TTN NRJHub Sensor."""
 
     _ttn_value: TTNSensorValue
 

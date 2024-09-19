@@ -245,7 +245,7 @@ def mock_monitor(serial_number: int) -> MagicMock:
 async def connect_monitor(
     hass: HomeAssistant, monitors: AsyncMock, serial_number: int
 ) -> MagicMock:
-    """Simulate a monitor connecting to Home Assistant. Returns the mock monitor API object."""
+    """Simulate a monitor connecting to NRJHub. Returns the mock monitor API object."""
     monitor = mock_monitor(serial_number)
     monitors.add_monitor(monitor)
     await hass.async_block_till_done()

@@ -40,7 +40,7 @@ async def calls(hass: HomeAssistant, fixture) -> list[ServiceCall]:
 
 @pytest.fixture
 async def fixture(hass: HomeAssistant, hass_client_no_auth: ClientSessionGenerator):
-    """Initialize a Home Assistant server for testing this module."""
+    """Initialize a NRJHub server for testing this module."""
     await async_setup_component(hass, dialogflow.DOMAIN, {"dialogflow": {}})
     await async_setup_component(
         hass,
@@ -431,7 +431,7 @@ async def test_intent_with_unknown_action_v1(fixture) -> None:
     )
     assert response.status == HTTPStatus.OK
     text = (await response.json()).get("speech")
-    assert text == "This intent is not yet configured within Home Assistant."
+    assert text == "This intent is not yet configured within NRJHub."
 
 
 async def test_intent_with_unknown_action_v2(fixture) -> None:
@@ -444,4 +444,4 @@ async def test_intent_with_unknown_action_v2(fixture) -> None:
     )
     assert response.status == HTTPStatus.OK
     text = (await response.json()).get("fulfillmentText")
-    assert text == "This intent is not yet configured within Home Assistant."
+    assert text == "This intent is not yet configured within NRJHub."

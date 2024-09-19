@@ -9,8 +9,8 @@ from homeassistant import const
 from .device_registry import DeviceInfo
 
 if TYPE_CHECKING:
-    # `sensor_state_data` is a second-party library (i.e. maintained by Home Assistant
-    # core members) which is not strictly required by Home Assistant.
+    # `sensor_state_data` is a second-party library (i.e. maintained by NRJHub
+    # core members) which is not strictly required by NRJHub.
     # Therefore, we import it as a type hint only.
     from sensor_state_data import SensorDeviceInfo
 

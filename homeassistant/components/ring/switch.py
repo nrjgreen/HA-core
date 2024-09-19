@@ -110,7 +110,7 @@ class RingSwitch(RingEntity[RingDeviceT], SwitchEntity):
 
     @refresh_after
     async def _async_set_switch(self, switch_on: bool) -> None:
-        """Update switch state, and causes Home Assistant to correctly update."""
+        """Update switch state, and causes NRJHub to correctly update."""
         if switch_on:
             await self.entity_description.turn_on_fn(self._device)
         else:

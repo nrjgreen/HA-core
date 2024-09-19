@@ -33,7 +33,7 @@ export PATH
 # all our binaries.
 
 # Skip further init if the user has a given CMD.
-# This is to prevent Home Assistant from starting twice if the user
+# This is to prevent NRJHub from starting twice if the user
 # decided to override/start via the CMD.
 if test $# -ne 0 ; then
   exec "$@"

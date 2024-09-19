@@ -179,7 +179,7 @@ CONFIGURATION_URL_PROTOCOL_SCHEMA_LIST = frozenset(
     {UrlProtocolSchema.HOMEASSISTANT, UrlProtocolSchema.HTTP, UrlProtocolSchema.HTTPS}
 )
 
-# Home Assistant types
+# NRJHub types
 byte = vol.All(vol.Coerce(int), vol.Range(min=0, max=255))
 small_float = vol.All(vol.Coerce(float), vol.Range(min=0, max=1))
 positive_int = vol.All(vol.Coerce(int), vol.Range(min=0))

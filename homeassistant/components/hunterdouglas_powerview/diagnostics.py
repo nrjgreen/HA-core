@@ -74,7 +74,7 @@ def _async_get_diagnostics(
 def _async_device_as_dict(hass: HomeAssistant, device: DeviceEntry) -> dict[str, Any]:
     """Represent a Powerview device as a dictionary."""
 
-    # Gather information how this device is represented in Home Assistant
+    # Gather information how this device is represented in NRJHub
     entity_registry = er.async_get(hass)
 
     data = async_redact_data(attr.asdict(device), REDACT_CONFIG)

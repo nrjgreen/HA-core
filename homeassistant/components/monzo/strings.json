@@ -10,7 +10,7 @@
       },
       "await_approval_confirmation": {
         "title": "Confirm in Monzo app",
-        "description": "Before proceeding, open your Monzo app and approve the request from Home Assistant.",
+        "description": "Before proceeding, open your Monzo app and approve the request from NRJHub.",
         "data": {
           "confirm": "I've approved"
         }

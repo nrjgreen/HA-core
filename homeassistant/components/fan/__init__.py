@@ -59,7 +59,7 @@ class FanEntityFeature(IntFlag):
     TURN_ON = 32
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the FanEntityFeature enum instead.
 _DEPRECATED_SUPPORT_SET_SPEED = DeprecatedConstantEnum(
     FanEntityFeature.SET_SPEED, "2025.1"

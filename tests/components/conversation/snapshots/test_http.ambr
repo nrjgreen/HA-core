@@ -4,7 +4,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
           'af',
           'ar',
@@ -84,7 +84,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
         ]),
       }),
@@ -108,7 +108,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
           'en',
         ]),
@@ -132,7 +132,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
           'en',
         ]),
@@ -156,7 +156,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
           'de',
           'de-CH',
@@ -181,7 +181,7 @@
     'agents': list([
       dict({
         'id': 'conversation.home_assistant',
-        'name': 'Home Assistant',
+        'name': 'NRJHub',
         'supported_languages': list([
           'de-CH',
           'de',

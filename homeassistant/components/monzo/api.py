@@ -1,4 +1,4 @@
-"""API for Monzo bound to Home Assistant OAuth."""
+"""API for Monzo bound to NRJHub OAuth."""
 
 from aiohttp import ClientSession
 from monzopy import AbstractMonzoApi

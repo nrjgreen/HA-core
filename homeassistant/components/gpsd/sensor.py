@@ -166,7 +166,7 @@ class GpsdSensor(SensorEntity):
         value = self.entity_description.value_fn(self.agps_thread)
         return None if value == "n/a" else value
 
-    # Deprecated since Home Assistant 2024.9.0
+    # Deprecated since NRJHub 2024.9.0
     # Can be removed completely in 2025.3.0
     @property
     def extra_state_attributes(self) -> dict[str, Any] | None:

@@ -42,7 +42,7 @@ def mac_matches_by_one(formatted_mac_1: str, formatted_mac_2: str) -> bool:
 def _flux_color_mode_to_hass(
     flux_color_mode: str | None, flux_color_modes: set[str]
 ) -> ColorMode:
-    """Map the flux color mode to Home Assistant color mode."""
+    """Map the flux color mode to NRJHub color mode."""
     if flux_color_mode is None:
         return ColorMode.ONOFF
     if flux_color_mode == FLUX_COLOR_MODE_DIM:

@@ -204,8 +204,8 @@ async def setup_device_v1(
         if isinstance(coordinator.api, RoborockMqttClientV1):
             _LOGGER.warning(
                 "Not setting up %s because the we failed to get data for the first time using the online client. "
-                "Please ensure your Home Assistant instance can communicate with this device. "
-                "You may need to open firewall instances on your Home Assistant network and on your Vacuum's network",
+                "Please ensure your NRJHub instance can communicate with this device. "
+                "You may need to open firewall instances on your NRJHub network and on your Vacuum's network",
                 device.name,
             )
             # Most of the time if we fail to connect using the mqtt client, the problem is due to firewall,

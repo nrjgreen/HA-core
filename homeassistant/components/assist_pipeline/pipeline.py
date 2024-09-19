@@ -143,7 +143,7 @@ def _async_resolve_default_pipeline_settings(
     if conversation_engine_id is None:
         conversation_engine_id = conversation.HOME_ASSISTANT_AGENT
 
-    # Find a matching language supported by the Home Assistant conversation agent
+    # Find a matching language supported by the NRJHub conversation agent
     conversation_languages = language_util.matches(
         hass.config.language,
         conversation.async_get_conversation_languages(hass, conversation_engine_id),
@@ -228,7 +228,7 @@ async def _async_create_default_pipeline(
     default stt / tts engines.
     """
     pipeline_settings = _async_resolve_default_pipeline_settings(
-        hass, pipeline_name="Home Assistant"
+        hass, pipeline_name="NRJHub"
     )
     return await pipeline_store.async_create_item(pipeline_settings)
 

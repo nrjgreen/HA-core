@@ -173,8 +173,8 @@ async def test_custom_integration_version_not_valid(
 @pytest.mark.parametrize(
     "blocked_versions",
     [
-        loader.BlockedIntegration(None, "breaks Home Assistant"),
-        loader.BlockedIntegration(AwesomeVersion("2.0.0"), "breaks Home Assistant"),
+        loader.BlockedIntegration(None, "breaks NRJHub"),
+        loader.BlockedIntegration(AwesomeVersion("2.0.0"), "breaks NRJHub"),
     ],
 )
 @pytest.mark.usefixtures("enable_custom_integrations")
@@ -192,7 +192,7 @@ async def test_custom_integration_version_blocked(
 
         assert (
             "Version 1.0.0 of custom integration 'test_blocked_version' breaks"
-            " Home Assistant and was blocked from loading, please report it to the"
+            " NRJHub and was blocked from loading, please report it to the"
             " author of the 'test_blocked_version' custom integration"
         ) in caplog.text
 
@@ -200,8 +200,8 @@ async def test_custom_integration_version_blocked(
 @pytest.mark.parametrize(
     "blocked_versions",
     [
-        loader.BlockedIntegration(AwesomeVersion("0.9.9"), "breaks Home Assistant"),
-        loader.BlockedIntegration(AwesomeVersion("1.0.0"), "breaks Home Assistant"),
+        loader.BlockedIntegration(AwesomeVersion("0.9.9"), "breaks NRJHub"),
+        loader.BlockedIntegration(AwesomeVersion("1.0.0"), "breaks NRJHub"),
     ],
 )
 @pytest.mark.usefixtures("enable_custom_integrations")

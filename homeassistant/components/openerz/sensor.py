@@ -64,6 +64,6 @@ class OpenERZSensor(SensorEntity):
     def update(self) -> None:
         """Fetch new state data for the sensor.
 
-        This is the only method that should fetch new data for Home Assistant.
+        This is the only method that should fetch new data for NRJHub.
         """
         self._state = self.api_connector.find_next_pickup(day_offset=31)

@@ -204,7 +204,7 @@ def test_auth_code_store_requires_credentials(mock_credential) -> None:
 async def test_ws_current_user(
     hass: HomeAssistant, hass_ws_client: WebSocketGenerator, hass_access_token: str
 ) -> None:
-    """Test the current user command with Home Assistant creds."""
+    """Test the current user command with NRJHub creds."""
     assert await async_setup_component(hass, "auth", {})
 
     refresh_token = hass.auth.async_validate_access_token(hass_access_token)

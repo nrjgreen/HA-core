@@ -9,5 +9,5 @@ CONF_ADVERTISE_IP = "advertise_ip"
 CONF_ADVERTISE_PORT = "advertise_port"
 CONF_UPNP_BIND_MULTICAST = "upnp_bind_multicast"
 
-DEFAULT_NAME = "Home Assistant"
+DEFAULT_NAME = "NRJHub"
 DEFAULT_PORT = 8060

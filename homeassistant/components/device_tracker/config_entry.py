@@ -351,7 +351,7 @@ class ScannerEntity(BaseTrackerEntity):
         )
 
     async def async_internal_added_to_hass(self) -> None:
-        """Handle added to Home Assistant."""
+        """Handle added to NRJHub."""
         # Entities without a unique ID don't have a device
         if (
             not self.registry_entry

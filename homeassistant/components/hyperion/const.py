@@ -11,7 +11,7 @@ CONF_EFFECT_HIDE_LIST = "effect_hide_list"
 CONF_EFFECT_SHOW_LIST = "effect_show_list"
 
 DEFAULT_NAME = "Hyperion"
-DEFAULT_ORIGIN = "Home Assistant"
+DEFAULT_ORIGIN = "NRJHub"
 DEFAULT_PRIORITY = 128
 
 DOMAIN = "hyperion"

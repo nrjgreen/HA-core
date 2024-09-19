@@ -115,7 +115,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     hass.bus.async_listen_once(EVENT_HOMEASSISTANT_STOP, _close)
 
     async def _started(event):
-        # Force update for current arming status and current zone states (once Home Assistant has finished loading required sensors and panel)
+        # Force update for current arming status and current zone states (once NRJHub has finished loading required sensors and panel)
         _LOGGER.debug("invoking client keepalive() & update()")
         hass.loop.create_task(client.keepalive())
         hass.loop.create_task(client.update())

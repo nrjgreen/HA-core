@@ -89,7 +89,7 @@ def mock_config_entry() -> MockConfigEntry:
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Ruckus integration in Home Assistant."""
+    """Set up the Ruckus integration in NRJHub."""
     entry = mock_config_entry()
     entry.add_to_hass(hass)
     # Make device tied to other integration so device tracker entities get enabled

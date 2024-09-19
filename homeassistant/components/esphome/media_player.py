@@ -165,7 +165,7 @@ class EsphomeMediaPlayer(
             return None
 
         # Replace the media URL with a proxy URL pointing to Home
-        # Assistant. When requested, Home Assistant will use ffmpeg to
+        # Assistant. When requested, NRJHub will use ffmpeg to
         # convert the source URL to the supported format.
         _LOGGER.debug("Proxying media url %s with format %s", url, format_to_use)
         device_id = self.device_entry.id

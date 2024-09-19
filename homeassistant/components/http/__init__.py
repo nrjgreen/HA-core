@@ -1,4 +1,4 @@
-"""Support to serve the Home Assistant API as WSGI application."""
+"""Support to serve the NRJHub API as WSGI application."""
 
 from __future__ import annotations
 
@@ -268,7 +268,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 
 class HomeAssistantRequest(web.Request):
-    """Home Assistant request object."""
+    """NRJHub request object."""
 
     async def json(self, *, loads: JSONDecoder = json_loads) -> Any:
         """Return body as JSON."""
@@ -278,7 +278,7 @@ class HomeAssistantRequest(web.Request):
 
 
 class HomeAssistantApplication(web.Application):
-    """Home Assistant application."""
+    """NRJHub application."""
 
     def _make_request(
         self,
@@ -312,7 +312,7 @@ async def _serve_file(path: str, request: web.Request) -> web.FileResponse:
 
 
 class HomeAssistantHTTP:
-    """HTTP server for Home Assistant."""
+    """HTTP server for NRJHub."""
 
     def __init__(
         self,
@@ -325,7 +325,7 @@ class HomeAssistantHTTP:
         trusted_proxies: list[IPv4Network | IPv6Network],
         ssl_profile: str,
     ) -> None:
-        """Initialize the HTTP Home Assistant server."""
+        """Initialize the HTTP NRJHub server."""
         self.app = HomeAssistantApplication(
             middlewares=[],
             client_max_size=MAX_CLIENT_SIZE,
@@ -519,7 +519,7 @@ class HomeAssistantHTTP:
                 context = None
             else:
                 _LOGGER.critical(
-                    "Home Assistant is running in recovery mode with an emergency self"
+                    "NRJHub is running in recovery mode with an emergency self"
                     " signed ssl certificate because the configured SSL certificate was"
                     " not usable"
                 )
@@ -552,7 +552,7 @@ class HomeAssistantHTTP:
         subject = issuer = x509.Name(
             [
                 x509.NameAttribute(
-                    NameOID.ORGANIZATION_NAME, "Home Assistant Emergency Certificate"
+                    NameOID.ORGANIZATION_NAME, "NRJHub Emergency Certificate"
                 ),
                 x509.NameAttribute(NameOID.COMMON_NAME, host),
             ]
@@ -589,7 +589,7 @@ class HomeAssistantHTTP:
     async def start(self) -> None:
         """Start the aiohttp server."""
         # Aiohttp freezes apps after start so that no changes can be made.
-        # However in Home Assistant components can be discovered after boot.
+        # However in NRJHub components can be discovered after boot.
         # This will now raise a RunTimeError.
         # To work around this we now prevent the router from getting frozen
         self.app._router.freeze = lambda: None  # type: ignore[method-assign]  # noqa: SLF001

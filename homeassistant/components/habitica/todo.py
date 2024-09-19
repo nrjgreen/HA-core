@@ -300,7 +300,7 @@ class HabiticaDailiesListEntity(BaseHabiticaListEntity):
         If a task is a yesterdaily, the due date is the last time
         a new day has been started. This allows to check off dailies from yesterday,
         that have been completed but forgotten to mark as completed before resetting the dailies.
-        Changes of the date input field in Home Assistant will be ignored.
+        Changes of the date input field in NRJHub will be ignored.
         """
 
         last_cron = self.coordinator.data.user["lastCron"]

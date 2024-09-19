@@ -16,7 +16,7 @@ from .const import DOMAIN, LOGGER, SCAN_INTERVAL
 
 @dataclass
 class BSBLanCoordinatorData:
-    """BSBLan data stored in the Home Assistant data object."""
+    """BSBLan data stored in the NRJHub data object."""
 
     state: State
     sensor: Sensor

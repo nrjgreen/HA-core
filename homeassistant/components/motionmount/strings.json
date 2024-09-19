@@ -4,7 +4,7 @@
     "step": {
       "user": {
         "title": "Link your MotionMount",
-        "description": "Set up your MotionMount to integrate with Home Assistant.",
+        "description": "Set up your MotionMount to integrate with NRJHub.",
         "data": {
           "host": "[%key:common::config_flow::data::host%]",
           "port": "[%key:common::config_flow::data::port%]"

@@ -7,7 +7,7 @@ from homeassistant.const import Platform
 
 DOMAIN = "smartthings"
 
-APP_OAUTH_CLIENT_NAME = "Home Assistant"
+APP_OAUTH_CLIENT_NAME = "NRJHub"
 APP_OAUTH_SCOPES = ["r:devices:*"]
 APP_NAME_PREFIX = "homeassistant."
 

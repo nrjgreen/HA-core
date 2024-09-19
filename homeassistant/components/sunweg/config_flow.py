@@ -78,7 +78,7 @@ class SunWEGConfigFlow(ConfigFlow, domain=DOMAIN):
         return await self.async_step_plant() if conf_result is None else conf_result
 
     async def async_step_plant(self, user_input=None) -> ConfigFlowResult:
-        """Handle adding a "plant" to Home Assistant."""
+        """Handle adding a "plant" to NRJHub."""
         plant_list = await self.hass.async_add_executor_job(self.api.listPlants)
 
         if len(plant_list) == 0:

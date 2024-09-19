@@ -1,4 +1,4 @@
-"""Test Home Assistant logging util methods."""
+"""Test NRJHub logging util methods."""
 
 import asyncio
 from functools import partial

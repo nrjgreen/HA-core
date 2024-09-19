@@ -1335,8 +1335,8 @@ async def test_identify(hass: HomeAssistant) -> None:
                 "isProxy": True,
                 "deviceInfo": {
                     "hwVersion": "UNKNOWN_HW_VERSION",
-                    "manufacturer": "Home Assistant",
-                    "model": "Home Assistant",
+                    "manufacturer": "NRJHub",
+                    "model": "NRJHub",
                     "swVersion": __version__,
                 },
             }

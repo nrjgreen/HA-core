@@ -1,4 +1,4 @@
-"""Helper methods to handle the time in Home Assistant."""
+"""Helper methods to handle the time in NRJHub."""
 
 from __future__ import annotations
 

@@ -7,6 +7,6 @@ VALID_CONFIG = {"melissa": {"username": "********", "password": "********"}}
 
 
 async def setup_integration(hass: HomeAssistant) -> None:
-    """Set up the melissa integration in Home Assistant."""
+    """Set up the melissa integration in NRJHub."""
     assert await async_setup_component(hass, "melissa", VALID_CONFIG)
     await hass.async_block_till_done()

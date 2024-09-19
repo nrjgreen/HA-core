@@ -152,7 +152,7 @@ class RestSwitch(ManualTriggerEntity, SwitchEntity):
         self._verify_ssl: bool = config[CONF_VERIFY_SSL]
 
     async def async_added_to_hass(self) -> None:
-        """Handle adding to Home Assistant."""
+        """Handle adding to NRJHub."""
         await super().async_added_to_hass()
         await self.async_update()
 

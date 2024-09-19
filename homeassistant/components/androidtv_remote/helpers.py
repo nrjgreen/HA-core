@@ -14,7 +14,7 @@ from .const import CONF_ENABLE_IME, CONF_ENABLE_IME_DEFAULT_VALUE
 def create_api(hass: HomeAssistant, host: str, enable_ime: bool) -> AndroidTVRemote:
     """Create an AndroidTVRemote instance."""
     return AndroidTVRemote(
-        client_name="Home Assistant",
+        client_name="NRJHub",
         certfile=hass.config.path(STORAGE_DIR, "androidtv_remote_cert.pem"),
         keyfile=hass.config.path(STORAGE_DIR, "androidtv_remote_key.pem"),
         host=host,

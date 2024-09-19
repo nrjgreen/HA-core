@@ -78,7 +78,7 @@ async def test_logbook_entry(hass: HomeAssistant) -> None:
 
         assert mock_statsd.event.call_count == 1
         assert mock_statsd.event.call_args == mock.call(
-            title="Home Assistant",
+            title="NRJHub",
             text="%%% \n **{}** {} \n %%%".format(event["name"], event["message"]),
             tags=["entity:sensor.foo.bar", "domain:automation"],
         )

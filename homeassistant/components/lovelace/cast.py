@@ -1,4 +1,4 @@
-"""Home Assistant Cast platform."""
+"""NRJHub Cast platform."""
 
 from __future__ import annotations
 

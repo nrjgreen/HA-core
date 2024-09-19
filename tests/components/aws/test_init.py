@@ -295,7 +295,7 @@ async def test_service_call_extra_data(hass: HomeAssistant) -> None:
     mock_session.publish.assert_called_once_with(
         TargetArn="ARN",
         Message="test",
-        Subject="Home Assistant",
+        Subject="NRJHub",
         MessageAttributes={
             "AWS.SNS.SMS.SenderID": {"StringValue": "HA-notify", "DataType": "String"}
         },

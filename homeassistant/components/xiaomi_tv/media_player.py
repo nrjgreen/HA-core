@@ -49,7 +49,7 @@ def setup_platform(
         if not pymitv.Discover().check_ip(host):
             _LOGGER.error("Could not find Xiaomi TV with specified IP: %s", host)
         else:
-            # Register TV with Home Assistant.
+            # Register TV with NRJHub.
             add_entities([XiaomiTV(host, name)])
     else:
         # Otherwise, discover TVs on network.
@@ -57,7 +57,7 @@ def setup_platform(
 
 
 class XiaomiTV(MediaPlayerEntity):
-    """Represent the Xiaomi TV for Home Assistant."""
+    """Represent the Xiaomi TV for NRJHub."""
 
     _attr_assumed_state = True
     _attr_supported_features = (

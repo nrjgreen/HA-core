@@ -1,4 +1,4 @@
-"""Native Home Assistant iOS app component."""
+"""Native NRJHub iOS app component."""
 
 import datetime
 from http import HTTPStatus

@@ -29,7 +29,7 @@ def run(args):
     # Disable logging
     logging.getLogger("homeassistant.core").setLevel(logging.CRITICAL)
 
-    parser = argparse.ArgumentParser(description="Run a Home Assistant benchmark.")
+    parser = argparse.ArgumentParser(description="Run a NRJHub benchmark.")
     parser.add_argument("name", choices=BENCHMARKS)
     parser.add_argument("--script", choices=["benchmark"])
 

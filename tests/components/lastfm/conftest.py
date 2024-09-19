@@ -20,7 +20,7 @@ type ComponentSetup = Callable[[MockConfigEntry, MockUser], Awaitable[None]]
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry() -> MockConfigEntry:
-    """Create LastFM entry in Home Assistant."""
+    """Create LastFM entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         data={},
@@ -34,7 +34,7 @@ def mock_config_entry() -> MockConfigEntry:
 
 @pytest.fixture(name="imported_config_entry")
 def mock_imported_config_entry() -> MockConfigEntry:
-    """Create LastFM entry in Home Assistant."""
+    """Create LastFM entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         data={},

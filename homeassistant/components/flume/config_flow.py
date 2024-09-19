@@ -26,7 +26,7 @@ from .const import BASE_TOKEN_FILENAME, DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 # If flume ever implements a login page for oauth
-# we can use the oauth2 support built into Home Assistant.
+# we can use the oauth2 support built into NRJHub.
 #
 # Currently they only implement the token endpoint
 #

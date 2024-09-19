@@ -1,4 +1,4 @@
-"""Test the Home Assistant Yellow hardware platform."""
+"""Test the NRJHub Yellow hardware platform."""
 
 from unittest.mock import patch
 
@@ -26,7 +26,7 @@ async def test_hardware_info(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with patch(
@@ -58,7 +58,7 @@ async def test_hardware_info(
                 },
                 "config_entries": [config_entry.entry_id],
                 "dongle": None,
-                "name": "Home Assistant Yellow",
+                "name": "NRJHub Yellow",
                 "url": "https://yellow.home-assistant.io/documentation/",
             }
         ]
@@ -79,7 +79,7 @@ async def test_hardware_info_fail(
         data={},
         domain=DOMAIN,
         options={},
-        title="Home Assistant Yellow",
+        title="NRJHub Yellow",
     )
     config_entry.add_to_hass(hass)
     with patch(

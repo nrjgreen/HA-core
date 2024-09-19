@@ -66,7 +66,7 @@ def mock_expires_at() -> int:
 
 @pytest.fixture
 def polling_config_entry(expires_at: int) -> MockConfigEntry:
-    """Create Monzo entry in Home Assistant."""
+    """Create Monzo entry in NRJHub."""
     return MockConfigEntry(
         domain=DOMAIN,
         title=TITLE,

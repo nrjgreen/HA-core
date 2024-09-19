@@ -824,7 +824,7 @@ class DeviceRegistry(BaseRegistry[dict[str, list[dict[str, Any]]]]):
             report(  # type: ignore[unreachable]
                 (
                     "uses str for device registry entry_type. This is deprecated and"
-                    " will stop working in Home Assistant 2022.3, it should be updated"
+                    " will stop working in NRJHub 2022.3, it should be updated"
                     " to use DeviceEntryType instead"
                 ),
                 error_if_core=False,
@@ -927,7 +927,7 @@ class DeviceRegistry(BaseRegistry[dict[str, list[dict[str, Any]]]]):
             report(  # type: ignore[unreachable]
                 (
                     "uses str for device registry disabled_by. This is deprecated and"
-                    " will stop working in Home Assistant 2022.3, it should be updated"
+                    " will stop working in NRJHub 2022.3, it should be updated"
                     " to use DeviceEntryDisabler instead"
                 ),
                 error_if_core=False,

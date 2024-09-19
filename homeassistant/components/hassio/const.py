@@ -131,11 +131,11 @@ REQUEST_REFRESH_DELAY = 10
 class SupervisorEntityModel(StrEnum):
     """Supervisor entity model."""
 
-    ADDON = "Home Assistant Add-on"
-    OS = "Home Assistant Operating System"
-    CORE = "Home Assistant Core"
-    SUPERVIOSR = "Home Assistant Supervisor"
-    HOST = "Home Assistant Host"
+    ADDON = "NRJHub Add-on"
+    OS = "NRJHub Operating System"
+    CORE = "NRJHub Core"
+    SUPERVIOSR = "NRJHub Supervisor"
+    HOST = "NRJHub Host"
 
 
 class SupervisorIssueContext(StrEnum):

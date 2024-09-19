@@ -1,4 +1,4 @@
-"""Roth Touchline SL climate integration implementation for Home Assistant."""
+"""Roth Touchline SL climate integration implementation for NRJHub."""
 
 from typing import Any
 

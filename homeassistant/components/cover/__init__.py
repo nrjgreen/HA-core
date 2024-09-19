@@ -116,7 +116,7 @@ class CoverEntityFeature(IntFlag):
     SET_TILT_POSITION = 128
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the CoverEntityFeature enum instead.
 _DEPRECATED_SUPPORT_OPEN = DeprecatedConstantEnum(CoverEntityFeature.OPEN, "2025.1")
 _DEPRECATED_SUPPORT_CLOSE = DeprecatedConstantEnum(CoverEntityFeature.CLOSE, "2025.1")

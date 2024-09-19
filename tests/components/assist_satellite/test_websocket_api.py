@@ -74,7 +74,7 @@ async def test_intercept_wake_word_requires_on_device_wake_word(
 
     await entity.async_accept_pipeline_from_satellite(
         object(),  # type: ignore[arg-type]
-        # Emulate wake word processing in Home Assistant
+        # Emulate wake word processing in NRJHub
         start_stage=PipelineStage.WAKE_WORD,
     )
 

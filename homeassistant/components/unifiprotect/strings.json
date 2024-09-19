@@ -67,11 +67,11 @@
         "step": {
           "start": {
             "title": "UniFi Protect Early Access enabled",
-            "description": "You are either running an Early Access version of UniFi Protect (v{version}) or opt-ed into a release channel that is not the Official Release Channel.\n\nAs these Early Access releases may not be tested yet, using it may cause the UniFi Protect integration to behave unexpectedly. [Read more about Early Access and Home Assistant]({learn_more}).\n\nSubmit to dismiss this message."
+            "description": "You are either running an Early Access version of UniFi Protect (v{version}) or opt-ed into a release channel that is not the Official Release Channel.\n\nAs these Early Access releases may not be tested yet, using it may cause the UniFi Protect integration to behave unexpectedly. [Read more about Early Access and NRJHub]({learn_more}).\n\nSubmit to dismiss this message."
           },
           "confirm": {
             "title": "[%key:component::unifiprotect::issues::ea_channel_warning::fix_flow::step::start::title%]",
-            "description": "Are you sure you want to run unsupported versions of UniFi Protect? This may cause your Home Assistant integration to break."
+            "description": "Are you sure you want to run unsupported versions of UniFi Protect? This may cause your NRJHub integration to break."
           }
         }
       }
@@ -86,7 +86,7 @@
         "step": {
           "confirm": {
             "title": "Ubiquiti Cloud Users are not Supported",
-            "description": "Starting on July 22nd, 2024, Ubiquiti will require all cloud users to enroll in multi-factor authentication (MFA), which is incompatible with Home Assistant.\n\nIt would be best to migrate to using a [local user]({learn_more}) as soon as possible to keep the integration working.\n\nConfirming this repair will trigger a re-authentication flow to enter the needed authentication credentials."
+            "description": "Starting on July 22nd, 2024, Ubiquiti will require all cloud users to enroll in multi-factor authentication (MFA), which is incompatible with NRJHub.\n\nIt would be best to migrate to using a [local user]({learn_more}) as soon as possible to keep the integration working.\n\nConfirming this repair will trigger a re-authentication flow to enter the needed authentication credentials."
           }
         }
       }
@@ -97,7 +97,7 @@
         "step": {
           "start": {
             "title": "RTSPS is disabled on camera {camera}",
-            "description": "RTSPS is disabled on the camera {camera}. RTSPS is required to be able to live stream your camera within Home Assistant. If you do not enable RTSPS, it may create an additional load on your UniFi Protect NVR, as any live video players will default to rapidly pulling snapshots from the camera.\n\nPlease [enable RTSPS]({learn_more}) on the camera and then come back and confirm this repair."
+            "description": "RTSPS is disabled on the camera {camera}. RTSPS is required to be able to live stream your camera within NRJHub. If you do not enable RTSPS, it may create an additional load on your UniFi Protect NVR, as any live video players will default to rapidly pulling snapshots from the camera.\n\nPlease [enable RTSPS]({learn_more}) on the camera and then come back and confirm this repair."
           },
           "confirm": {
             "title": "[%key:component::unifiprotect::issues::rtsp_disabled_readonly::fix_flow::step::start::title%]",
@@ -112,7 +112,7 @@
         "step": {
           "start": {
             "title": "[%key:component::unifiprotect::issues::rtsp_disabled_readonly::fix_flow::step::start::title%]",
-            "description": "RTSPS is disabled on the camera {camera}. RTSPS is required to live stream your camera within Home Assistant. If you do not enable RTSPS, it may create an additional load on your UniFi Protect NVR as any live video players will default to rapidly pulling snapshots from the camera.\n\nYou may manually [enable RTSPS]({learn_more}) on your selected camera quality channel or Home Assistant can automatically enable the highest quality channel for you. Confirm this repair once you have enabled the RTSPS channel or if you want Home Assistant to enable the highest quality automatically."
+            "description": "RTSPS is disabled on the camera {camera}. RTSPS is required to live stream your camera within NRJHub. If you do not enable RTSPS, it may create an additional load on your UniFi Protect NVR as any live video players will default to rapidly pulling snapshots from the camera.\n\nYou may manually [enable RTSPS]({learn_more}) on your selected camera quality channel or NRJHub can automatically enable the highest quality channel for you. Confirm this repair once you have enabled the RTSPS channel or if you want NRJHub to enable the highest quality automatically."
           },
           "confirm": {
             "title": "[%key:component::unifiprotect::issues::rtsp_disabled_readonly::fix_flow::step::start::title%]",

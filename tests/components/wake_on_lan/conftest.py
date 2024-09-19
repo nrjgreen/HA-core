@@ -67,7 +67,7 @@ async def get_config_to_integration_load() -> dict[str, Any]:
 async def load_integration(
     hass: HomeAssistant, get_config: dict[str, Any]
 ) -> MockConfigEntry:
-    """Set up the Statistics integration in Home Assistant."""
+    """Set up the Statistics integration in NRJHub."""
     config_entry = MockConfigEntry(
         domain=DOMAIN,
         title=f"Wake on LAN {DEFAULT_MAC}",

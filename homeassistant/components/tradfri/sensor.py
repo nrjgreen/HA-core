@@ -171,7 +171,7 @@ async def async_setup_entry(
 
 
 class TradfriSensor(TradfriBaseEntity, SensorEntity):
-    """The platform class required by Home Assistant."""
+    """The platform class required by NRJHub."""
 
     entity_description: TradfriSensorEntityDescription
 

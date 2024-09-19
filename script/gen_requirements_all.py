@@ -418,7 +418,7 @@ def requirements_output() -> str:
         GENERATED_MESSAGE,
         "-c homeassistant/package_constraints.txt\n",
         "\n",
-        "# Home Assistant Core\n",
+        "# NRJHub Core\n",
     ]
     output.append("\n".join(core_requirements()))
     output.append("\n")
@@ -429,7 +429,7 @@ def requirements_output() -> str:
 def requirements_all_output(reqs: dict[str, list[str]]) -> str:
     """Generate output for requirements_all."""
     output = [
-        "# Home Assistant Core, full dependency set\n",
+        "# NRJHub Core, full dependency set\n",
         GENERATED_MESSAGE,
         "-r requirements.txt\n",
     ]
@@ -441,7 +441,7 @@ def requirements_all_output(reqs: dict[str, list[str]]) -> str:
 def requirements_all_action_output(reqs: dict[str, list[str]], action: str) -> str:
     """Generate output for requirements_all_{action}."""
     output = [
-        f"# Home Assistant Core, full dependency set for {action}\n",
+        f"# NRJHub Core, full dependency set for {action}\n",
         GENERATED_MESSAGE,
         "-r requirements.txt\n",
     ]
@@ -453,7 +453,7 @@ def requirements_all_action_output(reqs: dict[str, list[str]], action: str) -> s
 def requirements_test_all_output(reqs: dict[str, list[str]]) -> str:
     """Generate output for test_requirements."""
     output = [
-        "# Home Assistant tests, full dependency set\n",
+        "# NRJHub tests, full dependency set\n",
         GENERATED_MESSAGE,
         "-r requirements_test.txt\n",
     ]

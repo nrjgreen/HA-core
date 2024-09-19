@@ -163,7 +163,7 @@ class DockerConfigIssueRepairFlow(SupervisorIssueRepairFlow):
                     continue
 
                 if issue.context == SupervisorIssueContext.CORE:
-                    components.insert(0, "Home Assistant")
+                    components.insert(0, "NRJHub")
                 elif issue.context == SupervisorIssueContext.ADDON:
                     components.append(
                         next(

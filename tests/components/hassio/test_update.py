@@ -408,7 +408,7 @@ async def test_update_os_with_error(
     )
 
     with pytest.raises(
-        HomeAssistantError, match=r"^Error updating Home Assistant Operating System:"
+        HomeAssistantError, match=r"^Error updating NRJHub Operating System:"
     ):
         assert not await hass.services.async_call(
             "update",
@@ -439,7 +439,7 @@ async def test_update_supervisor_with_error(
     )
 
     with pytest.raises(
-        HomeAssistantError, match=r"^Error updating Home Assistant Supervisor:"
+        HomeAssistantError, match=r"^Error updating NRJHub Supervisor:"
     ):
         assert not await hass.services.async_call(
             "update",
@@ -470,7 +470,7 @@ async def test_update_core_with_error(
     )
 
     with pytest.raises(
-        HomeAssistantError, match=r"^Error updating Home Assistant Core:"
+        HomeAssistantError, match=r"^Error updating NRJHub Core:"
     ):
         assert not await hass.services.async_call(
             "update",

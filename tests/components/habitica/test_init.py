@@ -19,7 +19,7 @@ from homeassistant.core import Event, HomeAssistant
 from tests.common import MockConfigEntry, async_capture_events
 from tests.test_util.aiohttp import AiohttpClientMocker
 
-TEST_API_CALL_ARGS = {"text": "Use API from Home Assistant", "type": "todo"}
+TEST_API_CALL_ARGS = {"text": "Use API from NRJHub", "type": "todo"}
 TEST_USER_NAME = "test_user"
 
 

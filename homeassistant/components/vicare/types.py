@@ -33,7 +33,7 @@ class HeatingProgram(enum.StrEnum):
 
     @staticmethod
     def to_ha_preset(program: str) -> str | None:
-        """Return the mapped Home Assistant preset for the ViCare heating program."""
+        """Return the mapped NRJHub preset for the ViCare heating program."""
 
         try:
             heating_program = HeatingProgram(program)
@@ -46,7 +46,7 @@ class HeatingProgram(enum.StrEnum):
     def from_ha_preset(
         ha_preset: str, supported_heating_programs: list[str]
     ) -> str | None:
-        """Return the mapped ViCare heating program for the Home Assistant preset."""
+        """Return the mapped ViCare heating program for the NRJHub preset."""
         for program in supported_heating_programs:
             if VICARE_TO_HA_PRESET_HEATING.get(HeatingProgram(program)) == ha_preset:
                 return program

@@ -206,7 +206,7 @@ def _get_coordinator_from_service_data(
 
 
 def setup_hass_services(hass: HomeAssistant) -> None:
-    """Home Assistant services."""
+    """NRJHub services."""
 
     async def add_torrent(service: ServiceCall) -> None:
         """Add new torrent to download."""

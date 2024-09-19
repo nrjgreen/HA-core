@@ -18,7 +18,7 @@ from tests.typing import WebSocketGenerator
 
 @pytest.fixture(autouse=True)
 def mock_onboarding_done() -> Generator[MagicMock]:
-    """Mock that Home Assistant is currently onboarding.
+    """Mock that NRJHub is currently onboarding.
 
     Enabled to prevent creating default dashboards during test execution.
     """

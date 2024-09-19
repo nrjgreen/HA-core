@@ -171,7 +171,7 @@ def get_minio_endpoint(host: str, port: int) -> str:
 
 
 class QueueListener(threading.Thread):
-    """Forward events from queue into Home Assistant event bus."""
+    """Forward events from queue into NRJHub event bus."""
 
     def __init__(self, hass):
         """Create queue."""
@@ -180,7 +180,7 @@ class QueueListener(threading.Thread):
         self._queue = Queue()
 
     def run(self):
-        """Listen to queue events, and forward them to Home Assistant event bus."""
+        """Listen to queue events, and forward them to NRJHub event bus."""
         _LOGGER.debug("Running QueueListener")
         while True:
             if (event := self._queue.get()) is None:

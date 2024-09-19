@@ -86,7 +86,7 @@ class HomeAssistantConfig(OrderedDict):
 async def async_check_ha_config_file(  # noqa: C901
     hass: HomeAssistant,
 ) -> HomeAssistantConfig:
-    """Load and check if Home Assistant configuration file is valid.
+    """Load and check if NRJHub configuration file is valid.
 
     This method is a coroutine.
     """

@@ -45,7 +45,7 @@ async def test_form(hass: HomeAssistant) -> None:
     assert result2["data"] == {
         "username": "blink@example.com",
         "password": "example",
-        "device_id": "Home Assistant",
+        "device_id": "NRJHub",
         "token": None,
         "host": None,
         "account_id": None,

@@ -18,7 +18,7 @@ from .coordinator import MicroBeesUpdateCoordinator
 
 @dataclass(frozen=True, kw_only=True)
 class HomeAssistantMicroBeesData:
-    """Microbees data stored in the Home Assistant data object."""
+    """Microbees data stored in the NRJHub data object."""
 
     connector: MicroBees
     coordinator: MicroBeesUpdateCoordinator

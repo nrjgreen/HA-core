@@ -94,7 +94,7 @@ async def wanted_platforms_only() -> None:
 def hass_fixture(
     event_loop: AbstractEventLoop, hass: core.HomeAssistant
 ) -> core.HomeAssistant:
-    """Set up a Home Assistant instance for these tests."""
+    """Set up a NRJHub instance for these tests."""
     loop = event_loop
 
     # We need to do this to get access to homeassistant/turn_(on,off)

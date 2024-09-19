@@ -658,7 +658,7 @@ async def test_show_progress_legacy(
     # Check for deprecation warning
     assert (
         "tests.test_data_entry_flow::TestFlow calls async_show_progress without passing"
-        " a progress task, this is not valid and will break in Home Assistant "
+        " a progress task, this is not valid and will break in NRJHub "
         "Core 2024.8."
     ) in caplog.text
 

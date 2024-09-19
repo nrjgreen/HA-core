@@ -45,7 +45,7 @@ async def test_attributes(hass: HomeAssistant) -> None:
     assert data.get(ATTR_PM_10) == 16
     assert data.get(ATTR_N2O) is None
     assert data.get(ATTR_OZONE) is None
-    assert data.get(ATTR_ATTRIBUTION) == "Powered by Home Assistant"
+    assert data.get(ATTR_ATTRIBUTION) == "Powered by NRJHub"
     assert (
         data.get(ATTR_UNIT_OF_MEASUREMENT) == CONCENTRATION_MICROGRAMS_PER_CUBIC_METER
     )

@@ -16,7 +16,7 @@ from tests.common import MockModule, mock_integration
 
 @pytest.fixture
 def mock_onboarding_not_done() -> Generator[MagicMock]:
-    """Mock that Home Assistant is currently onboarding."""
+    """Mock that NRJHub is currently onboarding."""
     with patch(
         "homeassistant.components.onboarding.async_is_onboarded",
         return_value=False,
@@ -26,7 +26,7 @@ def mock_onboarding_not_done() -> Generator[MagicMock]:
 
 @pytest.fixture
 def mock_onboarding_done() -> Generator[MagicMock]:
-    """Mock that Home Assistant is currently onboarding."""
+    """Mock that NRJHub is currently onboarding."""
     with patch(
         "homeassistant.components.onboarding.async_is_onboarded",
         return_value=True,

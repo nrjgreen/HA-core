@@ -139,7 +139,7 @@ async def test_select_entity_changing_pipelines(
     assert state.state == "preferred"
     assert state.attributes["options"] == [
         "preferred",
-        "Home Assistant",
+        "NRJHub",
         pipeline_1.name,
         pipeline_2.name,
     ]
@@ -175,7 +175,7 @@ async def test_select_entity_changing_pipelines(
     assert state.state == "preferred"
     assert state.attributes["options"] == [
         "preferred",
-        "Home Assistant",
+        "NRJHub",
         pipeline_1.name,
     ]
 

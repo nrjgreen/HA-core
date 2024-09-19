@@ -40,9 +40,9 @@ OPERATION_LIST = [HVACMode.AUTO, HVACMode.COOL, HVACMode.HEAT, HVACMode.OFF]
 CT30_FAN_OPERATION_LIST = [FAN_ON, FAN_AUTO]
 CT80_FAN_OPERATION_LIST = [FAN_ON, STATE_CIRCULATE, FAN_AUTO]
 
-# Mappings from radiotherm json data codes to and from Home Assistant state
+# Mappings from radiotherm json data codes to and from NRJHub state
 # flags.  CODE is the thermostat integer code and these map to and
-# from Home Assistant state flags.
+# from NRJHub state flags.
 
 # Programmed temperature mode of the thermostat.
 CODE_TO_TEMP_MODE = {

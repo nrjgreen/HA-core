@@ -20,7 +20,7 @@ async def mock_recorder_before_hass(
 
 @pytest.fixture
 async def hass_history(hass: HomeAssistant, recorder_mock: Recorder) -> None:
-    """Home Assistant fixture with history."""
+    """NRJHub fixture with history."""
     config = history.CONFIG_SCHEMA(
         {
             history.DOMAIN: {

@@ -21,7 +21,7 @@ TITLE = "Twinkly"
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry() -> MockConfigEntry:
-    """Create Twinkly entry in Home Assistant."""
+    """Create Twinkly entry in NRJHub."""
     client = ClientMock()
     return MockConfigEntry(
         domain=DOMAIN,

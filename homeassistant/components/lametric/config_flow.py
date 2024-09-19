@@ -267,7 +267,7 @@ class LaMetricFlowHandler(AbstractOAuth2FlowHandler, domain=DOMAIN):
                 icon_type=NotificationIconType.INFO,
                 model=Model(
                     cycles=2,
-                    frames=[Simple(text="Connected to Home Assistant!", icon=7956)],
+                    frames=[Simple(text="Connected to NRJHub!", icon=7956)],
                     sound=notify_sound,
                 ),
             )

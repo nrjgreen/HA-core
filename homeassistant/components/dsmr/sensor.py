@@ -633,7 +633,7 @@ async def async_setup_entry(
         )
 
     async def connect_and_reconnect() -> None:
-        """Connect to DSMR and keep reconnecting until Home Assistant stops."""
+        """Connect to DSMR and keep reconnecting until NRJHub stops."""
         stop_listener = None
         transport = None
         protocol = None

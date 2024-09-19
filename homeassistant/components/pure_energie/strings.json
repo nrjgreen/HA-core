@@ -11,7 +11,7 @@
         }
       },
       "zeroconf_confirm": {
-        "description": "Do you want to add Pure Energie Meter (`{model}`) to Home Assistant?",
+        "description": "Do you want to add Pure Energie Meter (`{model}`) to NRJHub?",
         "title": "Discovered Pure Energie Meter device"
       }
     },

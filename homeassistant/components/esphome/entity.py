@@ -74,7 +74,7 @@ def async_static_info_updated(
         entry_data.async_update_entity_infos(new_infos.values())
 
     if add_entities:
-        # Add entities to Home Assistant
+        # Add entities to NRJHub
         async_add_entities(add_entities)
 
 
@@ -136,7 +136,7 @@ def esphome_float_state_property[_EntityT: EsphomeEntity[Any, Any]](
 
     This checks if the state object in the entity is set, and returns
     None if its not set. If also prevents writing NAN values to the
-    Home Assistant state machine.
+    NRJHub state machine.
     """
 
     @functools.wraps(func)
@@ -144,7 +144,7 @@ def esphome_float_state_property[_EntityT: EsphomeEntity[Any, Any]](
         if not self._has_state:
             return None
         val = func(self)
-        # Home Assistant doesn't use NaN or inf values in state machine
+        # NRJHub doesn't use NaN or inf values in state machine
         # (not JSON serializable)
         return None if val is None or not math.isfinite(val) else val
 

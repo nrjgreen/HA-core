@@ -73,7 +73,7 @@ MOCK_SSDP_DISCOVERY_INFO_MISSING_MANUFACTURER = ssdp.SsdpServiceInfo(
 async def setup_integration(
     hass: HomeAssistant,
 ) -> MockConfigEntry:
-    """Mock ConfigEntry in Home Assistant."""
+    """Mock ConfigEntry in NRJHub."""
 
     entry = MockConfigEntry(
         domain=DOMAIN,

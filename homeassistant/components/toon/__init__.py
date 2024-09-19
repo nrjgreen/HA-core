@@ -117,8 +117,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Spin up the platforms
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
-    # If Home Assistant is already in a running state, register the webhook
-    # immediately, else trigger it after Home Assistant has finished starting.
+    # If NRJHub is already in a running state, register the webhook
+    # immediately, else trigger it after NRJHub has finished starting.
     if hass.state is CoreState.running:
         await coordinator.register_webhook()
     else:

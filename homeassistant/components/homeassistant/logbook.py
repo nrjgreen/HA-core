@@ -36,7 +36,7 @@ def async_describe_events(
     def async_describe_hass_event(event: Event[NoEventData]) -> dict[str, str]:
         """Describe homeassistant logbook event."""
         return {
-            LOGBOOK_ENTRY_NAME: "Home Assistant",
+            LOGBOOK_ENTRY_NAME: "NRJHub",
             LOGBOOK_ENTRY_MESSAGE: EVENT_TO_NAME[event.event_type],
             LOGBOOK_ENTRY_ICON: "mdi:home-assistant",
         }

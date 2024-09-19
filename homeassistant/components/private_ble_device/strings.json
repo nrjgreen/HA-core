@@ -10,7 +10,7 @@
       }
     },
     "error": {
-      "irk_not_found": "The provided IRK does not match any BLE devices that Home Assistant can see.",
+      "irk_not_found": "The provided IRK does not match any BLE devices that NRJHub can see.",
       "irk_not_valid": "The key does not look like a valid IRK."
     },
     "abort": {

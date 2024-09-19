@@ -47,7 +47,7 @@ class LightEntityFeature(IntFlag):
     TRANSITION = 32
 
 
-# These SUPPORT_* constants are deprecated as of Home Assistant 2022.5.
+# These SUPPORT_* constants are deprecated as of NRJHub 2022.5.
 # Please use the LightEntityFeature enum instead.
 SUPPORT_BRIGHTNESS = 1  # Deprecated, replaced by color modes
 SUPPORT_COLOR_TEMP = 2  # Deprecated, replaced by color modes
@@ -81,7 +81,7 @@ class ColorMode(StrEnum):
     """Must *NOT* be the only supported mode"""
 
 
-# These COLOR_MODE_* constants are deprecated as of Home Assistant 2022.5.
+# These COLOR_MODE_* constants are deprecated as of NRJHub 2022.5.
 # Please use the LightEntityFeature enum instead.
 COLOR_MODE_UNKNOWN = "unknown"
 COLOR_MODE_ONOFF = "onoff"
@@ -606,7 +606,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
                 )
 
         # If white is set to True, set it to the light's brightness
-        # Add a warning in Home Assistant Core 2024.3 if the brightness is set to an
+        # Add a warning in NRJHub Core 2024.3 if the brightness is set to an
         # integer.
         if params.get(ATTR_WHITE) is True:
             params[ATTR_WHITE] = light.brightness
@@ -922,7 +922,7 @@ class LightEntity(ToggleEntity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
                 _LOGGER.warning(
                     (
                         "%s (%s) does not report a color mode, this will stop working "
-                        "in Home Assistant Core 2025.3, please %s"
+                        "in NRJHub Core 2025.3, please %s"
                     ),
                     self.entity_id,
                     type(self),
@@ -1114,7 +1114,7 @@ class LightEntity(ToggleEntity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
                 _LOGGER.warning(
                     (
                         "%s (%s) set to unsupported color mode %s, expected one of %s, "
-                        "this will stop working in Home Assistant Core 2025.3, "
+                        "this will stop working in NRJHub Core 2025.3, "
                         "please %s"
                     ),
                     self.entity_id,
@@ -1143,7 +1143,7 @@ class LightEntity(ToggleEntity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             _LOGGER.warning(
                 (
                     "%s (%s) set to unsupported color mode %s when rendering an effect,"
-                    " expected one of %s, this will stop working in Home Assistant "
+                    " expected one of %s, this will stop working in NRJHub "
                     "Core 2025.3, please %s"
                 ),
                 self.entity_id,
@@ -1172,7 +1172,7 @@ class LightEntity(ToggleEntity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
                 _LOGGER.warning(
                     (
                         "%s (%s) sets invalid supported color modes %s, this will stop "
-                        "working in Home Assistant Core 2025.3, please %s"
+                        "working in NRJHub Core 2025.3, please %s"
                     ),
                     self.entity_id,
                     type(self),
@@ -1276,7 +1276,7 @@ class LightEntity(ToggleEntity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             _LOGGER.warning(
                 (
                     "%s (%s) does not set supported color modes, this will stop working"
-                    " in Home Assistant Core 2025.3, please %s"
+                    " in NRJHub Core 2025.3, please %s"
                 ),
                 self.entity_id,
                 type(self),

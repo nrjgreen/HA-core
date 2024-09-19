@@ -83,7 +83,7 @@ class RssView(HomeAssistantView):
         if self._title is not None:
             response += f"    <title>{escape(self._title.async_render(parse_result=False))}</title>\n"
         else:
-            response += "    <title>Home Assistant</title>\n"
+            response += "    <title>NRJHub</title>\n"
 
         response += "    <link>https://www.home-assistant.io/integrations/rss_feed_template/</link>\n"
         response += "    <description>Home automation feed</description>\n"

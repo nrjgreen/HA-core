@@ -97,7 +97,7 @@ class PyotgwLEDMode(StrEnum):
 def pyotgw_led_mode_to_ha_led_mode(
     pyotgw_led_mode: PyotgwLEDMode,
 ) -> OpenThermSelectLEDMode | None:
-    """Convert pyotgw LED mode to Home Assistant LED mode."""
+    """Convert pyotgw LED mode to NRJHub LED mode."""
     return (
         OpenThermSelectLEDMode[PyotgwLEDMode(pyotgw_led_mode).name]
         if pyotgw_led_mode in PyotgwLEDMode

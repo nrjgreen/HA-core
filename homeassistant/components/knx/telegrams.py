@@ -120,7 +120,7 @@ class Telegrams:
         ) is not None:
             src_name = f"{device['manufacturer_name']} {device['name']}"
         elif telegram.direction is TelegramDirection.OUTGOING:
-            src_name = "Home Assistant"
+            src_name = "NRJHub"
 
         if isinstance(telegram.payload, (GroupValueWrite, GroupValueResponse)):
             payload_data = telegram.payload.value.value

@@ -94,7 +94,7 @@ async def init_integration(
     skip_setup: bool = False,
     unique_id: str = UID,
 ) -> MockConfigEntry:
-    """Set up the Atag integration in Home Assistant."""
+    """Set up the Atag integration in NRJHub."""
     mock_connection(aioclient_mock)
     entry = MockConfigEntry(domain=DOMAIN, data=USER_INPUT, unique_id=unique_id)
     entry.add_to_hass(hass)

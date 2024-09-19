@@ -103,7 +103,7 @@ async def init_integration(
 
 @pytest.fixture
 def mock_onboarding() -> Generator[MagicMock]:
-    """Mock that Home Assistant is currently onboarding."""
+    """Mock that NRJHub is currently onboarding."""
     with patch(
         "homeassistant.components.onboarding.async_is_onboarded",
         return_value=False,

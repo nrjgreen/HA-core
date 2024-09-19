@@ -83,7 +83,7 @@ SHUTDOWN_SERVICES = (SERVICE_HOMEASSISTANT_STOP, SERVICE_HOMEASSISTANT_RESTART)
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa: C901
-    """Set up general services related to Home Assistant."""
+    """Set up general services related to NRJHub."""
 
     async def async_save_persistent_states(service: ServiceCall) -> None:
         """Handle calls to homeassistant.save_persistent_states."""

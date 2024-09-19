@@ -43,7 +43,7 @@ class StreamType(StrEnum):
     WEB_RTC = "web_rtc"
 
 
-# These constants are deprecated as of Home Assistant 2022.5
+# These constants are deprecated as of NRJHub 2022.5
 # Please use the StreamType enum instead.
 _DEPRECATED_STREAM_TYPE_HLS = DeprecatedConstantEnum(StreamType.HLS, "2025.1")
 _DEPRECATED_STREAM_TYPE_WEB_RTC = DeprecatedConstantEnum(StreamType.WEB_RTC, "2025.1")

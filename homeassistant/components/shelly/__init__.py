@@ -200,7 +200,7 @@ async def _async_setup_block_entry(
     ):
         # Need to get sleep info or first time sleeping device setup, wait for device
         # If there are no entities for the device, it means we added the device, but
-        # Home Assistant was restarted before the device was online. In this case we
+        # NRJHub was restarted before the device was online. In this case we
         # cannot restore the entities, so we need to wait for the device to be online.
         LOGGER.debug(
             "Setup for device %s will resume when device is online", entry.title
@@ -283,7 +283,7 @@ async def _async_setup_rpc_entry(hass: HomeAssistant, entry: ShellyConfigEntry) 
     ):
         # Need to get sleep info or first time sleeping device setup, wait for device
         # If there are no entities for the device, it means we added the device, but
-        # Home Assistant was restarted before the device was online. In this case we
+        # NRJHub was restarted before the device was online. In this case we
         # cannot restore the entities, so we need to wait for the device to be online.
         LOGGER.debug(
             "Setup for device %s will resume when device is online", entry.title

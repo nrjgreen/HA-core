@@ -267,7 +267,7 @@
       "iot_class": "cloud_polling"
     },
     "analytics_insights": {
-      "name": "Home Assistant Analytics Insights",
+      "name": "NRJHub Analytics Insights",
       "integration_type": "service",
       "config_flow": true,
       "iot_class": "cloud_polling",
@@ -2459,7 +2459,7 @@
       "iot_class": "local_polling"
     },
     "hassio": {
-      "name": "Home Assistant Supervisor",
+      "name": "NRJHub Supervisor",
       "integration_type": "hub",
       "config_flow": false,
       "iot_class": "local_polling"
@@ -2872,7 +2872,7 @@
       "iot_class": "cloud_push"
     },
     "ios": {
-      "name": "Home Assistant iOS",
+      "name": "NRJHub iOS",
       "integration_type": "hub",
       "config_flow": true,
       "iot_class": "cloud_push"

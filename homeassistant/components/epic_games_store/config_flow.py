@@ -33,7 +33,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 
 def get_default_language(hass: HomeAssistant) -> str | None:
-    """Get default language code based on Home Assistant config."""
+    """Get default language code based on NRJHub config."""
     language_code = f"{hass.config.language}-{hass.config.country}"
     if language_code in SUPPORTED_LANGUAGES:
         return language_code

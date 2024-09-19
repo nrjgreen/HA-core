@@ -7196,7 +7196,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -7438,7 +7438,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Fan',
         'model_id': None,
         'name': 'Ceiling Fan',
@@ -7560,10 +7560,10 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
-        'name': 'Home Assistant Bridge',
+        'name': 'NRJHub Bridge',
         'name_by_user': None,
         'primary_config_entry': 'TestData',
         'serial_number': 'homekit.bridge',
@@ -7595,7 +7595,7 @@
             }),
             'original_device_class': <ButtonDeviceClass.IDENTIFY: 'identify'>,
             'original_icon': None,
-            'original_name': 'Home Assistant Bridge Identify',
+            'original_name': 'NRJHub Bridge Identify',
             'platform': 'homekit_controller',
             'previous_unique_id': None,
             'supported_features': 0,
@@ -7606,7 +7606,7 @@
           'state': dict({
             'attributes': dict({
               'device_class': 'identify',
-              'friendly_name': 'Home Assistant Bridge Identify',
+              'friendly_name': 'NRJHub Bridge Identify',
             }),
             'entity_id': 'button.home_assistant_bridge_identify',
             'state': 'unknown',
@@ -7635,7 +7635,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Fan',
         'model_id': None,
         'name': 'Living Room Fan',
@@ -8086,7 +8086,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -8165,7 +8165,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -8578,7 +8578,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -8820,7 +8820,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Fan',
         'model_id': None,
         'name': 'Ceiling Fan',
@@ -8942,10 +8942,10 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
-        'name': 'Home Assistant Bridge',
+        'name': 'NRJHub Bridge',
         'name_by_user': None,
         'primary_config_entry': 'TestData',
         'serial_number': 'homekit.bridge',
@@ -8977,7 +8977,7 @@
             }),
             'original_device_class': <ButtonDeviceClass.IDENTIFY: 'identify'>,
             'original_icon': None,
-            'original_name': 'Home Assistant Bridge Identify',
+            'original_name': 'NRJHub Bridge Identify',
             'platform': 'homekit_controller',
             'previous_unique_id': None,
             'supported_features': 0,
@@ -8988,7 +8988,7 @@
           'state': dict({
             'attributes': dict({
               'device_class': 'identify',
-              'friendly_name': 'Home Assistant Bridge Identify',
+              'friendly_name': 'NRJHub Bridge Identify',
             }),
             'entity_id': 'button.home_assistant_bridge_identify',
             'state': 'unknown',
@@ -9017,7 +9017,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Fan',
         'model_id': None,
         'name': 'Living Room Fan',
@@ -9145,10 +9145,10 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
-        'name': 'Home Assistant Bridge',
+        'name': 'NRJHub Bridge',
         'name_by_user': None,
         'primary_config_entry': 'TestData',
         'serial_number': 'homekit.bridge',
@@ -9180,7 +9180,7 @@
             }),
             'original_device_class': <ButtonDeviceClass.IDENTIFY: 'identify'>,
             'original_icon': None,
-            'original_name': 'Home Assistant Bridge Identify',
+            'original_name': 'NRJHub Bridge Identify',
             'platform': 'homekit_controller',
             'previous_unique_id': None,
             'supported_features': 0,
@@ -9191,7 +9191,7 @@
           'state': dict({
             'attributes': dict({
               'device_class': 'identify',
-              'friendly_name': 'Home Assistant Bridge Identify',
+              'friendly_name': 'NRJHub Bridge Identify',
             }),
             'entity_id': 'button.home_assistant_bridge_identify',
             'state': 'unknown',
@@ -9220,7 +9220,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Fan',
         'model_id': None,
         'name': 'Living Room Fan',
@@ -9681,7 +9681,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -9760,7 +9760,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -10017,7 +10017,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',
@@ -10274,7 +10274,7 @@
         'is_new': False,
         'labels': list([
         ]),
-        'manufacturer': 'Home Assistant',
+        'manufacturer': 'NRJHub',
         'model': 'Bridge',
         'model_id': None,
         'name': 'HASS Bridge S6',

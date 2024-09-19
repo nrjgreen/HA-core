@@ -838,7 +838,7 @@ async def test_async_play_media_overlay_absolute_volume_uri(
     mock_mozart_client: AsyncMock,
     mock_config_entry: MockConfigEntry,
 ) -> None:
-    """Test async_play_media overlay with Home Assistant local URI and absolute volume."""
+    """Test async_play_media overlay with NRJHub local URI and absolute volume."""
 
     mock_config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(mock_config_entry.entry_id)
@@ -872,7 +872,7 @@ async def test_async_play_media_overlay_invalid_offset_volume_tts(
     mock_mozart_client: AsyncMock,
     mock_config_entry: MockConfigEntry,
 ) -> None:
-    """Test async_play_media with Home Assistant invalid offset volume and B&O tts."""
+    """Test async_play_media with NRJHub invalid offset volume and B&O tts."""
 
     mock_config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(mock_config_entry.entry_id)
@@ -904,7 +904,7 @@ async def test_async_play_media_overlay_offset_volume_tts(
     mock_mozart_client: AsyncMock,
     mock_config_entry: MockConfigEntry,
 ) -> None:
-    """Test async_play_media with Home Assistant invalid offset volume and B&O tts."""
+    """Test async_play_media with NRJHub invalid offset volume and B&O tts."""
 
     mock_config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(mock_config_entry.entry_id)
@@ -937,7 +937,7 @@ async def test_async_play_media_tts(
     mock_mozart_client: AsyncMock,
     mock_config_entry: MockConfigEntry,
 ) -> None:
-    """Test async_play_media with Home Assistant tts."""
+    """Test async_play_media with NRJHub tts."""
 
     mock_config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(mock_config_entry.entry_id)

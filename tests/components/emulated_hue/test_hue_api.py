@@ -218,7 +218,7 @@ async def demo_setup(hass: HomeAssistant, wanted_platforms_only: None) -> None:
 async def hass_hue(
     hass: HomeAssistant, base_setup: None, demo_setup: None
 ) -> HomeAssistant:
-    """Set up a Home Assistant instance for these tests."""
+    """Set up a NRJHub instance for these tests."""
     await _async_setup_emulated_hue(
         hass,
         {

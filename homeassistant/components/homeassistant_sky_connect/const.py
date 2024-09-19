@@ -1,4 +1,4 @@
-"""Constants for the Home Assistant SkyConnect integration."""
+"""Constants for the NRJHub SkyConnect integration."""
 
 import dataclasses
 import enum
@@ -23,13 +23,13 @@ class HardwareVariant(VariantInfo, enum.Enum):
     SKYCONNECT = (
         "SkyConnect v1.0",
         "SkyConnect",
-        "Home Assistant SkyConnect",
+        "NRJHub SkyConnect",
     )
 
     CONNECT_ZBT1 = (
-        "Home Assistant Connect ZBT-1",
+        "NRJHub Connect ZBT-1",
         "Connect ZBT-1",
-        "Home Assistant Connect ZBT-1",
+        "NRJHub Connect ZBT-1",
     )
 
     @classmethod

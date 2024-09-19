@@ -108,7 +108,7 @@ def addon_setup_time_fixture() -> Generator[int]:
 
 @pytest.fixture(name="not_onboarded")
 def mock_onboarded_fixture() -> Generator[MagicMock]:
-    """Mock that Home Assistant is not yet onboarded."""
+    """Mock that NRJHub is not yet onboarded."""
     with patch(
         "homeassistant.components.matter.config_flow.async_is_onboarded",
         return_value=False,

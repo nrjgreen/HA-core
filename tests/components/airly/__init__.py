@@ -19,7 +19,7 @@ HEADERS = {
 async def init_integration(
     hass: HomeAssistant, aioclient_mock: AiohttpClientMocker
 ) -> MockConfigEntry:
-    """Set up the Airly integration in Home Assistant."""
+    """Set up the Airly integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Home",

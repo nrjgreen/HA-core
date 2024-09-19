@@ -25,7 +25,7 @@
       "init": {
         "title": "Configure SimpliSafe",
         "data": {
-          "code": "Code (used in Home Assistant UI)"
+          "code": "Code (used in NRJHub UI)"
         }
       }
     }

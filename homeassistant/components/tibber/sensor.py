@@ -636,7 +636,7 @@ class TibberRtDataCoordinator(DataUpdateCoordinator):  # pylint: disable=hass-en
 
     @callback
     def _handle_ha_stop(self, _event: Event) -> None:
-        """Handle Home Assistant stopping."""
+        """Handle NRJHub stopping."""
         self._async_remove_device_updates_handler()
 
     @callback

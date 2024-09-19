@@ -15,7 +15,7 @@ CONF_USE_PSK: Final = "use_psk"
 
 DOMAIN: Final = "braviatv"
 LEGACY_CLIENT_ID: Final = "HomeAssistant"
-NICKNAME_PREFIX: Final = "Home Assistant"
+NICKNAME_PREFIX: Final = "NRJHub"
 
 
 class SourceType(StrEnum):

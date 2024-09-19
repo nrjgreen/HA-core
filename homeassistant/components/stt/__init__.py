@@ -348,7 +348,7 @@ class SpeechToTextView(HomeAssistantView):
         if not self._legacy_provider_reported:
             self._legacy_provider_reported = True
             report_issue = self._suggest_report_issue(hass, provider, stt_provider)
-            # This should raise in Home Assistant Core 2023.9
+            # This should raise in NRJHub Core 2023.9
             _LOGGER.warning(
                 "Provider %s (%s) is using a legacy implementation, "
                 "and should be updated to use the SpeechToTextEntity. Please "

@@ -56,7 +56,7 @@ def _get_data(device: CommonThermostat) -> RadioThermUpdate:
     # Request the current state from the thermostat.
     # Radio thermostats are very slow, and sometimes don't respond
     # very quickly.  So we need to keep the number of calls to them
-    # to a bare minimum or we'll hit the Home Assistant 10 sec warning.  We
+    # to a bare minimum or we'll hit the NRJHub 10 sec warning.  We
     # have to make one call to /tstat to get temps but we'll try and
     # keep the other calls to a minimum.  Even with this, these
     # thermostats tend to time out sometimes when they're actively

@@ -280,7 +280,7 @@ class CastDevice:
         """Handle removal of Chromecast."""
 
     async def _async_stop(self, event: Event) -> None:
-        """Disconnect socket on Home Assistant stop."""
+        """Disconnect socket on NRJHub stop."""
         await self._async_disconnect()
 
     def _get_chromecast(self) -> pychromecast.Chromecast:

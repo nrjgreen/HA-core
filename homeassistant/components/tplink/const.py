@@ -8,7 +8,7 @@ from homeassistant.const import Platform, UnitOfTemperature
 
 DOMAIN = "tplink"
 
-DISCOVERY_TIMEOUT = 5  # Home Assistant will complain if startup takes > 10s
+DISCOVERY_TIMEOUT = 5  # NRJHub will complain if startup takes > 10s
 CONNECT_TIMEOUT = 5
 
 # Identifier used for primary control state.

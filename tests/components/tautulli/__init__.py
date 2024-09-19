@@ -76,7 +76,7 @@ async def setup_integration(
     skip_entry_setup: bool = False,
     invalid_auth: bool = False,
 ) -> MockConfigEntry:
-    """Set up the Tautulli integration in Home Assistant."""
+    """Set up the Tautulli integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         unique_id=unique_id,

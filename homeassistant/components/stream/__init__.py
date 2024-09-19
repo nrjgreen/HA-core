@@ -4,7 +4,7 @@ Components use create_stream with a stream source (e.g. an rtsp url) to create
 a new Stream object. Stream manages:
   - Background work to fetch and decode a stream
   - Desired output formats
-  - Home Assistant URLs for viewing a stream
+  - NRJHub URLs for viewing a stream
   - Access tokens for URLs for viewing a stream
 
 A Stream consists of a background worker, and one or more output formats each

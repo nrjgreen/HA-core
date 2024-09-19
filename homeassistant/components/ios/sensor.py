@@ -1,4 +1,4 @@
-"""Support for Home Assistant iOS app sensors."""
+"""Support for NRJHub iOS app sensors."""
 
 from __future__ import annotations
 

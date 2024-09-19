@@ -280,7 +280,7 @@ class ProtectData:
         if model_type is ModelType.LIVEVIEW and len(self.api.bootstrap.viewers) > 0:
             # alert user viewport needs restart so voice clients can get new options
             _LOGGER.warning(
-                "Liveviews updated. Restart Home Assistant to update Viewport select"
+                "Liveviews updated. Restart NRJHub to update Viewport select"
                 " options"
             )
             return

@@ -952,7 +952,7 @@ async def test_restore_active_resume(hass: HomeAssistant) -> None:
 
 
 async def test_restore_active_finished_outside_grace(hass: HomeAssistant) -> None:
-    """Test entity restore logic: timer is active, ended while Home Assistant was stopped."""
+    """Test entity restore logic: timer is active, ended while NRJHub was stopped."""
     events = async_capture_events(hass, EVENT_TIMER_FINISHED)
     assert not events
     utc_now = utcnow()

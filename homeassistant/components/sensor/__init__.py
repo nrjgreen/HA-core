@@ -565,7 +565,7 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             self._invalid_state_class_reported = True
             report_issue = self._suggest_report_issue()
 
-            # This should raise in Home Assistant Core 2023.6
+            # This should raise in NRJHub Core 2023.6
             _LOGGER.warning(
                 "Entity %s (%s) is using state class '%s' which "
                 "is impossible considering device class ('%s') it is using; "
@@ -727,7 +727,7 @@ class SensorEntity(Entity, cached_properties=CACHED_PROPERTIES_WITH_ATTR_):
             self._invalid_unit_of_measurement_reported = True
             report_issue = self._suggest_report_issue()
 
-            # This should raise in Home Assistant Core 2023.6
+            # This should raise in NRJHub Core 2023.6
             _LOGGER.warning(
                 (
                     "Entity %s (%s) is using native unit of measurement '%s' which "

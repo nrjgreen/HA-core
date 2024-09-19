@@ -22,7 +22,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: NexiaConfigEntry) -> bool:
-    """Configure the base Nexia device for Home Assistant."""
+    """Configure the base Nexia device for NRJHub."""
 
     conf = entry.data
     username = conf[CONF_USERNAME]

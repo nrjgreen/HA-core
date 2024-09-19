@@ -18,7 +18,7 @@ FIXTURE_USER_INPUT = {
 
 
 async def init_integration(hass: HomeAssistant, ec_data) -> MockConfigEntry:
-    """Set up the Environment Canada integration in Home Assistant."""
+    """Set up the Environment Canada integration in NRJHub."""
 
     def mock_ec():
         ec_mock = MagicMock()

@@ -1,4 +1,4 @@
-"""Standard conversation implementation for Home Assistant."""
+"""Standard conversation implementation for NRJHub."""
 
 from __future__ import annotations
 
@@ -148,7 +148,7 @@ async def async_setup_default_agent(
 class DefaultAgent(ConversationEntity):
     """Default agent for conversation agent."""
 
-    _attr_name = "Home Assistant"
+    _attr_name = "NRJHub"
     _attr_supported_features = ConversationEntityFeature.CONTROL
 
     def __init__(

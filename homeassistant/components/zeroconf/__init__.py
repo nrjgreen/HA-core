@@ -1,4 +1,4 @@
-"""Support for exposing Home Assistant via Zeroconf."""
+"""Support for exposing NRJHub via Zeroconf."""
 
 from __future__ import annotations
 
@@ -187,7 +187,7 @@ def _async_zc_has_functional_dual_stack() -> bool:
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up Zeroconf and make Home Assistant discoverable."""
+    """Set up Zeroconf and make NRJHub discoverable."""
     zc_args: dict = {"ip_version": IPVersion.V4Only}
 
     adapters = await network.async_get_adapters(hass)
@@ -236,7 +236,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     await discovery.async_setup()
 
     async def _async_zeroconf_hass_start(hass: HomeAssistant, comp: str) -> None:
-        """Expose Home Assistant on zeroconf when it starts.
+        """Expose NRJHub on zeroconf when it starts.
 
         Wait till started or otherwise HTTP is not up and running.
         """

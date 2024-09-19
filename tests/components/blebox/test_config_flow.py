@@ -1,4 +1,4 @@
-"""Test Home Assistant config flow for BleBox devices."""
+"""Test NRJHub config flow for BleBox devices."""
 
 from ipaddress import ip_address
 from unittest.mock import DEFAULT, AsyncMock, PropertyMock, patch

@@ -42,7 +42,7 @@ async def async_init_integration(
     list_commands_side_effect=None,
     run_command: MagicMock | None = None,
 ) -> MockConfigEntry:
-    """Set up the nut integration in Home Assistant."""
+    """Set up the nut integration in NRJHub."""
 
     if list_ups is None:
         list_ups = {"ups1": "UPS 1"}

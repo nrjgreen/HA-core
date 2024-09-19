@@ -58,7 +58,7 @@ THERMOSTAT_MODES = [
     ThermostatMode.DRY,
 ]
 
-# Map Z-Wave HVAC Mode to Home Assistant value
+# Map Z-Wave HVAC Mode to NRJHub value
 # Note: We treat "auto" as "heat_cool" as most Z-Wave devices
 # report auto_changeover as auto without schedule support.
 ZW_HVAC_MODE_MAP: dict[int, HVACMode] = {
@@ -241,7 +241,7 @@ class ZWaveClimate(ZWaveBaseEntity, ClimateEntity):
         return get_value_of_zwave_value(temp)
 
     def _set_modes_and_presets(self) -> None:
-        """Convert Z-Wave Thermostat modes into Home Assistant modes and presets."""
+        """Convert Z-Wave Thermostat modes into NRJHub modes and presets."""
         all_modes: dict[HVACMode, int | None] = {}
         all_presets: dict[str, int | None] = {PRESET_NONE: None}
 

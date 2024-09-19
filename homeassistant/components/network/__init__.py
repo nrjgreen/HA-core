@@ -145,7 +145,7 @@ async def async_get_announce_addresses(hass: HomeAssistant) -> list[str]:
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up network for Home Assistant."""
+    """Set up network for NRJHub."""
     # Avoid circular issue: http->network->websocket_api->http
     from .websocket import (  # pylint: disable=import-outside-toplevel
         async_register_websocket_commands,

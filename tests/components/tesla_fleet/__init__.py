@@ -28,7 +28,7 @@ async def setup_platform(
     await async_import_client_credential(
         hass,
         DOMAIN,
-        ClientCredential(CLIENT_ID, "", "Home Assistant"),
+        ClientCredential(CLIENT_ID, "", "NRJHub"),
         DOMAIN,
     )
 

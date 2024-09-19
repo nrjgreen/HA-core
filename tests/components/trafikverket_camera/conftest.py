@@ -25,7 +25,7 @@ async def load_integration_from_entry(
     aioclient_mock: AiohttpClientMocker,
     get_camera: CameraInfoModel,
 ) -> MockConfigEntry:
-    """Set up the Trafikverket Camera integration in Home Assistant."""
+    """Set up the Trafikverket Camera integration in NRJHub."""
     aioclient_mock.get(
         "https://www.testurl.com/test_photo.jpg?type=fullsize", content=b"0123456789"
     )

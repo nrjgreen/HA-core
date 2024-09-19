@@ -171,7 +171,7 @@ async def async_setup_platform(
     async_add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
-    """Set up Home Assistant scene entries."""
+    """Set up NRJHub scene entries."""
     _process_scenes_config(hass, async_add_entities, config)
 
     # This platform can be loaded multiple times. Only first time register the service.
@@ -200,7 +200,7 @@ async def async_setup_platform(
 
         await platform.async_reset()
 
-        # Extract only the config for the Home Assistant platform, ignore the rest.
+        # Extract only the config for the NRJHub platform, ignore the rest.
         for p_type, p_config in conf_util.config_per_platform(conf, SCENE_DOMAIN):
             if p_type != DOMAIN:
                 continue

@@ -61,7 +61,7 @@ MOCK_HISTORY = [
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the NZBGet integration in Home Assistant."""
+    """Set up the NZBGet integration in NRJHub."""
     entry = MockConfigEntry(domain=DOMAIN, data=ENTRY_CONFIG, options=ENTRY_OPTIONS)
     entry.add_to_hass(hass)
 

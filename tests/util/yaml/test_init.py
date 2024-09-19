@@ -1,4 +1,4 @@
-"""Test Home Assistant yaml loader."""
+"""Test NRJHub yaml loader."""
 
 from collections.abc import Generator
 import importlib

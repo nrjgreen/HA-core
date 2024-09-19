@@ -36,7 +36,7 @@ CONNECT_ZBT1_CONFIG_ENTRY = MockConfigEntry(
         "pid": "EA60",
         "serial_number": "3c0ed67c628beb11b1cd64a0f320645d",
         "manufacturer": "Nabu Casa",
-        "product": "Home Assistant Connect ZBT-1",
+        "product": "NRJHub Connect ZBT-1",
         "firmware": "ezsp",
     },
     version=2,

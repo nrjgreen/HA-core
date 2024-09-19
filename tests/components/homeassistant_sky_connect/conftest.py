@@ -1,4 +1,4 @@
-"""Test fixtures for the Home Assistant SkyConnect integration."""
+"""Test fixtures for the NRJHub SkyConnect integration."""
 
 from collections.abc import Generator
 from unittest.mock import AsyncMock, MagicMock, patch

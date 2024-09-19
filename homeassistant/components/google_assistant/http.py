@@ -122,7 +122,7 @@ class GoogleConfig(AbstractConfig):
         return self._config.get(CONF_REPORT_STATE)
 
     def get_local_user_id(self, webhook_id):
-        """Map webhook ID to a Home Assistant user ID.
+        """Map webhook ID to a NRJHub user ID.
 
         Any action initiated by Google Assistant via the local SDK will be attributed
         to the returned user ID.
@@ -130,7 +130,7 @@ class GoogleConfig(AbstractConfig):
         Return None if no user id is found for the webhook_id.
         """
         # Note: The manually setup Google Assistant currently returns the Google agent
-        # user ID instead of a valid Home Assistant user ID
+        # user ID instead of a valid NRJHub user ID
         found_agent_user_id = None
         for agent_user_id, agent_user_data in self._store.agent_user_ids.items():
             if agent_user_data[STORE_GOOGLE_LOCAL_WEBHOOK_ID] == webhook_id:

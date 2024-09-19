@@ -255,7 +255,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
     # Start server thread, connect to hosts, initialize to receive events
     homematic.start()
 
-    # Stops server when Home Assistant is shutting down
+    # Stops server when NRJHub is shutting down
     hass.bus.listen_once(EVENT_HOMEASSISTANT_STOP, hass.data[DATA_HOMEMATIC].stop)
 
     # Init homematic hubs
@@ -443,7 +443,7 @@ def _system_callback_handler(hass, config, src, *args):
             if hmdevice.EVENTNODE:
                 hmdevice.setEventCallback(callback=bound_event_callback, bequeath=True)
 
-        # Create Home Assistant entities
+        # Create NRJHub entities
         if addresses:
             for component_name, discovery_type in (
                 ("switch", DISCOVER_SWITCHES),
@@ -459,7 +459,7 @@ def _system_callback_handler(hass, config, src, *args):
                 found_devices = _get_devices(hass, discovery_type, addresses, interface)
 
                 # When devices of this type are found
-                # they are setup in Home Assistant and a discovery event is fired
+                # they are setup in NRJHub and a discovery event is fired
                 if found_devices:
                     discovery.load_platform(
                         hass,

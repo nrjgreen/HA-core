@@ -215,7 +215,7 @@ def async_remove_entities(
     entry: AutomowerConfigEntry,
     mower_id: str,
 ) -> None:
-    """Remove deleted work areas from Home Assistant."""
+    """Remove deleted work areas from NRJHub."""
     entity_reg = er.async_get(hass)
     active_work_areas = set()
     _work_areas = coordinator.data[mower_id].work_areas

@@ -1,4 +1,4 @@
-"""The Home Assistant SkyConnect hardware platform."""
+"""The NRJHub SkyConnect hardware platform."""
 
 from __future__ import annotations
 

@@ -69,7 +69,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
         hass.bus.fire(EVENT_CHECKIN, {"text": response.text})
 
-    # Register our service with Home Assistant.
+    # Register our service with NRJHub.
     hass.services.register(
         DOMAIN, "checkin", checkin_user, schema=CHECKIN_SERVICE_SCHEMA
     )

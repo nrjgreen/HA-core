@@ -197,7 +197,7 @@ async def async_test_home_assistant(
     config_dir: str | None = None,
     initial_state: CoreState = CoreState.running,
 ) -> AsyncGenerator[HomeAssistant]:
-    """Return a Home Assistant object pointing at test config dir."""
+    """Return a NRJHub object pointing at test config dir."""
     hass = HomeAssistant(config_dir or get_test_config_dir())
     store = auth_store.AuthStore(hass)
     hass.auth = auth.AuthManager(hass, store, {}, {})
@@ -668,7 +668,7 @@ def mock_device_registry(
 
 
 class MockGroup(auth_models.Group):
-    """Mock a group in Home Assistant."""
+    """Mock a group in NRJHub."""
 
     def __init__(self, id: str | None = None, name: str | None = "Mock Group") -> None:
         """Mock a group."""
@@ -690,7 +690,7 @@ class MockGroup(auth_models.Group):
 
 
 class MockUser(auth_models.User):
-    """Mock a user in Home Assistant."""
+    """Mock a user in NRJHub."""
 
     def __init__(
         self,

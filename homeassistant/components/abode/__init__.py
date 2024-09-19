@@ -134,7 +134,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 
 def setup_hass_services(hass: HomeAssistant) -> None:
-    """Home Assistant services."""
+    """NRJHub services."""
 
     def change_setting(call: ServiceCall) -> None:
         """Change an Abode system setting."""
@@ -188,7 +188,7 @@ def setup_hass_services(hass: HomeAssistant) -> None:
 
 
 async def setup_hass_events(hass: HomeAssistant) -> None:
-    """Home Assistant start and stop callbacks."""
+    """NRJHub start and stop callbacks."""
 
     def logout(event: Event) -> None:
         """Logout of Abode."""

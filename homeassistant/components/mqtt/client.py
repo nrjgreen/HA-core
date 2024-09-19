@@ -358,7 +358,7 @@ class MqttClientSetup:
 
 
 class MQTT:
-    """Home Assistant MQTT client."""
+    """NRJHub MQTT client."""
 
     _mqttc: AsyncMQTTClient
     _last_subscribe: float
@@ -367,7 +367,7 @@ class MQTT:
     def __init__(
         self, hass: HomeAssistant, config_entry: ConfigEntry, conf: ConfigType
     ) -> None:
-        """Initialize Home Assistant MQTT client."""
+        """Initialize NRJHub MQTT client."""
         self.hass = hass
         self.loop = hass.loop
         self.config_entry = config_entry
@@ -423,7 +423,7 @@ class MQTT:
         self,
         mqtt_data: MqttData,
     ) -> None:
-        """Start Home Assistant MQTT client."""
+        """Start NRJHub MQTT client."""
         self._mqtt_data = mqtt_data
         await self.async_init_client()
 
@@ -709,7 +709,7 @@ class MQTT:
         """Stop the MQTT client.
 
         We only disconnect grafully if disconnect_paho_client is set, but not
-        when Home Assistant is shut down.
+        when NRJHub is shut down.
         """
 
         # stop waiting for any pending subscriptions
@@ -952,7 +952,7 @@ class MQTT:
         """Resubscribe to all topics and publish birth message."""
         self._async_queue_resubscribe()
         self._subscribe_debouncer.async_schedule()
-        await self._ha_started.wait()  # Wait for Home Assistant to start
+        await self._ha_started.wait()  # Wait for NRJHub to start
         await self._discovery_cooldown()  # Wait for MQTT discovery to cool down
         # Update subscribe cooldown period to a shorter time
         # and make sure we flush the debouncer
@@ -1152,7 +1152,7 @@ class MQTT:
         """Publish / Subscribe / Unsubscribe callback."""
         # The callback signature for on_unsubscribe is different from on_subscribe
         # see https://github.com/eclipse/paho.mqtt.python/issues/687
-        # properties and reason codes are not used in Home Assistant
+        # properties and reason codes are not used in NRJHub
         future = self._async_get_mid_future(mid)
         if future.done() and (future.cancelled() or future.exception()):
             # Timed out or cancelled

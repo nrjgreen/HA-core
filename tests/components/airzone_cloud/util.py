@@ -522,7 +522,7 @@ def mock_get_webserver(webserver: WebServer, devices: bool) -> dict[str, Any]:
 async def async_init_integration(
     hass: HomeAssistant,
 ) -> None:
-    """Set up the Airzone integration in Home Assistant."""
+    """Set up the Airzone integration in NRJHub."""
 
     config_entry = MockConfigEntry(
         data=CONFIG,

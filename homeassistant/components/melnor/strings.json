@@ -6,7 +6,7 @@
     },
     "step": {
       "bluetooth_confirm": {
-        "description": "Do you want to add the Melnor Bluetooth valve `{name}` to Home Assistant?",
+        "description": "Do you want to add the Melnor Bluetooth valve `{name}` to NRJHub?",
         "title": "Discovered Melnor Bluetooth valve"
       }
     }

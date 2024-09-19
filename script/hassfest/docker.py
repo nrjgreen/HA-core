@@ -29,7 +29,7 @@ RUN pip3 install uv=={uv}
 
 WORKDIR /usr/src
 
-## Setup Home Assistant Core dependencies
+## Setup NRJHub Core dependencies
 COPY requirements.txt homeassistant/
 COPY homeassistant/package_constraints.txt homeassistant/homeassistant/
 RUN \
@@ -52,7 +52,7 @@ RUN \
             -r homeassistant/requirements_all.txt; \
     fi
 
-## Setup Home Assistant Core
+## Setup NRJHub Core
 COPY . homeassistant/
 RUN \
     uv pip install \
@@ -60,7 +60,7 @@ RUN \
     && python3 -m compileall \
         homeassistant/homeassistant
 
-# Home Assistant S6-Overlay
+# NRJHub S6-Overlay
 COPY rootfs /
 
 WORKDIR /config
@@ -94,7 +94,7 @@ RUN --mount=from=ghcr.io/astral-sh/uv:{uv},source=/uv,target=/bin/uv \
         {required_components_packages}
 
 LABEL "name"="hassfest"
-LABEL "maintainer"="Home Assistant <hello@home-assistant.io>"
+LABEL "maintainer"="NRJHub <hello@home-assistant.io>"
 
 LABEL "com.github.actions.name"="hassfest"
 LABEL "com.github.actions.description"="Run hassfest to validate standalone integration repositories"

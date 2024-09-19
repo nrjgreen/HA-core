@@ -44,7 +44,7 @@ async def test_attributes_on_off(
     """Test state update via MQTT."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     config["rl"][0] = 1
-    config["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     mac = config["mac"]
 
     async_fire_mqtt_message(
@@ -335,7 +335,7 @@ async def test_controlling_state_via_mqtt_on_off(
     """Test state update via MQTT."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     config["rl"][0] = 1
-    config["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     mac = config["mac"]
 
     async_fire_mqtt_message(
@@ -764,7 +764,7 @@ async def test_sending_mqtt_commands_on_off(
     """Test the sending MQTT commands."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     config["rl"][0] = 1
-    config["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     mac = config["mac"]
 
     async_fire_mqtt_message(
@@ -1463,7 +1463,7 @@ async def test_relay_as_light(
     """Test relay show up as light in light mode."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     config["rl"][0] = 1
-    config["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     mac = config["mac"]
 
     async_fire_mqtt_message(
@@ -1775,10 +1775,10 @@ async def test_discovery_removal_relay_as_light(
     """Test removal of discovered relay as light."""
     config1 = copy.deepcopy(DEFAULT_CONFIG)
     config1["rl"][0] = 1
-    config1["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config1["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     config2 = copy.deepcopy(DEFAULT_CONFIG)
     config2["rl"][0] = 1
-    config2["so"]["30"] = 0  # Disable Home Assistant auto-discovery as light
+    config2["so"]["30"] = 0  # Disable NRJHub auto-discovery as light
 
     await help_test_discovery_removal(
         hass, mqtt_mock, caplog, Platform.LIGHT, config1, config2
@@ -1794,10 +1794,10 @@ async def test_discovery_removal_relay_as_light2(
     """Test removal of discovered relay as light."""
     config1 = copy.deepcopy(DEFAULT_CONFIG)
     config1["rl"][0] = 1
-    config1["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config1["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     config2 = copy.deepcopy(DEFAULT_CONFIG)
     config2["rl"][0] = 0
-    config2["so"]["30"] = 0  # Disable Home Assistant auto-discovery as light
+    config2["so"]["30"] = 0  # Disable NRJHub auto-discovery as light
 
     await help_test_discovery_removal(
         hass, mqtt_mock, caplog, Platform.LIGHT, config1, config2
@@ -1841,7 +1841,7 @@ async def test_discovery_device_remove_relay_as_light(
     """Test device registry remove."""
     config = copy.deepcopy(DEFAULT_CONFIG)
     config["rl"][0] = 1
-    config["so"]["30"] = 1  # Enforce Home Assistant auto-discovery as light
+    config["so"]["30"] = 1  # Enforce NRJHub auto-discovery as light
     unique_id = f"{DEFAULT_CONFIG['mac']}_light_relay_0"
     await help_test_discovery_device_remove(
         hass, mqtt_mock, Platform.LIGHT, unique_id, config

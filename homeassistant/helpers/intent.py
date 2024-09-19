@@ -68,7 +68,7 @@ SPEECH_TYPE_SSML = "ssml"
 @callback
 @bind_hass
 def async_register(hass: HomeAssistant, handler: IntentHandler) -> None:
-    """Register an intent with Home Assistant."""
+    """Register an intent with NRJHub."""
     if (intents := hass.data.get(DATA_KEY)) is None:
         intents = {}
         hass.data[DATA_KEY] = intents
@@ -86,7 +86,7 @@ def async_register(hass: HomeAssistant, handler: IntentHandler) -> None:
 @callback
 @bind_hass
 def async_remove(hass: HomeAssistant, intent_type: str) -> None:
-    """Remove an intent from Home Assistant."""
+    """Remove an intent from NRJHub."""
     if (intents := hass.data.get(DATA_KEY)) is None:
         return
 

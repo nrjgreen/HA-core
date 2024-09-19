@@ -78,7 +78,7 @@ def _async_get_diagnostics(
 def _async_device_as_dict(hass: HomeAssistant, device: DeviceEntry) -> dict[str, Any]:
     """Represent an MQTT device as a dictionary."""
 
-    # Gather information how this MQTT device is represented in Home Assistant
+    # Gather information how this MQTT device is represented in NRJHub
     entity_registry = er.async_get(hass)
     data: dict[str, Any] = {
         "id": device.id,

@@ -16,7 +16,7 @@ TEMPLATES = [
 
 def get_arguments() -> argparse.Namespace:
     """Get parsed passed in arguments."""
-    parser = argparse.ArgumentParser(description="Home Assistant Scaffolder")
+    parser = argparse.ArgumentParser(description="NRJHub Scaffolder")
     parser.add_argument("template", type=str, choices=TEMPLATES)
     parser.add_argument(
         "--develop", action="store_true", help="Automatically fill in info"

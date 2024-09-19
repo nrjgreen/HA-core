@@ -1,4 +1,4 @@
-"""Config flow for Livisi Home Assistant."""
+"""Config flow for Livisi NRJHub."""
 
 from __future__ import annotations
 

@@ -36,7 +36,7 @@ from .entity import SmartThingsEntity
 
 
 class Map(NamedTuple):
-    """Tuple for mapping Smartthings capabilities to Home Assistant sensors."""
+    """Tuple for mapping Smartthings capabilities to NRJHub sensors."""
 
     attribute: str
     name: str

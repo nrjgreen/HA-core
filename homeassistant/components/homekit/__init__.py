@@ -530,7 +530,7 @@ def _async_register_events_and_services(hass: HomeAssistant) -> None:
 
 
 class HomeKit:
-    """Class to handle all actions between HomeKit and Home Assistant."""
+    """Class to handle all actions between HomeKit and NRJHub."""
 
     def __init__(
         self,

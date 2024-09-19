@@ -10,7 +10,7 @@ from tests.common import MockConfigEntry
 async def init_integration(
     hass: HomeAssistant, entry: MockConfigEntry
 ) -> MockConfigEntry:
-    """Set up the Tractive integration in Home Assistant."""
+    """Set up the Tractive integration in NRJHub."""
     entry.add_to_hass(hass)
 
     with patch("homeassistant.components.tractive.TractiveClient._listen"):

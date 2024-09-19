@@ -41,7 +41,7 @@ MOCK_TELEGRAMS = [
         "dpt_name": None,
         "payload": [1, 2, 3, 4],
         "source": "0.0.0",
-        "source_name": "Home Assistant",
+        "source_name": "NRJHub",
         "telegramtype": "GroupValueWrite",
         "timestamp": MOCK_TIMESTAMP,
         "unit": None,

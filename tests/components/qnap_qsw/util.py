@@ -494,7 +494,7 @@ USERS_VERIFICATION_MOCK = {
 async def async_init_integration(
     hass: HomeAssistant,
 ) -> None:
-    """Set up the QNAP QSW integration in Home Assistant."""
+    """Set up the QNAP QSW integration in NRJHub."""
 
     config_entry = MockConfigEntry(
         data=CONFIG,

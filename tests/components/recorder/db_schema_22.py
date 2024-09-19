@@ -1,7 +1,7 @@
 """Models for SQLAlchemy.
 
 This file contains the model definitions for schema version 22,
-used by Home Assistant Core 2021.10.0, which adds a table for
+used by NRJHub Core 2021.10.0, which adds a table for
 5-minute statistics.
 It is used to test the schema migration logic.
 """

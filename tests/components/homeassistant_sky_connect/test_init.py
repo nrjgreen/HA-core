@@ -1,4 +1,4 @@
-"""Test the Home Assistant SkyConnect integration."""
+"""Test the NRJHub SkyConnect integration."""
 
 from unittest.mock import patch
 

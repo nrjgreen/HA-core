@@ -26,7 +26,7 @@ ONLINE_UPDATE = APCUpdate(
 
 
 def create_entry(hass: HomeAssistant, device_id: str = DEVICE_UNIQUE_ID) -> ConfigEntry:
-    """Add config entry in Home Assistant."""
+    """Add config entry in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         title="Anova",
@@ -45,7 +45,7 @@ async def async_init_integration(
     hass: HomeAssistant,
     skip_setup: bool = False,
 ) -> ConfigEntry:
-    """Set up the Anova integration in Home Assistant."""
+    """Set up the Anova integration in NRJHub."""
 
     with patch("homeassistant.components.anova.AnovaApi.authenticate"):
         entry = create_entry(hass)

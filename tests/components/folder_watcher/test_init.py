@@ -31,7 +31,7 @@ async def test_valid_path_setup(hass: HomeAssistant) -> None:
 
 
 def test_event() -> None:
-    """Check that Home Assistant events are fired correctly on watchdog event."""
+    """Check that NRJHub events are fired correctly on watchdog event."""
 
     class MockPatternMatchingEventHandler:
         """Mock base class for the pattern matcher event handler."""
@@ -61,7 +61,7 @@ def test_event() -> None:
 
 
 def test_move_event() -> None:
-    """Check that Home Assistant events are fired correctly on watchdog event."""
+    """Check that NRJHub events are fired correctly on watchdog event."""
 
     class MockPatternMatchingEventHandler:
         """Mock base class for the pattern matcher event handler."""

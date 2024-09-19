@@ -32,7 +32,7 @@ SERVER_STATUS_STATUS_ONLY = ServerStatus.new_from_json_dict(
 
 
 async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Nightscout integration in Home Assistant."""
+    """Set up the Nightscout integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data={CONF_URL: "https://some.url:1234"},
@@ -55,7 +55,7 @@ async def init_integration(hass: HomeAssistant) -> MockConfigEntry:
 
 
 async def init_integration_unavailable(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Nightscout integration in Home Assistant."""
+    """Set up the Nightscout integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data={CONF_URL: "https://some.url:1234"},
@@ -78,7 +78,7 @@ async def init_integration_unavailable(hass: HomeAssistant) -> MockConfigEntry:
 
 
 async def init_integration_empty_response(hass: HomeAssistant) -> MockConfigEntry:
-    """Set up the Nightscout integration in Home Assistant."""
+    """Set up the Nightscout integration in NRJHub."""
     entry = MockConfigEntry(
         domain=DOMAIN,
         data={CONF_URL: "https://some.url:1234"},

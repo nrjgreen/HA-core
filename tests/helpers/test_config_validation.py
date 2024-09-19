@@ -672,9 +672,9 @@ def test_template(hass: HomeAssistant) -> None:
         "Hello",
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function 'expand' added as an extension by Home Assistant
+        # Function 'expand' added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
-        # Filter 'expand' added as an extension by Home Assistant
+        # Filter 'expand' added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
         # Non existing function 'no_such_function' is not detected by Jinja2
         "{{ no_such_function('group.foo')|map(attribute='entity_id')|list }}",
@@ -692,7 +692,7 @@ async def test_template_no_hass(hass: HomeAssistant) -> None:
         "{{ partial_print }",
         "{% if True %}Hello",
         ["test"],
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     ):
         with pytest.raises(vol.Invalid):
@@ -703,7 +703,7 @@ async def test_template_no_hass(hass: HomeAssistant) -> None:
         "Hello",
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function 'expand' added as an extension by Home Assistant, no error
+        # Function 'expand' added as an extension by NRJHub, no error
         # because non existing functions are not detected by Jinja2
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
         # Non existing function 'no_such_function' is not detected by Jinja2
@@ -731,9 +731,9 @@ def test_dynamic_template(hass: HomeAssistant) -> None:
     options = (
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function 'expand' added as an extension by Home Assistant
+        # Function 'expand' added as an extension by NRJHub
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
-        # Filter 'expand' added as an extension by Home Assistant
+        # Filter 'expand' added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
         # Non existing function 'no_such_function' is not detected by Jinja2
         "{{ no_such_function('group.foo')|map(attribute='entity_id')|list }}",
@@ -753,7 +753,7 @@ async def test_dynamic_template_no_hass(hass: HomeAssistant) -> None:
         "{% if True %}Hello",
         ["test"],
         "just a string",
-        # Filter added as an extension by Home Assistant
+        # Filter added as an extension by NRJHub
         "{{ ['group.foo']|expand|map(attribute='entity_id')|list }}",
     ):
         with pytest.raises(vol.Invalid):
@@ -762,7 +762,7 @@ async def test_dynamic_template_no_hass(hass: HomeAssistant) -> None:
     options = (
         "{{ beer }}",
         "{% if 1 == 1 %}Hello{% else %}World{% endif %}",
-        # Function 'expand' added as an extension by Home Assistant, no error
+        # Function 'expand' added as an extension by NRJHub, no error
         # because non existing functions are not detected by Jinja2
         "{{ expand('group.foo')|map(attribute='entity_id')|list }}",
         # Non existing function 'no_such_function' is not detected by Jinja2

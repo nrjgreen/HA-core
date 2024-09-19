@@ -40,7 +40,7 @@ class BasePrivateDeviceEntity(Entity):
         self._last_info: bluetooth.BluetoothServiceInfoBleak | None = None
 
     async def async_added_to_hass(self) -> None:
-        """Configure entity when it is added to Home Assistant."""
+        """Configure entity when it is added to NRJHub."""
         coordinator = async_get_coordinator(self.hass)
         self.async_on_remove(
             coordinator.async_track_service_info(

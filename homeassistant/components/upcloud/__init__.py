@@ -56,7 +56,7 @@ STATE_MAP = {"error": STATE_PROBLEM, "started": STATE_ON, "stopped": STATE_OFF}
 
 @dataclasses.dataclass
 class UpCloudHassData:
-    """Home Assistant UpCloud runtime data."""
+    """NRJHub UpCloud runtime data."""
 
     coordinators: dict[str, UpCloudDataUpdateCoordinator] = dataclasses.field(
         default_factory=dict

@@ -81,7 +81,7 @@ class RoborockDataUpdateCoordinator(DataUpdateCoordinator[DeviceProp]):
                 await self.api.ping()
             except RoborockException:
                 _LOGGER.warning(
-                    "Using the cloud API for device %s. This is not recommended as it can lead to rate limiting. We recommend making your vacuum accessible by your Home Assistant instance",
+                    "Using the cloud API for device %s. This is not recommended as it can lead to rate limiting. We recommend making your vacuum accessible by your NRJHub instance",
                     self.roborock_device_info.device.duid,
                 )
                 await self.api.async_disconnect()

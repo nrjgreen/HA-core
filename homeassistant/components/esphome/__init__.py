@@ -26,7 +26,7 @@ from .manager import ESPHomeManager, cleanup_instance
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
-CLIENT_INFO = f"Home Assistant {ha_version}"
+CLIENT_INFO = f"NRJHub {ha_version}"
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:

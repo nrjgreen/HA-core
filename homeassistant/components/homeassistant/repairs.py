@@ -1,4 +1,4 @@
-"""Repairs for Home Assistant."""
+"""Repairs for NRJHub."""
 
 from __future__ import annotations
 

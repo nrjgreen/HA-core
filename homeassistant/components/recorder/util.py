@@ -347,8 +347,8 @@ def _fail_unsupported_dialect(dialect_name: str) -> NoReturn:
     """Warn about unsupported database version."""
     _LOGGER.error(
         (
-            "Database %s is not supported; Home Assistant supports %s. "
-            "Starting with Home Assistant 2022.6 this prevents the recorder from "
+            "Database %s is not supported; NRJHub supports %s. "
+            "Starting with NRJHub 2022.6 this prevents the recorder from "
             "starting. Please migrate your database to a supported software"
         ),
         dialect_name,
@@ -364,7 +364,7 @@ def _raise_if_version_unsupported(
     _LOGGER.error(
         (
             "Version %s of %s is not supported; minimum supported version is %s. "
-            "Starting with Home Assistant 2022.6 this prevents the recorder from "
+            "Starting with NRJHub 2022.6 this prevents the recorder from "
             "starting. Please upgrade your database software"
         ),
         server_version,
