@@ -109,10 +109,10 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up NRJHub Cloud text-to-speech platform."""
-    tts_platform_loaded = hass.data[DATA_PLATFORMS_SETUP][Platform.TTS]
-    tts_platform_loaded.set()
-    cloud = hass.data[DATA_CLOUD]
-    async_add_entities([CloudTTSEntity(cloud)])
+    # tts_platform_loaded = hass.data[DATA_PLATFORMS_SETUP][Platform.TTS]
+    # tts_platform_loaded.set()
+    # cloud = hass.data[DATA_CLOUD]
+    # async_add_entities([CloudTTSEntity(cloud)])
 
 
 class CloudTTSEntity(TextToSpeechEntity):
