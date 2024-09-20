@@ -67,7 +67,7 @@ from .subscription import async_subscription_info
 
 DEFAULT_MODE = MODE_PROD
 
-PLATFORMS = [Platform.BINARY_SENSOR, Platform.STT, Platform.TTS]
+PLATFORMS = [Platform.BINARY_SENSOR, Platform.STT]
 
 SERVICE_REMOTE_CONNECT = "remote_connect"
 SERVICE_REMOTE_DISCONNECT = "remote_disconnect"
@@ -278,13 +278,13 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
     loaded = False
     stt_platform_loaded = asyncio.Event()
-    tts_platform_loaded = asyncio.Event()
-    stt_tts_entities_added = asyncio.Event()
-    hass.data[DATA_PLATFORMS_SETUP] = {
-        Platform.STT: stt_platform_loaded,
-        Platform.TTS: tts_platform_loaded,
-        "stt_tts_entities_added": stt_tts_entities_added,
-    }
+    # tts_platform_loaded = asyncio.Event()
+    # stt_tts_entities_added = asyncio.Event()
+    # hass.data[DATA_PLATFORMS_SETUP] = {
+    #     Platform.STT: stt_platform_loaded,
+    #     Platform.TTS: tts_platform_loaded,
+    #     "stt_tts_entities_added": stt_tts_entities_added,
+    # }
 
     async def _on_start() -> None:
         """Handle cloud started after login."""
@@ -326,16 +326,16 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     account_link.async_setup(hass)
 
     # Load legacy tts platform for backwards compatibility.
-    hass.async_create_task(
-        async_load_platform(
-            hass,
-            Platform.TTS,
-            DOMAIN,
-            {"platform_loaded": tts_platform_loaded},
-            config,
-        ),
-        eager_start=True,
-    )
+    # hass.async_create_task(
+    #     async_load_platform(
+    #         hass,
+    #         Platform.TTS,
+    #         DOMAIN,
+    #         {"platform_loaded": tts_platform_loaded},
+    #         config,
+    #     ),
+    #     eager_start=True,
+    # )
 
     async_call_later(
         hass=hass,
@@ -374,8 +374,8 @@ def _remote_handle_prefs_updated(cloud: Cloud[CloudClient]) -> None:
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up a config entry."""
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    stt_tts_entities_added = hass.data[DATA_PLATFORMS_SETUP]["stt_tts_entities_added"]
-    stt_tts_entities_added.set()
+    # stt_tts_entities_added = hass.data[DATA_PLATFORMS_SETUP]["stt_tts_entities_added"]
+    # stt_tts_entities_added.set()
 
     return True
 
