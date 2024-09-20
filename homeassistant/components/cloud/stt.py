@@ -38,10 +38,10 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up NRJHub Cloud speech platform via config entry."""
-    stt_platform_loaded = hass.data[DATA_PLATFORMS_SETUP][Platform.STT]
-    stt_platform_loaded.set()
-    cloud = hass.data[DATA_CLOUD]
-    async_add_entities([CloudProviderEntity(cloud)])
+    # stt_platform_loaded = hass.data[DATA_PLATFORMS_SETUP][Platform.STT]
+    # stt_platform_loaded.set()
+    # cloud = hass.data[DATA_CLOUD]
+    # async_add_entities([CloudProviderEntity(cloud)])
 
 
 class CloudProviderEntity(SpeechToTextEntity):
