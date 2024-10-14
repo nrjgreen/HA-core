@@ -41,10 +41,15 @@ DATA_INSTANCES = "entity_components"
 
 _EntityT = TypeVar("_EntityT", bound=entity.Entity, default=entity.Entity)
 
-
 @bind_hass
 async def async_update_entity(hass: HomeAssistant, entity_id: str) -> None:
     """Trigger an update for an entity."""
+
+    logging.getLogger(__name__).info("entity: " + entity_id)
+
+    if entity_id == "nrjhub.core" or entity_id == "nrjhub.frontend":
+        return
+    
     domain = entity_id.partition(".")[0]
     entity_comp: EntityComponent[entity.Entity] | None
     entity_comp = hass.data.get(DATA_INSTANCES, {}).get(domain)

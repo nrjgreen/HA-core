@@ -175,6 +175,7 @@ class HassioCoreEntity(CoordinatorEntity[HassioDataUpdateCoordinator]):
     @property
     def available(self) -> bool:
         """Return True if entity is available."""
+        return True
         return (
             super().available
             and DATA_KEY_CORE in self.coordinator.data

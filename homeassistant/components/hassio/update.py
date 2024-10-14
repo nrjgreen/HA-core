@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import requests
+from datetime import datetime
+
 from typing import Any
 
 from awesomeversion import AwesomeVersion, AwesomeVersionStrategy
@@ -276,12 +279,31 @@ class SupervisorCoreUpdateEntity(HassioCoreEntity, UpdateEntity):
     @property
     def latest_version(self) -> str:
         """Return the latest version."""
-        return self.coordinator.data[DATA_KEY_CORE][ATTR_VERSION_LATEST]
+        response = requests.get("https://api.github.com/repos/nrjgreen/HA-core/commits")
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            commits = response.json()
+            
+            # Get the commits for the current day
+            today = datetime.now().strftime('%Y-%m-%d')
+            current_day_commits = [commit for commit in commits if commit['commit']['author']['date'].startswith(today)]
+            
+            last_commit = current_day_commits[0]
+            commit_date = datetime.strptime(last_commit['commit']['author']['date'], '%Y-%m-%dT%H:%M:%SZ')
+            
+            # Format as YEAR.DAYINYEAR.THEAMMOUNTOFCOMMITSTHATDAY
+            day_of_year = commit_date.timetuple().tm_yday  # tm_yday gives the day of the year (1-366)
+            formatted_date = f"{commit_date.year}.{day_of_year:03d}.{len(current_day_commits)}"
+            
+            return formatted_date
+        else:
+            raise ValueError("Failed to fetch commits from the repository.")
 
     @property
     def installed_version(self) -> str:
         """Return the installed version."""
-        return self.coordinator.data[DATA_KEY_CORE][ATTR_VERSION]
+        return __version__
 
     @property
     def entity_picture(self) -> str | None:

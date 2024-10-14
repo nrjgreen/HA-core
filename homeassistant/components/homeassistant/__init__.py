@@ -4,7 +4,10 @@ import asyncio
 from collections.abc import Callable, Coroutine
 import itertools as it
 import logging
+import os
 from typing import Any
+import subprocess
+from threading import Thread
 
 import voluptuous as vol
 
@@ -81,6 +84,55 @@ SCHEMA_RESTART = vol.Schema({vol.Optional(ATTR_SAFE_MODE, default=False): bool})
 
 SHUTDOWN_SERVICES = (SERVICE_HOMEASSISTANT_STOP, SERVICE_HOMEASSISTANT_RESTART)
 
+async def async_get_version_service(call: ServiceCall) -> None:
+        """Service handler to get version."""
+        return "1.0"
+
+def update_core():
+    commands = ' && '.join([
+        'cd "/home/dietpi/Home Assistant/HA-core"',
+        'git pull',
+        'bash ./script/setup',
+        'source venv/bin/activate',
+        'pip install -r requirements_all.txt',
+        'deactivate'
+    ])
+    result = subprocess.run(["bash", "-c", commands], capture_output=True, text=True)
+    logging.getLogger(__name__).info(result)
+
+def update_frontend():
+    commands = ' && '.join([
+        'cd "/home/dietpi/Home Assistant/HA-frontend"',
+        'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash',
+        'export NVM_DIR="$HOME/.nvm"',
+        '[ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"',
+        '[ -s "$NVM_DIR/bash_completion" ] && \\. "$NVM_DIR/bash_completion"',
+        'nvm install',
+        'nvm use',
+        'npm i -g yarn',
+        'yarn install',
+        'bash ./script/setup'
+    ])
+    result = subprocess.run(["bash", "-c", commands], capture_output=True, text=True)
+    logging.getLogger(__name__).info(result)
+
+def update_core_frontend(core, frontend):
+    threads = []
+
+    if core:
+        thread = Thread(target=update_core)
+        thread.start()
+        threads.append(thread)
+
+    if frontend:
+        thread = Thread(target=update_frontend)
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+    
+    subprocess.run(["bash", "-c", "pkill -f '/home/dietpi/Home Assistant/HA-core/venv/bin/python3 /home/dietpi/Home Assistant/HA-core/venv/bin/hass -c config'"], capture_output=True, text=True)
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa: C901
     """Set up general services related to NRJHub."""
@@ -214,6 +266,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
 
     async def async_handle_update_service(call: ServiceCall) -> None:
         """Service handler for updating an entity."""
+        # test
         if call.context.user_id:
             user = await hass.auth.async_get_user(call.context.user_id)
 
@@ -233,6 +286,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
                         perm_category=CAT_ENTITIES,
                     )
 
+        thread = Thread(target=update_core_frontend, args=("nrjhub.core" in call.data[ATTR_ENTITY_ID], "nrjhub.frontend" in call.data[ATTR_ENTITY_ID]))
+        thread.start()
         tasks = [
             async_update_entity(hass, entity) for entity in call.data[ATTR_ENTITY_ID]
         ]
@@ -258,6 +313,11 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
         SERVICE_UPDATE_ENTITY,
         async_handle_update_service,
         schema=SCHEMA_UPDATE_ENTITY,
+    )
+    hass.services.async_register(
+        DOMAIN,
+        "get_version",
+        async_get_version_service,
     )
 
     async def async_handle_reload_config(call: ServiceCall) -> None:
