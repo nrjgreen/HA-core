@@ -103,6 +103,7 @@ def update_core():
 def update_frontend():
     commands = ' && '.join([
         'cd "/home/dietpi/Home Assistant/HA-frontend"',
+        'git pull',
         'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash',
         'export NVM_DIR="$HOME/.nvm"',
         '[ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"',
